@@ -10548,6 +10548,7 @@ font-weight:500
   flex:0 0 auto;
 }
 
+
 /* =========================================
    LIFE CYCLE — EXCEL EXPORT
 ========================================= */
@@ -10698,7 +10699,7 @@ font-weight:500
 
 }
 
-	
+
 </style>
 
 </head>
@@ -15537,7 +15538,165 @@ font-weight:500
      NEPTOON LIFE CYCLE — LEGAL FOOTER
 ========================================= -->
 
+<footer class="app-legal">
 
+  <div class="appLegalTop">
+
+    <div class="appLegalBrand">
+
+      <strong>NEPTOON WEALTH</strong>
+
+      <span data-lang="lifeCycleFooterTagline">
+        LIFE CYCLE · FINANCIAL MODELLING
+      </span>
+
+    </div>
+
+    <span class="appLegalCopyright">
+      © 2026 Neptoon Wealth
+    </span>
+
+  </div>
+
+
+  <!-- =========================================
+       LEGAL NOTICE
+  ========================================= -->
+
+  <section class="appLegalNotice">
+
+    <div class="appLegalNoticeTitle">
+
+      <span class="appLegalShield" aria-hidden="true">
+        🛡️
+      </span>
+
+      <strong data-lang="lifeCycleLegalTitle">
+        Important information
+      </strong>
+
+    </div>
+
+    <p data-lang="appDisclaimer">
+      Neptoon Life Cycle is an educational financial
+      modelling tool. Results are illustrative and
+      based on assumptions. They do not constitute
+      individual investment advice.
+    </p>
+
+  </section>
+
+
+  <!-- =========================================
+       INLINE FOOTER INFORMATION
+  ========================================= -->
+
+  <div id="lcFooterInfo"
+       class="lcFooterInfo"
+       hidden>
+
+    <div class="lcFooterInfoHead">
+
+      <span data-lang="lcFooterInfoKicker">
+        NEPTOON WEALTH · INFORMATION
+      </span>
+
+      <button type="button"
+              id="lcFooterInfoClose"
+              aria-label="Close information">
+        ×
+      </button>
+
+    </div>
+
+
+
+
+    <!-- =========================================
+         INFORMATION CONTENT
+    ========================================= -->
+
+    <div class="lcFooterInfoBody">
+
+      <!-- ABOUT -->
+
+      <section data-footer-content="about" hidden>
+
+        <h3 data-lang="lifeCycleAbout">
+          About
+        </h3>
+
+        <div id="lcFooterAboutText"></div>
+
+      </section>
+
+
+      <!-- PRIVACY -->
+
+      <section data-footer-content="privacy" hidden>
+
+        <h3 data-lang="lifeCyclePrivacy">
+          Privacy Policy
+        </h3>
+
+        <div id="lcFooterPrivacyText"></div>
+
+      </section>
+
+
+      <!-- TERMS -->
+
+      <section data-footer-content="terms" hidden>
+
+        <h3 data-lang="lifeCycleTerms">
+          Terms &amp; Conditions
+        </h3>
+
+        <div id="lcFooterTermsText"></div>
+
+      </section>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       VISIBLE LEGAL NAVIGATION
+  ========================================= -->
+
+  <div class="appLegalBottom">
+
+    <nav class="appLegalLinks"
+         aria-label="Legal information">
+
+      <a href="#"
+         data-footer-open="about"
+         data-lang="lifeCycleAbout">
+        About
+      </a>
+
+      <a href="#"
+         data-footer-open="privacy"
+         data-lang="lifeCyclePrivacy">
+        Privacy Policy
+      </a>
+
+      <a href="#"
+         data-footer-open="terms"
+         data-lang="lifeCycleTerms">
+        Terms &amp; Conditions
+      </a>
+
+    </nav>
+
+    <span class="appLegalProduct">
+      © Neptoon Wealth · Life Cycle Model
+    </span>
+
+  </div>
+
+</footer>
 
 
 </div>
@@ -20917,7 +21076,7 @@ function setLanguage(lang, save = true){
   );
 
 
-//renderFooterInfo(lang);
+renderFooterInfo(lang);
 renderLifeCycleFAQ(lang);
 
 }
@@ -37377,7 +37536,7 @@ bindPortfolioSettingsLink();
 bindScenarioExplanations();
 //////////////////////
 render();
-//bindFooterInfo();
+bindFooterInfo();
 applyLang("da");
  
     openTab("Welcome");
