@@ -51,7 +51,7 @@ body{
 .riskTitle,
 .fireControlTitle{
   font-size:11px;
-  font-weight:690;
+  font-weight:700;
   letter-spacing:.13em;
   color:var(--blue);
 }
@@ -10402,6 +10402,152 @@ font-weight:500
   width: 100%;
   box-sizing: border-box;
 }
+
+#tabAccount .accountHeaderLiveDot {
+  background: #9ca3af;
+  box-shadow: none;
+}
+
+#tabAccount .accountHeaderLiveDot.isUpdating {
+  background: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22,163,74,.15);
+}
+
+/* LIVE DASHBOARD — CENTER STATUS */
+
+#modelFooterToggle {
+  position: relative;
+}
+
+#modelFooterToggle .accountHeaderLive {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+
+
+
+
+#modelFooterToggle {
+  position: relative;
+}
+
+#modelFooterToggle .accountHeaderLive {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}	
+#tabAccount .accountHeaderLiveDot {
+  background: #9ca3af;
+  box-shadow: none;
+}
+
+#tabAccount .accountHeaderLiveDot.isUpdating {
+  background: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22,163,74,.15);
+}
+
+
+.lifeCycleAssessment{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:15px 18px;margin:14px 0;
+  border:1px solid #d1d5db;border-left:4px solid #64748b;
+  background:#f8fafc;color:#334155;
+  border-radius:0;
+}
+.lifeCycleAssessment.isFeasible{
+  border-left-color:#27845a;background:#f3faf6;
+}
+.lifeCycleAssessment.isInfeasible{
+  border-left-color:#c26b38;background:#fff8f2;
+}
+#lifeCycleAssessmentIcon{font-size:19px;line-height:1.2;}
+#lifeCycleAssessmentTitle{display:block;font-size:13px;font-weight:700;margin-bottom:5px;}
+#lifeCycleAssessmentText{font-size:12px;line-height:1.6;}
+
+
+.lcMountainExportControls{
+  display:flex;
+  align-items:stretch;
+  gap:8px;
+  width:100%;
+}
+
+.lcMountainExportEmail{
+  flex:1;
+  min-width:0;
+  padding:10px 12px;
+  border:1px solid #cbd5e1;
+  border-radius:0;
+  background:#fff;
+  font-size:13px;
+  box-sizing:border-box;
+}
+
+.lcMountainExportEmail:focus{
+  outline:none;
+  border-color:#4E79BD;
+}
+
+.lcMountainExportButton{
+  flex:0 0 auto;
+  white-space:nowrap;
+  border-radius:0;
+}
+
+.lcMountainExportFineprint{
+  display:block;
+  margin-top:8px;
+  font-size:11px;
+  color:#64748b;
+}
+
+.lcMountainExportMessage{
+  margin-top:6px;
+  font-size:12px;
+}
+
+.lcMountainExportMessage:empty{
+  display:none;
+}
+
+@media(max-width:700px){
+  .lcMountainExportControls{
+    flex-direction:column;
+  }
+
+  .lcMountainExportEmail,
+  .lcMountainExportButton{
+    width:100%;
+  }
+}
+
+
+.lcMountainExportConsent{
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  margin-top:10px;
+  font-size:11px;
+  line-height:1.5;
+  color:#64748b;
+  cursor:pointer;
+}
+
+.lcMountainExportConsent input{
+  margin:2px 0 0;
+  flex:0 0 auto;
+}
+
 </style>
 
 </head>
@@ -11765,7 +11911,13 @@ font-weight:500
 </div>
 
 
-
+<div id="lifeCycleAssessment" class="lifeCycleAssessment" role="status">
+  <span id="lifeCycleAssessmentIcon"></span>
+  <div>
+    <strong id="lifeCycleAssessmentTitle"></strong>
+    <div id="lifeCycleAssessmentText"></div>
+  </div>
+</div>
 
 
 </section>
@@ -12007,22 +12159,56 @@ font-weight:500
 
   </div>
 
-  <div class="lcMountainExportAction">
+<div class="lcMountainExportAction">
+
+  <div class="lcMountainExportControls">
+
+    <input
+      type="email"
+      id="lcMountainExportEmail"
+      class="lcMountainExportEmail"
+      placeholder="Your email address"
+      autocomplete="email"
+      aria-label="Email address"
+    />
 
     <button
       class="chartExportBtn lcMountainExportButton"
       id="btnExportExcel"
       type="button"
       data-lang="lcMountainExcelButton">
-      Unlock Free Excel Export →
+      Download Excel Workbook →
     </button>
-
-    <small data-lang="lcMountainExcelFineprint">
-      Free account required · No payment
-    </small>
 
   </div>
 
+
+
+<label class="lcMountainExportConsent">
+  <input
+    type="checkbox"
+    id="lcMountainExportConsent"
+  />
+  <span data-lang="lcMountainExcelConsent">
+    I agree that Neptoon may store my email address
+    to register my Excel download.
+  </span>
+</label>
+
+  <small
+    class="lcMountainExportFineprint"
+    data-lang="lcMountainExcelFineprint">
+    Free Excel export · Email required · No payment
+  </small>
+
+  <div
+    id="lcMountainExportMessage"
+    class="lcMountainExportMessage"
+    role="status"
+    aria-live="polite">
+  </div>
+
+</div>
 </section> <!-- lcMountainExport -->
 
 
@@ -12997,10 +13183,6 @@ font-weight:500
           NEPTOON LIFE CYCLE · MY ACCOUNT
         </span>
 
-        <span class="accountHeaderLive">
-          <span class="accountHeaderLiveDot"></span>
-          LIVE DASHBOARD
-        </span>
 
       </div>
 
@@ -13037,9 +13219,11 @@ font-weight:500
       LIFE CYCLE · LIVE DASHBOARD
     </span>
 
-    <!-- LIVE RECALCULATION INDICATOR -->
-    <span id="liveDashboardDot"
-          aria-hidden="true"></span>
+        <span class="accountHeaderLive">
+          <span class="accountHeaderLiveDot"></span>
+          LIVE DASHBOARD
+        </span>
+
 
     <span id="modelFooterChevron">▾</span>
 
@@ -15202,165 +15386,7 @@ font-weight:500
      NEPTOON LIFE CYCLE — LEGAL FOOTER
 ========================================= -->
 
-<footer class="app-legal">
 
-  <div class="appLegalTop">
-
-    <div class="appLegalBrand">
-
-      <strong>NEPTOON WEALTH</strong>
-
-      <span data-lang="lifeCycleFooterTagline">
-        LIFE CYCLE · FINANCIAL MODELLING
-      </span>
-
-    </div>
-
-    <span class="appLegalCopyright">
-      © 2026 Neptoon Wealth
-    </span>
-
-  </div>
-
-
-  <!-- =========================================
-       LEGAL NOTICE
-  ========================================= -->
-
-  <section class="appLegalNotice">
-
-    <div class="appLegalNoticeTitle">
-
-      <span class="appLegalShield" aria-hidden="true">
-        🛡️
-      </span>
-
-      <strong data-lang="lifeCycleLegalTitle">
-        Important information
-      </strong>
-
-    </div>
-
-    <p data-lang="appDisclaimer">
-      Neptoon Life Cycle is an educational financial
-      modelling tool. Results are illustrative and
-      based on assumptions. They do not constitute
-      individual investment advice.
-    </p>
-
-  </section>
-
-
-  <!-- =========================================
-       INLINE FOOTER INFORMATION
-  ========================================= -->
-
-  <div id="lcFooterInfo"
-       class="lcFooterInfo"
-       hidden>
-
-    <div class="lcFooterInfoHead">
-
-      <span data-lang="lcFooterInfoKicker">
-        NEPTOON WEALTH · INFORMATION
-      </span>
-
-      <button type="button"
-              id="lcFooterInfoClose"
-              aria-label="Close information">
-        ×
-      </button>
-
-    </div>
-
-
-
-
-    <!-- =========================================
-         INFORMATION CONTENT
-    ========================================= -->
-
-    <div class="lcFooterInfoBody">
-
-      <!-- ABOUT -->
-
-      <section data-footer-content="about" hidden>
-
-        <h3 data-lang="lifeCycleAbout">
-          About
-        </h3>
-
-        <div id="lcFooterAboutText"></div>
-
-      </section>
-
-
-      <!-- PRIVACY -->
-
-      <section data-footer-content="privacy" hidden>
-
-        <h3 data-lang="lifeCyclePrivacy">
-          Privacy Policy
-        </h3>
-
-        <div id="lcFooterPrivacyText"></div>
-
-      </section>
-
-
-      <!-- TERMS -->
-
-      <section data-footer-content="terms" hidden>
-
-        <h3 data-lang="lifeCycleTerms">
-          Terms &amp; Conditions
-        </h3>
-
-        <div id="lcFooterTermsText"></div>
-
-      </section>
-
-    </div>
-
-  </div>
-
-
-  <!-- =========================================
-       VISIBLE LEGAL NAVIGATION
-  ========================================= -->
-
-  <div class="appLegalBottom">
-
-    <nav class="appLegalLinks"
-         aria-label="Legal information">
-
-      <a href="#"
-         data-footer-open="about"
-         data-lang="lifeCycleAbout">
-        About
-      </a>
-
-      <a href="#"
-         data-footer-open="privacy"
-         data-lang="lifeCyclePrivacy">
-        Privacy Policy
-      </a>
-
-      <a href="#"
-         data-footer-open="terms"
-         data-lang="lifeCycleTerms">
-        Terms &amp; Conditions
-      </a>
-
-    </nav>
-
-    <span class="appLegalProduct">
-      © Neptoon Wealth · Life Cycle Model
-    </span>
-
-  </div>
-
-</footer>
 
 
 </div>
@@ -15369,6 +15395,7 @@ font-weight:500
 <!-- LUCIDE ICON LIBRARY -->
 <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
 <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+
   </main>
 
   <!-- Other existing page elements -->
@@ -15477,7 +15504,10 @@ font-weight:500
 ===================================================== */
 
 console.log("BOOT 1");
-
+const ACCOUNT = {
+  email:"",
+  registered:false
+};
 
 const selectedModels = {
 
@@ -15612,25 +15642,17 @@ const SCENARIO_EXPLANATIONS = {
     }
   },
 
-  monthlySavings:{
-    da:{
-      title:"Månedligt indskud – bidrag",
-      text:"Det beløb, du planlægger at investere næste måned i dit \"frie midler\"- depot som er livscyklussens Fase1 Opsparingsportefølje EFTER alle låneforpligtelser i form af renter og afdrag. Modellen håndterer den del af ydelsen som er afdrag og som registreres som opsparing. Indskuddet fortsætter gennem hele livscyklussens første fase – opsparingsfasen."
-    },
-    en:{
-      title:"Monthly contribution",
-      
-text:
-  "The amount you plan to invest next month in your Free Investment Portfolio, " +
-  "after paying all loan interest and principal repayments. " +
-  "The model automatically recognizes the principal portion of your loan payments " +
-  "as an increase in your net wealth through reduced debt. " +
-  "This means you do not need to include loan repayments in your monthly savings amount. " +
-  "Your investment contributions continue throughout Phase 1 — the wealth-building phase — " +
-  "until your Financial Freedom Day."
 
-    }
+monthlySavings:{
+  da:{
+    title:"Månedligt indskud – bidrag",
+    text:"Hvor stor en del af dit månedlige rådighedsbeløb ønsker du at spare op frem for at bruge på forbrug? Rådighedsbeløbet er det, du har tilbage, når skat og faste økonomiske forpligtelser er betalt. Neptoon håndterer automatisk dine lån, herunder renter, bidrag og afdrag. Når gælden nedbringes, trækkes afdragene samtidig fra din opsparingsportefølje, så afdragene ikke i sig selv øger din nettoformue. Du skal derfor blot angive, hvor meget du samlet ønsker at øge din opsparing hver måned – uanset om du i praksis vil investere pengene eller bruge dem til at nedbringe gæld. Modellen placerer beløbet i fase 1-opsparingsporteføljen frem til overgangen til nedsparingsfasen (fase 2)."
   },
+  en:{
+    title:"Monthly savings – your contribution",
+    text:"How much of your monthly discretionary income would you like to save rather than spend on consumption? Discretionary income is what remains after taxes and fixed financial obligations have been paid. Neptoon automatically handles your loans, including interest, financing charges and principal repayments. When your debt is reduced, the repayments are simultaneously deducted from your savings portfolio, so repayments alone do not increase your net wealth. You simply specify how much you wish to save each month, regardless of whether you would prefer to invest the money or use it to reduce debt in practice. The model allocates this amount to your Phase 1 savings portfolio until the transition to Phase 2 — the wealth-decumulation phase."
+  }
+},
 
   savingsGrowthAnnual:{
     da:{
@@ -15696,7 +15718,7 @@ const LIFE_CYCLE_FAQ = {
 /* M — MODEL & UNCERTAINTY */
 {
   id: "modelUncertainty",
-  letter: "L",
+  letter: "M",
   title: "The Model & Uncertainty",
   items: [
     {
@@ -15796,7 +15818,7 @@ const LIFE_CYCLE_FAQ = {
 /* N — INVESTMENT PORTFOLIOS */
 {
   id: "investmentPortfolios",
-  letter: "C",
+  letter: "N",
   title: "Investment Portfolios",
   items: [
     {
@@ -15874,7 +15896,7 @@ const LIFE_CYCLE_FAQ = {
 /* C — SAVINGS */
 {
   id: "savings",
-  letter: "D",
+  letter: "C",
   title: "Savings",
   items: [
     {
@@ -15897,7 +15919,7 @@ const LIFE_CYCLE_FAQ = {
 /* D — TAXES */
 {
   id: "taxes",
-  letter: "E",
+  letter: "D",
   title: "Taxes",
   items: [
     {
@@ -15940,7 +15962,7 @@ const LIFE_CYCLE_FAQ = {
 /* E — REAL ESTATE */
 {
   id: "realEstate",
-  letter: "F",
+  letter: "E",
   title: "Real Estate",
   items: [
     {
@@ -15965,7 +15987,7 @@ const LIFE_CYCLE_FAQ = {
 /* F — PRIVATE ENTERPRISE */
 {
   id: "enterprise",
-  letter: "G",
+  letter: "F",
   title: "Private Enterprise",
   items: [
     {
@@ -15990,7 +16012,7 @@ const LIFE_CYCLE_FAQ = {
 /* G — PRIVATE PENSION */
 {
   id: "privatePension",
-  letter: "H",
+  letter: "G",
   title: "Private Pension",
   items: [
     {
@@ -16021,7 +16043,7 @@ const LIFE_CYCLE_FAQ = {
 /* H — PUBLIC PENSION */
 {
   id: "publicPension",
-  letter: "I",
+  letter: "H",
   title: "Public Pension",
   items: [
     {
@@ -16057,7 +16079,7 @@ const LIFE_CYCLE_FAQ = {
 /* I — OTHER FUTURE VALUES */
 {
   id: "futureValues",
-  letter: "J",
+  letter: "I",
   title: "Other Future Values",
   items: [
     {
@@ -16089,7 +16111,7 @@ const LIFE_CYCLE_FAQ = {
 /* J — LOANS & LIABILITIES */
 {
   id: "liabilities",
-  letter: "K",
+  letter: "J",
   title: "Loans & Liabilities",
   items: [
     {
@@ -16298,7 +16320,7 @@ const LIFE_CYCLE_FAQ = {
 /* N — INVESTERINGSPORTEFØLJER */
 {
   id: "investmentPortfolios",
-  letter: "D",
+  letter: "N",
   title: "Investeringsporteføljer",
   items: [
     {
@@ -16379,7 +16401,7 @@ const LIFE_CYCLE_FAQ = {
 /* D — SKAT */
 {
   id: "taxes",
-  letter: "E",
+  letter: "D",
   title: "Skat",
   items: [
     {
@@ -16421,7 +16443,7 @@ const LIFE_CYCLE_FAQ = {
 /* E — FAST EJENDOM */
 {
   id: "realEstate",
-  letter: "F",
+  letter: "E",
   title: "Fast ejendom",
   items: [
     {
@@ -16471,7 +16493,7 @@ const LIFE_CYCLE_FAQ = {
 /* F — PRIVAT VIRKSOMHED */
 {
   id: "enterprise",
-  letter: "G",
+  letter: "F",
   title: "Privat virksomhed",
   items: [
     {
@@ -16662,7 +16684,7 @@ const LIFE_CYCLE_FAQ = {
 /* M — MODELLEN OG USIKKERHED */
 {
   id: "modelUncertainty",
-  letter: "K",
+  letter: "M",
   title: "Modellen og usikkerhed",
   items: [
     {
@@ -17338,6 +17360,8 @@ includePensionTax:"Include deferred taxes today",
 
     riskLow:
       "Low risk",
+
+lcMountainExcelConsent: "I agree that Neptoon may store my email address to register my Excel download.",
 
     riskHigh:
       "High risk",
@@ -18532,6 +18556,7 @@ atpExpected: "Jeg forventer at modtage ATP pension (dagens priser) fra Folkpensi
 atpReceiving: "Jeg modtager allerede ATP Pension",
 supplementaryPensionAnnual: "Årligt beløb",
 
+lcMountainExcelConsent:"Jeg accepterer, at Neptoon gemmer min e-mailadresse i forbindelse med registrering til Excel-download.",
 
   // 02 · PERSONLIGE MÅLSÆTNINGER
 
@@ -20498,23 +20523,23 @@ console.log("BOOT 2a — openTab defined");
 ===================================================== */
 
 function paintScenarioExplanation(inputId){
-
+console.log("EXPLAN 3");
   const lang =
     document.querySelector(
       ".lang-switch [aria-pressed='true']"
     )?.dataset.uiLang ||
     INIT.lang ||
     "en";
-
+console.log("EXPLAN 4",inputId);
   const item =
     SCENARIO_EXPLANATIONS[inputId]?.[lang];
-
+console.log("EXPLAN 5 item",item);
   if(!item) return;
 
   const footer = byId("scenarioInputExplanation");
 
   if(!footer) return;
-
+console.log("EXPLAN 5");
   byId("scenarioExplanationTitle").textContent =
     item.title;
 
@@ -20523,6 +20548,7 @@ function paintScenarioExplanation(inputId){
 
   footer.classList.add("active");
 
+console.log("EXPLAN 6");
 }
 
 
@@ -20531,7 +20557,7 @@ function paintScenarioExplanation(inputId){
 ===================================================== */
 
 function bindScenarioExplanations(){
-
+console.log("explanation 1");
   const ids = [
     "wealthToday",
     "monthlySavings",
@@ -20547,7 +20573,9 @@ function bindScenarioExplanations(){
     if(!el) return;
 
     el.addEventListener("focus", () => {
+console.log("explanation 2 focus");
       paintScenarioExplanation(id);
+
     });
 
   });
@@ -20738,7 +20766,7 @@ function setLanguage(lang, save = true){
   );
 
 
-renderFooterInfo(lang);
+//renderFooterInfo(lang);
 renderLifeCycleFAQ(lang);
 
 }
@@ -27393,41 +27421,45 @@ function renderFreedomHeader(scenario){
   rangeEl.textContent = "";
 
 
-  /*
-    NOT REACHED
-  */
 
-  if(
-    !expected ||
-    expected.status === "notReached"
-  ){
+/*
+  NOT REACHED
+*/
 
-    ageEl.textContent =
-      T.notReached;
+if(
+  !expected ||
+  expected.status === "notReached"
+){
 
-    rangeEl.textContent =
-      T.notReachedText;
+  ageEl.textContent = "—";
 
-    return;
-  }
+  rangeEl.textContent =
+    lang === "da"
+      ? "Ingen Financial Freedom Day identificeret"
+      : "No Financial Freedom Day identified";
+
+  return;
+}
 
 
-  /*
-    ALREADY REACHED
-  */
+/*
+  ALREADY REACHED
+*/
 
-  if(
-    expected.status === "alreadyReached"
-  ){
+if(
+  expected.status === "alreadyReached"
+){
 
-    ageEl.textContent =
-      T.alreadyReached;
+  ageEl.textContent =
+    lang === "da" ? "I DAG" : "TODAY";
 
-    rangeEl.textContent =
-      T.alreadyReachedText;
+  rangeEl.textContent =
+    lang === "da"
+      ? "Du kan allerede overgå til nedsparingsfasen"
+      : "You can already transition to the wealth-decumulation phase";
 
-    return;
-  }
+  return;
+}
 
 
   /*
@@ -27978,6 +28010,8 @@ renderFreedomDayInformation(freedomDay);
     scenario
   );
 
+renderLifeCycleAssessment(scenario);
+
 
   /*
     EDGE STATES
@@ -28191,7 +28225,49 @@ function bindComponentButtons(){
     );
 
 }
+function renderLifeCycleAssessment(scenario){
 
+  const lang = INIT.lang === "da" ? "da" : "en";
+  const status = scenario?.expected?.status;
+
+  const T = {
+    da:{
+      feasibleTitle:"Din livscyklus hænger økonomisk sammen",
+      feasibleText:"Med dine valgte forudsætninger kan dine økonomiske ressourcer finansiere dit planlagte forbrug og din Legacy gennem livet.",
+      infeasibleTitle:"Din livscyklus kræver en økonomisk tilpasning",
+      infeasibleText:"Med dine valgte forudsætninger er der ikke tilstrækkelige økonomiske ressourcer til at finansiere dit ønskede forbrug og din Legacy. Overvej at øge opsparingen, reducere forbruget eller justere dine øvrige forudsætninger."
+    },
+    en:{
+      feasibleTitle:"Your Life Cycle is financially feasible",
+      feasibleText:"Under your selected assumptions, your financial resources can finance your planned consumption and Legacy throughout your lifetime.",
+      infeasibleTitle:"Your Life Cycle requires financial adjustment",
+      infeasibleText:"Under your selected assumptions, your financial resources are insufficient to finance your desired consumption and Legacy. Consider increasing savings, reducing consumption or adjusting your other assumptions."
+    }
+  }[lang];
+
+  const root = byId("lifeCycleAssessment");
+  if(!root) return;
+
+  const title = byId("lifeCycleAssessmentTitle");
+  const text = byId("lifeCycleAssessmentText");
+  const icon = byId("lifeCycleAssessmentIcon");
+
+  if(!status){
+    root.hidden = true;
+    return;
+  }
+
+  root.hidden = false;
+
+  const feasible = status !== "notReached";
+
+  root.classList.toggle("isFeasible",feasible);
+  root.classList.toggle("isInfeasible",!feasible);
+
+  icon.textContent = feasible ? "✓" : "!";
+  title.textContent = feasible ? T.feasibleTitle : T.infeasibleTitle;
+  text.textContent = feasible ? T.feasibleText : T.infeasibleText;
+}
 function bindAccountFinancialInputs(){
 
   const pairs = [
@@ -28254,6 +28330,9 @@ function bindAccountFinancialInputs(){
    INPUT EVENTS
 ===================================================== */
 function bindInputs(){
+
+
+
 
   let renderTimer = null;
 
@@ -28319,30 +28398,42 @@ function bindInputs(){
     CHANGE EVENTS
   */
 
-  document.addEventListener("change", event => {
+/*
+  CHANGE EVENTS
+*/
 
-    const input = event.target;
+document.addEventListener("change", event => {
 
-    if(!input.matches("input, select")){
-      return;
-    }
+  const input = event.target;
 
-    if(input.classList.contains("money")){
-      formatMoneyInput(input);
-    }
+  if(!input.matches("input, select")){
+    return;
+  }
 
-    /*
-      SLIDERS: ALREADY UPDATED
-      THROUGH INPUT EVENT
-    */
+  /*
+    PAINT INPUT EXPLANATION
+  */
 
-    if(input.matches('input[type="range"]')){
-      return;
-    }
+  if(input.id){
+    paintScenarioExplanation(input.id);
+  }
 
-    scheduleRender();
+  if(input.classList.contains("money")){
+    formatMoneyInput(input);
+  }
 
-  });
+  /*
+    SLIDERS: ALREADY UPDATED
+    THROUGH INPUT EVENT
+  */
+
+  if(input.matches('input[type="range"]')){
+    return;
+  }
+
+  scheduleRender();
+
+});
 
   /*
     INITIAL MONEY FORMATTING
@@ -29750,6 +29841,17 @@ console.log("BINDING PHASE TABS");
 
 }
 
+
+function restoreLifeCycleAccount(){
+
+  const email = String(
+    localStorage.getItem("neptoon_lifecycle_email") || ""
+  ).trim().toLowerCase();
+
+  ACCOUNT.email = email;
+  ACCOUNT.registered = !!email;
+
+}
 
 function guardAllMoneyInputs(){
 
@@ -36391,52 +36493,70 @@ function bindWelcomeNavigation(){
    Cloud Save remains disabled.
 ===================================================== */
 
+
+function initExcelExportAccess(){
+
+  const emailInput = document.getElementById("lcMountainExportEmail");
+  const excelButton = document.getElementById("btnExportExcel");
+
+  if(!emailInput || !excelButton) return;
+
+  const lang = INIT.lang === "da" ? "da" : "en";
+
+  emailInput.value = ACCOUNT.registered
+    ? String(ACCOUNT.email || "")
+    : "";
+
+  function updateButton(){
+
+    const email = emailInput.value.trim().toLowerCase();
+
+    const registered =
+      ACCOUNT.registered === true &&
+      email === String(ACCOUNT.email || "").trim().toLowerCase();
+
+    excelButton.disabled = !emailInput.validity.valid || !email;
+
+    excelButton.textContent = registered
+      ? (lang === "da" ? "Download Excel-arbejdsbog →" : "Download Excel Workbook →")
+      : (lang === "da" ? "Registrer e-mail og download →" : "Register Email & Download →");
+
+  }
+
+  emailInput.addEventListener("input",updateButton);
+
+  updateButton();
+
+}
+
+
 function renderAccountMembership(){
 
-  const lang =
-    INIT.lang === "da" ? "da" : "en";
+  const lang = INIT.lang === "da" ? "da" : "en";
 
-  const tier =
-    String(INIT.tierKey || "visitor")
-      .toLowerCase();
-
-  const email =
-    String(INIT.email || "").trim();
-
-  const isRegistered =
-    tier !== "visitor";
-
-
-  /*
-    TRANSLATIONS
-  */
+  const email = String(ACCOUNT.email || "").trim();
+  const isRegistered = ACCOUNT.registered === true;
 
   const T = {
-
     en:{
       visitor:"Visitor",
       registered:"Registered",
-      notSignedIn:"Not signed in",
-      excelLocked:"Registration required",
-      excelUnlocked:"Unlocked",
-      registerButton:"Create Free Account & Unlock Excel",
-      excelButton:"Download Excel Model"
+      notRegistered:"No email registered",
+      excelLocked:"Email required",
+      excelUnlocked:"Available",
+      excelButton:"Download Excel Workbook"
     },
-
     da:{
       visitor:"Besøgende",
       registered:"Registreret",
-      notSignedIn:"Ikke logget ind",
-      excelLocked:"Registrering kræves",
-      excelUnlocked:"Aktiveret",
-      registerButton:"Opret gratis konto og få Excel",
-      excelButton:"Download Excel-model"
+      notRegistered:"Ingen e-mail registreret",
+      excelLocked:"E-mail påkrævet",
+      excelUnlocked:"Tilgængelig",
+      excelButton:"Download Excel-arbejdsbog"
     }
-
   };
 
   const t = T[lang];
-
 
   /*
     DOM HELPER
@@ -36444,73 +36564,48 @@ function renderAccountMembership(){
 
   function setText(id,value){
 
-    const el =
-      document.getElementById(id);
-
+    const el = document.getElementById(id);
     if(!el) return;
 
     el.removeAttribute("data-lang");
-
     el.textContent = value;
 
   }
-
 
   /*
     ACCOUNT IDENTITY
   */
 
   const membershipLabel =
-    isRegistered
-      ? t.registered
-      : t.visitor;
+    isRegistered ? t.registered : t.visitor;
 
-  setText(
-    "accountIdentityStatus",
-    membershipLabel
-  );
-
-  setText(
-    "accountMembershipStatus",
-    membershipLabel
-  );
-
+  setText("accountIdentityStatus",membershipLabel);
+  setText("accountMembershipStatus",membershipLabel);
 
   /*
-    LEFT EXCEL CARD
+    EXCEL CARD
   */
 
   const excelButton =
-    document.getElementById(
-      "accountSignInButton"
-    );
+    document.getElementById("accountSignInButton");
 
   if(excelButton){
 
     excelButton.removeAttribute("data-lang");
-
-    excelButton.textContent =
-      isRegistered
-        ? t.excelButton
-        : t.registerButton;
-
-    excelButton.dataset.accountAction =
-      isRegistered
-        ? "excel"
-        : "register";
+    excelButton.textContent = t.excelButton;
+    excelButton.dataset.accountAction = "excel";
 
   }
 
-
   /*
-    COMPACT ACCOUNT STATUS
+    ACCOUNT STATUS
   */
 
   setText(
     "accountEmailDisplay",
     isRegistered && email
       ? email
-      : t.notSignedIn
+      : t.notRegistered
   );
 
   setText(
@@ -36521,6 +36616,7 @@ function renderAccountMembership(){
   );
 
 }
+
 
 function scrollToTabTop(){
   requestAnimationFrame(() => {
@@ -36596,12 +36692,117 @@ console.log("EXCEL CLICKED 3 - USER IS  VISIOT");
    EXCEL ACCESS — BUTTON EVENTS
 ========================================= */
 
+
 document
   .getElementById("btnExportExcel")
-  ?.addEventListener(
-    "click",
-    requestExcelAccess
-  );
+  ?.addEventListener("click", async () => {
+
+    const input = document.getElementById("lcMountainExportEmail");
+    const button = document.getElementById("btnExportExcel");
+    const message = document.getElementById("lcMountainExportMessage");
+
+    if(!input || !button) return;
+
+    const email = input.value.trim().toLowerCase();
+    const da = INIT.lang === "da";
+
+    if(!input.validity.valid || !email){
+      input.reportValidity();
+      return;
+    }
+
+    const alreadyRegistered =
+      ACCOUNT.registered === true &&
+      email === String(ACCOUNT.email || "").trim().toLowerCase();
+
+    button.disabled = true;
+    if(message) message.textContent = "";
+
+    try{
+
+      if(!alreadyRegistered){
+
+        // Only proceed after the user has explicitly
+        // accepted the email registration/privacy terms.
+        const consent = document.getElementById("lcMountainExportConsent");
+
+        if(!consent?.checked){
+          if(message) message.textContent = da
+            ? "Accepter venligst registreringsvilkårene."
+            : "Please accept the registration terms.";
+          return;
+        }
+
+        await registerLifeCycleEmail(email);
+
+        ACCOUNT.email = email;
+        ACCOUNT.registered = true;
+
+        localStorage.setItem("neptoon_lifecycle_email",email);
+
+        paintAppAccountStatus();
+        renderAccountMembership();
+
+      }
+
+      await exportLifeCycleExcel();
+
+      if(message) message.textContent = da
+        ? "Excel-arbejdsbogen er klar."
+        : "Your Excel workbook is ready.";
+
+    }catch(error){
+
+      console.error("EXCEL EXPORT ERROR",error);
+
+      if(message) message.textContent = da
+        ? "Registrering eller eksport mislykkedes. Prøv igen."
+        : "Registration or export failed. Please try again.";
+
+    }finally{
+
+      button.disabled = false;
+
+    }
+
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 document
@@ -36641,36 +36842,14 @@ document
 
 function paintAppAccountStatus(){
 
-  const el =
-    document.getElementById(
-      "appAccountStatus"
-    );
-
+  const el = document.getElementById("appAccountStatus");
   if(!el) return;
 
-  const lang =
-    String(
-      INIT?.lang || "en"
-    ).toLowerCase();
+  const da = String(INIT?.lang || "en").toLowerCase().startsWith("da");
 
-  const tierKey =
-    String(
-      INIT?.tierKey || "visitor"
-    ).toLowerCase();
-
-
-console.log("TIERKEY TIERKEY",tierKey);
-
-  const da =
-    lang.startsWith("da");
-
-  const registered =
-    tierKey !== "visitor";
-
-  el.textContent =
-    registered
-      ? (da ? "Registreret" : "Registered")
-      : (da ? "Gæst" : "Visitor");
+  el.textContent = ACCOUNT.registered
+    ? (da ? "Registreret" : "Registered")
+    : (da ? "Gæst" : "Visitor");
 
 }
 
@@ -36700,6 +36879,33 @@ document
 
 
 
+async function registerLifeCycleEmail(email){
+
+  const response = await fetch(
+    "https://qwrztkweyxoivzwqwaki.supabase.co/functions/v1/super-responder",
+    {
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({
+        email:email.trim().toLowerCase(),
+        language:INIT.lang === "da" ? "da" : "en",
+        consent:true,
+        website:""
+      })
+    }
+  );
+
+  const result = await response.json();
+
+  if(!response.ok || !result.success){
+    throw new Error(result.error || "Registration failed");
+  }
+
+  return result;
+}
+
 
 /* =====================================================
    LIFE CYCLE — INIT FROM WIX
@@ -36712,33 +36918,6 @@ document
    6. Life Cycle engine
    7. Portfolio viewer
 ===================================================== */
-
-
-/* =====================================================
-   LIFE CYCLE — INIT FROM WIX
-
-   1. Language
-   2. Legacy risk anchors (temporary)
-   3. Complete portfolio catalogue
-   4. My Account portfolio selections
-   5. Portfolio assumptions
-   6. Life Cycle engine
-   7. Portfolio viewer
-===================================================== */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* =========================================
    NEPTOON LIFE CYCLE
@@ -36866,10 +37045,13 @@ async function initStandaloneLifeCycle(){
     lockDanishOtherAssetNames();
 initSupplementaryPension();  
 
+restoreLifeCycleAccount();
+
     paintAppAccountStatus();
 
     renderAccountMembership();
     renderLifeCycleFAQ(INIT.lang);
+initExcelExportAccess();
 
 
     /*
@@ -37012,7 +37194,7 @@ initSupplementaryPension();
 ===================================================== */
 
 
-console.log("WEB BOOT 1");
+console.log("BOOT 17");
 bindComponentButtons();
 bindTaxOptions();
 bindInputs();
@@ -37021,19 +37203,13 @@ bindFireSlider();
 guardLifeAges();
 bindBalanceSheetGuards();
 guardBalanceSheetInputs();
-	
-console.log("WEB BOOT 2");
 /////////////////////////////////////////////////////
 bindMortgage_Pension_Overlay();
 bindEconomicOutlook();
 bindLifeBalanceToggle();
-
-console.log("WEB BOOT 3");
-	renderLifeCycleFAQ();
+renderLifeCycleFAQ();
 bindBankLoanToggle();
 updateBankLoanVisibility();
-	
-console.log("WEB BOOT 4");
 bindPortfolioPhaseTabs();
 initLifeBalanceStateSelector(INIT.lang);
 ////////////////////////////////////////////////////////
@@ -37041,30 +37217,21 @@ initLifeBalanceAgeSelector();
 paintAppAccountStatus();
 bindWelcomeNavigation();
 bindWelcomeKnowledge();
-	
-console.log("WEB BOOT 5");
 initAccountNavigator();
 bindLiabilitiesPanel();
-	
-console.log("WEB BOOT 6");
 initExcelAccessSection();
 initFinancialTaxAssumptions();
 bindScenarioExplanations();
 bindPortfolioSettingsLink();
+bindScenarioExplanations();
 //////////////////////
-
-console.log("WEB BOOT 7");
-	render();
-	
-console.log("WEB BOOT 8");
-bindFooterInfo();
+render();
+//bindFooterInfo();
 applyLang("da");
  
-console.log("WEB BOOT 9");
     openTab("Welcome");
 
 
-console.log("WEB BOOT 10");
 //////////////////////////////////////simulation
 
 
@@ -37080,18 +37247,19 @@ console.log("WEB BOOT 10");
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
 initStandaloneLifeCycle();  
-  
-console.log("WEB BOOT 11 - DONE");
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
