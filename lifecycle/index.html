@@ -11549,6 +11549,10 @@ font-weight:500
   .lcPaymentSuccessBenefit{gap:10px;}
 }
 
+#lcPaymentSuccessOverlay [data-ui-lang][hidden]{
+  display:none!important;
+}
+
 
 </style>
 
@@ -20541,7 +20545,7 @@ lcMountainExcelConsent:"Jeg accepterer, at Neptoon gemmer min e-mailadresse i fo
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "NavigationSex23 mellem privatøkonomi og finansielle formuer",
+appName: "NavigationSex45 mellem privatøkonomi og finansielle formuer",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
@@ -30351,7 +30355,6 @@ function bindComponentButtons(){
 }
 
 
-
 function showLifeCyclePaymentSuccess(){
 
   const params = new URLSearchParams(window.location.search);
@@ -30362,17 +30365,11 @@ function showLifeCyclePaymentSuccess(){
   const overlay = document.getElementById("lcPaymentSuccessOverlay");
   if(!overlay) return;
 
-  const url = new URL(window.location.href);
-  url.searchParams.delete("payment");
-  url.searchParams.delete("session_id");
-
-  window.history.replaceState(
-    {},
-    "",
-    url.pathname + url.search + url.hash
-  );
-
   const lang = INIT.lang === "da" ? "da" : "en";
+
+  overlay.querySelectorAll("[data-ui-lang]").forEach(el => {
+    el.hidden = el.dataset.uiLang !== lang;
+  });
 
   const button = document.getElementById("lcPaymentSuccessContinue");
 
@@ -30381,10 +30378,6 @@ function showLifeCyclePaymentSuccess(){
       ? "Fortsæt til Life Cycle"
       : "Continue to Life Cycle";
   }
-
-  overlay.querySelectorAll("[data-ui-lang]").forEach(el => {
-    el.hidden = el.dataset.uiLang !== lang;
-  });
 
   const close = () => {
     overlay.hidden = true;
@@ -30397,10 +30390,19 @@ function showLifeCyclePaymentSuccess(){
   overlay.hidden = false;
   document.body.style.overflow = "hidden";
 
-  document.getElementById("lcPaymentSuccessContinue")?.focus();
+  const url = new URL(window.location.href);
+  url.searchParams.delete("payment");
+  url.searchParams.delete("session_id");
+
+  window.history.replaceState(
+    {},
+    "",
+    url.pathname + url.search + url.hash
+  );
+
+  button?.focus();
 
 }
-
 
 
 function renderLifeCycleAssessment(scenario){
