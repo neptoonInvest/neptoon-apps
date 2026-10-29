@@ -10738,6 +10738,442 @@ font-weight:500
   outline:2px solid #4E79BD;
   outline-offset:4px;
 }
+
+
+
+/* =====================================================
+   NEPTOON LIFE CYCLE — ACCOUNT MODAL
+===================================================== */
+
+.lcAccountOverlay{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(15,23,42,.48);
+  overflow-y:auto;
+}
+
+.lcAccountOverlay[hidden],
+#lcAccountVisitorView[hidden],
+#lcAccountMemberView[hidden]{
+  display:none !important;
+}
+
+/* MODAL */
+
+.lcAccountModal{
+  width:100%;
+  max-width:460px;
+  max-height:calc(100dvh - 40px);
+  overflow-y:auto;
+  background:#fff;
+  border:1px solid #dce3ec;
+  border-radius:0;
+  box-shadow:0 20px 65px rgba(15,23,42,.20);
+  color:#243247;
+}
+
+/* HEADER */
+
+.lcAccountHeader{
+  position:relative;
+  padding:26px 30px 22px;
+  background:#f8fafc;
+  border-bottom:1px solid #e2e8f0;
+}
+
+.lcAccountBrand{
+  margin-bottom:14px;
+  color:#4E79BD;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1.1px;
+}
+
+.lcAccountHeader h2{
+  margin:0 32px 8px 0;
+  font-family:"Times New Roman",serif;
+  font-size:26px;
+  font-weight:400;
+  line-height:1.2;
+  color:#1e293b;
+}
+
+.lcAccountHeader p{
+  margin:0;
+  color:#64748b;
+  font-size:12px;
+  line-height:1.6;
+}
+
+.lcAccountClose{
+  position:absolute;
+  top:17px;
+  right:20px;
+  width:30px;
+  height:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:#64748b;
+  font-size:24px;
+  font-weight:300;
+  cursor:pointer;
+}
+
+.lcAccountClose:hover{
+  color:#1e293b;
+  background:#e9eef5;
+}
+
+/* LOGIN / SIGNUP TABS */
+
+.lcAccountTabs{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  margin:24px 30px 0;
+  border-bottom:1px solid #dce3ec;
+}
+
+.lcAccountTab{
+  padding:12px 8px;
+  border:0;
+  border-bottom:2px solid transparent;
+  border-radius:0;
+  background:transparent;
+  color:#64748b;
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.lcAccountTab.active{
+  color:#4E79BD;
+  border-bottom-color:#4E79BD;
+}
+
+.lcAccountTab:hover{
+  color:#4E79BD;
+}
+
+/* FORM */
+
+.lcAccountForm{
+  display:flex;
+  flex-direction:column;
+  gap:17px;
+  padding:24px 30px 22px;
+}
+
+.lcAccountField{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.lcAccountField label{
+  color:#475569;
+  font-size:11px;
+  font-weight:600;
+}
+
+.lcAccountField input{
+  width:100%;
+  box-sizing:border-box;
+  min-height:42px;
+  padding:10px 12px;
+  border:1px solid #cbd5e1;
+  border-radius:0;
+  background:#fff;
+  color:#1e293b;
+  font-family:inherit;
+  font-size:13px;
+  outline:none;
+}
+
+.lcAccountField input:focus{
+  border-color:#4E79BD;
+  box-shadow:0 0 0 2px rgba(78,121,189,.12);
+}
+
+/* BUTTONS */
+
+.lcAccountPrimaryBtn{
+  display:block;
+  width:100%;
+  min-height:43px;
+  padding:11px 16px;
+  border:1px solid #4E79BD;
+  border-radius:0;
+  background:#4E79BD;
+  color:#fff;
+  font-family:inherit;
+  font-size:12px;
+  font-weight:600;
+  text-align:center;
+  cursor:pointer;
+  transition:background .15s ease;
+}
+
+.lcAccountPrimaryBtn:hover{
+  background:#3d66a7;
+}
+
+.lcAccountPrimaryBtn:disabled{
+  opacity:.55;
+  cursor:wait;
+}
+
+.lcAccountTextBtn{
+  align-self:center;
+  padding:4px 8px;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:#64748b;
+  font-family:inherit;
+  font-size:11px;
+  cursor:pointer;
+}
+
+.lcAccountTextBtn:hover{
+  color:#4E79BD;
+  text-decoration:underline;
+}
+
+.lcAccountMessage{
+  min-height:0;
+  color:#475569;
+  font-size:12px;
+  line-height:1.5;
+}
+
+.lcAccountMessage:empty{
+  display:none;
+}
+
+/* ACCOUNT BENEFITS */
+
+.lcAccountBenefits{
+  padding:21px 30px 24px;
+  border-top:1px solid #e2e8f0;
+  background:#fbfcfe;
+}
+
+.lcAccountBenefitsTitle{
+  margin-bottom:16px;
+  color:#64748b;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.7px;
+}
+
+.lcAccountBenefit{
+  display:flex;
+  align-items:flex-start;
+  gap:11px;
+  margin-bottom:13px;
+  color:#334155;
+  font-size:12px;
+  line-height:1.5;
+}
+
+.lcAccountBenefitIcon{
+  flex:0 0 16px;
+  color:#4E79BD;
+  font-size:15px;
+  text-align:center;
+}
+
+.lcAccountFineprint{
+  margin:17px 0 0;
+  color:#94a3b8;
+  font-size:10px;
+  line-height:1.5;
+  text-align:center;
+}
+
+/* =====================================================
+   AUTHENTICATED MEMBER VIEW
+===================================================== */
+
+.lcAccountMemberInfo{
+  padding:25px 30px 20px;
+}
+
+.lcAccountMemberInfo h3{
+  margin:0 0 7px;
+  font-family:"Times New Roman",serif;
+  font-size:23px;
+  font-weight:400;
+  color:#1e293b;
+}
+
+#lcAccountMemberEmail{
+  color:#64748b;
+  font-size:12px;
+  overflow-wrap:anywhere;
+}
+
+.lcAccountPlanRow{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:25px;
+  padding-top:16px;
+  border-top:1px solid #e2e8f0;
+  color:#475569;
+  font-size:12px;
+}
+
+#lcAccountPlanLabel{
+  color:#4E79BD;
+  font-size:11px;
+  letter-spacing:.5px;
+}
+
+/* FEATURES */
+
+.lcAccountFeatures{
+  padding:0 30px 20px;
+}
+
+.lcAccountFeature{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:1px solid #edf1f5;
+  color:#334155;
+  font-size:12px;
+}
+
+.lcAccountFeature span:last-child{
+  color:#4E79BD;
+  font-weight:600;
+}
+
+/* PREMIUM */
+
+.lcAccountPremiumBox{
+  margin:4px 30px 20px;
+  padding:19px;
+  border:1px solid #dce3ec;
+  border-radius:0;
+  background:#fafbfd;
+}
+
+.lcAccountPremiumBox[hidden]{
+  display:none !important;
+}
+
+.lcAccountPremiumHeading{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  color:#1e293b;
+  font-size:14px;
+}
+
+#lcAccountPremiumPrice{
+  font-family:"Times New Roman",serif;
+  font-size:24px;
+  font-weight:400;
+}
+
+.lcAccountPremiumBox p{
+  margin:13px 0 18px;
+  color:#64748b;
+  font-size:12px;
+  line-height:1.6;
+}
+
+.lcAccountLogout{
+  display:block;
+  margin:0 auto 20px;
+}
+
+/* FOCUS ACCESSIBILITY */
+
+.lcAccountModal button:focus-visible{
+  outline:2px solid #4E79BD;
+  outline-offset:3px;
+}
+
+/* MOBILE */
+
+@media(max-width:520px){
+
+  .lcAccountOverlay{
+    padding:12px;
+    align-items:center;
+  }
+
+  .lcAccountModal{
+    max-height:calc(100dvh - 24px);
+  }
+
+  .lcAccountHeader{
+    padding:22px 20px 19px;
+  }
+
+  .lcAccountHeader h2{
+    font-size:23px;
+  }
+
+  .lcAccountTabs{
+    margin:18px 20px 0;
+  }
+
+  .lcAccountForm{
+    padding:20px;
+    gap:15px;
+  }
+
+  .lcAccountBenefits{
+    padding:19px 20px 22px;
+  }
+
+  .lcAccountMemberInfo{
+    padding:22px 20px 18px;
+  }
+
+  .lcAccountFeatures{
+    padding:0 20px 18px;
+  }
+
+  .lcAccountPremiumBox{
+    margin:4px 20px 18px;
+    padding:16px;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </style>
 
 </head>
@@ -15825,6 +16261,278 @@ font-weight:500
   </div> <!-- lcExcelModal -->
 
 </div> <!-- lcExcelAccessModal -->
+
+
+<!-- =====================================================
+     NEPTOON LIFE CYCLE — ACCOUNT MODAL
+===================================================== -->
+
+<div class="lcAccountOverlay" id="lcAccountOverlay" hidden>
+
+  <section
+    class="lcAccountModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="lcAccountTitle">
+
+    <!-- HEADER -->
+
+    <div class="lcAccountHeader">
+
+      <div class="lcAccountBrand">
+        NEPTOON WEALTH · LIFE CYCLE
+      </div>
+
+      <button
+        type="button"
+        class="lcAccountClose"
+        id="lcAccountClose"
+        aria-label="Close">
+        &times;
+      </button>
+
+      <h2 id="lcAccountTitle" data-lang="lcAccountTitle">
+        Your Life Cycle Account
+      </h2>
+
+      <p data-lang="lcAccountSubtitle">
+        Save your financial journey. Continue anywhere.
+      </p>
+
+    </div>
+
+
+    <!-- ================================================
+         VISITOR VIEW — LOGIN / SIGN UP
+    ================================================= -->
+
+    <div id="lcAccountVisitorView">
+
+      <div class="lcAccountTabs">
+
+        <button
+          type="button"
+          class="lcAccountTab active"
+          id="lcAccountLoginTab"
+          aria-pressed="true"
+          data-lang="lcAccountLogin">
+          Log in
+        </button>
+
+        <button
+          type="button"
+          class="lcAccountTab"
+          id="lcAccountSignupTab"
+          aria-pressed="false"
+          data-lang="lcAccountSignup">
+          Create account
+        </button>
+
+      </div>
+
+      <form id="lcAccountForm" class="lcAccountForm">
+
+        <div class="lcAccountField">
+
+          <label
+            for="lcAccountEmail"
+            data-lang="lcAccountEmailLabel">
+            Email address
+          </label>
+
+          <input
+            type="email"
+            id="lcAccountEmail"
+            autocomplete="email"
+            placeholder="name@example.com"
+            required>
+
+        </div>
+
+        <div class="lcAccountField">
+
+          <label
+            for="lcAccountPassword"
+            data-lang="lcAccountPasswordLabel">
+            Password
+          </label>
+
+          <input
+            type="password"
+            id="lcAccountPassword"
+            autocomplete="current-password"
+            minlength="6"
+            required>
+
+        </div>
+
+        <button
+          type="submit"
+          class="lcAccountPrimaryBtn"
+          id="lcAccountSubmit"
+          data-lang="lcAccountContinue">
+          Continue
+        </button>
+
+        <button
+          type="button"
+          class="lcAccountTextBtn"
+          id="lcAccountForgotPassword"
+          data-lang="lcAccountForgotPassword">
+          Forgot password?
+        </button>
+
+        <div
+          id="lcAccountAuthMessage"
+          class="lcAccountMessage"
+          role="status"
+          aria-live="polite">
+        </div>
+
+      </form>
+
+      <!-- ACCOUNT BENEFITS -->
+
+      <div class="lcAccountBenefits">
+
+        <div class="lcAccountBenefitsTitle" data-lang="lcAccountBenefitsTitle">
+          YOUR ACCOUNT BENEFITS
+        </div>
+
+        <div class="lcAccountBenefit">
+          <span class="lcAccountBenefitIcon">✓</span>
+          <span data-lang="lcAccountBenefitFree">
+            Free Life Cycle analysis and Excel export
+          </span>
+        </div>
+
+        <div class="lcAccountBenefit">
+          <span class="lcAccountBenefitIcon">☁</span>
+          <span data-lang="lcAccountBenefitPremium">
+            Premium: Cloud settings across devices · €5 once
+          </span>
+        </div>
+
+        <p class="lcAccountFineprint" data-lang="lcAccountFineprint">
+          No subscription · Your financial data stays private
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- ================================================
+         AUTHENTICATED VIEW — MY ACCOUNT
+    ================================================= -->
+
+    <div id="lcAccountMemberView" hidden>
+
+      <div class="lcAccountMemberInfo">
+
+        <h3 data-lang="lcAccountWelcome">
+          Welcome back
+        </h3>
+
+        <div id="lcAccountMemberEmail"></div>
+
+        <div class="lcAccountPlanRow">
+          <span data-lang="lcAccountCurrentPlan">
+            Current plan
+          </span>
+          <strong id="lcAccountPlanLabel">FREE</strong>
+        </div>
+
+      </div>
+
+      <!-- MEMBERSHIP FEATURES -->
+
+      <div class="lcAccountFeatures">
+
+        <div class="lcAccountFeature">
+          <span data-lang="lcAccountFeatureLifeCycle">
+            Life Cycle analysis
+          </span>
+          <span>✓</span>
+        </div>
+
+        <div class="lcAccountFeature">
+          <span data-lang="lcAccountFeatureExcel">
+            Excel workbook
+          </span>
+          <span>✓</span>
+        </div>
+
+        <div class="lcAccountFeature">
+          <span data-lang="lcAccountFeatureCloud">
+            Cloud Save My Settings
+          </span>
+          <span id="lcAccountCloudStatus">Premium</span>
+        </div>
+
+      </div>
+
+      <!-- PREMIUM UPGRADE -->
+
+      <div class="lcAccountPremiumBox" id="lcAccountPremiumBox">
+
+        <div class="lcAccountPremiumHeading">
+          <strong>Premium</strong>
+          <strong id="lcAccountPremiumPrice">€5</strong>
+        </div>
+
+        <p data-lang="lcAccountPremiumDescription">
+          One-time payment. Save and restore your Life Cycle
+          settings across devices.
+        </p>
+
+        <button
+          type="button"
+          class="lcAccountPrimaryBtn"
+          id="lcAccountUpgradeBtn"
+          data-lang="lcAccountUpgrade">
+          Upgrade to Premium
+        </button>
+
+      </div>
+
+      <button
+        type="button"
+        class="lcAccountTextBtn lcAccountLogout"
+        id="lcAccountLogoutBtn"
+        data-lang="lcAccountLogout">
+        Log out
+      </button>
+
+      <div
+        id="lcAccountMemberMessage"
+        class="lcAccountMessage"
+        role="status"
+        aria-live="polite">
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   
@@ -35630,6 +36338,280 @@ document.querySelectorAll(
 
 });
 }
+
+
+
+/* =====================================================
+   NEPTOON LIFE CYCLE — ACCOUNT MODAL UI
+===================================================== */
+
+let lcAccountMode = "login";
+
+/*
+   OPEN MODAL
+*/
+
+function openLifeCycleLogin(){
+
+  const overlay = document.getElementById("lcAccountOverlay");
+  if(!overlay) return;
+
+  const user = ACCOUNT.user || null;
+
+  document.getElementById("lcAccountVisitorView").hidden = !!user;
+  document.getElementById("lcAccountMemberView").hidden = !user;
+
+  if(user){
+
+    document.getElementById("lcAccountMemberEmail").textContent =
+      user.email || "";
+
+    document.getElementById("lcAccountPlanLabel").textContent =
+      ACCOUNT.plan === "premium" ? "PREMIUM" : "FREE";
+
+    document.getElementById("lcAccountCloudStatus").textContent =
+      ACCOUNT.plan === "premium"
+        ? "✓"
+        : "Premium";
+
+    document.getElementById("lcAccountPremiumBox").hidden =
+      ACCOUNT.plan === "premium";
+
+  }
+
+  overlay.hidden = false;
+
+  document.body.style.overflow = "hidden";
+
+  document.getElementById("lcAccountClose")?.focus();
+
+}
+
+/*
+   CLOSE MODAL
+*/
+
+function closeLifeCycleLogin(){
+
+  const overlay = document.getElementById("lcAccountOverlay");
+  if(!overlay) return;
+
+  overlay.hidden = true;
+
+  document.body.style.overflow = "";
+
+}
+
+/*
+   LOGIN / SIGNUP TABS
+*/
+
+function setLifeCycleAccountMode(mode){
+
+  lcAccountMode = mode === "signup" ? "signup" : "login";
+
+  const login = document.getElementById("lcAccountLoginTab");
+  const signup = document.getElementById("lcAccountSignupTab");
+  const submit = document.getElementById("lcAccountSubmit");
+  const forgot = document.getElementById("lcAccountForgotPassword");
+  const password = document.getElementById("lcAccountPassword");
+  const message = document.getElementById("lcAccountAuthMessage");
+
+  const da = INIT.lang === "da";
+  const isSignup = lcAccountMode === "signup";
+
+  login?.classList.toggle("active",!isSignup);
+  signup?.classList.toggle("active",isSignup);
+
+  login?.setAttribute("aria-pressed",String(!isSignup));
+  signup?.setAttribute("aria-pressed",String(isSignup));
+
+  if(submit){
+    submit.textContent = isSignup
+      ? (da ? "Opret gratis konto" : "Create free account")
+      : (da ? "Log ind" : "Log in");
+  }
+
+  if(forgot) forgot.hidden = isSignup;
+
+  if(password){
+    password.autocomplete = isSignup
+      ? "new-password"
+      : "current-password";
+  }
+
+  if(message) message.textContent = "";
+
+}
+
+/*
+   EVENT BINDINGS
+*/
+
+function bindLifeCycleAccountModal(){
+
+  document.getElementById("appAccountStatus")
+    ?.addEventListener("click",openLifeCycleLogin);
+
+document.getElementById("lcAccountForm")
+  ?.addEventListener("submit",submitLifeCycleAccount);
+
+  document.getElementById("lcAccountClose")
+    ?.addEventListener("click",closeLifeCycleLogin);
+
+  document.getElementById("lcAccountLoginTab")
+    ?.addEventListener("click",() => {
+      setLifeCycleAccountMode("login");
+    });
+
+  document.getElementById("lcAccountSignupTab")
+    ?.addEventListener("click",() => {
+      setLifeCycleAccountMode("signup");
+    });
+
+  document.getElementById("lcAccountOverlay")
+    ?.addEventListener("click",event => {
+
+      if(event.target.id === "lcAccountOverlay"){
+        closeLifeCycleLogin();
+      }
+
+    });
+
+  document.addEventListener("keydown",event => {
+
+    if(
+      event.key === "Escape" &&
+      !document.getElementById("lcAccountOverlay")?.hidden
+    ){
+      closeLifeCycleLogin();
+    }
+
+  });
+
+  setLifeCycleAccountMode("login");
+
+}
+
+/*
+   INITIALIZE AFTER DOM IS READY
+*/
+
+if(document.readyState === "loading"){
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    bindLifeCycleAccountModal,
+    {once:true}
+  );
+
+}else{
+
+  bindLifeCycleAccountModal();
+
+}
+
+
+/* =====================================================
+   LIFE CYCLE — SUPABASE LOGIN / SIGNUP
+===================================================== */
+
+async function submitLifeCycleAccount(event){
+
+  event.preventDefault();
+
+  const email =
+    document.getElementById("lcAccountEmail")
+      ?.value.trim().toLowerCase();
+
+  const password =
+    document.getElementById("lcAccountPassword")?.value;
+
+  const button =
+    document.getElementById("lcAccountSubmit");
+
+  const message =
+    document.getElementById("lcAccountAuthMessage");
+
+  const da = INIT.lang === "da";
+
+  if(!email || !password) return;
+
+  button.disabled = true;
+  message.textContent = "";
+
+  try{
+
+    if(lcAccountMode === "signup"){
+
+      const {data,error} =
+        await supabaseClient.auth.signUp({
+          email,
+          password
+        });
+
+      if(error) throw error;
+
+      if(!data.session){
+
+        message.textContent = da
+          ? "Kontrollér din e-mail for at bekræfte din konto."
+          : "Check your email to confirm your account.";
+
+        return;
+
+      }
+
+    }else{
+
+      const {error} =
+        await supabaseClient.auth.signInWithPassword({
+          email,
+          password
+        });
+
+      if(error) throw error;
+
+    }
+
+    /*
+      AUTHENTICATED USER
+    */
+
+    const {data,error} =
+      await supabaseClient.auth.getUser();
+
+    if(error) throw error;
+
+    ACCOUNT.user = data.user;
+    ACCOUNT.plan = data.user ? "free" : "visitor";
+    ACCOUNT.email = data.user?.email || "";
+
+    paintAppAccountStatus();
+    renderAccountMembership();
+
+    openLifeCycleLogin();
+
+  }catch(error){
+
+    console.error("ACCOUNT AUTH ERROR",error);
+
+    message.textContent =
+      error.message || (
+        da
+          ? "Login mislykkedes. Prøv igen."
+          : "Authentication failed. Please try again."
+      );
+
+  }finally{
+
+    button.disabled = false;
+
+  }
+
+}
+
+
     
 function lockDanishOtherAssetNames(){
 
