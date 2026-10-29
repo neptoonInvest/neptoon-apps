@@ -10715,6 +10715,29 @@ font-weight:500
   font-family:Georgia,'Times New Roman',serif;
   padding:0 16px 28px;
 }
+
+
+#appAccountStatus{
+  appearance:none;
+  border:0;
+  background:transparent;
+  padding:0;
+  color:#4E79BD;
+  font:inherit;
+  font-size:11px;
+  font-weight:600;
+  cursor:pointer;
+  white-space:nowrap;
+}
+
+#appAccountStatus:hover{
+  text-decoration:underline;
+}
+
+#appAccountStatus:focus-visible{
+  outline:2px solid #4E79BD;
+  outline-offset:4px;
+}
 </style>
 
 </head>
@@ -10788,11 +10811,14 @@ font-weight:500
 
     </div>
 
-    <span
-      class="app-account-label"
-      id="appAccountStatus">
-      Visitor
-    </span>
+<button
+  type="button"
+  class="app-account-label"
+  id="appAccountStatus"
+  data-lang="accountHeaderLogin"
+  aria-label="Account login and registration">
+  Log ind / Opret konto
+</button>
 
   </div>
 
@@ -12330,15 +12356,6 @@ font-weight:500
 
   <div class="lcMountainExportControls">
 
-    <input
-      type="email"
-      id="lcMountainExportEmail"
-      class="lcMountainExportEmail"
-      placeholder="Your email address"
-      autocomplete="email"
-      aria-label="Email address"
-    />
-
     <button
       class="chartExportBtn lcMountainExportButton"
       id="btnExportExcel"
@@ -12349,23 +12366,10 @@ font-weight:500
 
   </div>
 
-
-
-<label class="lcMountainExportConsent">
-  <input
-    type="checkbox"
-    id="lcMountainExportConsent"
-  />
-  <span data-lang="lcMountainExcelConsent">
-    I agree that Neptoon may store my email address
-    to register my Excel download.
-  </span>
-</label>
-
   <small
     class="lcMountainExportFineprint"
     data-lang="lcMountainExcelFineprint">
-    Free Excel export · Email required · No payment
+    Free Excel export · Free account required · No payment
   </small>
 
   <div
@@ -15820,7 +15824,7 @@ font-weight:500
 
 </div> <!-- lcExcelAccessModal -->
 
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   
 <script>    
   /* Application shell only. Keep your existing financial engine JS loaded separately. */
@@ -15829,9 +15833,28 @@ font-weight:500
 ===================================================== */
 
 console.log("BOOT 1");
+
+/* =========================================
+   SUPABASE AUTH CLIENT
+========================================= */
+
+const SUPABASE_URL =
+  "https://qwrztkweyxoivzwqwaki.supabase.co";
+
+const SUPABASE_ANON_KEY =
+  "YOUR_SUPABASE_PUBLISHABLE_KEY";
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY
+  );
+
 const ACCOUNT = {
+  user:null,          // Supabase authenticated user
+  plan:"visitor",     // visitor | free | premium
   email:"",
-  registered:false
+  registered:false    // Legacy compatibility — temporary
 };
 
 const selectedModels = {
@@ -17574,6 +17597,7 @@ enterpriseCGTax:"Deferred enterprise capital gains tax",
     privateEnterpriseDescription:
       "Current value of privately owned business interests.",
 futureSaleValue:"Future Value",
+accountHeaderLogin:"Log in / Sign up",
 
     /* PRIVATE PENSION */
 
@@ -18384,7 +18408,7 @@ lcMountainExcelButton:
   "Unlock Free Excel Export →",
 
 lcMountainExcelFineprint:
-  "Free account required · No payment",
+   "Free Excel export · Free account required · No payment",
 
 /* INVESTMENT PHASES */
 
@@ -19336,6 +19360,7 @@ accountExcelFeatureCashflows:
 
 accountExcelFeatureBalance:
   "Forventede aktiver, passiver og balance",
+accountHeaderLogin:"Log ind / Opret konto",
 
 accountExcelFeatureFreedom:
   "Fremskrivninger af økonomisk frihed og Legacy",
@@ -19506,7 +19531,7 @@ lcMountainExcelButton:
   "Få gratis adgang til Excel →",
 
 lcMountainExcelFineprint:
-  "Gratis konto påkrævet · Ingen betaling",
+  "Gratis Excel-download · Kræver gratis konto · Ingen betaling",
 
 /* INVESTERINGSFASER */
 
@@ -36882,30 +36907,33 @@ function initExcelExportAccess(){
 
 }
 
-
-
 function renderAccountMembership(){
 
   const lang = INIT.lang === "da" ? "da" : "en";
 
-  const email = String(ACCOUNT.email || "").trim();
-  const isRegistered = ACCOUNT.registered === true;
+  const user = ACCOUNT.user || null;
+  const premium = !!user && ACCOUNT.plan === "premium";
+  const email = user?.email || "";
 
   const T = {
     en:{
       visitor:"Visitor",
-      registered:"Registered",
-      notRegistered:"No email registered",
-      excelLocked:"Email required",
+      free:"Free",
+      premium:"Premium",
+      notSignedIn:"Not signed in",
+      excelLocked:"Free account required",
       excelUnlocked:"Available",
+      loginButton:"Log in / Sign up",
       excelButton:"Download Excel Workbook"
     },
     da:{
       visitor:"Besøgende",
-      registered:"Registreret",
-      notRegistered:"Ingen e-mail registreret",
-      excelLocked:"E-mail påkrævet",
+      free:"Gratis",
+      premium:"Premium",
+      notSignedIn:"Ikke logget ind",
+      excelLocked:"Kræver gratis konto",
       excelUnlocked:"Tilgængelig",
+      loginButton:"Log ind / Opret konto",
       excelButton:"Download Excel-arbejdsbog"
     }
   };
@@ -36931,7 +36959,9 @@ function renderAccountMembership(){
   */
 
   const membershipLabel =
-    isRegistered ? t.registered : t.visitor;
+    !user ? t.visitor :
+    premium ? t.premium :
+    t.free;
 
   setText("accountIdentityStatus",membershipLabel);
   setText("accountMembershipStatus",membershipLabel);
@@ -36946,8 +36976,12 @@ function renderAccountMembership(){
   if(excelButton){
 
     excelButton.removeAttribute("data-lang");
-    excelButton.textContent = t.excelButton;
-    excelButton.dataset.accountAction = "excel";
+
+    excelButton.textContent =
+      user ? t.excelButton : t.loginButton;
+
+    excelButton.dataset.accountAction =
+      user ? "excel" : "login";
 
   }
 
@@ -36957,20 +36991,15 @@ function renderAccountMembership(){
 
   setText(
     "accountEmailDisplay",
-    isRegistered && email
-      ? email
-      : t.notRegistered
+    user ? email : t.notSignedIn
   );
 
   setText(
     "accountExcelAccessStatus",
-    isRegistered
-      ? t.excelUnlocked
-      : t.excelLocked
+    user ? t.excelUnlocked : t.excelLocked
   );
 
 }
-
 
 function scrollToTabTop(){
   requestAnimationFrame(() => {
@@ -37041,84 +37070,51 @@ console.log("EXCEL CLICKED 3 - USER IS  VISIOT");
 
 }
 
-
 /* =========================================
    EXCEL ACCESS — BUTTON EVENTS
 ========================================= */
-
 
 document
   .getElementById("btnExportExcel")
   ?.addEventListener("click", async () => {
 
-    const input = document.getElementById("lcMountainExportEmail");
-    const button = document.getElementById("btnExportExcel");
-    const message = document.getElementById("lcMountainExportMessage");
-    const consent = document.getElementById("lcMountainExportConsent");
+    const button =
+      document.getElementById("btnExportExcel");
 
-    if(!input || !button) return;
+    const message =
+      document.getElementById("lcMountainExportMessage");
 
-    const email = input.value.trim().toLowerCase();
     const da = INIT.lang === "da";
 
-    /*
-      VALIDATE EMAIL
-    */
-
-    if(!input.validity.valid || !email){
-      input.reportValidity();
-      return;
-    }
+    if(!button) return;
 
     /*
-      REQUIRE CONSENT FOR EVERY DOWNLOAD
+      CHECK AUTHENTICATED USER
     */
 
-    if(!consent?.checked){
+    const user = await getLifeCycleUser();
+
+    if(!user){
 
       if(message){
         message.textContent = da
-          ? "Accepter venligst betingelserne for Excel-download."
-          : "Please accept the terms for Excel download.";
+          ? "Opret en gratis konto eller log ind for at downloade Excel."
+          : "Create a free account or log in to download Excel.";
       }
 
+      openLifeCycleLogin();
       return;
     }
 
     /*
-      CHECK EXISTING REGISTRATION
+      DOWNLOAD EXCEL
     */
 
-    const alreadyRegistered =
-      ACCOUNT.registered === true &&
-      email === String(ACCOUNT.email || "").trim().toLowerCase();
-
     button.disabled = true;
+
     if(message) message.textContent = "";
 
     try{
-
-      /*
-        REGISTER NEW EMAIL
-      */
-
-      if(!alreadyRegistered){
-
-        await registerLifeCycleEmail(email);
-
-        ACCOUNT.email = email;
-        ACCOUNT.registered = true;
-
-        localStorage.setItem("neptoon_lifecycle_email",email);
-
-        paintAppAccountStatus();
-        renderAccountMembership();
-
-      }
-
-      /*
-        DOWNLOAD EXCEL
-      */
 
       await exportLifeCycleExcel();
 
@@ -37134,8 +37130,8 @@ document
 
       if(message){
         message.textContent = da
-          ? "Registrering eller eksport mislykkedes. Prøv igen."
-          : "Registration or export failed. Please try again.";
+          ? "Excel-eksport mislykkedes. Prøv igen."
+          : "Excel export failed. Please try again.";
       }
 
     }finally{
@@ -37145,7 +37141,6 @@ document
     }
 
   });
-
 
 
 
@@ -37226,9 +37221,19 @@ function paintAppAccountStatus(){
 
   const da = String(INIT?.lang || "en").toLowerCase().startsWith("da");
 
-  el.textContent = ACCOUNT.registered
-    ? (da ? "Registreret" : "Registered")
-    : (da ? "Gæst" : "Visitor");
+  const user = ACCOUNT.user || null;
+  const premium = ACCOUNT.plan === "premium";
+
+  if(!user){
+    el.textContent = da
+      ? "Log ind / Opret konto"
+      : "Log in / Sign up";
+    return;
+  }
+
+  el.textContent = premium
+    ? (da ? "Min konto · Premium" : "My Account · Premium")
+    : (da ? "Min konto · Gratis" : "My Account · Free");
 
 }
 
