@@ -11427,6 +11427,129 @@ font-weight:500
 
 }
 
+
+/* NEPTOON PREMIUM CONFIRMATION */
+
+.lcPaymentSuccessOverlay[hidden]{display:none!important;}
+
+.lcPaymentSuccessOverlay{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  background:rgba(17,32,56,.58);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.lcPaymentSuccessModal{
+  position:relative;
+  width:min(100%,560px);
+  max-height:90vh;
+  overflow-y:auto;
+  box-sizing:border-box;
+  background:#fff;
+  border:2px solid #4E79BD;
+  border-radius:0;
+  padding:36px;
+  box-shadow:0 18px 55px rgba(0,0,0,.16);
+  color:#102344;
+}
+
+.lcPaymentSuccessKicker{
+  font:600 10px Arial,sans-serif;
+  letter-spacing:1.5px;
+  color:#4E79BD;
+  margin-bottom:24px;
+}
+
+.lcPaymentSuccessModal h2{
+  font:normal 30px "Times New Roman",serif;
+  margin:0 0 14px;
+  color:#102344;
+}
+
+.lcPaymentSuccessModal p{
+  font:14px/1.65 Arial,sans-serif;
+  color:#53647d;
+  margin:0 0 24px;
+}
+
+.lcPaymentSuccessClose{
+  position:absolute;
+  right:18px;
+  top:18px;
+  background:#f1f5fa;
+  border:0;
+  border-radius:0;
+  width:30px;
+  height:30px;
+  font-size:22px;
+  cursor:pointer;
+  color:#53647d;
+}
+
+.lcPaymentSuccessBenefits{
+  border-top:1px solid #dce4ef;
+  margin-bottom:24px;
+}
+
+.lcPaymentSuccessBenefit{
+  display:grid;
+  grid-template-columns:32px 1fr 20px;
+  align-items:center;
+  gap:16px;
+  padding:17px 0;
+  border-bottom:1px solid #dce4ef;
+}
+
+.lcPaymentSuccessIcon{
+  color:#4E79BD;
+  font-size:25px;
+  text-align:center;
+}
+
+.lcPaymentSuccessBenefit strong{
+  display:block;
+  font:normal 19px "Times New Roman",serif;
+  color:#102344;
+  margin-bottom:5px;
+}
+
+.lcPaymentSuccessBenefit small{
+  display:block;
+  font:12px/1.5 Arial,sans-serif;
+  color:#53647d;
+}
+
+.lcPaymentSuccessCheck{
+  color:#2762bc;
+  font-size:21px;
+}
+
+.lcPaymentSuccessContinue{
+  width:100%;
+  padding:15px;
+  background:#4E79BD;
+  color:white;
+  border:1px solid #4E79BD;
+  border-radius:0;
+  font:600 13px Arial,sans-serif;
+  cursor:pointer;
+}
+
+.lcPaymentSuccessContinue:hover{
+  background:#3866a8;
+}
+
+@media(max-width:600px){
+  .lcPaymentSuccessModal{padding:26px 20px;}
+  .lcPaymentSuccessModal h2{font-size:25px;}
+  .lcPaymentSuccessBenefit{gap:10px;}
+}
+
+
 </style>
 
 </head>
@@ -17088,7 +17211,74 @@ font-weight:500
 
 
 
+<!-- NEPTOON PREMIUM PAYMENT SUCCESS -->
 
+<div id="lcPaymentSuccessOverlay" class="lcPaymentSuccessOverlay" hidden>
+
+  <div class="lcPaymentSuccessModal" role="dialog"
+       aria-modal="true" aria-labelledby="lcPaymentSuccessTitle">
+
+    <button id="lcPaymentSuccessClose" class="lcPaymentSuccessClose"
+            type="button" aria-label="Close">×</button>
+
+    <div class="lcPaymentSuccessKicker">
+      NEPTOON WEALTH · LIFE CYCLE
+    </div>
+
+    <h2 id="lcPaymentSuccessTitle" data-ui-lang="en">
+      Welcome to Neptoon Premium!
+    </h2>
+    <h2 data-ui-lang="da">
+      Velkommen til Neptoon Premium!
+    </h2>
+
+    <p data-ui-lang="en">
+      Your payment was successful and your Premium access is now active.
+      You can now save and restore your Life Cycle settings across devices.
+    </p>
+    <p data-ui-lang="da">
+      Din betaling er gennemført, og din Premium-adgang er nu aktiv.
+      Du kan nu gemme og gendanne dine Life Cycle-indstillinger på tværs af enheder.
+    </p>
+
+    <div class="lcPaymentSuccessBenefits">
+
+      <div class="lcPaymentSuccessBenefit">
+        <span class="lcPaymentSuccessIcon">↗</span>
+        <div>
+          <strong>Life Cycle analysis</strong>
+          <small>Explore savings, consumption and Financial Freedom.</small>
+        </div>
+        <span class="lcPaymentSuccessCheck">✓</span>
+      </div>
+
+      <div class="lcPaymentSuccessBenefit">
+        <span class="lcPaymentSuccessIcon">▤</span>
+        <div>
+          <strong>Excel workbook</strong>
+          <small>Download your Life Cycle model.</small>
+        </div>
+        <span class="lcPaymentSuccessCheck">✓</span>
+      </div>
+
+      <div class="lcPaymentSuccessBenefit">
+        <span class="lcPaymentSuccessIcon">☁</span>
+        <div>
+          <strong>Cloud Save My Settings</strong>
+          <small>Save and restore your settings across devices.</small>
+        </div>
+        <span class="lcPaymentSuccessCheck">✓</span>
+      </div>
+
+    </div>
+
+    <button id="lcPaymentSuccessContinue"
+            class="lcPaymentSuccessContinue" type="button">
+      Continue to Life Cycle
+    </button>
+
+  </div>
+</div>
 
 
 
@@ -20351,7 +20541,7 @@ lcMountainExcelConsent:"Jeg accepterer, at Neptoon gemmer min e-mailadresse i fo
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "NavigationSex2 mellem privatøkonomi og finansielle formuer",
+appName: "NavigationSex23 mellem privatøkonomi og finansielle formuer",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
@@ -30159,6 +30349,60 @@ function bindComponentButtons(){
     );
 
 }
+
+
+
+function showLifeCyclePaymentSuccess(){
+
+  const params = new URLSearchParams(window.location.search);
+
+  if(params.get("payment") !== "success") return;
+  if(ACCOUNT.plan !== "premium") return;
+
+  const overlay = document.getElementById("lcPaymentSuccessOverlay");
+  if(!overlay) return;
+
+  const url = new URL(window.location.href);
+  url.searchParams.delete("payment");
+  url.searchParams.delete("session_id");
+
+  window.history.replaceState(
+    {},
+    "",
+    url.pathname + url.search + url.hash
+  );
+
+  const lang = INIT.lang === "da" ? "da" : "en";
+
+  const button = document.getElementById("lcPaymentSuccessContinue");
+
+  if(button){
+    button.textContent = lang === "da"
+      ? "Fortsæt til Life Cycle"
+      : "Continue to Life Cycle";
+  }
+
+  overlay.querySelectorAll("[data-ui-lang]").forEach(el => {
+    el.hidden = el.dataset.uiLang !== lang;
+  });
+
+  const close = () => {
+    overlay.hidden = true;
+    document.body.style.overflow = "";
+  };
+
+  document.getElementById("lcPaymentSuccessClose").onclick = close;
+  document.getElementById("lcPaymentSuccessContinue").onclick = close;
+
+  overlay.hidden = false;
+  document.body.style.overflow = "hidden";
+
+  document.getElementById("lcPaymentSuccessContinue")?.focus();
+
+}
+
+
+
 function renderLifeCycleAssessment(scenario){
 
   const lang = INIT.lang === "da" ? "da" : "en";
