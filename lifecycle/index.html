@@ -20322,7 +20322,7 @@ lcMountainExcelConsent:"Jeg accepterer, at Neptoon gemmer min e-mailadresse i fo
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "NavigationX mellem privatøkonomi og finansielle formuer",
+appName: "NavigationY mellem privatøkonomi og finansielle formuer",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
@@ -23670,18 +23670,35 @@ function totalMonthsFor(inputs){
   );
 }
 
+function restoreOptionalComponents(settings){
+
+  Object.entries(settings.components || {}).forEach(
+    ([key,enabled]) => {
+
+      const el = document.querySelector(
+        `[data-panel="${key}"]`
+      );
+
+      if(!el) return;
+
+      el.hidden = !enabled;
+
+    }
+  );
+
+}
+
 
 /* =====================================================
    OPTIONAL COMPONENT STATE
 ===================================================== */
-
 function componentEnabled(key){
 
-  return Boolean(
-    document.querySelector(
-      `[data-panel="${key}"]`
-    )
+  const el = document.querySelector(
+    `[data-panel="${key}"]`
   );
+
+  return Boolean(el && !el.hidden);
 
 }
 
@@ -37959,7 +37976,7 @@ function restoreUserSettings(settings){
 
 
 restoreAccountPortfolios(settings);
-
+restoreOptionalComponents(settings);
   console.log("USER SETTINGS RESTORED",settings);
 
 }
