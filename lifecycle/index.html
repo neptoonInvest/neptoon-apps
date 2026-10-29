@@ -30945,8 +30945,9 @@ function restoreLifeCycleAccount(){
     localStorage.getItem("neptoon_lifecycle_email") || ""
   ).trim().toLowerCase();
 
-  ACCOUNT.email = email;
-  ACCOUNT.registered = !!email;
+  // Legacy email registration information
+  ACCOUNT.email = ACCOUNT.user?.email || email;
+  ACCOUNT.registered = !!ACCOUNT.user;
 
 }
 
