@@ -20351,7 +20351,7 @@ lcMountainExcelConsent:"Jeg accepterer, at Neptoon gemmer min e-mailadresse i fo
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "NavigationPeterClausenXXX mellem privatøkonomi og finansielle formuer",
+appName: "NavigationPeterClausenYYY mellem privatøkonomi og finansielle formuer",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
@@ -39173,21 +39173,77 @@ function scrollToTabTop(){
 function bindLifeCycleStorageButtons(){
 
   const saveBtn = byId("lcSaveCloudButton");
+  const restoreBtn = byId("lcRestoreCloudButton");
 
-  if(!saveBtn) return;
+  const premium =
+    ACCOUNT.plan === "premium" && !!ACCOUNT.user;
 
-  saveBtn.disabled = ACCOUNT.plan !== "premium";
+  if(saveBtn){
 
-  saveBtn.onclick = async () => {
+    saveBtn.disabled = !premium;
 
-    if(!confirm(
-      "Save your current financial plan to the cloud? " +
-      "This will replace your previous saved plan."
-    )) return;
+    saveBtn.onclick = async () => {
 
-    await saveLifeCycleSettings();
+      if(!confirm(
+        "Save your current financial plan to the cloud? " +
+        "This will replace your previous saved plan."
+      )) return;
 
-  };
+      await saveLifeCycleSettings();
+
+    };
+
+  }
+
+  if(restoreBtn){
+
+    restoreBtn.disabled = !premium;
+
+    restoreBtn.onclick = async () => {
+
+      if(!premium) return;
+
+      if(!confirm(
+        "Restore your saved financial plan? " +
+        "Your current unsaved inputs will be replaced."
+      )) return;
+
+      const data = await loadLifeCycleSettings();
+
+      if(!data?.settings){
+        alert("No saved financial plan was found.");
+        return;
+      }
+
+      try{
+
+        restoreUserSettings(data.settings);
+
+        console.log("CLOUD RESTORE SUCCESS",{
+          updated_at:data.updated_at
+        });
+
+        const status = byId("lcStorageStatus");
+        const lastSaved = byId("lcStorageLastSaved");
+
+        if(status) status.textContent = "Restored";
+
+        if(lastSaved){
+          lastSaved.textContent =
+            "Last saved: " +
+            new Date(data.updated_at).toLocaleString();
+        }
+
+      }catch(error){
+
+        console.error("CLOUD RESTORE FAILED",error);
+        alert("Unable to restore your saved financial plan.");
+
+      }
+
+    };
+
+  }
 
 }
 
