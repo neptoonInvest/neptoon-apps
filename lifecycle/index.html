@@ -10765,6 +10765,8 @@ font-weight:500
       Life Cycle
     </div>
 
+<span id="appBuildNumber" style="font-size:10px;color:#94a3b8;"></span>
+
   </div>
 
   <div class="app-header-actions">
@@ -37618,7 +37620,8 @@ applyLang("da");
 
 //////////////////////////////////////simulation
 
-
+document.getElementById("appBuildNumber").textContent =
+  "BUILD " + Math.floor(Math.random() * 1001);
   
   
   
