@@ -11162,14 +11162,92 @@ font-weight:500
 
 
 
+/* =====================================================
+   ACCOUNT & MEMBERSHIP — READ ONLY
+===================================================== */
+
+#accountPreferencesPanel .lcAccountGrid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+  align-items:stretch;
+}
+
+#accountPreferencesPanel .lcAccountCard{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  border-radius:0;
+}
+
+#accountPreferencesPanel .lcAccountCardFooter{
+  margin-top:auto;
+  padding-top:22px;
+}
+
+#accountPreferencesPanel .lcAccountCardFooter small{
+  display:block;
+  padding-top:12px;
+  border-top:1px solid #dbe3ef;
+  color:#64748b;
+  font-size:12px;
+  line-height:1.6;
+}
+
+#accountPreferencesPanel .lcAccountPill{
+  white-space:nowrap;
+}
+
+#accountPreferencesPanel .lcCloudPrice{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+}
+
+/* Premium members no longer need the purchase price */
+
+#accountPreferencesPanel[data-plan="premium"] .lcCloudPrice{
+  display:none;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  #accountPreferencesPanel .lcAccountGrid{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+}
 
 
 
 
 
 
+/* ACCOUNT MEMBERSHIP STATUS PILLS */
 
+#accountPreferencesPanel .lcAccountPill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:4px 10px;
+  border:1px solid #d4dfef;
+  background:#edf3fc;
+  color:#4e79bd;
+  font-size:11px;
+  font-weight:700;
+  white-space:nowrap;
+  border-radius:0;
+}
 
+#accountPreferencesPanel[data-plan="premium"]
+#accountSaveStatus{
+  background:#edf7f0;
+  border-color:#b9ddc5;
+  color:#287447;
+}
 
 
 
@@ -15692,203 +15770,241 @@ font-weight:500
 </section> <!-- accountAssumptionsPanel -->
   </div>
 
-  <!-- 04 · ACCOUNT & MEMBERSHIP — EXISTING HTML UNCHANGED -->
-  <div class="accountAccordionContent" id="accountSectionMembership" hidden>
-<section class="app-config-panel lcAccountPanel"
-         id="accountPreferencesPanel">
 
-  <div class="app-kicker" data-lang="lcAccountKicker">
-    MY ACCOUNT
-  </div>
+<!-- =====================================================
+     04 · ACCOUNT & MEMBERSHIP — READ ONLY
+===================================================== -->
 
-  <h2 data-lang="lcAccountTitle">
-    Account &amp; Preferences
-  </h2>
+<div class="accountAccordionContent"
+     id="accountSectionMembership"
+     hidden>
 
-  <p class="lcAccountIntro" data-lang="lcAccountIntro">
-    Extend your Life Cycle analysis in Excel, or save your financial plan for later.
-  </p>
+  <section class="app-config-panel lcAccountPanel"
+           id="accountPreferencesPanel">
 
-  <!-- TWO MAIN CARDS -->
+    <div class="app-kicker" data-lang="lcAccountKicker">
+      MY ACCOUNT
+    </div>
 
-  <div class="lcAccountGrid">
+    <h2 data-lang="lcAccountTitle">
+      Account &amp; Membership
+    </h2>
 
-    <!-- FREE EXCEL ACCOUNT -->
+    <p class="lcAccountIntro" data-lang="lcAccountIntro">
+      Your Neptoon account provides access to Excel modelling
+      and optional Premium cloud storage.
+      Registration, login and membership upgrades are managed
+      through the Sign Up / Login menu in the application header.
+    </p>
 
-    <section class="lcAccountCard lcAccountExcel"
-             aria-labelledby="lcExcelHeading">
+    <!-- TWO MEMBERSHIP CARDS -->
 
-      <div class="lcAccountCardTop">
-        <span class="lcAccountEyebrow"
-              data-lang="lcExcelEyebrow">
-          FREE ACCOUNT
-        </span>
+    <div class="lcAccountGrid">
 
-        <span class="lcAccountPill"
-              id="accountIdentityStatus"
-              data-lang="lcAccountVisitor">
-          Visitor
-        </span>
-      </div>
+      <!-- =========================================
+           FREE ACCOUNT — EXCEL
+      ========================================= -->
 
-      <div class="lcAccountIcon lcExcelIcon">
-        <svg viewBox="0 0 24 24"
-             width="24" height="24"
-             fill="none" stroke="currentColor"
-             stroke-width="1.7"
-             stroke-linecap="round"
-             stroke-linejoin="round"
-             aria-hidden="true">
-          <rect x="4" y="3" width="16" height="18" rx="0"/>
-          <path d="M4 8h16M9 8v13M9 13h11M9 17h11"/>
-        </svg>
-      </div>
+      <section class="lcAccountCard lcAccountExcel"
+               aria-labelledby="lcExcelHeading">
 
-      <h3 id="lcExcelHeading" data-lang="lcExcelTitle">
-        Unlock Your Full Excel Model
-      </h3>
+        <div class="lcAccountCardTop">
 
-      <p class="lcAccountDescription"
-         data-lang="lcExcelDescription">
-        Inspect every monthly cash flow and extend your financial model with customized scenarios and future financial events.
-      </p>
-
-      <div class="lcAccountFeatures">
-
-        <div>
-          <span>✓</span>
-          <span data-lang="lcExcelFeature1">
-            Complete monthly Life Cycle projections
+          <span class="lcAccountEyebrow"
+                data-lang="lcExcelEyebrow">
+            FREE ACCOUNT
           </span>
+
+          <span class="lcAccountPill"
+                id="accountIdentityStatus">
+            Visitor
+          </span>
+
         </div>
 
-        <div>
-          <span>✓</span>
-          <span data-lang="lcExcelFeature2">
-            Balance Sheet, Financial Freedom and Legacy
-          </span>
+        <div class="lcAccountIcon lcExcelIcon">
+
+          <svg viewBox="0 0 24 24"
+               width="24"
+               height="24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="1.7"
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               aria-hidden="true">
+
+            <rect x="4" y="3"
+                  width="16" height="18" rx="0"/>
+
+            <path d="M4 8h16M9 8v13M9 13h11M9 17h11"/>
+
+          </svg>
+
         </div>
 
-        <div>
-          <span>✓</span>
-          <span data-lang="lcExcelFeature3">
-            Customize future cash flows and financial items
-          </span>
+        <h3 id="lcExcelHeading"
+            data-lang="lcExcelTitle">
+          Unlock Your Full Excel Model
+        </h3>
+
+        <p class="lcAccountDescription"
+           data-lang="lcExcelDescription">
+          Inspect every monthly cash flow and extend your
+          financial model with customized scenarios and
+          future financial events.
+        </p>
+
+        <div class="lcAccountFeatures">
+
+          <div>
+            <span>✓</span>
+            <span data-lang="lcExcelFeature1">
+              Complete monthly Life Cycle projections
+            </span>
+          </div>
+
+          <div>
+            <span>✓</span>
+            <span data-lang="lcExcelFeature2">
+              Balance Sheet, Financial Freedom and Legacy
+            </span>
+          </div>
+
+          <div>
+            <span>✓</span>
+            <span data-lang="lcExcelFeature3">
+              Customize future cash flows and financial items
+            </span>
+          </div>
+
         </div>
 
-      </div>
+        <!-- INFORMATION ONLY -->
 
-      <div class="lcAccountCardFooter">
+        <div class="lcAccountCardFooter">
 
-        <button
-          class="lcAccountButton lcAccountButtonPrimary"
-          id="accountSignInButton"
-          type="button"
-          data-lang="lcExcelButton"
-      
-          Create Free Account &amp; Unlock Excel
-        </button>
+          <small data-lang="lcExcelFineprint">
+            Included with a free account.
+            Sign up or log in using the account menu
+            in the application header.
+          </small>
 
-        <small data-lang="lcExcelFineprint">
-          Free email registration · No payment · No subscription
-        </small>
+        </div>
 
-      </div>
-
-    </section>
+      </section>
 
 
-    <!-- CLOUD SAVE -->
+      <!-- =========================================
+           PREMIUM ACCOUNT — CLOUD STORAGE
+      ========================================= -->
 
-    <section class="lcAccountCard lcAccountCloud"
-             aria-labelledby="lcCloudHeading">
+      <section class="lcAccountCard lcAccountCloud"
+               aria-labelledby="lcCloudHeading">
 
-      <div class="lcAccountCardTop">
+        <div class="lcAccountCardTop">
 
-        <span class="lcAccountEyebrow"
-              data-lang="lcCloudEyebrow">
-          OPTIONAL CLOUD STORAGE
-        </span>
+          <span class="lcAccountEyebrow"
+                data-lang="lcCloudEyebrow">
+            PREMIUM CLOUD STORAGE
+          </span>
 
-        <span class="lcAccountPill lcAccountPillMuted"
-              id="accountSaveStatus"
-              data-lang="lcCloudComingSoon">
-          Coming soon
-        </span>
+          <span class="lcAccountPill lcAccountPillMuted"
+                id="accountSaveStatus">
+            Premium available
+          </span>
 
-      </div>
+        </div>
 
-      <div class="lcAccountIcon lcCloudIcon">
-        <svg viewBox="0 0 24 24"
-             width="24" height="24"
-             fill="none" stroke="currentColor"
-             stroke-width="1.7"
-             stroke-linecap="round"
-             stroke-linejoin="round"
-             aria-hidden="true">
-          <path d="M7 18H6a4 4 0 0 1-.4-7.98A6 6 0 0 1 17 8.5a4.5 4.5 0 0 1 1 8.9H17"/>
-          <path d="M12 12v9M8.5 15.5 12 12l3.5 3.5"/>
-        </svg>
-      </div>
+        <div class="lcAccountIcon lcCloudIcon">
 
-      <h3 id="lcCloudHeading" data-lang="lcCloudTitle">
-        Save Your Financial Settings
-      </h3>
+          <svg viewBox="0 0 24 24"
+               width="24"
+               height="24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="1.7"
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               aria-hidden="true">
 
-<div class="lcCloudPrice">
-  <strong id="lcCloudPriceAmount">EUR 5</strong>
-  <span data-lang="lcCloudPriceLabel">
-    One-time payment
-  </span>
+            <path d="M7 18H6a4 4 0 0 1-.4-7.98A6 6 0 0 1 17 8.5a4.5 4.5 0 0 1 1 8.9H17"/>
+
+            <path d="M12 12v9M8.5 15.5 12 12l3.5 3.5"/>
+
+          </svg>
+
+        </div>
+
+        <h3 id="lcCloudHeading"
+            data-lang="lcCloudTitle">
+          Save Your Financial Settings
+        </h3>
+
+        <div class="lcCloudPrice">
+
+          <strong id="lcCloudPriceAmount">
+            EUR 5
+          </strong>
+
+          <span data-lang="lcCloudPriceLabel">
+            One-time payment
+          </span>
+
+        </div>
+
+        <p class="lcAccountDescription"
+           data-lang="lcCloudDescription">
+          Securely save and restore your Life Cycle
+          assumptions, Balance Sheet and selected
+          investment portfolios across devices.
+        </p>
+
+        <div class="lcAccountFeatures">
+
+          <div>
+            <span>✓</span>
+            <span data-lang="lcCloudFeature1">
+              Save financial assumptions and inputs
+            </span>
+          </div>
+
+          <div>
+            <span>✓</span>
+            <span data-lang="lcCloudFeature2">
+              Preserve your complete Balance Sheet
+            </span>
+          </div>
+
+          <div>
+            <span>✓</span>
+            <span data-lang="lcCloudFeature3">
+              Restore your plan across devices
+            </span>
+          </div>
+
+        </div>
+
+        <!-- INFORMATION ONLY -->
+
+        <div class="lcAccountCardFooter">
+
+          <small data-lang="lcCloudFineprint">
+            Premium is a one-time purchase.
+            Upgrade through the account menu.
+            Cloud saving and restoration are managed
+            separately under Save &amp; Storage.
+          </small>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </section>
+
 </div>
-
-      <p class="lcAccountDescription"
-         data-lang="lcCloudDescription">
-        Securely save and restore your Life Cycle assumptions, Balance Sheet and portfolios across devices.
-      </p>
-
-      <div class="lcAccountFeatures">
-
-        <div>
-          <span>✓</span>
-          <span data-lang="lcCloudFeature1">
-            Save financial assumptions and inputs
-          </span>
-        </div>
-
-        <div>
-          <span>✓</span>
-          <span data-lang="lcCloudFeature2">
-            Preserve your complete Balance Sheet
-          </span>
-        </div>
-
-        <div>
-          <span>✓</span>
-          <span data-lang="lcCloudFeature3">
-            Restore your plan across devices
-          </span>
-        </div>
-
-      </div>
-
-      <div class="lcAccountCardFooter">
-
-        <button
-          class="lcAccountButton lcAccountButtonSecondary"
-          id="accountSavePlanButton"
-          type="button"
-          data-lang="lcCloudButton"
-          disabled>
-          Cloud Save — Coming Soon
-        </button>
-
-
-      </div>
-
-    </section>
-
-  </div>
 
 
   <!-- COMPACT ACCOUNT STATUS -->
@@ -24661,7 +24777,147 @@ function mortgageRealDebt(nominalDebt,month,inputs){
 
 
 
+/* =====================================================
+   LIFE CYCLE — GET USER SETTINGS
+===================================================== */
 
+const LIFE_CYCLE_SETTING_IDS = [
+
+  // 01 · LIFE HORIZON
+  "currentAge","deathAge",
+
+  // 02 · CORE FINANCIAL INPUTS
+  "wealthToday","monthlySavings","savingsGrowthAnnual",
+  "monthlyConsumption","legacy",
+
+  // 03 · PORTFOLIO SELECTIONS
+  "buildIssuer","buildModelNo",
+  "useIssuer","useModelNo",
+
+  // 04 · REAL ESTATE
+  "houseValue","houseLiquidationAge",
+
+  // 05 · PRIVATE PENSION
+  "privatePensionValue","privatePensionContribution",
+  "privatePensionLiquidationAge",
+
+  // 06 · MORTGAGE
+  "mortgageEnabled","mortgageDebt","mortgageType",
+  "mortgageRate","mortgageAnnualCosts",
+  "mortgageRemainingYears","mortgageInterestOnlyYears",
+
+  // 07 · BANK LOAN
+  "bankEnabled","bankDebt","bankType",
+  "bankRate","bankAnnualCosts",
+  "bankRemainingYears","bankInterestOnlyYears",
+
+  // 08 · ENTERPRISE
+  "enterpriseValue","enterpriseLiquidationAge",
+
+  // 09 · PUBLIC PENSION
+  "publicPension","publicPensionAge",
+  "supplementaryPensionAnnual",
+
+  // 10 · FUTURE INHERITANCE
+  "heritageValueToday","heritageAmount","heritageAge",
+
+  // 11 · OTHER ASSETS
+  "otherName","otherValueToday","otherAmount","otherAge",
+  "otherName2","otherValueToday2","otherAmount2","otherAge2",
+  "otherName3","otherValueToday3","otherAmount3","otherAge3",
+  "otherName4","otherValueToday4","otherAmount4","otherAge4",
+
+  // 12 · ECONOMIC ASSUMPTIONS
+  "inflation",
+
+  // 13 · ASSET RETURNS & TAXES
+  "assetReturnRealEstate","assetTaxRealEstate",
+  "assetReturnEnterprise","assetTaxEnterprise",
+  "assetReturnPrivatePension","assetTaxPrivatePension",
+
+  // 14 · DEFERRED PENSION TAX
+  "pensionTaxEnabled","pensionTaxAmount"
+
+];
+
+const LIFE_CYCLE_SETTING_RADIOS = [
+  "atpStatus",
+  "economicOutlook",
+  "taxRate"
+];
+
+const LIFE_CYCLE_SETTING_COMPONENTS = [
+  "realEstate",
+  "privatePension",
+  "enterprise",
+  "publicPension",
+  "heritage",
+  "other"
+];
+
+
+/* =====================================================
+   COLLECT CURRENT USER SETTINGS
+===================================================== */
+
+function getUserSettings(){
+
+  const inputs = {};
+  const radios = {};
+  const components = {};
+
+  // INPUT CELLS + SELECTS + CHECKBOXES
+
+  LIFE_CYCLE_SETTING_IDS.forEach(id => {
+
+    const el = byId(id);
+
+    if(!el){
+      console.warn("SETTINGS INPUT MISSING:",id);
+      return;
+    }
+
+    inputs[id] =
+      el.type === "checkbox"
+        ? el.checked
+        : el.value;
+
+  });
+
+
+  // RADIO GROUPS
+
+  LIFE_CYCLE_SETTING_RADIOS.forEach(name => {
+
+    radios[name] =
+      document.querySelector(
+        `input[name="${name}"]:checked`
+      )?.value ?? null;
+
+  });
+
+
+  // OPTIONAL COMPONENTS
+
+  LIFE_CYCLE_SETTING_COMPONENTS.forEach(name => {
+
+    components[name] =
+      componentEnabled(name);
+
+  });
+
+
+  // RETURN CLOUD-READY OBJECT
+
+  return {
+    schemaVersion:1,
+    savedAt:new Date().toISOString(),
+    inputs,
+    radios,
+    components
+  };
+
+}
 
 
 
@@ -38137,6 +38393,11 @@ function renderAccountMembership(){
   const user = ACCOUNT.user || null;
   const premium = !!user && ACCOUNT.plan === "premium";
   const email = user?.email || "";
+
+byId("accountPreferencesPanel")?.setAttribute(
+  "data-plan",
+  ACCOUNT.plan
+);
 
   const T = {
     en:{
