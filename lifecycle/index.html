@@ -21719,6 +21719,43 @@ console.log("BOOT 2b — setPerspective defined");
 
 
 /* =====================================================
+   LIFE CYCLE — RESTORE SUPABASE SESSION
+===================================================== */
+
+async function restoreLifeCycleSession(){
+
+  try{
+
+    const {data,error} =
+      await supabaseClient.auth.getUser();
+
+    if(error && error.name !== "AuthSessionMissingError"){
+      console.warn("AUTH RESTORE ERROR",error);
+    }
+
+    const user = data?.user || null;
+
+    ACCOUNT.user = user;
+    ACCOUNT.plan = user ? "free" : "visitor";
+    ACCOUNT.email = user?.email || "";
+
+    paintAppAccountStatus();
+    renderAccountMembership();
+
+    console.log(
+      "LIFE CYCLE AUTH RESTORED",
+      user ? "FREE ACCOUNT" : "VISITOR"
+    );
+
+  }catch(error){
+
+    console.error("SESSION RESTORE ERROR",error);
+
+  }
+
+}
+		
+/* =====================================================
    3. LANGUAGE
 ===================================================== */
 
@@ -38677,6 +38714,7 @@ document.getElementById("appBuildNumber").textContent =
   
   
 console.log("BOOT 24");
+restoreLifeCycleSession();
     
 initStandaloneLifeCycle();  
   
