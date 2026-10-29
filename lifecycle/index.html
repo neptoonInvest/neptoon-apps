@@ -29997,6 +29997,55 @@ drawChart(
    COMPONENT BUTTONS
 ===================================================== */
 
+function bindLifeCycleAuthState(){
+
+  supabaseClient.auth.onAuthStateChange(
+    (event,session) => {
+
+      console.log("SUPABASE AUTH EVENT",event);
+
+      const user = session?.user || null;
+
+      ACCOUNT.user = user;
+      ACCOUNT.email = user?.email || "";
+
+      // Temporary status until membership is verified
+      ACCOUNT.plan = user ? "free" : "visitor";
+
+      paintAppAccountStatus();
+      renderAccountMembership();
+
+      // Logout: visitor state is already restored
+      if(!user) return;
+
+      // Retrieve actual membership outside auth callback
+      if(
+        event === "INITIAL_SESSION" ||
+        event === "SIGNED_IN" ||
+        event === "USER_UPDATED"
+      ){
+
+        setTimeout(() => {
+
+          if(ACCOUNT.user?.id !== user.id) return;
+
+          refreshLifeCycleMembership(user)
+            .catch(error => {
+              console.error(
+                "MEMBERSHIP REFRESH FAILED",
+                error
+              );
+            });
+
+        },0);
+
+      }
+
+    }
+  );
+
+}
+
 
 function bindComponentButtons(){
 
@@ -39021,31 +39070,45 @@ function scrollToTabTop(){
 }
 
 
+async function refreshLifeCycleMembership(user){
 
+  if(!user){
+    ACCOUNT.plan = "visitor";
+    paintAppAccountStatus();
+    renderAccountMembership();
+    return;
+  }
+
+  const {data,error} = await supabaseClient
+    .from("life_cycle_memberships")
+    .select("plan")
+    .eq("user_id",user.id)
+    .maybeSingle();
+
+  if(error){
+    console.error("MEMBERSHIP LOOKUP FAILED",error);
+    return;
+  }
+
+  // Ignore results from an outdated login session
+  if(ACCOUNT.user?.id !== user.id) return;
+
+  ACCOUNT.plan =
+    data?.plan === "premium"
+      ? "premium"
+      : "free";
+
+  paintAppAccountStatus();
+  renderAccountMembership();
+
+  console.log("MEMBERSHIP VERIFIED",ACCOUNT.plan);
+
+}
 /* =====================================================
    LIFE CYCLE — AUTH STATE LISTENER
 ===================================================== */
 
-function bindLifeCycleAuthState(){
-
-  supabaseClient.auth.onAuthStateChange(
-    (event,session) => {
-
-      console.log("SUPABASE AUTH EVENT",event);
-
-      const user = session?.user || null;
-
-      ACCOUNT.user = user;
-      ACCOUNT.plan = user ? "free" : "visitor";
-      ACCOUNT.email = user?.email || "";
-
-      paintAppAccountStatus();
-      renderAccountMembership();
-
-    }
-  );
-
-}
+	
 
 		/* =========================================
    EXCEL ACCESS — MODAL CONTROLLER
