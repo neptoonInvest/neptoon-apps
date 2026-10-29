@@ -20351,7 +20351,7 @@ lcMountainExcelConsent:"Jeg accepterer, at Neptoon gemmer min e-mailadresse i fo
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "NavigationPeter mellem privatøkonomi og finansielle formuer",
+appName: "NavigationPeterClausen mellem privatøkonomi og finansielle formuer",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
@@ -39184,10 +39184,13 @@ async function refreshLifeCycleMembership(user){
       ? "premium"
       : "free";
 
-  paintAppAccountStatus();
-  renderAccountMembership();
+paintAppAccountStatus();
+renderAccountMembership();
 
-  console.log("MEMBERSHIP VERIFIED",ACCOUNT.plan);
+// Synchronize storage buttons after Premium verification
+bindLifeCycleStorageButtons();
+
+console.log("MEMBERSHIP VERIFIED",ACCOUNT.plan);
 
 }
 /* =====================================================
