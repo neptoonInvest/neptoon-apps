@@ -22253,6 +22253,77 @@ if(accountDots){
 }
 
 
+/* =====================================================
+   LIFE CYCLE — STRIPE PREMIUM CHECKOUT
+===================================================== */
+
+async function startLifeCyclePremiumCheckout(){
+
+  const button =
+    document.getElementById("lcAccountUpgradeBtn");
+
+  const message =
+    document.getElementById("lcAccountMemberMessage");
+
+  if(button?.disabled) return;
+
+  if(button) button.disabled = true;
+  if(message) message.textContent = "";
+
+  try{
+
+    const {data:sessionData,error:sessionError} =
+      await supabaseClient.auth.getSession();
+
+    if(sessionError) throw sessionError;
+
+    const accessToken =
+      sessionData?.session?.access_token;
+
+    if(!accessToken){
+      openLifeCycleLogin();
+      throw new Error("Please log in to upgrade.");
+    }
+
+    const {data,error} =
+      await supabaseClient.functions.invoke(
+        "life-cycle-checkout",
+        {
+          headers:{
+            Authorization:`Bearer ${accessToken}`
+          },
+          body:{}
+        }
+      );
+
+    if(error) throw error;
+
+    if(!data?.url){
+      throw new Error("Stripe Checkout URL missing.");
+    }
+
+    console.log("LIFE CYCLE STRIPE CHECKOUT",data.url);
+
+    window.location.assign(data.url);
+
+  }catch(error){
+
+    console.error("PREMIUM CHECKOUT ERROR",error);
+
+    if(message){
+      message.textContent =
+        error.message ||
+        "Unable to start payment. Please try again.";
+    }
+
+  }finally{
+
+    if(button) button.disabled = false;
+
+  }
+
+}
+
 
 
 /* =====================================================
@@ -36542,6 +36613,12 @@ function bindLifeCycleAccountModal(){
   document.getElementById("lcAccountForm")
     ?.addEventListener("submit",submitLifeCycleAccount);
 
+document.getElementById("lcAccountUpgradeBtn")
+  ?.addEventListener(
+    "click",
+    startLifeCyclePremiumCheckout
+  );
+
   /*
     CLOSE MODAL
   */
@@ -38236,7 +38313,7 @@ console.log("EXCEL CLICKED 3 - USER IS  VISIOT");
 }
 
 /* =========================================
-   EXCEL ACCESS — BUTTON EVENTS
+   EXCEL ACCESS — SUPABASE AUTH
 ========================================= */
 
 document
@@ -38251,35 +38328,41 @@ document
 
     const da = INIT.lang === "da";
 
-    if(!button) return;
-
-    /*
-      CHECK AUTHENTICATED USER
-    */
-
-    const user = await getLifeCycleUser();
-
-    if(!user){
-
-      if(message){
-        message.textContent = da
-          ? "Opret en gratis konto eller log ind for at downloade Excel."
-          : "Create a free account or log in to download Excel.";
-      }
-
-      openLifeCycleLogin();
-      return;
-    }
-
-    /*
-      DOWNLOAD EXCEL
-    */
+    if(!button || button.disabled) return;
 
     button.disabled = true;
 
-    if(message) message.textContent = "";
-
     try{
+
+      /*
+        VERIFY AUTHENTICATED USER
+      */
+
+      const {data,error} =
+        await supabaseClient.auth.getUser();
+
+      const user = error ? null : data?.user;
+
+      if(!user){
+
+        if(message){
+          message.textContent = da
+            ? "Opret en gratis konto eller log ind for at downloade Excel."
+            : "Create a free account or log in to download Excel.";
+        }
+
+        openLifeCycleLogin();
+        return;
+
+      }
+
+      /*
+        AUTHENTICATED — DOWNLOAD EXCEL
+      */
+
+      console.log("EXCEL ACCESS GRANTED",user.email);
+
+      if(message) message.textContent = "";
 
       await exportLifeCycleExcel();
 
@@ -38306,10 +38389,6 @@ document
     }
 
   });
-
-
-
-
 
 
 
