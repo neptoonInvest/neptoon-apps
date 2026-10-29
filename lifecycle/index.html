@@ -22257,7 +22257,7 @@ if(accountDots){
    LIFE CYCLE — STRIPE PREMIUM CHECKOUT
 ===================================================== */
 
-	
+	async function startLifeCyclePremiumCheckout(){
 
   const button =
     document.getElementById("lcAccountUpgradeBtn");
@@ -36587,72 +36587,6 @@ onsole.log("SIGNUP 2");
    LIFE CYCLE — STRIPE PREMIUM CHECKOUT
 ===================================================== */
 
-async function startLifeCyclePremiumCheckout(){
-
-  const button =
-    document.getElementById("lcAccountUpgradeBtn");
-
-  const message =
-    document.getElementById("lcAccountMemberMessage");
-
-  if(button?.disabled) return;
-
-  if(button) button.disabled = true;
-  if(message) message.textContent = "";
-
-  try{
-
-    const {data:sessionData,error:sessionError} =
-      await supabaseClient.auth.getSession();
-
-    if(sessionError) throw sessionError;
-
-    const accessToken =
-      sessionData?.session?.access_token;
-
-    if(!accessToken){
-      openLifeCycleLogin();
-      throw new Error("Please log in to upgrade.");
-    }
-
-    const {data,error} =
-      await supabaseClient.functions.invoke(
-        "life-cycle-checkout",
-        {
-          headers:{
-            Authorization:`Bearer ${accessToken}`
-          },
-          body:{}
-        }
-      );
-
-    if(error) throw error;
-
-    if(!data?.url){
-      throw new Error("Stripe Checkout URL missing.");
-    }
-
-    console.log("LIFE CYCLE STRIPE CHECKOUT",data.url);
-
-    window.location.assign(data.url);
-
-  }catch(error){
-
-    console.error("PREMIUM CHECKOUT ERROR",error);
-
-    if(message){
-      message.textContent =
-        error.message ||
-        "Unable to start payment. Please try again.";
-    }
-
-  }finally{
-
-    if(button) button.disabled = false;
-
-  }
-
-}
 
 
 /* =====================================================
