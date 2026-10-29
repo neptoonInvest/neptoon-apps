@@ -39280,7 +39280,7 @@ renderAccountMembership();
 
 // Synchronize storage buttons after Premium verification
 bindLifeCycleStorageButtons();
-
+showLifeCyclePaymentSuccess();
 
 const overlay = document.getElementById("lcAccountOverlay");
 
@@ -39548,6 +39548,27 @@ document
 
  console.log("BOOT THOMAS1",demoRiskAnchors);   
 
+function showLifeCyclePaymentSuccess(){
+
+  const params = new URLSearchParams(window.location.search);
+
+  if(params.get("payment") !== "success") return;
+  if(ACCOUNT.plan !== "premium") return;
+
+  // Remove payment parameters so the message appears only once
+  const url = new URL(window.location.href);
+  url.searchParams.delete("payment");
+  url.searchParams.delete("session_id");
+
+  window.history.replaceState({}, "", url.pathname + url.search + url.hash);
+
+  alert(
+    "Welcome to Neptoon Premium!\n\n" +
+    "Your payment was successful and your Premium access is now active.\n\n" +
+    "You can now save and restore your Life Cycle settings across devices."
+  );
+
+}
 
 
 async function registerLifeCycleEmail(email){
