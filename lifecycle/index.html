@@ -36511,39 +36511,47 @@ onsole.log("SIGNUP 2");
    EVENT BINDINGS
 */
 
+/* =====================================================
+   LIFE CYCLE — ACCOUNT MODAL EVENT BINDINGS
+===================================================== */
+
 function bindLifeCycleAccountModal(){
 
-console.log("MODQAL triggered");
+  const overlay = document.getElementById("lcAccountOverlay");
 
-console.log("MODQAL triggered");
+  if(!overlay) return;
 
-console.log("MODQAL triggered");
+  // Prevent duplicate event listeners
+  if(overlay.dataset.bound === "true") return;
 
-console.log("MODQAL triggered");
+  overlay.dataset.bound = "true";
 
-console.log("MODQAL triggered");
+  console.log("LIFE CYCLE ACCOUNT MODAL BOUND");
 
-console.log("MODQAL triggered");
-
-console.log("MODQAL triggered");
-
-console.log("MODQAL triggered");
-
-console.log("MODQAL triggered");
-
-console.log("MODQAL triggered");
-
-console.log("MODQAL triggered");
-
+  /*
+    OPEN ACCOUNT
+  */
 
   document.getElementById("appAccountStatus")
     ?.addEventListener("click",openLifeCycleLogin);
 
-document.getElementById("lcAccountForm")
-  ?.addEventListener("submit",submitLifeCycleAccount);
+  /*
+    LOGIN / SIGNUP FORM
+  */
+
+  document.getElementById("lcAccountForm")
+    ?.addEventListener("submit",submitLifeCycleAccount);
+
+  /*
+    CLOSE MODAL
+  */
 
   document.getElementById("lcAccountClose")
     ?.addEventListener("click",closeLifeCycleLogin);
+
+  /*
+    LOGIN / SIGNUP TABS
+  */
 
   document.getElementById("lcAccountLoginTab")
     ?.addEventListener("click",() => {
@@ -36555,33 +36563,90 @@ document.getElementById("lcAccountForm")
       setLifeCycleAccountMode("signup");
     });
 
-  document.getElementById("lcAccountOverlay")
-    ?.addEventListener("click",event => {
+  /*
+    LOG OUT
+  */
 
-      if(event.target.id === "lcAccountOverlay"){
+  document.getElementById("lcAccountLogoutBtn")
+    ?.addEventListener("click",async () => {
+
+      console.log("LIFE CYCLE LOGOUT START");
+
+      const button =
+        document.getElementById("lcAccountLogoutBtn");
+
+      const message =
+        document.getElementById("lcAccountMemberMessage");
+
+      if(button) button.disabled = true;
+      if(message) message.textContent = "";
+
+      try{
+
+        const {error} =
+          await supabaseClient.auth.signOut();
+
+        if(error) throw error;
+
         closeLifeCycleLogin();
+
+        console.log("LIFE CYCLE LOGOUT SUCCESS");
+
+      }catch(error){
+
+        console.error("LIFE CYCLE LOGOUT ERROR",error);
+
+        if(message){
+          message.textContent =
+            error.message || "Logout failed.";
+        }
+
+      }finally{
+
+        if(button) button.disabled = false;
+
       }
 
     });
+
+  /*
+    CLICK OUTSIDE MODAL
+  */
+
+  overlay.addEventListener("click",event => {
+
+    if(event.target === overlay){
+      closeLifeCycleLogin();
+    }
+
+  });
+
+  /*
+    ESCAPE KEY
+  */
 
   document.addEventListener("keydown",event => {
 
     if(
       event.key === "Escape" &&
-      !document.getElementById("lcAccountOverlay")?.hidden
+      !overlay.hidden
     ){
       closeLifeCycleLogin();
     }
 
   });
 
+  /*
+    INITIAL MODE
+  */
+
   setLifeCycleAccountMode("login");
 
 }
 
-/*
+/* =====================================================
    INITIALIZE AFTER DOM IS READY
-*/
+===================================================== */
 
 if(document.readyState === "loading"){
 
