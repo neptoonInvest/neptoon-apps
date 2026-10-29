@@ -38710,16 +38710,17 @@ document.getElementById("appBuildNumber").textContent =
   
   
   
-  
-  
-  
-console.log("BOOT 24");
-restoreLifeCycleSession();
-    
-initStandaloneLifeCycle();  
-  
-  
-console.log("BOOT 25");
+  console.log("BOOT 24");
+
+(async function(){
+
+  await initStandaloneLifeCycle();
+
+  await restoreLifeCycleSession();
+
+  console.log("BOOT 25 — AUTH READY");
+
+})();
   
   
   
