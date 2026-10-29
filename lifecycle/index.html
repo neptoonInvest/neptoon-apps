@@ -38913,7 +38913,7 @@ async function fetchLifeCyclePortfolios(){
 */
 
 async function initStandaloneLifeCycle(){
-
+console.log("WEB INIT 1");
   try{
 
     /*
@@ -38924,7 +38924,7 @@ async function initStandaloneLifeCycle(){
       detectLifeCycleLanguage();
 
     applyLang(INIT.lang);
-
+console.log("WEB INIT 2");
 
     /*
       2. INITIAL VISITOR STATE
@@ -38940,15 +38940,15 @@ async function initStandaloneLifeCycle(){
     initExcelAccessSection();
     lockDanishOtherAssetNames();
 initSupplementaryPension();  
-
+console.log("WEB INIT 3");
 restoreLifeCycleAccount();
 
     paintAppAccountStatus();
-
+console.log("WEB INIT 4");
     renderAccountMembership();
     renderLifeCycleFAQ(INIT.lang);
 initExcelExportAccess();
-
+console.log("WEB INIT 5");
 
     /*
       3. FETCH GITHUB PORTFOLIOS
@@ -38956,7 +38956,7 @@ initExcelExportAccess();
 
     const portfolios =
       await fetchLifeCyclePortfolios();
-
+console.log("WEB INIT 6");
     console.log(
       "LIFE CYCLE PORTFOLIOS LOADED",
       portfolios.length
@@ -38989,7 +38989,7 @@ console.log("BEFORE PORTFOLIO INIT", portfolios.length);
     initializeAccountPortfolioSelectors(
       portfolios
     );
-
+console.log("WEB INIT 7");
 
 console.log(
   "AFTER PORTFOLIO INIT",
@@ -39033,7 +39033,7 @@ console.log(
       );
 
     }
-
+console.log("WEB INIT 8");
 
     /*
       6. INITIAL MODEL LABELS
@@ -39053,7 +39053,7 @@ console.log(
 
     }
 
-
+console.log("WEB INIT 9");
     /*
       7. PORTFOLIO ASSUMPTIONS
     */
@@ -39070,7 +39070,7 @@ console.log(
     */
 
     openTab("Welcome");
-
+console.log("WEB INIT 10");
 
     /*
       9. RUN FINANCIAL ENGINE
@@ -39079,7 +39079,7 @@ console.log(
     render();
 
     renderRiskModel();
-
+console.log("WEB INIT 11");
 
     /*
       10. DIAGNOSTICS
