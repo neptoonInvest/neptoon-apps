@@ -20545,7 +20545,7 @@ lcMountainExcelConsent:"Jeg accepterer, at Neptoon gemmer min e-mailadresse i fo
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "Navigationmaria2 mellem privatøkonomi og finansielle formuer",
+appName: "Navigationmaria3 mellem privatøkonomi og finansielle formuer",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
@@ -30380,54 +30380,7 @@ function bindComponentButtons(){
 }
 
 
-function showLifeCyclePaymentSuccess(){
 
-  const params = new URLSearchParams(window.location.search);
-
-  if(params.get("payment") !== "success") return;
-  if(ACCOUNT.plan !== "premium") return;
-
-  const overlay = document.getElementById("lcPaymentSuccessOverlay");
-  if(!overlay) return;
-
-  const lang = INIT.lang === "da" ? "da" : "en";
-
-  overlay.querySelectorAll("[data-ui-lang]").forEach(el => {
-    el.hidden = el.dataset.uiLang !== lang;
-  });
-
-  const button = document.getElementById("lcPaymentSuccessContinue");
-
-  if(button){
-    button.textContent = lang === "da"
-      ? "Fortsæt til Life Cycle"
-      : "Continue to Life Cycle";
-  }
-
-  const close = () => {
-    overlay.hidden = true;
-    document.body.style.overflow = "";
-  };
-
-  document.getElementById("lcPaymentSuccessClose").onclick = close;
-  document.getElementById("lcPaymentSuccessContinue").onclick = close;
-
-  overlay.hidden = false;
-  document.body.style.overflow = "hidden";
-
-  const url = new URL(window.location.href);
-  url.searchParams.delete("payment");
-  url.searchParams.delete("session_id");
-
-  window.history.replaceState(
-    {},
-    "",
-    url.pathname + url.search + url.hash
-  );
-
-  button?.focus();
-
-}
 
 
 function renderLifeCycleAssessment(scenario){
@@ -39828,18 +39781,57 @@ function showLifeCyclePaymentSuccess(){
   if(params.get("payment") !== "success") return;
   if(ACCOUNT.plan !== "premium") return;
 
-  // Remove payment parameters so the message appears only once
+  const overlay = document.getElementById("lcPaymentSuccessOverlay");
+
+  if(!overlay){
+    console.error("PAYMENT SUCCESS MODAL NOT FOUND");
+    return;
+  }
+
+  const lang = INIT.lang === "da" ? "da" : "en";
+
+  // Show only the selected language
+  overlay.querySelectorAll("[data-ui-lang]").forEach(el => {
+    el.hidden = el.dataset.uiLang !== lang;
+  });
+
+  const button = document.getElementById("lcPaymentSuccessContinue");
+
+  if(button){
+    button.textContent = lang === "da"
+      ? "Fortsæt til Life Cycle"
+      : "Continue to Life Cycle";
+  }
+
+  // Close modal
+  const close = () => {
+    overlay.hidden = true;
+    document.body.style.overflow = "";
+  };
+
+  document.getElementById("lcPaymentSuccessClose").onclick = close;
+
+  if(button) button.onclick = close;
+
+  // Open modal
+  overlay.hidden = false;
+  document.body.style.overflow = "hidden";
+
+  // Remove payment parameters
   const url = new URL(window.location.href);
+
   url.searchParams.delete("payment");
   url.searchParams.delete("session_id");
 
-  window.history.replaceState({}, "", url.pathname + url.search + url.hash);
-
-  alert(
-    "Welcome to Neptoon Premium!\n\n" +
-    "Your payment was successful and your Premium access is now active.\n\n" +
-    "You can now save and restore your Life Cycle settings across devices."
+  window.history.replaceState(
+    {},
+    "",
+    url.pathname + url.search + url.hash
   );
+
+  button?.focus();
+
+  console.log("NEPTOON PREMIUM CONFIRMATION DISPLAYED");
 
 }
 
