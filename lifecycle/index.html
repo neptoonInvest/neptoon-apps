@@ -20323,7 +20323,7 @@ lcMountainExcelConsent:"Jeg accepterer, at Neptoon gemmer min e-mailadresse i fo
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "NavigationT mellem privatøkonomi og finansielle formuer",
+appName: "NavigationTW mellem privatøkonomi og finansielle formuer",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
@@ -38446,7 +38446,45 @@ function renderPhaseLabelSelection(phase){
 
 }
 
+async function saveLifeCycleSettings(){
 
+  if(!ACCOUNT.user || ACCOUNT.plan !== "premium"){
+    console.warn("Premium membership required");
+    return;
+  }
+
+  const settings = getUserSettings();
+
+  const {data,error} = await supabaseClient
+    .from("life_cycle_settings")
+    .upsert({
+      user_id: ACCOUNT.user.id,
+      settings,
+      updated_at: new Date().toISOString()
+    },{
+      onConflict:"user_id"
+    })
+    .select("updated_at")
+    .single();
+
+  if(error){
+    console.error("CLOUD SAVE FAILED",error);
+    return;
+  }
+
+  console.log("CLOUD SAVE SUCCESS",data);
+
+  const status = byId("lcStorageStatus");
+  const lastSaved = byId("lcStorageLastSaved");
+
+  if(status) status.textContent = "Saved";
+  if(lastSaved){
+    lastSaved.textContent =
+      "Last saved: " +
+      new Date(data.updated_at).toLocaleString();
+  }
+
+}
 
 
     function initializeDefaultModels(allModels){
