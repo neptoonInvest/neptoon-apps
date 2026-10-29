@@ -20545,7 +20545,7 @@ lcMountainExcelConsent:"Jeg accepterer, at Neptoon gemmer min e-mailadresse i fo
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "Navigationmaria mellem privatøkonomi og finansielle formuer",
+appName: "Navigationmaria1 mellem privatøkonomi og finansielle formuer",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
@@ -30227,20 +30227,44 @@ function bindLifeCycleAuthState(){
       console.log("SUPABASE AUTH EVENT",event);
 
       const user = session?.user || null;
+      const previousUserId = ACCOUNT.user?.id || null;
 
       ACCOUNT.user = user;
       ACCOUNT.email = user?.email || "";
 
-      // Temporary status until membership is verified
-      ACCOUNT.plan = user ? "free" : "visitor";
+      /*
+        ACCOUNT STATE
+
+        Preserve verified membership when
+        the same user receives another auth event.
+      */
+
+      if(!user){
+
+        ACCOUNT.plan = "visitor";
+
+      }else if(previousUserId !== user.id){
+
+        ACCOUNT.plan = "free";
+
+      }
 
       paintAppAccountStatus();
       renderAccountMembership();
+      bindLifeCycleStorageButtons();
 
-      // Logout: visitor state is already restored
+      /*
+        LOGOUT
+      */
+
       if(!user) return;
 
-      // Retrieve actual membership outside auth callback
+      /*
+        VERIFY MEMBERSHIP
+
+        Execute outside Supabase auth callback.
+      */
+
       if(
         event === "INITIAL_SESSION" ||
         event === "SIGNED_IN" ||
@@ -30253,10 +30277,12 @@ function bindLifeCycleAuthState(){
 
           refreshLifeCycleMembership(user)
             .catch(error => {
+
               console.error(
                 "MEMBERSHIP REFRESH FAILED",
                 error
               );
+
             });
 
         },0);
@@ -30267,7 +30293,6 @@ function bindLifeCycleAuthState(){
   );
 
 }
-
 
 function bindComponentButtons(){
 
