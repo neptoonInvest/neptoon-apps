@@ -20351,7 +20351,7 @@ lcMountainExcelConsent:"Jeg accepterer, at Neptoon gemmer min e-mailadresse i fo
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "NavigationPeterClausen mellem privatøkonomi og finansielle formuer",
+appName: "NavigationPeterClausenXXX mellem privatøkonomi og finansielle formuer",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
@@ -38962,7 +38962,42 @@ function bindWelcomeNavigation(){
    Cloud Save remains disabled.
 ===================================================== */
 
+async function loadLifeCycleSettings(){
 
+  if(!ACCOUNT.user || ACCOUNT.plan !== "premium"){
+    console.warn("Premium membership required");
+    return null;
+  }
+
+  const userId = ACCOUNT.user.id;
+
+  const {data,error} = await supabaseClient
+    .from("life_cycle_settings")
+    .select("settings,updated_at")
+    .eq("user_id",userId)
+    .maybeSingle();
+
+  if(error){
+    console.error("CLOUD LOAD FAILED",error);
+    return null;
+  }
+
+  // Ignore results if the account changed
+  if(ACCOUNT.user?.id !== userId) return null;
+
+  if(!data){
+    console.log("NO CLOUD SETTINGS FOUND");
+    return null;
+  }
+
+  console.log("CLOUD LOAD SUCCESS",{
+    updated_at:data.updated_at,
+    schemaVersion:data.settings?.schemaVersion
+  });
+
+  return data;
+
+}
 
 function initExcelExportAccess(){
 
