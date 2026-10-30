@@ -12150,7 +12150,7 @@ font-weight:500
 ========================================== */
 
 :root{
-  --neptoonContentWidth:1230px;
+  --neptoonContentWidth:1130px;
 }
 
 .app-tab{
@@ -12189,6 +12189,16 @@ font-weight:500
   line-height:1.7;
   color:#697586;
   margin:0 0 20px;
+}
+
+
+#lcAccountForm[hidden],
+.lcAccountTabs[hidden],
+#lcAccountVisitorView[hidden],
+#lcAccountMemberView[hidden],
+#lcAccountRecoveryView[hidden],
+#lcAccountNewPasswordView[hidden]{
+  display:none !important;
 }
 
 </style>
@@ -21870,7 +21880,7 @@ welcomeHowCloudLabel:"PREMIUM · ENGANGSBETALING",
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "Navigationmaria13 mellem privatøkonomi og finansielle formuer",
+appName: "Navigationmaria100 mellem privatøkonomi og finansielle formuer",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
@@ -31874,6 +31884,8 @@ drawChart(
    COMPONENT BUTTONS
 ===================================================== */
 
+let lcPasswordRecoveryActive = false;
+
 function bindLifeCycleAuthState(){
 
   supabaseClient.auth.onAuthStateChange(
@@ -31883,6 +31895,20 @@ function bindLifeCycleAuthState(){
 
       const user = session?.user || null;
       const previousUserId = ACCOUNT.user?.id || null;
+
+      /*
+        PASSWORD RECOVERY
+      */
+
+      if(event === "PASSWORD_RECOVERY"){
+
+        lcPasswordRecoveryActive = true;
+
+        setTimeout(()=>{
+          openLifeCyclePasswordReset();
+        },0);
+
+      }
 
       ACCOUNT.user = user;
       ACCOUNT.email = user?.email || "";
@@ -31926,18 +31952,13 @@ function bindLifeCycleAuthState(){
         event === "USER_UPDATED"
       ){
 
-        setTimeout(() => {
+        setTimeout(()=>{
 
           if(ACCOUNT.user?.id !== user.id) return;
 
           refreshLifeCycleMembership(user)
-            .catch(error => {
-
-              console.error(
-                "MEMBERSHIP REFRESH FAILED",
-                error
-              );
-
+            .catch(error=>{
+              console.error("MEMBERSHIP REFRESH FAILED",error);
             });
 
         },0);
@@ -31948,7 +31969,6 @@ function bindLifeCycleAuthState(){
   );
 
 }
-
 function bindComponentButtons(){
 
   document
@@ -39226,6 +39246,24 @@ document.getElementById("lcAccountLogoutBtn")
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* =====================================================
    NEPTOON LIFE CYCLE — ACCOUNT MODAL UI
 ===================================================== */
@@ -39243,6 +39281,10 @@ function openLifeCycleLogin(){
 
 document.getElementById("lcAccountAuthMessage").textContent = "";
   const user = ACCOUNT.user || null;
+
+if(!lcPasswordRecoveryActive){
+  showLifeCycleRecoveryView("login");
+}
 
   document.getElementById("lcAccountVisitorView").hidden = !!user;
   document.getElementById("lcAccountMemberView").hidden = !user;
@@ -39329,6 +39371,130 @@ console.log("SIGNUP 1");
 
   if(message) message.textContent = "";
 console.log("SIGNUP 2");
+
+}
+
+function showLifeCycleRecoveryView(view){
+
+  const form = document.getElementById("lcAccountForm");
+  const tabs = document.querySelector(".lcAccountTabs");
+  const recovery = document.getElementById("lcAccountRecoveryView");
+  const newPassword = document.getElementById("lcAccountNewPasswordView");
+  const visitor = document.getElementById("lcAccountVisitorView");
+  const member = document.getElementById("lcAccountMemberView");
+
+  if(visitor) visitor.hidden = false;
+  if(member) member.hidden = true;
+
+  if(form) form.hidden = view !== "login";
+  if(tabs) tabs.hidden = view !== "login";
+  if(recovery) recovery.hidden = view !== "recovery";
+  if(newPassword) newPassword.hidden = view !== "newPassword";
+
+}
+
+function openLifeCyclePasswordReset(){
+
+  lcPasswordRecoveryActive = true;
+
+  openLifeCycleLogin();
+  showLifeCycleRecoveryView("newPassword");
+
+}
+
+async function requestLifeCyclePasswordReset(){
+
+  const email = document.getElementById("lcAccountRecoveryEmail")?.value.trim().toLowerCase();
+  const message = document.getElementById("lcAccountRecoveryMessage");
+  const button = document.getElementById("lcAccountRecoverySubmit");
+  const da = INIT.lang === "da";
+
+  if(!email) return;
+
+  button.disabled = true;
+  message.textContent = "";
+
+  try{
+
+    const {error} = await supabaseClient.auth.resetPasswordForEmail(email,{
+      redirectTo:"https://webapps.neptoonwealth.com/lifecycle/"
+    });
+
+    if(error) throw error;
+
+    message.textContent = da
+      ? "Hvis adressen er registreret, modtager du et link til at nulstille din adgangskode."
+      : "If the address is registered, you will receive a password reset link.";
+
+  }catch(error){
+
+    console.error("PASSWORD RECOVERY ERROR",error);
+
+    message.textContent = da
+      ? "Anmodningen kunne ikke gennemføres. Prøv igen senere."
+      : "The request could not be completed. Please try again later.";
+
+  }finally{
+
+    button.disabled = false;
+
+  }
+
+}
+
+async function saveLifeCycleNewPassword(){
+
+  const password = document.getElementById("lcAccountNewPassword")?.value || "";
+  const confirm = document.getElementById("lcAccountConfirmPassword")?.value || "";
+  const message = document.getElementById("lcAccountNewPasswordMessage");
+  const button = document.getElementById("lcAccountNewPasswordSubmit");
+  const da = INIT.lang === "da";
+
+  if(password.length < 6 || password !== confirm){
+
+    message.textContent = da
+      ? "Adgangskoderne skal være ens og mindst 6 tegn lange."
+      : "Passwords must match and contain at least 6 characters.";
+
+    return;
+
+  }
+
+  button.disabled = true;
+  message.textContent = "";
+
+  try{
+
+    const {error} = await supabaseClient.auth.updateUser({
+      password
+    });
+
+    if(error) throw error;
+
+    lcPasswordRecoveryActive = false;
+
+    document.getElementById("lcAccountNewPassword").value = "";
+    document.getElementById("lcAccountConfirmPassword").value = "";
+
+    openLifeCycleLogin();
+
+    document.getElementById("lcAccountMemberMessage").textContent = da
+      ? "Din adgangskode er opdateret."
+      : "Your password has been updated.";
+
+  }catch(error){
+
+    console.error("PASSWORD UPDATE ERROR",error);
+
+    message.textContent = da
+      ? "Adgangskoden kunne ikke opdateres. Prøv igen."
+      : "Password could not be updated. Please try again.";
+
+  }finally{
+
+    button.disabled = false;
+
+  }
 
 }
 
@@ -39446,6 +39612,36 @@ document.getElementById("lcAccountUpgradeBtn")
       }
 
     });
+
+
+document.getElementById("lcAccountForgotPassword")?.addEventListener("click",()=>{
+
+  const email = document.getElementById("lcAccountEmail")?.value || "";
+
+  document.getElementById("lcAccountRecoveryEmail").value = email;
+
+  showLifeCycleRecoveryView("recovery");
+
+});
+
+document.getElementById("lcAccountRecoveryBack")?.addEventListener("click",()=>{
+
+  showLifeCycleRecoveryView("login");
+  setLifeCycleAccountMode("login");
+
+});
+
+document.getElementById("lcAccountRecoverySubmit")?.addEventListener(
+  "click",requestLifeCyclePasswordReset
+);
+
+document.getElementById("lcAccountNewPasswordSubmit")?.addEventListener(
+  "click",saveLifeCycleNewPassword
+);
+
+
+
+
 
   /*
     CLICK OUTSIDE MODAL
