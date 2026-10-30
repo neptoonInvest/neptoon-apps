@@ -12150,7 +12150,7 @@ font-weight:500
 ========================================== */
 
 :root{
-  --neptoonContentWidth:1230px;
+  --neptoonContentWidth:980px;
 }
 
 .app-tab{
@@ -39140,6 +39140,7 @@ function openLifeCycleLogin(){
   const overlay = document.getElementById("lcAccountOverlay");
   if(!overlay) return;
 
+document.getElementById("lcAccountAuthMessage").textContent = "";
   const user = ACCOUNT.user || null;
 
   document.getElementById("lcAccountVisitorView").hidden = !!user;
@@ -39179,6 +39180,7 @@ function closeLifeCycleLogin(){
 
   const overlay = document.getElementById("lcAccountOverlay");
   if(!overlay) return;
+document.getElementById("lcAccountAuthMessage").textContent = "";
 
   overlay.hidden = true;
 
@@ -39401,6 +39403,13 @@ if(document.readyState === "loading"){
 /* =====================================================
    LIFE CYCLE — SUPABASE LOGIN / SIGNUP
 ===================================================== */
+
+["lcAccountEmail","lcAccountPassword"].forEach(id=>{
+  document.getElementById(id)?.addEventListener("input",()=>{
+    const message=document.getElementById("lcAccountAuthMessage");
+    if(message) message.textContent="";
+  });
+});
 
 async function submitLifeCycleAccount(event){
 
@@ -41498,32 +41507,7 @@ function showLifeCyclePaymentSuccess(){
 }
 
 
-async function registerLifeCycleEmail(email){
-
-  const response = await fetch(
-    "https://qwrztkweyxoivzwqwaki.supabase.co/functions/v1/super-responder",
-    {
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify({
-        email:email.trim().toLowerCase(),
-        language:INIT.lang === "da" ? "da" : "en",
-        consent:true,
-        website:""
-      })
-    }
-  );
-
-  const result = await response.json();
-
-  if(!response.ok || !result.success){
-    throw new Error(result.error || "Registration failed");
-  }
-
-  return result;
-}
+		
 
 
 /* =====================================================
