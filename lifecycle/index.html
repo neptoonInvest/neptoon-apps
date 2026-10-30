@@ -39454,8 +39454,8 @@ async function submitLifeCycleAccount(event){
       if(!data.session){
 
         message.textContent = da
-          ? "Kontrollér din e-mail for at bekræfte din konto."
-          : "Check your email to confirm your account.";
+          ? "Hvis registreringen er mulig, modtager du en bekræftelsesmail. Har du allerede en konto, skal du vælge Log ind."
+          : "If registration is available, you will receive a confirmation email. Already have an account? Select Log in.";
 
         return;
 
@@ -39472,6 +39472,8 @@ async function submitLifeCycleAccount(event){
       if(error) throw error;
 
     }
+
+
 
     /*
       AUTHENTICATED USER
