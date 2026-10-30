@@ -12203,7 +12203,7 @@ font-weight:500
 
 
 
-.welcomeJourneyDescription{
+.lifeWelcomeHero{
 
 margin-bottom:15px !important;
 
@@ -12243,6 +12243,9 @@ margin-top:15px !important;
   margin:0 auto;
   box-sizing:border-box;
 }
+
+
+
 
 </style>
 
@@ -21745,9 +21748,9 @@ lcMountainExcelConsent:"Jeg accepterer, at Neptoon gemmer min e-mailadresse i fo
 
 /* ===== WELCOME · HOW IT WORKS ===== */
 
-welcomeHowKicker:"OPLEV NEPTOON · SÅDAN FUNGERER DET",
-welcomeHowTitle:"Fem visninger. Én levende økonomisk model.",
-welcomeHowDescription:"Begynd hvor du vil. Udforsk frit. Ændr dine forudsætninger når som helst – alle fem visninger bygger på den samme levende model.",
+welcomeHowKicker:"HVORDAN FUNGERER DET SÅ? - SÅDAN HER",
+welcomeHowTitle:"5 døre med LIVE opdatering af din livsøkonomi",
+welcomeHowDescription:"Du bestemmer selv hvor du starter og slutter, men det er selvfølgelig oplagt at starte med alder og forventet død lige herunder og derefter gå til fanebladet 'Mine Indstillinger' som samler dine formue, skat, porteføljevalg og eventuelt holdninger til finansielle aktier og generel økonomi i fremtiden. Systemet har præ-indstillet bedste bud på dine skattesatser. Du kan overskrive." ,
 
 welcomeHowView1Title:"Forbrug og opsparing",
 welcomeHowView1Desc:"Udforsk din formueudvikling og dagen for økonomisk frihed.",
@@ -21923,7 +21926,7 @@ welcomeHowCloudLabel:"PREMIUM · ENGANGSBETALING",
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "Navigationmaria103 mellem privatøkonomi og finansielle formuer",
+appName: "Navigationmaria105 mellem privatøkonomi og finansielle formuer",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
@@ -39430,11 +39433,17 @@ console.log("SIGNUP 1");
 
   if(forgot) forgot.hidden = isSignup;
 
-  if(password){
-    password.autocomplete = isSignup
-      ? "new-password"
-      : "current-password";
+if(password){
+  password.autocomplete = isSignup
+    ? "new-password"
+    : "current-password";
+
+  if(isSignup){
+    password.minLength = 6;
+  }else{
+    password.removeAttribute("minlength");
   }
+}
 
   if(message) message.textContent = "";
 console.log("SIGNUP 2");
