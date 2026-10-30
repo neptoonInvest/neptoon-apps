@@ -12150,7 +12150,7 @@ font-weight:500
 ========================================== */
 
 :root{
-  --neptoonContentWidth:1130px;
+  --neptoonContentWidth:1230px;
 }
 
 .app-tab{
@@ -12165,6 +12165,30 @@ font-weight:500
 .app-tab > *{
   max-width:100%;
   box-sizing:border-box;
+}
+
+#lcAccountForgotPassword{
+  display:block;
+  margin:0 0 14px auto;
+  padding:0;
+  width:auto;
+  text-align:right;
+  color:#4E79BD;
+  font-size:12px;
+}
+
+#lcAccountRecoveryView h3,
+#lcAccountNewPasswordView h3{
+  margin:0 0 12px;
+  font-size:18px;
+  color:#243247;
+}
+
+#lcAccountRecoveryView p{
+  font-size:13px;
+  line-height:1.7;
+  color:#697586;
+  margin:0 0 20px;
 }
 
 </style>
@@ -18094,6 +18118,8 @@ font-weight:500
 
         </div>
 
+
+
         <div class="lcAccountField">
 
           <label
@@ -18110,6 +18136,7 @@ font-weight:500
             required>
 
         </div>
+
 
         <button
           type="submit"
@@ -18135,6 +18162,80 @@ font-weight:500
         </div>
 
       </form>
+
+<!-- PASSWORD RECOVERY -->
+
+<div id="lcAccountRecoveryView" class="lcAccountForm" hidden>
+
+  <h3 data-lang="lcAccountRecoveryTitle">
+    Reset your password
+  </h3>
+
+  <p data-lang="lcAccountRecoveryDescription">
+    Enter your email address to receive a password reset link.
+  </p>
+
+  <div class="lcAccountField">
+    <label for="lcAccountRecoveryEmail" data-lang="lcAccountEmailLabel">
+      Email address
+    </label>
+    <input type="email" id="lcAccountRecoveryEmail"
+           autocomplete="email">
+  </div>
+
+  <button type="button" class="lcAccountPrimaryBtn"
+          id="lcAccountRecoverySubmit"
+          data-lang="lcAccountRecoverySend">
+    Send reset link
+  </button>
+
+  <button type="button" class="lcAccountTextBtn"
+          id="lcAccountRecoveryBack"
+          data-lang="lcAccountRecoveryBack">
+    Back to login
+  </button>
+
+  <div id="lcAccountRecoveryMessage"
+       class="lcAccountMessage" role="status" aria-live="polite"></div>
+
+</div>
+
+<!-- SET NEW PASSWORD -->
+
+<div id="lcAccountNewPasswordView" class="lcAccountForm" hidden>
+
+  <h3 data-lang="lcAccountNewPasswordTitle">
+    Set new password
+  </h3>
+
+  <div class="lcAccountField">
+    <label for="lcAccountNewPassword" data-lang="lcAccountNewPasswordLabel">
+      New password
+    </label>
+    <input type="password" id="lcAccountNewPassword"
+           autocomplete="new-password" minlength="6">
+  </div>
+
+  <div class="lcAccountField">
+    <label for="lcAccountConfirmPassword" data-lang="lcAccountConfirmPasswordLabel">
+      Confirm new password
+    </label>
+    <input type="password" id="lcAccountConfirmPassword"
+           autocomplete="new-password" minlength="6">
+  </div>
+
+  <button type="button" class="lcAccountPrimaryBtn"
+          id="lcAccountNewPasswordSubmit"
+          data-lang="lcAccountNewPasswordSave">
+    Update password
+  </button>
+
+  <div id="lcAccountNewPasswordMessage"
+       class="lcAccountMessage" role="status" aria-live="polite"></div>
+
+</div>
+
+
 
       <!-- ACCOUNT BENEFITS -->
 
