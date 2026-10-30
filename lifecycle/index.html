@@ -39484,7 +39484,7 @@ async function requestLifeCyclePasswordReset(){
   const button = document.getElementById("lcAccountRecoverySubmit");
   const da = INIT.lang === "da";
 
-  if(!email) return;
+  if(!email || !message || !button) return;
 
   button.disabled = true;
   message.textContent = "";
@@ -39498,16 +39498,34 @@ async function requestLifeCyclePasswordReset(){
     if(error) throw error;
 
     message.textContent = da
-      ? "Hvis adressen er registreret, modtager du et link til at nulstille din adgangskode."
-      : "If the address is registered, you will receive a password reset link.";
+      ? "Hvis e-mailadressen er registreret, modtager du et link til at nulstille din adgangskode. Tjek også din spammappe. Har du ikke modtaget mailen, kan du prøve igen om lidt."
+      : "If the email address is registered, you will receive a password reset link. Please also check your spam folder. If the email does not arrive, you can try again shortly.";
 
   }catch(error){
 
     console.error("PASSWORD RECOVERY ERROR",error);
 
-    message.textContent = da
-      ? "Anmodningen kunne ikke gennemføres. Prøv igen senere."
-      : "The request could not be completed. Please try again later.";
+    if(error.status === 429){
+
+      const seconds = Number(
+        error.message?.match(/after\s+(\d+)\s+seconds?/i)?.[1]
+      );
+
+      message.textContent = da
+        ? (Number.isFinite(seconds)
+            ? `Du har allerede anmodet om en e-mail. Prøv igen om ${seconds} sekunder.`
+            : "Du har allerede anmodet om en e-mail. Vent venligst et øjeblik, før du prøver igen.")
+        : (Number.isFinite(seconds)
+            ? `You have already requested an email. Try again in ${seconds} seconds.`
+            : "You have already requested an email. Please wait a moment before trying again.");
+
+    }else{
+
+      message.textContent = da
+        ? "Anmodningen kunne ikke gennemføres. Prøv igen senere."
+        : "The request could not be completed. Please try again later.";
+
+    }
 
   }finally{
 
