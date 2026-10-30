@@ -11776,7 +11776,352 @@ font-weight:500
 
 }
 
+/* =====================================================
+   WELCOME · HOW IT WORKS
+===================================================== */
 
+.lifeWelcomeHow{
+  padding:26px 0 30px;
+  border-bottom:1px solid #d9e2ef;
+}
+
+.lifeWelcomeHow h2{
+  font-family:"Times New Roman",serif;
+  font-size:25px;
+  font-weight:400;
+  margin:5px 0 8px;
+  color:#172b4d;
+}
+
+.lifeWelcomeHowIntro{
+  margin:0 0 20px;
+  color:#53647c;
+  font-size:13px;
+  line-height:1.6;
+}
+
+.lifeWelcomeHowGrid{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:10px;
+}
+
+.lifeWelcomeHowCard{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  text-align:left;
+  gap:9px;
+  min-width:0;
+  min-height:150px;
+  padding:15px 12px;
+  background:#f7f9fc;
+  border:1px solid #dbe4f0;
+  border-radius:0;
+  color:#172b4d;
+  cursor:pointer;
+  transition:background .15s,border-color .15s;
+}
+
+.lifeWelcomeHowCard:hover,
+.lifeWelcomeHowCard:focus-visible{
+  background:#edf3fc;
+  border-color:#4E79BD;
+}
+
+.lifeWelcomeHowIcon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:30px;
+  height:30px;
+  color:#4E79BD;
+}
+
+.lifeWelcomeHowIcon svg{
+  width:25px;
+  height:25px;
+  stroke-width:1.6;
+}
+
+.lifeWelcomeHowCard strong{
+  font-size:12px;
+  line-height:1.35;
+  font-weight:600;
+}
+
+.lifeWelcomeHowCard > span{
+  font-size:11px;
+  line-height:1.55;
+  color:#64748b;
+}
+
+.lifeWelcomeHowLive{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  padding:19px 10px;
+  font-size:12px;
+  font-weight:600;
+  color:#365f9e;
+  text-align:center;
+}
+
+.lifeWelcomeHowLive svg{
+  width:18px;
+  height:18px;
+  flex:0 0 auto;
+}
+
+.lifeWelcomeHowFooter{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  padding-top:19px;
+  border-top:1px solid #dbe4f0;
+}
+
+.lifeWelcomeHowFeature{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+}
+
+.lifeWelcomeHowFeatureIcon{
+  color:#4E79BD;
+  flex:0 0 24px;
+}
+
+.lifeWelcomeHowFeatureIcon svg{
+  width:22px;
+  height:22px;
+  stroke-width:1.6;
+}
+
+.lifeWelcomeHowFeatureText{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.lifeWelcomeHowFeatureText strong{
+  font-size:13px;
+  color:#172b4d;
+}
+
+.lifeWelcomeHowFeatureText p{
+  margin:0;
+  font-size:11px;
+  line-height:1.6;
+  color:#64748b;
+}
+
+.lifeWelcomeHowFeatureText small{
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.5px;
+  color:#4E79BD;
+}
+
+@media(max-width:700px){
+
+  .lifeWelcomeHow{
+    padding:22px 0;
+  }
+
+  .lifeWelcomeHowGrid{
+    display:flex;
+    overflow-x:auto;
+    gap:10px;
+    scroll-snap-type:x mandatory;
+    padding-bottom:8px;
+  }
+
+  .lifeWelcomeHowCard{
+    flex:0 0 155px;
+    scroll-snap-align:start;
+  }
+
+  .lifeWelcomeHowFooter{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .lifeWelcomeHowLive{
+    justify-content:flex-start;
+    text-align:left;
+  }
+
+}
+
+/* KNOWLEDGE ROOM · TWO LEARNING PATHS */
+
+#tabFAQ .faqKnowledgePaths{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin-top:22px;
+}
+
+#tabFAQ .faqKnowledgePath{
+  padding:15px 17px;
+  border:1px solid #dce3ed;
+  border-left:3px solid #4E79BD;
+  background:#f8fafc;
+  min-width:0;
+}
+
+#tabFAQ .faqKnowledgePathHead{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  color:#244a82;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.07em;
+}
+
+#tabFAQ .faqKnowledgePathHead svg{
+  width:16px;
+  height:16px;
+  flex-shrink:0;
+}
+
+#tabFAQ .faqKnowledgePath p{
+  margin:9px 0 0;
+  color:#53647b;
+  font-size:12px;
+  line-height:1.65;
+}
+
+#tabFAQ .faqKnowledgeDisclaimer{
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  margin-top:15px;
+  color:#718096;
+  font-size:11px;
+  line-height:1.6;
+}
+
+#tabFAQ .faqKnowledgeDisclaimer svg{
+  width:14px;
+  height:14px;
+  flex-shrink:0;
+  margin-top:2px;
+}
+
+@media(max-width:640px){
+  #tabFAQ .faqKnowledgePaths{
+    grid-template-columns:1fr;
+    gap:9px;
+    margin-top:17px;
+  }
+
+  #tabFAQ .faqKnowledgePath{
+    padding:12px 14px;
+  }
+}
+
+
+/* FAQ · AI EXPLAIN */
+
+.lifeFAQGroupSummary{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.lifeFAQGroupTitle{
+  flex:1;
+  min-width:0;
+}
+
+.lifeFAQGroupActions{
+  display:flex;
+  align-items:center;
+  gap:17px;
+  flex-shrink:0;
+}
+
+.lifeFAQAIButton{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:30px;
+  height:30px;
+  padding:0;
+  border:1px solid #dce3ed;
+  border-radius:0;
+  background:#fff;
+  color:#4E79BD;
+  cursor:pointer;
+  flex-shrink:0;
+}
+
+.lifeFAQAIButton:hover{
+  background:#edf3fb;
+  border-color:#4E79BD;
+}
+
+.lifeFAQAIButton svg{
+  width:15px;
+  height:15px;
+}
+
+.lifeFAQAIButton:focus-visible{
+  outline:2px solid #4E79BD;
+  outline-offset:2px;
+}
+
+.lifeFAQGroupActions > svg{
+  width:15px;
+  height:15px;
+  color:#4E79BD;
+}
+
+/* Existing accordion rotation */
+
+.lifeFAQGroup[open] > .lifeFAQGroupSummary
+.lifeFAQGroupActions > svg:last-child{
+  transform:rotate(180deg);
+}
+.lifeFAQAIButton{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:30px;
+  height:30px;
+  padding:0;
+  border:none;
+  border-radius:0;
+  background:transparent;
+  color:#4E79BD;
+  cursor:pointer;
+  flex-shrink:0;
+}
+
+.lifeFAQAIButton:hover{
+  background:transparent;
+  color:#244a82;
+}
+.lifeFAQAIButton{
+  transition:color .2s ease,transform .2s ease;
+}
+
+.lifeFAQAIButton:active{
+  transform:scale(.85);
+}
+
+.lifeFAQAIButton.copied{
+  color:#16a34a;
+}
+
+.lifeFAQAIButton.copied svg{
+  stroke-width:2.5;
+}
 </style>
 
 </head>
@@ -12040,6 +12385,223 @@ font-weight:500
 
 
 
+<!-- =====================================================
+     NEPTOON LIFE CYCLE · HOW IT WORKS
+     Insert immediately after lifeWelcomeHero
+===================================================== -->
+
+<section class="lifeWelcomeHow" id="lifeWelcomeHow">
+
+  <div class="lifeWelcomeSectionKicker"
+       data-lang="welcomeHowKicker">
+    DISCOVER NEPTOON · HOW IT WORKS
+  </div>
+
+  <h2 data-lang="welcomeHowTitle">
+    Five views. One live financial model.
+  </h2>
+
+  <p class="lifeWelcomeHowIntro"
+     data-lang="welcomeHowDescription">
+    Start anywhere. Explore freely. Change your assumptions
+    at any time — all five views use the same live model.
+  </p>
+
+  <!-- FIVE EQUAL VIEWS · NOT SEQUENTIAL STEPS -->
+
+  <div class="lifeWelcomeHowGrid">
+
+    <button type="button" class="lifeWelcomeHowCard"
+            data-welcome-how-tab="LifeCycle">
+
+      <div class="lifeWelcomeHowIcon">
+        <i data-lucide="mountain"></i>
+      </div>
+
+      <strong data-lang="welcomeHowView1Title">
+        Consumption & Savings
+      </strong>
+
+      <span data-lang="welcomeHowView1Desc">
+        Explore your wealth path and Financial Freedom Day.
+      </span>
+
+    </button>
+
+    <button type="button" class="lifeWelcomeHowCard"
+            data-welcome-how-tab="Balance">
+
+      <div class="lifeWelcomeHowIcon">
+        <i data-lucide="scale"></i>
+      </div>
+
+      <strong data-lang="welcomeHowView2Title">
+        Balances & Wealth
+      </strong>
+
+      <span data-lang="welcomeHowView2Desc">
+        See your economic balance at any age.
+      </span>
+
+    </button>
+
+    <button type="button" class="lifeWelcomeHowCard"
+            data-welcome-how-tab="Portfolio">
+
+      <div class="lifeWelcomeHowIcon">
+        <i data-lucide="chart-no-axes-combined"></i>
+      </div>
+
+      <strong data-lang="welcomeHowView3Title">
+        Portfolios & History
+      </strong>
+
+      <span data-lang="welcomeHowView3Desc">
+        Explore investment strategies, risk and history.
+      </span>
+
+    </button>
+
+    <button type="button" class="lifeWelcomeHowCard"
+            data-welcome-how-tab="FAQ">
+
+      <div class="lifeWelcomeHowIcon">
+        <i data-lucide="book-open"></i>
+      </div>
+
+      <strong data-lang="welcomeHowView4Title">
+        Knowledge & FAQ
+      </strong>
+
+      <span data-lang="welcomeHowView4Desc">
+        Understand the model, economics and assumptions.
+      </span>
+
+    </button>
+
+    <button type="button" class="lifeWelcomeHowCard"
+            data-welcome-how-tab="Account">
+
+      <div class="lifeWelcomeHowIcon">
+        <i data-lucide="sliders-horizontal"></i>
+      </div>
+
+      <strong data-lang="welcomeHowView5Title">
+        My Settings
+      </strong>
+
+      <span data-lang="welcomeHowView5Desc">
+        Personalize wealth, pensions, savings and assumptions.
+      </span>
+
+    </button>
+
+  </div>
+
+  <!-- LIVE ENGINE PRINCIPLE -->
+
+  <div class="lifeWelcomeHowLive">
+
+    <i data-lucide="refresh-cw" aria-hidden="true"></i>
+
+    <span data-lang="welcomeHowLive">
+      One connected model. Adjust your settings,
+      revisit any view and see updated results.
+    </span>
+
+  </div>
+
+  <!-- EXPORT & CLOUD STORAGE -->
+
+  <div class="lifeWelcomeHowFooter">
+
+    <div class="lifeWelcomeHowFeature">
+
+      <div class="lifeWelcomeHowFeatureIcon">
+        <i data-lucide="file-spreadsheet"></i>
+      </div>
+
+      <div class="lifeWelcomeHowFeatureText">
+
+        <strong data-lang="welcomeHowExcelTitle">
+          Take your financial life to Excel
+        </strong>
+
+        <p data-lang="welcomeHowExcelDesc">
+          Download your complete lifetime economic projection
+          at any time for further analysis.
+        </p>
+
+        <small data-lang="welcomeHowExcelLabel">
+          FREE · AVAILABLE TO EVERYONE
+        </small>
+
+      </div>
+
+    </div>
+
+    <div class="lifeWelcomeHowFeature">
+
+      <div class="lifeWelcomeHowFeatureIcon">
+        <i data-lucide="cloud-upload"></i>
+      </div>
+
+      <div class="lifeWelcomeHowFeatureText">
+
+        <strong data-lang="welcomeHowCloudTitle">
+          Save today. Continue another day.
+        </strong>
+
+        <p data-lang="welcomeHowCloudDesc">
+          Save your personal settings securely and return
+          to your live Life Cycle, even from another device.
+        </p>
+
+        <small data-lang="welcomeHowCloudLabel">
+          PREMIUM · ONE-TIME PAYMENT
+        </small>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- =====================================================
      NEPTOON LIFE CYCLE · WELCOME JOURNEY
@@ -12277,20 +12839,7 @@ font-weight:500
 
   <!-- Existing welcome sections continue below -->
 
-</section>
-
-
-
-
-
-
-
-
-
-  </div>
-
-
-<div class="lifeWelcomeViews">
+  <div class="lifeWelcomeViews">
 
   <div class="lifeWelcomeSectionKicker"
        data-lang="welcomeViewsKicker">
@@ -14546,37 +15095,70 @@ font-weight:500
 
 <section class="app-tab" data-tab="FAQ" id="tabFAQ">
 
-  <!-- FAQ HEADER — SAME DESIGN AS MY ACCOUNT -->
+  <!-- KNOWLEDGE ROOM HEADER -->
 
   <div class="panelHead accountMainHeader">
 
     <div class="accountHeaderContent">
 
       <div class="accountHeaderTop">
-
         <span class="accountHeaderKicker">
-          NEPTOON LIFE CYCLE · FAQ
+          NEPTOON LIFE CYCLE · KNOWLEDGE
         </span>
+      </div>
 
+      <div class="sectionTitle" data-lang="faqMainTitle">
+        Knowledge Room
+      </div>
+
+      <div class="sectionHint" data-lang="faqMainHint">
+        Understand the economics behind your financial life.
+        Explore Neptoon's official FAQ or use AI to deepen
+        your understanding of the model.
+      </div>
+
+      <!-- TWO WAYS TO LEARN -->
+
+      <div class="faqKnowledgePaths">
+
+        <div class="faqKnowledgePath">
+          <div class="faqKnowledgePathHead">
+            <i data-lucide="book-open"></i>
+            <span data-lang="faqPathManualTitle">01 · OFFICIAL FAQ</span>
+          </div>
+          <p data-lang="faqPathManualText">
+            Explore Neptoon's own explanations, organized
+            by topic. This is the authoritative reference
+            for how the model works.
+          </p>
+        </div>
+
+        <div class="faqKnowledgePath">
+          <div class="faqKnowledgePathHead">
+            <i data-lucide="sparkles"></i>
+            <span data-lang="faqPathAITitle">02 · AI EXPLAIN</span>
+          </div>
+          <p data-lang="faqPathAIText">
+            Use the AI icon beside any FAQ category to
+            copy its questions and answers into your
+            preferred AI assistant for further explanation.
+          </p>
+        </div>
 
       </div>
 
-      <div class="sectionTitle"
-           data-lang="faqMainTitle">
-        Questions and Answers
-      </div>
-
-      <div class="sectionHint"
-           data-lang="faqMainHint">
-        Questions and answers are organized by
-        category to address the most common questions
-        about Neptoon Life Cycle.
+      <div class="faqKnowledgeDisclaimer">
+        <i data-lucide="info"></i>
+        <span data-lang="faqAIDisclaimer">
+          AI may misinterpret the model or provide incorrect
+          explanations. Always consult the official FAQ
+          and documentation on this website.
+        </span>
       </div>
 
     </div>
 
   </div>
-
 
   <!-- FAQ CONTENT -->
 
@@ -18465,44 +19047,7 @@ const LIFE_CYCLE_FAQ = {
   id: "income",
   letter: "B",
   title: "Indkomst",
-  items: [
-    {
-      q: "Hvorfor spørger Neptoon ikke om min løn?",
-      a: "Neptoon er ikke en budgetmodel. Derfor skal du ikke indtaste løn, skat og almindelige leveomkostninger hver for sig. Det afgørende er nemlig ikke, hvor meget du tjener, men hvor meget af dit rådighedsbeløb du vil fordele mellem forbrug og opsparing månedligt. Og det er månedsopsparingsdelen - månedsindskuddet - der ryger i din valgte frie portefølje i fase 1. Har du lån skal din opsparing være større end de tilskrevne renter for at din formue stiger som følge af månedsopsparingen. Alt du indbetaler over rentebeløbet vil øge din opsparing her og nu inklusive hvis du betaler for dine afdrag også. Du kan også vælge at forbruge alt du har i rådighedsbeløb selvom du har gæld og dermed sætte månedsindskuddet til 0, modellen forsøger så at afregne din gæld med banker via andre værdier du har igennem livet. Det er hele ideen i en Livscyklus Model - modellen advarer hvis det økonomisk ikke hænger sammen"
-    },
-    {
-      q: "Forudsætter Neptoon, at min indkomst er konstant gennem livet?",
-      a: "Nej, men modellen anvender en forenklet beskrivelse af din fremtidige opsparing. Du angiver ét månedligt opsparingsbeløb og én fast årlig vækstrate (eksempelvis din lønvækst). Det giver et sammenhængende opsparingsforløb, men beskriver ikke automatisk større eller uregelmæssige ændringer i din indkomst. Sådanne ændringer kan du tilnærme i 'Mine Instillinger'."
-    },
-    {
-      q: "Hvad hvis min indkomst stiger i fremtiden?",
-      a: "Hvis du forventer gradvist at kunne investere mere, kan du vælge en positiv årlig vækst i opsparingen. Eksempelvis vil en månedlig opsparing på 4.000 kr. med 3 % årlig vækst stige til cirka 5.400 kr. efter ti år. Vækstraten vedrører dine indbetalinger og ikke afkastet på dine investeringer."
-    },
-    {
-      q: "Jeg er studerende og forventer en væsentligt højere indkomst senere. Hvad gør jeg?",
-      a: "Du kan indtaste din nuværende månedlige opsparing, eventuelt 0kr., og derefter anvende 'Andre fremtidige værdier' til at repræsentere den ekstra opsparing, du forventer efter studiet. Du beregner selv et samlet fremtidigt beløb, som tilnærmer de ekstra investeringer over en valgt periode, og angiver den alder, hvor beløbet skal indgå i modellen. Det er en forenklet metode og ikke en egentlig månedlig indkomstprognose."
-    },
-    {
-      q: "Kan jeg modellere et stort lønhop eller et karriereskifte?",
-      a: "Ja, tilnærmelsesvist. Hvis du eksempelvis forventer at kunne investere 5.000kr. ekstra om måneden i ti år efter et karriereskifte, svarer det til 600.000kr. før eventuelt investeringsafkast. Du kan anvende 'Andre fremtidige værdier' i 'Mine Indstillinger' til at repræsentere denne ekstra opsparing som et syntetisk engangsbeløb. Beløbet og tidspunktet bør vælges med omtanke, fordi en engangsbetaling ikke giver præcis samme økonomiske forløb som løbende månedlige indbetalinger. Du kan også downloade Excel arbejdsmappen og indtaste fleksible beløb."
-    },
-    {
-      q: "Hvad hvis min indkomst falder eller jeg holder en længere pause fra arbejdsmarkedet?",
-      a: "En forventet, gradvis reduktion i din opsparing kan afspejles gennem en lavere eller negativ årlig vækstrate. Større midlertidige ændringer, eksempelvis barsel, videreuddannelse eller arbejdsløshed, kan ikke modelleres som særskilte månedlige indkomstperioder. Du kan i stedet tilpasse dit gennemsnitlige opsparingsforløb eller anvende en syntetisk fremtidig værdi, hvis den samlede økonomiske virkning kan repræsenteres på den måde."
-    },
-    {
-      q: "Hvad betyder en syntetisk indkomststrøm under 'Andre fremtidige værdier'?",
-      a: "Det betyder, at du omregner en forventet fremtidig ændring i din disponible opsparing til ét samlet beløb. I stedet for at indtaste eksempelvis 60 månedlige ekstra indbetalinger kan du beregne deres samlede økonomiske værdi og registrere den som en fremtidig værdi. Neptoon indregner værdien i din økonomiske balance og overfører den til din frie portefølje på det valgte tidspunkt. Metoden er en tilnærmelse, som især er nyttig ved større, identificerbare indkomstændringer."
-    },
-    {
-      q: "Skal jeg medregne folkepension og ATP som indkomst eller opsparing?",
-      a: "Folkepension og ATP Livslang Pension skal registreres særskilt under Folkepension og ATP. De skal ikke lægges til den månedlige opsparing eller registreres som syntetiske fremtidige værdier. Neptoon medregner automatisk pensionsudbetalingerne og deres økonomiske værdi, så de ikke tælles med flere gange."
-    },
-    {
-      q: "Hvad sker der med min løn, når jeg opnår balance og Økonomisk Frihed ved overgang til nedsparingsfasen?",
-      a: "Balancen er det tidspunkt, hvor dine samlede økonomiske (rest) ressourcer ifølge modellen kan finansiere dit ønskede (rest) livsforbrug og din ønskede arv til dine efterkommere uden yderligere arbejdsindkomst. Teknisk set uden yderligere månedsindskud. Neptoon forudsætter derfor, at den løbende opsparing ophører, og at livscyklussen overgår til Fase 2. Du kan naturligvis fortsætte med at arbejde i virkeligheden, men denne fremtidige arbejdsindkomst indgår ikke automatisk i beregningen."
-    }
-  ]
+	
 },
 
 
@@ -18514,7 +19059,7 @@ const LIFE_CYCLE_FAQ = {
   items: [
     {
       q: "Hvad betyder forbrug i Neptoons Life Cycle?",
-      a: "Forbrug er det faste månedlige beløb, du ønsker at kunne finansiere fra din samlede økonomiske formue, når du har opnået balance og er overgået til Fase 2. Det er med andre ord dit mål for passiv indkomst efter skat, målt i dagens købekraft. Beløbet er ikke en registrering af dine nuværende udgifter, men et udtryk for den levestandard, du ønsker at kunne opretholde uden at være afhængig af arbejdsindAA<AZAZ<AZZSZZkomst."
+      a: "Forbrug er det faste månedlige beløb, du ønsker at kunne finansiere fra din samlede økonomiske formue, når du har opnået balance og er overgået til Fase 2. Det er med andre ord dit mål for passiv indkomst efter skat, målt i dagens købekraft. Beløbet er ikke en registrering af dine nuværende udgifter, men et udtryk for den levestandard, du ønsker at kunne opretholde uden at være afhængig af arbejdsindkomst."
     },
     {
       q: "Skal jeg indtaste mit nuværende månedlige forbrug?",
@@ -20382,6 +20927,39 @@ accountSelectModel:
 accountRiskClassification:
   "Neptoon risk classification",
 
+
+/* ===== WELCOME · HOW IT WORKS ===== */
+
+welcomeHowKicker:"DISCOVER NEPTOON · HOW IT WORKS",
+welcomeHowTitle:"Five views. One live financial model.",
+welcomeHowDescription:"Start anywhere. Explore freely. Change your assumptions at any time — all five views use the same live model.",
+
+welcomeHowView1Title:"Consumption & Savings",
+welcomeHowView1Desc:"Explore your wealth path and Financial Freedom Day.",
+
+welcomeHowView2Title:"Balances & Wealth",
+welcomeHowView2Desc:"See your economic balance at any age.",
+
+welcomeHowView3Title:"Portfolios & History",
+welcomeHowView3Desc:"Explore investment strategies, risk and historical returns.",
+
+welcomeHowView4Title:"Knowledge & FAQ",
+welcomeHowView4Desc:"Understand the model, economics and assumptions.",
+
+welcomeHowView5Title:"My Settings",
+welcomeHowView5Desc:"Personalize wealth, pensions, savings and assumptions.",
+
+welcomeHowLive:"One connected model. Adjust your settings, revisit any view and see updated results.",
+
+welcomeHowExcelTitle:"Take your financial life to Excel",
+welcomeHowExcelDesc:"Download your complete lifetime economic projection at any time for further analysis.",
+welcomeHowExcelLabel:"FREE · AVAILABLE TO EVERYONE",
+
+welcomeHowCloudTitle:"Save today. Continue another day.",
+welcomeHowCloudDesc:"Save your personal settings securely and return to your live Life Cycle, even from another device.",
+welcomeHowCloudLabel:"PREMIUM · ONE-TIME PAYMENT",
+
+
 navFAQ: "FAQ",
 accountCoreAllocation:
   "Core Allocation",
@@ -20777,6 +21355,19 @@ lifeStageNextButton:"Next life stage →",
 welcomeJourneyBridge:"From life's possibilities to your own financial life",
 
 
+faqMainTitle:"Knowledge Room",
+faqMainHint:"Understand the economics behind your financial life. Explore Neptoon's official FAQ or use AI to deepen your understanding of the model.",
+
+faqPathManualTitle:"01 · OFFICIAL FAQ",
+faqPathManualText:"Explore Neptoon's own explanations, organized by topic. This is the authoritative reference for how the model works.",
+
+faqPathAITitle:"02 · AI EXPLAIN",
+faqPathAIText:"Use the AI icon beside any FAQ category to copy its questions and answers into your preferred AI assistant for further explanation.",
+
+faqAIDisclaimer:"AI may misinterpret the model or provide incorrect explanations. Always consult the official FAQ and documentation on this website.",
+
+
+
 
 
 
@@ -20952,6 +21543,39 @@ lcMountainExcelConsent:"Jeg accepterer, at Neptoon gemmer min e-mailadresse i fo
   lifeObjectiveACaption:
     "Illustrativ udvikling i formuen gennem livet",
 
+
+/* ===== WELCOME · HOW IT WORKS ===== */
+
+welcomeHowKicker:"OPLEV NEPTOON · SÅDAN FUNGERER DET",
+welcomeHowTitle:"Fem visninger. Én levende økonomisk model.",
+welcomeHowDescription:"Begynd hvor du vil. Udforsk frit. Ændr dine forudsætninger når som helst – alle fem visninger bygger på den samme levende model.",
+
+welcomeHowView1Title:"Forbrug og opsparing",
+welcomeHowView1Desc:"Udforsk din formueudvikling og dagen for økonomisk frihed.",
+
+welcomeHowView2Title:"Balancer og formueudvikling",
+welcomeHowView2Desc:"Se din samlede økonomiske balance ved enhver alder.",
+
+welcomeHowView3Title:"Porteføljer og historik",
+welcomeHowView3Desc:"Udforsk investeringsstrategier, risiko og historiske afkast.",
+
+welcomeHowView4Title:"Viden og FAQ",
+welcomeHowView4Desc:"Forstå modellen, økonomien og dens forudsætninger.",
+
+welcomeHowView5Title:"Mine indstillinger",
+welcomeHowView5Desc:"Tilpas formue, pension, opsparing og forudsætninger.",
+
+welcomeHowLive:"Én sammenhængende model. Ændr dine indstillinger, vend tilbage til en hvilken som helst visning, og se de opdaterede resultater.",
+
+welcomeHowExcelTitle:"Tag hele dit økonomiske liv med til Excel",
+welcomeHowExcelDesc:"Download din samlede økonomiske livstidsfremskrivning når som helst, og arbejd videre med tallene i Excel.",
+welcomeHowExcelLabel:"GRATIS · FOR ALLE",
+
+welcomeHowCloudTitle:"Gem i dag. Fortsæt en anden dag.",
+welcomeHowCloudDesc:"Gem dine personlige indstillinger sikkert, og vend tilbage til din Life Cycle – også fra en anden enhed.",
+welcomeHowCloudLabel:"PREMIUM · ENGANGSBETALING",
+
+
   lifeObjectiveBIndex:
     "EKSEMPEL 02 · ØKONOMISK FRIHED",
 
@@ -21100,7 +21724,7 @@ lcMountainExcelConsent:"Jeg accepterer, at Neptoon gemmer min e-mailadresse i fo
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "Navigationmaria3 mellem privatøkonomi og finansielle formuer",
+appName: "Navigationmaria10 mellem privatøkonomi og finansielle formuer",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
@@ -21962,6 +22586,17 @@ welcomeObjectiveTitle:
 
 welcomeStartDescription:
   "Angiv din nuværende alder og forventede alder for afslutning på dit liv. I hele år. Modellens økonomi afslutter dog ikke nødvendigvis med dig men rækker også ud efter arvtagere",
+
+faqMainTitle:"Vidensrum",
+faqMainHint:"Forstå økonomien bag dit finansielle liv. Udforsk Neptoons officielle spørgsmål og svar, eller brug AI til at få en dybere forståelse af modellen.",
+
+faqPathManualTitle:"01 · OFFICIEL FAQ",
+faqPathManualText:"Læs Neptoons egne forklaringer, organiseret efter emne. Dette er den autoritative kilde til, hvordan modellen fungerer.",
+
+faqPathAITitle:"02 · AI-FORKLARING",
+faqPathAIText:"Brug AI-ikonet ved en FAQ-kategori til at kopiere spørgsmål og svar til din foretrukne AI-assistent og få en uddybende forklaring.",
+
+faqAIDisclaimer:"AI kan fejlfortolke modellen eller give forkerte forklaringer. Læs altid den officielle FAQ og dokumentationen på hjemmesiden.",
 
 welcomeViewsKicker:
   "NAVIGATION OG DYNAMISK OVERBLIK",
@@ -27764,6 +28399,227 @@ if(buildWinningLedger){
 
 }
 
+
+/* =====================================================
+   NEPTOON LIFE CYCLE · AI EXPLAIN
+   COMMON PROMPT COMPONENTS · DA / EN
+===================================================== */
+
+
+/* 1. MODEL IDENTITY */
+
+function getFAQAIIdentity(lang){
+
+  if(lang==="da") return `
+NEPTOON LIFE CYCLE · AI-FORKLARING
+
+Du er en uafhængig økonomisk formidler med speciale i privatøkonomi, investering og livscyklusøkonomi.
+
+Jeg anvender Neptoon Life Cycle, en deterministisk økonomisk model, der undersøger sammenhængen mellem husstandens ressourcer, opsparing, forbrug, investeringer, Financial Freedom og Legacy.
+
+Neptoon er ikke AI-drevet. Modellens økonomiske beregninger udføres af en selvstændig beregningsmotor.
+
+Du skal hjælpe mig med at forstå økonomien bag modellen, ikke markedsføre Neptoon eller ukritisk bekræfte dens antagelser.
+`.trim();
+
+  return `
+NEPTOON LIFE CYCLE · AI EXPLAIN
+
+You are an independent economic educator specializing in household finance, investing and life-cycle economics.
+
+I am using Neptoon Life Cycle, a deterministic economic model exploring the relationships between household resources, savings, consumption, investments, Financial Freedom and Legacy.
+
+Neptoon is not AI-driven. Its financial calculations are performed by an independent calculation engine.
+
+Your role is to help me understand the economics behind the model, not to promote Neptoon or uncritically endorse its assumptions.
+`.trim();
+
+}
+
+
+/* 2. EDUCATIONAL INSTRUCTIONS */
+
+function getFAQAIInstructions(lang){
+
+  if(lang==="da") return `
+DIN OPGAVE
+
+Omsæt Neptoons officielle spørgsmål og svar om det valgte emne til en sammenhængende, engagerende og økonomisk velfunderet forklaring.
+
+Du skal ikke blot opsummere manualen. Brug den som fundament for en bredere, pædagogisk fortælling.
+
+FORKLAR ØKONOMIEN
+- Forklar de centrale økonomiske sammenhænge og intuitionen bag dem.
+- Inddrag relevant økonomisk teori, når det forbedrer forståelsen.
+- Forbind emnet med opsparing, forbrug, formueudvikling, Financial Freedom og Legacy, hvor det er relevant.
+
+GØR FORKLARINGEN LEVENDE
+- Brug realistiske hverdagssituationer og enkle illustrative regneeksempler.
+- Forklar, hvorfor forskellige økonomiske valg kan give forskellige resultater.
+- Brug eksempler til at belyse principper, ikke til at opfinde resultater fra Neptoon.
+
+UDFORSK OG UDFORDR
+- Diskutér økonomiske afvejninger, følsomheder, usikkerheder og begrænsninger.
+- Udfordr gerne modellens forenklinger på en konstruktiv måde.
+- Sammenlign med alternative økonomiske tilgange, når det er relevant.
+- Gør det klart, når en forklaring går videre end Neptoons officielle dokumentation.
+`.trim();
+
+  return `
+YOUR TASK
+
+Transform Neptoon's official questions and answers on the selected topic into a coherent, engaging and economically rigorous explanation.
+
+Do not merely summarize the manual. Use it as the foundation for a broader educational narrative.
+
+EXPLAIN THE ECONOMICS
+- Explain the central economic relationships and the intuition behind them.
+- Introduce relevant economic theory where it improves understanding.
+- Connect the topic to savings, consumption, wealth development, Financial Freedom and Legacy where relevant.
+
+MAKE THE EXPLANATION ACCESSIBLE
+- Use realistic everyday situations and simple illustrative numerical examples.
+- Explain why different economic decisions may produce different outcomes.
+- Use examples to illustrate principles, not to invent Neptoon calculation results.
+
+EXPLORE AND CHALLENGE
+- Discuss economic trade-offs, sensitivities, uncertainties and limitations.
+- Constructively challenge the model's simplifying assumptions.
+- Compare alternative economic approaches where relevant.
+- Clearly identify explanations that go beyond Neptoon's official documentation.
+`.trim();
+
+}
+
+
+/* 3. METHODOLOGICAL SAFEGUARDS */
+
+function getFAQAISafeguards(lang){
+
+  if(lang==="da") return `
+METODISK PRÆCISION OG KILDEKRITIK
+
+- Den vedlagte FAQ er den autoritative kilde til Neptoons dokumenterede funktionalitet.
+- Opfind ikke funktioner, beregningsregler, brugerindstillinger eller tekniske mekanismer.
+- Skeln tydeligt mellem dokumenteret Neptoon-funktionalitet, almindelig økonomisk teori og hypotetiske eksempler.
+- Hvis dokumentationen ikke understøtter en bestemt konklusion, skal du gøre opmærksom på det.
+- Hvis din fortolkning afviger fra FAQ'en, skal du eksplicit identificere forskellen.
+- Kontrollér økonomiske eksempler for konsistens, især tidspunktet for pengestrømme, diskontering, renters rente, nutidsværdi og fremtidsværdi.
+- En strøm af fremtidige betalinger må ikke behandles som en tilsvarende engangsbetaling uden korrekt økonomisk værdiansættelse.
+- Skeln mellem en konstant procentvis vækstrate og en lineær udvikling.
+- En konstant vækstrate må ikke beskrives som en midlertidig ændring, medmindre modellen faktisk understøtter tidsafgrænsede ændringer.
+- Deterministiske beregninger er betingede scenarier, ikke sikre fremtidsprognoser.
+- Undgå personlig investeringsrådgivning og udokumenterede anbefalinger.
+`.trim();
+
+  return `
+METHODOLOGICAL ACCURACY AND SOURCE INTEGRITY
+
+- The supplied FAQ is the authoritative source for Neptoon's documented functionality.
+- Do not invent features, calculation rules, user settings or technical mechanisms.
+- Clearly distinguish documented Neptoon functionality, general economic theory and hypothetical examples.
+- If the documentation does not support a particular conclusion, acknowledge that limitation.
+- Explicitly identify any interpretation that conflicts with the supplied FAQ.
+- Check numerical examples for consistency, especially cash-flow timing, discounting, compounding, present value and future value.
+- Do not treat a stream of future payments as an equivalent lump sum without appropriate economic valuation.
+- Distinguish constant percentage growth from linear development.
+- Do not describe a constant growth rate as a temporary change unless the model actually supports time-specific adjustments.
+- Deterministic calculations represent conditional scenarios, not guaranteed forecasts.
+- Avoid personalized investment advice and unsupported recommendations.
+`.trim();
+
+}
+
+
+/* 4. OUTPUT FORMAT AND OFFICIAL REFERENCE */
+
+function getFAQAIOutputRules(lang){
+
+  if(lang==="da") return `
+FORMIDLING OG RESULTAT
+
+Skriv på dansk i et naturligt, engagerende og professionelt sprog.
+
+Henvend dig til en intelligent og nysgerrig læser uden nødvendigvis at forudsætte en økonomisk uddannelse.
+
+- Begynd med en fængende, men fagligt præcis introduktion til emnet.
+- Skriv en sammenhængende forklaring med naturlige overskrifter og afsnit.
+- Undgå mekanisk gengivelse af FAQ'ens spørgsmål og svar.
+- Undgå unødvendig teknisk jargon, gentagelser og overdreven kompleksitet.
+- Giv plads til økonomisk intuition, relevante eksempler og kritisk refleksion.
+- Afslut med tre interessante spørgsmål til videre økonomisk udforskning.
+
+For yderligere spørgsmål om Neptoon Life Cycle, modellens funktioner og officiel dokumentation, henvis læseren til:
+
+www.neptoonwealth.com
+
+VIGTIGT:
+Din forklaring er en uafhængig AI-fortolkning og ikke officiel Neptoon-dokumentation. Gør dette klart i en kort afsluttende bemærkning, og anbefal læseren at kontrollere væsentlige oplysninger i den originale FAQ og på Neptoons hjemmeside.
+`.trim();
+
+  return `
+WRITING STYLE AND OUTPUT
+
+Write in natural, engaging and professional English.
+
+Address an intelligent and curious reader without assuming formal training in economics.
+
+- Begin with an engaging but economically accurate introduction.
+- Write a coherent narrative using meaningful headings and paragraphs.
+- Avoid mechanically reproducing the FAQ questions and answers.
+- Avoid unnecessary jargon, repetition and excessive complexity.
+- Make room for economic intuition, relevant examples and critical reflection.
+- Conclude with three interesting questions for further economic exploration.
+
+For further questions about Neptoon Life Cycle, its features and official documentation, refer the reader to:
+
+www.neptoonwealth.com
+
+IMPORTANT:
+Your explanation is an independent AI interpretation, not official Neptoon documentation. State this briefly at the end and encourage the reader to verify important information against the original FAQ and Neptoon's official website.
+`.trim();
+
+}
+
+
+
+function buildFAQAIPrompt(group,lang=INIT.lang){
+
+  const language=lang==="da"?"da":"en";
+  const topic=`${group.letter}. ${group.title}`;
+
+  const items=Array.isArray(group.items)?group.items:[];
+
+  console.log("AI PROMPT SOURCE",topic,items.length,items);
+
+  const source=items.map((item,i)=>
+    language==="da"
+      ? `SPØRGSMÅL ${i+1}: ${item.q}\nSVAR: ${item.a}`
+      : `QUESTION ${i+1}: ${item.q}\nANSWER: ${item.a}`
+  ).join("\n\n");
+
+  const identity=getFAQAIIdentity(language);
+  const instructions=getFAQAIInstructions(language);
+  const safeguards=getFAQAISafeguards(language);
+  const output=getFAQAIOutputRules(language);
+
+  return [
+    identity,
+    language==="da"?`EMNE: ${topic}`:`TOPIC: ${topic}`,
+    instructions,
+    safeguards,
+    output,
+    language==="da"
+      ? `OFFICIELT KILDEMATERIALE · ${topic}\n\n${source}`
+      : `OFFICIAL SOURCE MATERIAL · ${topic}\n\n${source}`
+  ].join("\n\n");
+
+}
+
+
+
+
+
 function renderFooter({
 
   inputs,
@@ -28247,6 +29103,26 @@ renderFooter({
 
 }
 
+
+
+
+function initLifeWelcomeHow(){
+
+  const root = document.getElementById("lifeWelcomeHow");
+  if(!root || root.dataset.initialized === "1") return;
+
+  root.dataset.initialized = "1";
+
+  root.querySelectorAll("[data-welcome-how-tab]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      openTab(btn.dataset.welcomeHowTab);
+    });
+  });
+
+  if(window.lucide?.createIcons){
+    window.lucide.createIcons({nodes:[...root.querySelectorAll("[data-lucide]")]});
+  }
+}
 
 /* =====================================================
    PATH FROM CANONICAL LEDGER
@@ -33676,151 +34552,259 @@ function num(v,d=2){const n=Number(v);return Number.isFinite(n)?n.toFixed(d):"�
    RENDER LIFE CYCLE FAQ
 ========================================= */
 
-function renderLifeCycleFAQ(lang){
 
 
+async function copyFAQAI(text,lang){
 
-  const faq =
-    LIFE_CYCLE_FAQ[lang] ||
-    LIFE_CYCLE_FAQ.en;
+  let copied=false;
 
-  const container =
-    document.getElementById("lifeFAQGroups");
-
-  if(!container) return;
-
-  const kicker =
-    document.getElementById("lifeFAQKicker");
-
-  const title =
-    document.getElementById("lifeFAQTitle");
-
-  const subtitle =
-    document.getElementById("lifeFAQSubtitle");
-
-  if(kicker){
-    kicker.textContent = faq.header.kicker;
+  // 1. Modern Clipboard API
+  try{
+    if(navigator.clipboard?.writeText){
+      await navigator.clipboard.writeText(text);
+      copied=true;
+    }
+  }catch(err){
+    console.warn("Clipboard API unavailable:",err);
   }
 
-  if(title){
-    title.textContent = faq.header.title;
+  // 2. Fallback for embedded Wix iframe
+  if(!copied){
+    const ta=document.createElement("textarea");
+    ta.value=text;
+    ta.setAttribute("readonly","");
+ta.style.cssText="position:fixed;left:-9999px;top:0;width:1px;height:1px;opacity:0;pointer-events:none;";
+
+    document.body.appendChild(ta);
+    ta.focus({preventScroll:true});
+    ta.select();
+    ta.setSelectionRange(0,ta.value.length);
+
+    try{
+      copied=document.execCommand("copy");
+    }catch(err){
+      console.warn("Fallback clipboard failed:",err);
+    }
+
+    ta.remove();
   }
 
-  if(subtitle){
-    subtitle.textContent = faq.header.subtitle;
+  // 3. Result
+if(copied){
+  console.log("FAQ AI prompt copied successfully");
+}else{
+    console.warn("Clipboard blocked by browser or iframe permissions.");
+    alert(lang==="da"
+      ? "Browseren blokerede kopiering. Prøv at åbne appen direkte."
+      : "Clipboard access was blocked. Try opening the app directly.");
   }
 
-  container.replaceChildren();
-
-  faq.groups.forEach(group => {
-
-    const groupEl =
-      document.createElement("details");
-
-    groupEl.className =
-      "lifeFAQGroup";
-
-    const groupSummary =
-      document.createElement("summary");
-
-    groupSummary.className =
-      "lifeFAQGroupSummary";
-
-    const groupTitle =
-      document.createElement("span");
-
-    groupTitle.className =
-      "lifeFAQGroupTitle";
-
-    groupTitle.textContent =
-      `${group.letter}. ${group.title}`;
-
-    const groupIcon =
-      document.createElement("i");
-
-    groupIcon.setAttribute(
-      "data-lucide",
-      "chevron-down"
-    );
-
-    groupSummary.append(
-      groupTitle,
-      groupIcon
-    );
-
-    const questionList =
-      document.createElement("div");
-
-    questionList.className =
-      "lifeFAQList";
-
-    (group.items || []).forEach(item => {
-
-      const questionEl =
-        document.createElement("details");
-
-      questionEl.className =
-        "lifeFAQItem";
-
-      const questionSummary =
-        document.createElement("summary");
-
-      const questionText =
-        document.createElement("span");
-
-      questionText.textContent =
-        item.q;
-
-      const questionIcon =
-        document.createElement("i");
-
-      questionIcon.setAttribute(
-        "data-lucide",
-        "chevron-down"
-      );
-
-      questionSummary.append(
-        questionText,
-        questionIcon
-      );
-
-      const answer =
-        document.createElement("div");
-
-      answer.className =
-        "lifeFAQAnswer";
-
-      answer.textContent =
-        item.a;
-
-      questionEl.append(
-        questionSummary,
-        answer
-      );
-
-      questionList.appendChild(
-        questionEl
-      );
-
-    });
-
-    groupEl.append(
-      groupSummary,
-      questionList
-    );
-
-    container.appendChild(
-      groupEl
-    );
-
-  });
-
-  if(window.lucide){
-    lucide.createIcons();
-  }
+return copied;
 
 }
 
+
+function buildFAQAIPrompt(group,lang){
+
+  const source=(group.items||[]).map((item,i)=>
+    `${i+1}. ${item.q}\n${item.a}`
+  ).join("\n\n");
+
+  const topic=`${group.letter}. ${group.title}`;
+
+  if(lang==="da") return `
+NEPTOON LIFE CYCLE · AI-FORKLARING
+
+Du er en uafhængig økonomisk formidler med speciale i privatøkonomi, investering og livscyklusøkonomi.
+
+Jeg anvender Neptoon Life Cycle, en deterministisk økonomisk model. Modellens beregninger udføres ikke af AI.
+
+EMNE: ${topic}
+
+Omsæt nedenstående officielle spørgsmål og svar til en sammenhængende, engagerende og økonomisk velfunderet forklaring.
+
+Du skal ikke blot opsummere manualen. Brug den som fundament for en bredere, pædagogisk fortælling.
+
+FORKLAR OG UDFORSK:
+- Forklar den økonomiske intuition og de centrale sammenhænge.
+- Inddrag almindelig økonomisk teori, hvor det giver mening.
+- Brug realistiske situationer og enkle illustrative regneeksempler.
+- Forklar relevante afvejninger, følsomheder og begrænsninger.
+- Forbind emnet med opsparing, forbrug, Financial Freedom og Legacy, hvor relevant.
+- Diskutér gerne alternative økonomiske tilgange og modellens forenklinger.
+
+RESPEKTÉR KILDEMATERIALET:
+- Den officielle FAQ er autoritativ for Neptoons faktiske funktionalitet.
+- Opfind ikke funktioner, beregningsregler eller brugerindstillinger.
+- Skeln mellem dokumenteret funktionalitet, økonomisk teori og hypotetiske eksempler.
+- Kontrollér økonomiske eksempler for konsistens, især timing af pengestrømme, renters rente, nutidsværdi og fremtidsværdi.
+- Hvis dokumentationen ikke understøtter en konklusion, skal du sige det.
+- Hvis din fortolkning afviger fra FAQ'en, skal du tydeligt identificere forskellen.
+- Deterministiske beregninger er ikke sikre fremtidsprognoser.
+
+Skriv på dansk i et naturligt, professionelt og letforståeligt sprog. Brug overskrifter og sammenhængende afsnit frem for at gentage FAQ-strukturen.
+
+Afslut med tre interessante spørgsmål til videre økonomisk udforskning.
+
+OFFICIELT KILDEMATERIALE · ${topic}
+
+${source}
+`.trim();
+
+  return `
+NEPTOON LIFE CYCLE · AI EXPLAIN
+
+You are an independent economic educator specializing in household finance, investing and life-cycle economics.
+
+I am using Neptoon Life Cycle, a deterministic economic model. Its financial calculations are not AI-driven.
+
+TOPIC: ${topic}
+
+Transform the official questions and answers below into a coherent, engaging and economically rigorous explanation.
+
+Do not merely summarize the manual. Use it as the foundation for a broader educational narrative.
+
+EXPLAIN AND EXPLORE:
+- Explain the economic intuition and underlying relationships.
+- Introduce relevant economic theory where useful.
+- Use realistic situations and simple illustrative numerical examples.
+- Discuss trade-offs, sensitivities, uncertainty and limitations.
+- Connect the topic to savings, consumption, Financial Freedom and Legacy where relevant.
+- Critically examine simplifying assumptions and alternative economic approaches.
+
+RESPECT THE SOURCE:
+- The official FAQ is authoritative regarding Neptoon's actual functionality.
+- Do not invent features, calculation rules or user settings.
+- Distinguish documented functionality from general economic theory and hypothetical examples.
+- Check numerical examples for consistency, particularly cash-flow timing, compounding, present value and future value.
+- If the source does not support a conclusion, acknowledge that limitation.
+- Explicitly identify any interpretation that conflicts with the supplied FAQ.
+- Deterministic calculations are not guaranteed forecasts.
+
+Write in clear, natural and professional English. Use meaningful headings and coherent paragraphs rather than repeating the FAQ structure.
+
+Conclude with three interesting questions for further economic exploration.
+
+OFFICIAL SOURCE MATERIAL · ${topic}
+
+${source}
+`.trim();
+
+}
+
+function renderLifeCycleFAQ(lang){
+
+  const faq=LIFE_CYCLE_FAQ[lang]||LIFE_CYCLE_FAQ.en;
+  const container=document.getElementById("lifeFAQGroups");
+  if(!container) return;
+
+  const kicker=document.getElementById("lifeFAQKicker");
+  const title=document.getElementById("lifeFAQTitle");
+  const subtitle=document.getElementById("lifeFAQSubtitle");
+
+  if(kicker) kicker.textContent=faq.header.kicker;
+  if(title) title.textContent=faq.header.title;
+  if(subtitle) subtitle.textContent=faq.header.subtitle;
+
+  container.replaceChildren();
+
+  faq.groups.forEach(group=>{
+
+    const groupEl=document.createElement("details");
+    groupEl.className="lifeFAQGroup";
+
+    const groupSummary=document.createElement("summary");
+    groupSummary.className="lifeFAQGroupSummary";
+
+    const groupTitle=document.createElement("span");
+    groupTitle.className="lifeFAQGroupTitle";
+    groupTitle.textContent=`${group.letter}. ${group.title}`;
+
+    // AI EXPLAIN ICON
+
+    const aiButton=document.createElement("button");
+    aiButton.type="button";
+    aiButton.className="lifeFAQAIButton";
+    aiButton.title=lang==="da"?"Kopiér AI-forklaring":"Copy AI explanation";
+    aiButton.setAttribute("aria-label",aiButton.title);
+    aiButton.innerHTML='<i data-lucide="sparkles"></i>';
+
+
+aiButton.addEventListener("click",async event=>{
+  event.preventDefault();
+  event.stopPropagation();
+
+  const prompt=buildFAQAIPrompt(group,lang);
+  const copied=await copyFAQAI(prompt,lang);
+
+  if(!copied) return;
+
+  aiButton.classList.add("copied");
+
+  const icon=aiButton.querySelector("svg");
+  if(icon){
+    icon.outerHTML='<i data-lucide="check"></i>';
+    lucide.createIcons({nodes:[aiButton]});
+  }
+
+  setTimeout(()=>{
+    if(!aiButton.isConnected) return;
+
+    aiButton.classList.remove("copied");
+    const currentIcon=aiButton.querySelector("svg");
+
+    if(currentIcon){
+      currentIcon.outerHTML='<i data-lucide="sparkles"></i>';
+      lucide.createIcons({nodes:[aiButton]});
+    }
+  },1500);
+});
+    // EXISTING ACCORDION ICON
+
+    const groupIcon=document.createElement("i");
+    groupIcon.setAttribute("data-lucide","chevron-down");
+
+    const actions=document.createElement("span");
+    actions.className="lifeFAQGroupActions";
+    actions.append(aiButton,groupIcon);
+
+    groupSummary.append(groupTitle,actions);
+
+    const questionList=document.createElement("div");
+    questionList.className="lifeFAQList";
+
+    (group.items||[]).forEach(item=>{
+
+      const questionEl=document.createElement("details");
+      questionEl.className="lifeFAQItem";
+
+      const questionSummary=document.createElement("summary");
+
+      const questionText=document.createElement("span");
+      questionText.textContent=item.q;
+
+      const questionIcon=document.createElement("i");
+      questionIcon.setAttribute("data-lucide","chevron-down");
+
+      questionSummary.append(questionText,questionIcon);
+
+      const answer=document.createElement("div");
+      answer.className="lifeFAQAnswer";
+      answer.textContent=item.a;
+
+      questionEl.append(questionSummary,answer);
+      questionList.appendChild(questionEl);
+
+    });
+
+    groupEl.append(groupSummary,questionList);
+    container.appendChild(groupEl);
+
+  });
+
+  if(window.lucide) lucide.createIcons();
+
+}
 
 
 
@@ -40817,7 +41801,7 @@ console.log("WEB INIT 11");
 /* =====================================================
    INIT BOOT
 ===================================================== */
-
+initLifeWelcomeHow();
 initLifeWelcomeJourney();
 console.log("BOOT 17");
 bindComponentButtons();
