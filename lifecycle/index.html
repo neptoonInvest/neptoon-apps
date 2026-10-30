@@ -39316,21 +39316,40 @@ let lcAccountMode = "login";
 /*
    OPEN MODAL
 */
-
 function openLifeCycleLogin(){
 
   const overlay = document.getElementById("lcAccountOverlay");
   if(!overlay) return;
 
-document.getElementById("lcAccountAuthMessage").textContent = "";
   const user = ACCOUNT.user || null;
+  const recovering = lcPasswordRecoveryActive === true;
 
-if(!lcPasswordRecoveryActive){
-  showLifeCycleRecoveryView("login");
-}
+  const visitor = document.getElementById("lcAccountVisitorView");
+  const member = document.getElementById("lcAccountMemberView");
+  const message = document.getElementById("lcAccountAuthMessage");
 
-  document.getElementById("lcAccountVisitorView").hidden = !!user;
-  document.getElementById("lcAccountMemberView").hidden = !user;
+  if(message) message.textContent = "";
+
+  /*
+    RECOVERY HAS PRIORITY
+  */
+
+  if(recovering){
+
+    showLifeCycleRecoveryView("newPassword");
+
+  }else{
+
+    showLifeCycleRecoveryView("login");
+
+    visitor.hidden = !!user;
+    member.hidden = !user;
+
+  }
+
+  /*
+    AUTHENTICATED MEMBER
+  */
 
   if(user){
 
@@ -39341,9 +39360,7 @@ if(!lcPasswordRecoveryActive){
       ACCOUNT.plan === "premium" ? "PREMIUM" : "FREE";
 
     document.getElementById("lcAccountCloudStatus").textContent =
-      ACCOUNT.plan === "premium"
-        ? "✓"
-        : "Premium";
+      ACCOUNT.plan === "premium" ? "✓" : "Premium";
 
     document.getElementById("lcAccountPremiumBox").hidden =
       ACCOUNT.plan === "premium";
@@ -39351,10 +39368,17 @@ if(!lcPasswordRecoveryActive){
   }
 
   overlay.hidden = false;
-
   document.body.style.overflow = "hidden";
 
-  document.getElementById("lcAccountClose")?.focus();
+  if(recovering){
+
+    document.getElementById("lcAccountNewPassword")?.focus();
+
+  }else{
+
+    document.getElementById("lcAccountClose")?.focus();
+
+  }
 
 }
 
@@ -39439,9 +39463,7 @@ function showLifeCycleRecoveryView(view){
 function openLifeCyclePasswordReset(){
 
   lcPasswordRecoveryActive = true;
-
   openLifeCycleLogin();
-  showLifeCycleRecoveryView("newPassword");
 
 }
 
