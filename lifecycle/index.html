@@ -11553,6 +11553,229 @@ font-weight:500
   display:none!important;
 }
 
+/* =====================================================
+   NEPTOON LIFE CYCLE · WELCOME JOURNEY
+===================================================== */
+
+.lifeWelcomeJourney{
+  padding:24px 0 30px;
+  border-bottom:1px solid #dce5f0;
+  margin-bottom:26px;
+}
+
+.lifeWelcomeJourney h2{
+  font:normal 27px "Times New Roman",serif;
+  color:#102344;
+  margin:7px 0 8px;
+}
+
+.lifeWelcomeJourneyIntro{
+  font:13px/1.6 Arial,sans-serif;
+  color:#53647d;
+  margin:0 0 22px;
+}
+
+/* PORTRAITS */
+
+.lifeStageGrid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+}
+
+.lifeStageCard{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:5px;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  padding:0;
+  color:#102344;
+  cursor:pointer;
+  font-family:Arial,sans-serif;
+}
+
+.lifeStagePhoto{
+  width:100%;
+  aspect-ratio:1.3;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f0f3f8;
+  border:2px solid transparent;
+  box-sizing:border-box;
+  overflow:hidden;
+}
+
+.lifeStagePhoto span{
+  font-size:10px;
+  color:#8492a7;
+}
+
+.lifeStageCard.active .lifeStagePhoto{
+  border-color:#4E79BD;
+}
+
+.lifeStageCard strong{
+  font-size:12px;
+  margin-top:8px;
+}
+
+.lifeStageCard > span{
+  font-size:11px;
+  color:#53647d;
+}
+
+/* TIMELINE */
+
+.lifeStageTimeline{
+  position:relative;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:20px 12.5% 24px;
+  height:22px;
+}
+
+.lifeStageTimelineLine{
+  position:absolute;
+  left:0;
+  right:0;
+  top:50%;
+  height:3px;
+  background:#4E79BD;
+  transform:translateY(-50%);
+}
+
+.lifeStageTimelineDot{
+  position:relative;
+  z-index:1;
+  width:13px;
+  height:13px;
+  border:3px solid #4E79BD;
+  border-radius:50%;
+  background:white;
+}
+
+.lifeStageTimelineDot.active{
+  background:#4E79BD;
+}
+
+/* NARRATIVE */
+
+.lifeStageNarrative{
+  padding:22px 0 24px;
+}
+
+.lifeStageNarrativeMeta{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  font:600 10px Arial,sans-serif;
+  color:#4E79BD;
+  letter-spacing:.4px;
+}
+
+.lifeStageNarrative h3{
+  font:normal 23px "Times New Roman",serif;
+  color:#102344;
+  margin:17px 0 12px;
+}
+
+.lifeStageNarrative p{
+  font:13px/1.65 Arial,sans-serif;
+  color:#344861;
+  margin:0 0 18px;
+}
+
+.lifeStageNarrativeFooter{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+#lifeStageKeywords{
+  font:10px Arial,sans-serif;
+  color:#64748b;
+}
+
+#lifeStageNextButton{
+  background:#4E79BD;
+  border:1px solid #4E79BD;
+  border-radius:0;
+  padding:13px 17px;
+  color:white;
+  font:600 12px Arial,sans-serif;
+  cursor:pointer;
+}
+
+#lifeStageNextButton:hover{
+  background:#3866a8;
+}
+
+/* BRIDGE */
+
+.lifeWelcomeJourneyBridge{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  padding:18px 0 0;
+  font:12px Arial,sans-serif;
+  color:#64748b;
+}
+
+.lifeWelcomeBridgeArrow{
+  color:#4E79BD;
+  font-size:22px;
+}
+
+/* AGE INPUTS */
+
+#lifeWelcomeStartFields{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:15px;
+  width:100%;
+  margin-top:22px;
+}
+
+/* MOBILE */
+
+@media(max-width:650px){
+
+  .lifeStageGrid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px 12px;
+  }
+
+  .lifeStageTimeline{
+    display:none;
+  }
+
+  .lifeStageNarrativeFooter{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  #lifeStageNextButton{
+    width:100%;
+  }
+
+  .lifeWelcomeJourney h2{
+    font-size:24px;
+  }
+
+  #lifeWelcomeStartFields{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+  }
+
+}
+
 
 </style>
 
@@ -11815,43 +12038,242 @@ font-weight:500
 <!-- NEPTOON LIFE CYCLE · WELCOME PAGE CONTENT -->
 <!-- Keep the existing lifeWelcomeHero above this section unchanged. -->
 
-<section class="lifeWelcomeObjectives" id="lifeWelcomeObjectives" aria-label="Life Cycle welcome">
+
+
+
+<!-- =====================================================
+     NEPTOON LIFE CYCLE · WELCOME JOURNEY
+     Place immediately after lifeWelcomeHero
+===================================================== -->
+
+<section class="lifeWelcomeObjectives"
+         id="lifeWelcomeObjectives"
+         aria-label="Life Cycle welcome">
+
+  <!-- ================================================
+       01 · FOUR ECONOMIC LIFE STAGES
+  ================================================= -->
+
+  <div class="lifeWelcomeJourney" id="lifeWelcomeJourney">
+
+    <div class="lifeWelcomeSectionKicker"
+         data-lang="welcomeJourneyKicker">
+      01 · FOUR ECONOMIC LIFE STAGES
+    </div>
+
+    <h2 data-lang="welcomeJourneyTitle">
+      Four life stages. Four questions. One model.
+    </h2>
+
+    <p class="lifeWelcomeJourneyIntro"
+       data-lang="welcomeJourneyDescription">
+      Your financial questions change throughout life.
+      Explore how the same model helps you understand
+      the choices ahead.
+    </p>
+
+    <!-- FOUR HUMAN PORTRAITS -->
+
+    <div class="lifeStageGrid">
+
+      <button class="lifeStageCard active"
+              type="button"
+              data-life-stage="0"
+              aria-pressed="true">
+
+        <div class="lifeStagePhoto">
+          <span>PHOTO 1</span>
+        </div>
+
+        <strong>18–30</strong>
+        <span data-lang="lifeStage1Name">The beginning</span>
+
+      </button>
+
+      <button class="lifeStageCard"
+              type="button"
+              data-life-stage="1"
+              aria-pressed="false">
+
+        <div class="lifeStagePhoto">
+          <span>PHOTO 2</span>
+        </div>
+
+        <strong>30–50</strong>
+        <span data-lang="lifeStage2Name">Family & wealth</span>
+
+      </button>
+
+      <button class="lifeStageCard"
+              type="button"
+              data-life-stage="2"
+              aria-pressed="false">
+
+        <div class="lifeStagePhoto">
+          <span>PHOTO 3</span>
+        </div>
+
+        <strong>50–67</strong>
+        <span data-lang="lifeStage3Name">Financial freedom</span>
+
+      </button>
+
+      <button class="lifeStageCard"
+              type="button"
+              data-life-stage="3"
+              aria-pressed="false">
+
+        <div class="lifeStagePhoto">
+          <span>PHOTO 4</span>
+        </div>
+
+        <strong>67+</strong>
+        <span data-lang="lifeStage4Name">Consumption & Legacy</span>
+
+      </button>
+
+    </div>
+
+    <!-- LIFE TIMELINE -->
+
+    <div class="lifeStageTimeline" aria-hidden="true">
+
+      <div class="lifeStageTimelineLine"></div>
+
+      <span class="lifeStageTimelineDot active"></span>
+      <span class="lifeStageTimelineDot"></span>
+      <span class="lifeStageTimelineDot"></span>
+      <span class="lifeStageTimelineDot"></span>
+
+    </div>
+
+    <!-- DYNAMIC NARRATIVE -->
+
+    <div class="lifeStageNarrative"
+         id="lifeStageNarrative"
+         aria-live="polite">
+
+      <div class="lifeStageNarrativeMeta">
+
+        <span id="lifeStageCounter">
+          01 / 04 · THE BEGINNING
+        </span>
+
+        <span id="lifeStageAgeRange">
+          18–30 YEARS
+        </span>
+
+      </div>
+
+      <h3 id="lifeStageQuestion">
+        How much should I save — and how much
+        can I spend today?
+      </h3>
+
+      <p id="lifeStageAnswer">
+        Explore how monthly savings, investment returns
+        and time influence your future Financial Freedom.
+      </p>
+
+      <div class="lifeStageNarrativeFooter">
+
+        <span id="lifeStageKeywords">
+          SAVINGS · INVESTMENTS · TIME HORIZON
+        </span>
+
+        <button type="button"
+                id="lifeStageNextButton">
+          Next life stage →
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- NARRATIVE BRIDGE -->
+
+    <div class="lifeWelcomeJourneyBridge">
+
+      <span class="lifeWelcomeBridgeArrow">↓</span>
+
+      <span data-lang="welcomeJourneyBridge">
+        From life's possibilities to your own financial life
+      </span>
+
+    </div>
+
+  </div>
+
+  <!-- ================================================
+       02 · PERSONAL LIFE CYCLE START
+       Existing financial input IDs preserved
+  ================================================= -->
+
   <div class="lifeWelcomeStart">
-    <div class="lifeWelcomeSectionKicker" data-lang="welcomeStartKicker">01 · YOUR STARTING PROFILE</div>
-    <h2 data-lang="welcomeStartTitle">Start with your life horizon</h2>
-    <p data-lang="welcomeStartDescription">Begin with your current age, planning age and savings growth.</p>
 
+    <div class="lifeWelcomeSectionKicker"
+         data-lang="welcomeStartKicker">
+      02 · YOUR PERSONAL LIFE CYCLE
+    </div>
 
+    <h2 data-lang="welcomeStartTitle">
+      Start with the most certain and uncertain
+      — your remaining lifetime
+    </h2>
 
+    <p data-lang="welcomeStartDescription">
+      Where are you in your financial life?
+      Begin with your current age and expected lifetime.
+    </p>
 
-<div class="lifeWelcomeStartFields"
-     id="lifeWelcomeStartFields">
+    <div class="lifeWelcomeStartFields"
+         id="lifeWelcomeStartFields">
 
-  <div class="scenarioField">
-    <label for="currentAge" data-lang="currentAge">
-      Current age
-    </label>
-    <input id="currentAge"
-           type="number"
-           value="50"
-           min="18"
-           max="120"
-           step="1">
+      <div class="scenarioField">
+
+        <label for="currentAge"
+               data-lang="currentAge">
+          Current age
+        </label>
+
+        <input id="currentAge"
+               type="number"
+               value="50"
+               min="18"
+               max="120"
+               step="1">
+
+      </div>
+
+      <div class="scenarioField">
+
+        <label for="deathAge"
+               data-lang="expectedLifetime">
+          Expected lifetime
+        </label>
+
+        <input id="deathAge"
+               type="number"
+               value="90"
+               min="40"
+               max="120"
+               step="1">
+
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="scenarioField">
-    <label for="deathAge" data-lang="expectedLifetime">
-      Expected lifetime
-    </label>
-    <input id="deathAge"
-           type="number"
-           value="90"
-           min="40"
-           max="120"
-           step="1">
-  </div>
+  <!-- Existing welcome sections continue below -->
 
-</div>
+</section>
+
+
+
+
+
+
 
 
 
@@ -17982,18 +18404,21 @@ const LIFE_CYCLE_FAQ = {
 
 
 /* A — INDKOMST */
+
+
+
 {
-  id: "income",
+  id: "general",
   letter: "A",
-  title: "Indkomst",
+  title: "De mest stillede spørgsmål og svar",
   items: [
     {
       q: "Hvorfor spørger Neptoon ikke om min løn?",
-      a: "Neptoon er ikke en budgetmodel. Det afgørende er ikke, hvor meget du tjener, men hvor meget af din indkomst du kan investere. Derfor skal du ikke indtaste løn, skat og almindelige leveomkostninger hver for sig. Du angiver i stedet det beløb, du forventer at investere månedligt i din frie portefølje, efter alle udgifter og låneydelser inklusive renter og afdrag."
+      a: "Neptoon er ikke en budgetmodel. Derfor skal du ikke indtaste løn, skat og almindelige leveomkostninger hver for sig. Det afgørende er nemlig ikke, hvor meget du tjener, men hvor meget af dit rådighedsbeløb du vil fordele mellem forbrug og opsparing månedligt. Og det er månedsopsparingsdelen - månedsindskuddet - der ryger i din valgte frie portefølje i fase 1. Har du lån skal din opsparing være større end de tilskrevne renter for at din formue stiger som følge af månedsopsparingen. Alt du indbetaler over rentebeløbet vil øge din opsparing her og nu inklusive hvis du betaler for dine afdrag også. Du kan også vælge at forbruge alt du har i rådighedsbeløb selvom du har gæld og dermed sætte månedsindskuddet til 0, modellen forsøger så at afregne din gæld med banker via andre værdier du har igennem livet. Det er hele ideen i en Livscyklus Model - modellen advarer hvis det økonomisk ikke hænger sammen"
     },
     {
       q: "Forudsætter Neptoon, at min indkomst er konstant gennem livet?",
-      a: "Nej, men modellen anvender en forenklet beskrivelse af din fremtidige opsparing. Du angiver ét månedligt opsparingsbeløb og én fast årlig vækstrate. Det giver et sammenhængende opsparingsforløb, men beskriver ikke automatisk større eller uregelmæssige ændringer i din indkomst. Sådanne ændringer kan du tilnærme gennem Andre fremtidige værdier."
+      a: "Nej, men modellen anvender en forenklet beskrivelse af din fremtidige opsparing. Du angiver ét månedligt opsparingsbeløb og én fast årlig vækstrate (eksempelvis din lønvækst). Det giver et sammenhængende opsparingsforløb, men beskriver ikke automatisk større eller uregelmæssige ændringer i din indkomst. Sådanne ændringer kan du tilnærme i 'Mine Instillinger'."
     },
     {
       q: "Hvad hvis min indkomst stiger i fremtiden?",
@@ -18001,31 +18426,74 @@ const LIFE_CYCLE_FAQ = {
     },
     {
       q: "Jeg er studerende og forventer en væsentligt højere indkomst senere. Hvad gør jeg?",
-      a: "Du kan indtaste din nuværende månedlige opsparing, eventuelt 0 kr., og derefter anvende Andre fremtidige værdier (OTHER) til at repræsentere den ekstra opsparing, du forventer efter studiet. Du beregner selv et samlet fremtidigt beløb, som tilnærmer de ekstra investeringer over en valgt periode, og angiver den alder, hvor beløbet skal indgå i modellen. Det er en forenklet metode og ikke en egentlig månedlig indkomstprognose."
+      a: "Du kan indtaste din nuværende månedlige opsparing, eventuelt 0kr., og derefter anvende 'Andre fremtidige værdier' til at repræsentere den ekstra opsparing, du forventer efter studiet. Du beregner selv et samlet fremtidigt beløb, som tilnærmer de ekstra investeringer over en valgt periode, og angiver den alder, hvor beløbet skal indgå i modellen. Det er en forenklet metode og ikke en egentlig månedlig indkomstprognose."
     },
     {
       q: "Kan jeg modellere et stort lønhop eller et karriereskifte?",
-      a: "Ja, tilnærmelsesvist. Hvis du eksempelvis forventer at kunne investere 5.000 kr. ekstra om måneden i ti år efter et karriereskifte, svarer det til 600.000 kr. før eventuelt investeringsafkast. Du kan anvende Andre fremtidige værdier til at repræsentere denne ekstra opsparing som et syntetisk engangsbeløb. Beløbet og tidspunktet bør vælges med omtanke, fordi en engangsbetaling ikke giver præcis samme økonomiske forløb som løbende månedlige indbetalinger."
+      a: "Ja, tilnærmelsesvist. Hvis du eksempelvis forventer at kunne investere 5.000kr. ekstra om måneden i ti år efter et karriereskifte, svarer det til 600.000kr. før eventuelt investeringsafkast. Du kan anvende 'Andre fremtidige værdier' i 'Mine Indstillinger' til at repræsentere denne ekstra opsparing som et syntetisk engangsbeløb. Beløbet og tidspunktet bør vælges med omtanke, fordi en engangsbetaling ikke giver præcis samme økonomiske forløb som løbende månedlige indbetalinger. Du kan også downloade Excel arbejdsmappen og indtaste fleksible beløb."
     },
     {
       q: "Hvad hvis min indkomst falder eller jeg holder en længere pause fra arbejdsmarkedet?",
       a: "En forventet, gradvis reduktion i din opsparing kan afspejles gennem en lavere eller negativ årlig vækstrate. Større midlertidige ændringer, eksempelvis barsel, videreuddannelse eller arbejdsløshed, kan ikke modelleres som særskilte månedlige indkomstperioder. Du kan i stedet tilpasse dit gennemsnitlige opsparingsforløb eller anvende en syntetisk fremtidig værdi, hvis den samlede økonomiske virkning kan repræsenteres på den måde."
     },
     {
-      q: "Hvad betyder en syntetisk indkomststrøm under Andre fremtidige værdier?",
-      a: "Det betyder, at du omregner en forventet fremtidig ændring i din disponible opsparing til ét samlet beløb. I stedet for at indtaste eksempelvis 60 månedlige ekstra indbetalinger kan du beregne deres samlede økonomiske værdi og registrere den som en fremtidig ressource under OTHER. Neptoon indregner værdien i din økonomiske balance og overfører den til din frie portefølje på det valgte tidspunkt. Metoden er en tilnærmelse, som især er nyttig ved større, identificerbare indkomstændringer."
+      q: "Hvad betyder en syntetisk indkomststrøm under 'Andre fremtidige værdier'?",
+      a: "Det betyder, at du omregner en forventet fremtidig ændring i din disponible opsparing til ét samlet beløb. I stedet for at indtaste eksempelvis 60 månedlige ekstra indbetalinger kan du beregne deres samlede økonomiske værdi og registrere den som en fremtidig værdi. Neptoon indregner værdien i din økonomiske balance og overfører den til din frie portefølje på det valgte tidspunkt. Metoden er en tilnærmelse, som især er nyttig ved større, identificerbare indkomstændringer."
     },
     {
       q: "Skal jeg medregne folkepension og ATP som indkomst eller opsparing?",
       a: "Folkepension og ATP Livslang Pension skal registreres særskilt under Folkepension og ATP. De skal ikke lægges til den månedlige opsparing eller registreres som syntetiske fremtidige værdier. Neptoon medregner automatisk pensionsudbetalingerne og deres økonomiske værdi, så de ikke tælles med flere gange."
     },
     {
-      q: "Hvad sker der med min løn, når jeg opnår Financial Freedom?",
-      a: "Financial Freedom Day er det tidspunkt, hvor dine samlede økonomiske ressourcer ifølge modellen kan finansiere dit ønskede forbrug og din Legacy uden yderligere arbejdsindkomst. Neptoon forudsætter derfor, at den løbende opsparing ophører, og at livscyklussen overgår til Fase 2. Du kan naturligvis fortsætte med at arbejde i virkeligheden, men denne fremtidige arbejdsindkomst indgår ikke automatisk i beregningen."
+      q: "Hvad sker der med min løn, når jeg opnår balance og Økonomisk Frihed ved overgang til nedsparingsfasen?",
+      a: "Balancen er det tidspunkt, hvor dine samlede økonomiske (rest) ressourcer ifølge modellen kan finansiere dit ønskede (rest) livsforbrug og din ønskede arv til dine efterkommere uden yderligere arbejdsindkomst. Teknisk set uden yderligere månedsindskud. Neptoon forudsætter derfor, at den løbende opsparing ophører, og at livscyklussen overgår til Fase 2. Du kan naturligvis fortsætte med at arbejde i virkeligheden, men denne fremtidige arbejdsindkomst indgår ikke automatisk i beregningen."
     }
   ]
 },
 
+      {       
+  id: "income",
+  letter: "B",
+  title: "Indkomst",
+  items: [
+    {
+      q: "Hvorfor spørger Neptoon ikke om min løn?",
+      a: "Neptoon er ikke en budgetmodel. Derfor skal du ikke indtaste løn, skat og almindelige leveomkostninger hver for sig. Det afgørende er nemlig ikke, hvor meget du tjener, men hvor meget af dit rådighedsbeløb du vil fordele mellem forbrug og opsparing månedligt. Og det er månedsopsparingsdelen - månedsindskuddet - der ryger i din valgte frie portefølje i fase 1. Har du lån skal din opsparing være større end de tilskrevne renter for at din formue stiger som følge af månedsopsparingen. Alt du indbetaler over rentebeløbet vil øge din opsparing her og nu inklusive hvis du betaler for dine afdrag også. Du kan også vælge at forbruge alt du har i rådighedsbeløb selvom du har gæld og dermed sætte månedsindskuddet til 0, modellen forsøger så at afregne din gæld med banker via andre værdier du har igennem livet. Det er hele ideen i en Livscyklus Model - modellen advarer hvis det økonomisk ikke hænger sammen"
+    },
+    {
+      q: "Forudsætter Neptoon, at min indkomst er konstant gennem livet?",
+      a: "Nej, men modellen anvender en forenklet beskrivelse af din fremtidige opsparing. Du angiver ét månedligt opsparingsbeløb og én fast årlig vækstrate (eksempelvis din lønvækst). Det giver et sammenhængende opsparingsforløb, men beskriver ikke automatisk større eller uregelmæssige ændringer i din indkomst. Sådanne ændringer kan du tilnærme i 'Mine Instillinger'."
+    },
+    {
+      q: "Hvad hvis min indkomst stiger i fremtiden?",
+      a: "Hvis du forventer gradvist at kunne investere mere, kan du vælge en positiv årlig vækst i opsparingen. Eksempelvis vil en månedlig opsparing på 4.000 kr. med 3 % årlig vækst stige til cirka 5.400 kr. efter ti år. Vækstraten vedrører dine indbetalinger og ikke afkastet på dine investeringer."
+    },
+    {
+      q: "Jeg er studerende og forventer en væsentligt højere indkomst senere. Hvad gør jeg?",
+      a: "Du kan indtaste din nuværende månedlige opsparing, eventuelt 0kr., og derefter anvende 'Andre fremtidige værdier' til at repræsentere den ekstra opsparing, du forventer efter studiet. Du beregner selv et samlet fremtidigt beløb, som tilnærmer de ekstra investeringer over en valgt periode, og angiver den alder, hvor beløbet skal indgå i modellen. Det er en forenklet metode og ikke en egentlig månedlig indkomstprognose."
+    },
+    {
+      q: "Kan jeg modellere et stort lønhop eller et karriereskifte?",
+      a: "Ja, tilnærmelsesvist. Hvis du eksempelvis forventer at kunne investere 5.000kr. ekstra om måneden i ti år efter et karriereskifte, svarer det til 600.000kr. før eventuelt investeringsafkast. Du kan anvende 'Andre fremtidige værdier' i 'Mine Indstillinger' til at repræsentere denne ekstra opsparing som et syntetisk engangsbeløb. Beløbet og tidspunktet bør vælges med omtanke, fordi en engangsbetaling ikke giver præcis samme økonomiske forløb som løbende månedlige indbetalinger. Du kan også downloade Excel arbejdsmappen og indtaste fleksible beløb."
+    },
+    {
+      q: "Hvad hvis min indkomst falder eller jeg holder en længere pause fra arbejdsmarkedet?",
+      a: "En forventet, gradvis reduktion i din opsparing kan afspejles gennem en lavere eller negativ årlig vækstrate. Større midlertidige ændringer, eksempelvis barsel, videreuddannelse eller arbejdsløshed, kan ikke modelleres som særskilte månedlige indkomstperioder. Du kan i stedet tilpasse dit gennemsnitlige opsparingsforløb eller anvende en syntetisk fremtidig værdi, hvis den samlede økonomiske virkning kan repræsenteres på den måde."
+    },
+    {
+      q: "Hvad betyder en syntetisk indkomststrøm under 'Andre fremtidige værdier'?",
+      a: "Det betyder, at du omregner en forventet fremtidig ændring i din disponible opsparing til ét samlet beløb. I stedet for at indtaste eksempelvis 60 månedlige ekstra indbetalinger kan du beregne deres samlede økonomiske værdi og registrere den som en fremtidig værdi. Neptoon indregner værdien i din økonomiske balance og overfører den til din frie portefølje på det valgte tidspunkt. Metoden er en tilnærmelse, som især er nyttig ved større, identificerbare indkomstændringer."
+    },
+    {
+      q: "Skal jeg medregne folkepension og ATP som indkomst eller opsparing?",
+      a: "Folkepension og ATP Livslang Pension skal registreres særskilt under Folkepension og ATP. De skal ikke lægges til den månedlige opsparing eller registreres som syntetiske fremtidige værdier. Neptoon medregner automatisk pensionsudbetalingerne og deres økonomiske værdi, så de ikke tælles med flere gange."
+    },
+    {
+      q: "Hvad sker der med min løn, når jeg opnår balance og Økonomisk Frihed ved overgang til nedsparingsfasen?",
+      a: "Balancen er det tidspunkt, hvor dine samlede økonomiske (rest) ressourcer ifølge modellen kan finansiere dit ønskede (rest) livsforbrug og din ønskede arv til dine efterkommere uden yderligere arbejdsindkomst. Teknisk set uden yderligere månedsindskud. Neptoon forudsætter derfor, at den løbende opsparing ophører, og at livscyklussen overgår til Fase 2. Du kan naturligvis fortsætte med at arbejde i virkeligheden, men denne fremtidige arbejdsindkomst indgår ikke automatisk i beregningen."
+    }
+  ]
+},
 
 
 /* B — FORBRUG */
@@ -18036,7 +18504,7 @@ const LIFE_CYCLE_FAQ = {
   items: [
     {
       q: "Hvad betyder forbrug i Neptoons Life Cycle?",
-      a: "Forbrug er det faste månedlige beløb, du ønsker at kunne finansiere fra din samlede økonomiske formue, når du har opnået balance og er overgået til Fase 2. Det er med andre ord dit mål for passiv indkomst efter skat, målt i dagens købekraft. Beløbet er ikke en registrering af dine nuværende udgifter, men et udtryk for den levestandard, du ønsker at kunne opretholde uden at være afhængig af arbejdsindkomst."
+      a: "Forbrug er det faste månedlige beløb, du ønsker at kunne finansiere fra din samlede økonomiske formue, når du har opnået balance og er overgået til Fase 2. Det er med andre ord dit mål for passiv indkomst efter skat, målt i dagens købekraft. Beløbet er ikke en registrering af dine nuværende udgifter, men et udtryk for den levestandard, du ønsker at kunne opretholde uden at være afhængig af arbejdsindAA<AZAZ<AZZSZZkomst."
     },
     {
       q: "Skal jeg indtaste mit nuværende månedlige forbrug?",
@@ -20264,7 +20732,39 @@ faqMainTitle: "Questions And Answers",
 faqMainHint: "Questions and answers are organized by category and aim to address the most common questions across users. While we cannot cover every aspect here, a dedicated methodology PDF is available on this page for those seeking a more detailed technical explanation.",
 
 
+// WELCOME JOURNEY · FOUR LIFE STAGES
 
+welcomeJourneyKicker:"01 · FOUR ECONOMIC LIFE STAGES",
+welcomeJourneyTitle:"Four life stages. Four questions. One model.",
+welcomeJourneyDescription:"Your financial questions change throughout life. Explore how the same model helps you understand the choices ahead.",
+
+lifeStage1Name:"The beginning",
+lifeStage2Name:"Family & wealth",
+lifeStage3Name:"Financial freedom",
+lifeStage4Name:"Consumption & Legacy",
+
+lifeStage1Counter:"01 / 04 · THE BEGINNING",
+lifeStage2Counter:"02 / 04 · FAMILY & WEALTH",
+lifeStage3Counter:"03 / 04 · FINANCIAL FREEDOM",
+lifeStage4Counter:"04 / 04 · CONSUMPTION & LEGACY",
+
+lifeStage1Question:"How much should I save — and how much can I spend today?",
+lifeStage2Question:"How do I balance family consumption, housing and long-term wealth?",
+lifeStage3Question:"When can I achieve Financial Freedom?",
+lifeStage4Question:"How much can I consume while preserving my desired Legacy?",
+
+lifeStage1Answer:"Explore how monthly savings, investment returns and time influence your future Financial Freedom.",
+lifeStage2Answer:"Explore how housing, pensions, savings and household consumption shape your overall financial position.",
+lifeStage3Answer:"Discover when your total economic wealth may support your desired consumption without further savings.",
+lifeStage4Answer:"Explore how to finance consumption throughout the rest of your life while preserving your desired Legacy.",
+
+lifeStage1Keywords:"SAVINGS · INVESTMENTS · TIME HORIZON",
+lifeStage2Keywords:"HOUSING · PENSIONS · FAMILY FINANCES",
+lifeStage3Keywords:"FINANCIAL FREEDOM · WEALTH · CONSUMPTION",
+lifeStage4Keywords:"CONSUMPTION · PENSIONS · LEGACY",
+
+lifeStageNextButton:"Next life stage →",
+welcomeJourneyBridge:"From life's possibilities to your own financial life",
 
 
 
@@ -20339,6 +20839,51 @@ lifePhasesIntro:
 
   introLifeCycleCaption:
     "Dine økonomiske ressourcer gennem livet",
+
+
+/* ===== WELCOME JOURNEY ===== */
+
+welcomeJourneyKicker: "01 · LIVETS FIRE ØKONOMISKE FASER",
+welcomeJourneyTitle: "Fire livsfaser. Fire spørgsmål. Én model.",
+welcomeJourneyDescription: "Dine økonomiske spørgsmål ændrer sig gennem livet. Udforsk, hvordan den samme model hjælper dig med at forstå dine muligheder.",
+
+lifeStage1Name: "Begyndelsen",
+lifeStage2Name: "Familie & formue",
+lifeStage3Name: "Økonomisk frihed",
+lifeStage4Name: "Forbrug & arv",
+
+lifeStage1Counter: "01 / 04 · BEGYNDELSEN",
+lifeStage2Counter: "02 / 04 · FAMILIE & FORMUE",
+lifeStage3Counter: "03 / 04 · ØKONOMISK FRIHED",
+lifeStage4Counter: "04 / 04 · FORBRUG & ARV",
+
+lifeStage1Question: "Hvor meget skal jeg spare op – og hvor meget kan jeg bruge i dag?",
+lifeStage2Question: "Hvordan balancerer jeg familiens forbrug, bolig og langsigtede formue?",
+lifeStage3Question: "Hvornår kan jeg opnå økonomisk frihed?",
+lifeStage4Question: "Hvor meget kan jeg forbruge og samtidig bevare min ønskede arv?",
+
+lifeStage1Answer: "Udforsk, hvordan månedlig opsparing, investeringsafkast og tid påvirker din fremtidige økonomiske frihed.",
+lifeStage2Answer: "Undersøg, hvordan bolig, pension, opsparing og familiens løbende forbrug påvirker din samlede økonomi.",
+lifeStage3Answer: "Se, hvornår din samlede økonomiske formue kan finansiere dit ønskede forbrug uden yderligere opsparing.",
+lifeStage4Answer: "Undersøg, hvordan du kan finansiere dit forbrug gennem resten af livet og samtidig efterlade den arv, du ønsker.",
+
+lifeStage1Keywords: "OPSPARING · INVESTERINGER · TIDSHORISONT",
+lifeStage2Keywords: "BOLIG · PENSION · FAMILIEØKONOMI",
+lifeStage3Keywords: "ØKONOMISK FRIHED · FORMUE · FORBRUG",
+lifeStage4Keywords: "FORBRUG · PENSION · ARV",
+
+lifeStageNextButton: "Næste livsfase →",
+welcomeJourneyBridge: "Fra livets muligheder til din egen økonomi",
+
+/* ===== PERSONAL LIFE CYCLE ===== */
+
+welcomeStartKicker: "02 · DIN PERSONLIGE LIFE CYCLE",
+welcomeStartTitle: "Begynd med det mest sikre og usikre – din resterende levetid",
+welcomeStartDescription: "Hvor er du i dit økonomiske liv? Begynd med din nuværende alder og din forventede levetid.",
+
+currentAge: "Nuværende alder",
+expectedLifetime: "Forventet levetid",
+
 
   compareOwnToday:
     "Hvad ejer jeg i dag?",
@@ -21931,7 +22476,13 @@ otherAssetTaxNote:
     historyFootnote:
       "Historisk udvikling fra 31-12-2014 er den faktiske udvikling af netop denne portefølje efter omkostninger, men før skat og inflation. Det forventede afkast i Livscyklusmodellen er baseret på porteføljens fremadskuende aggregerede nøgletal. Se mere på www.neptoonwealth.com."
 
-  }
+  },
+
+
+	
+
+
+
 
 };
 
@@ -22476,6 +23027,76 @@ console.log("BOOT 2b — setPerspective defined");
    LIFE CYCLE — RESTORE SUPABASE SESSION
 ===================================================== */
 
+/* =====================================================
+   NEPTOON LIFE CYCLE · WELCOME JOURNEY
+   Four interactive life stages · DA / EN
+===================================================== */
+
+function initLifeWelcomeJourney(){
+
+  const root = document.getElementById("lifeWelcomeJourney");
+  if(!root || root.dataset.initialized === "1") return;
+
+  root.dataset.initialized = "1";
+
+  const cards = [...root.querySelectorAll(".lifeStageCard")];
+  const dots = [...root.querySelectorAll(".lifeStageTimelineDot")];
+
+  const counter = document.getElementById("lifeStageCounter");
+  const ageRange = document.getElementById("lifeStageAgeRange");
+  const question = document.getElementById("lifeStageQuestion");
+  const answer = document.getElementById("lifeStageAnswer");
+  const keywords = document.getElementById("lifeStageKeywords");
+  const nextBtn = document.getElementById("lifeStageNextButton");
+
+  const ageRanges = ["18–30", "30–50", "50–67", "67+"];
+
+  let activeStage = 0;
+
+  function paint(){
+
+const lang = INIT.lang === "da" ? "da" : "en";
+const L = TXT[lang];
+
+    const n = activeStage + 1;
+
+    cards.forEach((card, i) => {
+      const active = i === activeStage;
+      card.classList.toggle("active", active);
+      card.setAttribute("aria-pressed", String(active));
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === activeStage);
+    });
+
+    if(counter) counter.textContent = L[`lifeStage${n}Counter`] || "";
+    if(ageRange) ageRange.textContent = ageRanges[activeStage] + (lang === "da" ? " ÅR" : " YEARS");
+    if(question) question.textContent = L[`lifeStage${n}Question`] || "";
+    if(answer) answer.textContent = L[`lifeStage${n}Answer`] || "";
+    if(keywords) keywords.textContent = L[`lifeStage${n}Keywords`] || "";
+    if(nextBtn) nextBtn.textContent = L.lifeStageNextButton || "Next life stage →";
+  }
+
+  cards.forEach((card, i) => {
+    card.addEventListener("click", () => {
+      activeStage = i;
+      paint();
+    });
+  });
+
+  nextBtn?.addEventListener("click", () => {
+    activeStage = (activeStage + 1) % cards.length;
+    paint();
+  });
+
+  window.paintLifeWelcomeJourney = paint;
+
+  paint();
+}
+
+
+
 async function restoreLifeCycleSession(){
 
   try{
@@ -22604,6 +23225,8 @@ function setLanguage(lang, save = true){
   if(typeof window.applyLang === "function"){
     window.applyLang(lang);
   }
+
+window.paintLifeWelcomeJourney?.();
 
   /*
     REFRESH ACTIVE PERSPECTIVE
@@ -40185,7 +40808,7 @@ console.log("WEB INIT 11");
    INIT BOOT
 ===================================================== */
 
-
+initLifeWelcomeJourney();
 console.log("BOOT 17");
 bindComponentButtons();
 bindTaxOptions();
@@ -40237,6 +40860,7 @@ render();
 
 console.log("BOOT 21");
 bindFooterInfo();
+
 
 console.log("BOOT 22");
 applyLang("da");
