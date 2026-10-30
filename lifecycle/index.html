@@ -21923,7 +21923,7 @@ welcomeHowCloudLabel:"PREMIUM · ENGANGSBETALING",
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "Navigationmaria102 mellem privatøkonomi og finansielle formuer",
+appName: "Navigationmaria103 mellem privatøkonomi og finansielle formuer",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
@@ -39463,6 +39463,7 @@ function showLifeCycleRecoveryView(view){
 function openLifeCyclePasswordReset(){
 
   lcPasswordRecoveryActive = true;
+  paintAppAccountStatus();
   openLifeCycleLogin();
 
 }
@@ -39537,6 +39538,7 @@ async function saveLifeCycleNewPassword(){
     if(error) throw error;
 
     lcPasswordRecoveryActive = false;
+paintAppAccountStatus();
 
     document.getElementById("lcAccountNewPassword").value = "";
     document.getElementById("lcAccountConfirmPassword").value = "";
@@ -41761,7 +41763,6 @@ document
 
   });
 
-
 function paintAppAccountStatus(){
 
   const el = document.getElementById("appAccountStatus");
@@ -41772,6 +41773,21 @@ function paintAppAccountStatus(){
   const user = ACCOUNT.user || null;
   const premium = ACCOUNT.plan === "premium";
 
+  /*
+    PASSWORD RECOVERY
+  */
+
+  if(lcPasswordRecoveryActive){
+    el.textContent = da
+      ? "Min konto · Nulstil adgangskode"
+      : "My Account · Reset password";
+    return;
+  }
+
+  /*
+    VISITOR
+  */
+
   if(!user){
     el.textContent = da
       ? "Log ind / Opret konto"
@@ -41779,12 +41795,15 @@ function paintAppAccountStatus(){
     return;
   }
 
+  /*
+    AUTHENTICATED USER
+  */
+
   el.textContent = premium
     ? (da ? "Min konto · Premium" : "My Account · Premium")
     : (da ? "Min konto · Gratis" : "My Account · Free");
 
 }
-
 
 document
   .getElementById("btnExportExcel")
