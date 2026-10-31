@@ -12441,6 +12441,62 @@ margin-top:15px !important;
   .lcConfirmActions button{flex:1}
 }
 
+
+.app-save-settings{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:#4E79BD;
+  border:1px solid #4E79BD;
+  border-radius:0;
+  color:#fff;
+  padding:10px 15px;
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+  white-space:nowrap;
+}
+
+.app-save-settings:hover{
+  background:#3d66a7;
+}
+
+#appAccountStatus{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  gap:2px;
+  border-radius:0;
+}
+
+.app-account-email{
+  display:block;
+  max-width:190px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size:10px;
+  font-weight:400;
+  color:#64748b;
+}
+
+.app-account-email[hidden]{
+  display:none!important;
+}
+
+@media(max-width:600px){
+  .app-save-settings{
+    padding:9px 10px;
+    font-size:11px;
+  }
+
+  .app-account-email{
+    display:none;
+  }
+}
+
+
 </style>
 
 </head>
@@ -12456,78 +12512,79 @@ margin-top:15px !important;
 <div class="neptoon-app" id="neptoonApp">
 
 
+
 <header class="app-header">
 
   <div class="app-brand">
-
-    <div class="app-kicker" data-lang="appKicker">
-      NEPTOON WEALTH
-    </div>
-
-    <div class="app-name" data-lang="appName">
-      Life Cycle
-    </div>
-
-<span id="appBuildNumber" style="font-size:10px;color:#94a3b8;"></span>
-
+    <div class="app-kicker" data-lang="appKicker">NEPTOON WEALTH</div>
+    <div class="app-name" data-lang="appName">Life Cycle</div>
+    <span id="appBuildNumber" style="font-size:10px;color:#94a3b8;"></span>
   </div>
 
   <div class="app-header-actions">
 
     <!-- TECHNICAL DOCUMENTATION -->
-
-<a
-  class="app-pdf-link"
-  id="lifePhasesPdfLink"
-  href="https://ebacf41d-1b42-4022-ac7d-5373af231779.usrfiles.com/ugd/ebacf4_edae94ecfbcf43319f1de80cfa41ba55.pdf"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Technical documentation (PDF)"
-  title="Technical documentation (PDF)">
-</a>
+    <a
+      class="app-pdf-link"
+      id="lifePhasesPdfLink"
+      href="https://ebacf41d-1b42-4022-ac7d-5373af231779.usrfiles.com/ugd/ebacf4_edae94ecfbcf43319f1de80cfa41ba55.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Technical documentation (PDF)"
+      title="Technical documentation (PDF)">
+    </a>
 
     <!-- LANGUAGE SWITCH -->
-
     <div class="lang-switch">
 
-      <button
-        data-ui-lang="da"
-        type="button"
-        aria-label="Dansk"
-        title="Dansk">
-
+      <button data-ui-lang="da" type="button" aria-label="Dansk" title="Dansk">
         <img
           src="https://static.wixstatic.com/media/ebacf4_b9f4191365ce4a0d8daef9d273c39c64~mv2.png"
           alt="Dansk flag">
-
       </button>
 
-      <button
-        data-ui-lang="en"
-        type="button"
-        aria-label="English"
-        title="English">
-
+      <button data-ui-lang="en" type="button" aria-label="English" title="English">
         <img
           src="https://static.wixstatic.com/media/ebacf4_98eeee093b2647f9945efb7b4c5c8be3~mv2.png"
           alt="British flag">
-
       </button>
 
     </div>
 
-<button
-  type="button"
-  class="app-account-label"
-  id="appAccountStatus"
-  data-lang="accountHeaderLogin"
-  aria-label="Account login and registration">
-  Log ind / Opret konto
-</button>
+    <!-- GLOBAL CLOUD SAVE -->
+    <button
+      type="button"
+      class="app-save-settings"
+      id="appSaveSettings"
+      data-lang="lcGlobalSaveSettings">
+      Gem mine indstillinger
+    </button>
+
+    <!-- ACCOUNT STATUS -->
+    <button
+      type="button"
+      class="app-account-label"
+      id="appAccountStatus"
+      aria-label="Account login and registration">
+
+      <span
+        id="appAccountStatusText"
+        data-lang="accountHeaderLogin">
+        Log ind / Opret konto
+      </span>
+
+      <span
+        id="appAccountEmail"
+        class="app-account-email"
+        hidden>
+      </span>
+
+    </button>
 
   </div>
 
 </header>
+
 
   <nav
     aria-label="Main navigation"
@@ -20151,6 +20208,7 @@ lcAccountKicker: "MY ACCOUNT",
 lcAccountTitle: "Account & Preferences",
 lcAccountIntro:
   "Extend your Life Cycle analysis in Excel, or save your financial plan for later.",
+lcGlobalSaveSettings: "Save My Settings",
 
 lcExcelEyebrow: "FREE ACCOUNT",
 lcAccountVisitor: "Visitor",
@@ -22173,7 +22231,7 @@ lcStorageSaveButton: "Gem nuværende Plan",
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "Navigationmaria120 mellem privatøkonomi og finansielle formuer",
+appName: "Navigationmaria125 mellem privatøkonomi og finansielle formuer",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
@@ -22359,6 +22417,8 @@ portfolioProviderNotice:
 
 modelAssumptionsTitle:
   "Modelforudsætninger",
+
+lcGlobalSaveSettings: "Gem mine indstillinger",
 
 modelAssumptionsHint:
   "Økonomiske forhold samt aktivspecifikke afkast- og skatteforudsætninger.",
@@ -27038,6 +27098,39 @@ function publicPensionShadowAtMonth(
 /* =====================================================
    MORTGAGE OVERLAY
 ===================================================== */
+
+function bindGlobalSaveSettings(){
+
+  const btn = byId("appSaveSettings");
+  if(!btn) return;
+
+  btn.onclick = async () => {
+
+    const premium =
+      ACCOUNT.plan === "premium" && !!ACCOUNT.user;
+
+    if(!premium){
+      openLifeCycleLogin();
+      return;
+    }
+
+    const da = INIT.lang === "da";
+
+    const confirmed = await neptoonConfirm(
+      da ? "Gem mine indstillinger" : "Save My Settings",
+      da
+        ? "Din nuværende finansielle plan gemmes i skyen og erstatter din tidligere gemte plan."
+        : "Your current financial plan will be saved to the cloud, replacing your previously saved plan.",
+      da ? "Gem i skyen" : "Save to Cloud"
+    );
+
+    if(!confirmed) return;
+
+    await saveLifeCycleSettings();
+
+  };
+
+}
 
 
 function createMortgageState(inputs){
@@ -42303,10 +42396,14 @@ document
 
   });
 
+
 function paintAppAccountStatus(){
 
   const el = document.getElementById("appAccountStatus");
-  if(!el) return;
+  const label = document.getElementById("appAccountStatusText");
+  const emailEl = document.getElementById("appAccountEmail");
+
+  if(!el || !label) return;
 
   const da = String(INIT?.lang || "en").toLowerCase().startsWith("da");
 
@@ -42314,14 +42411,33 @@ function paintAppAccountStatus(){
   const premium = ACCOUNT.plan === "premium";
 
   /*
+    EMAIL SUBTEXT
+  */
+
+  if(emailEl){
+
+    const email = user?.email || "";
+
+    emailEl.textContent = email;
+    emailEl.title = email;
+    emailEl.hidden = !email;
+
+  }
+
+  /*
     PASSWORD RECOVERY
   */
 
   if(lcPasswordRecoveryActive){
-    el.textContent = da
+
+    label.textContent = da
       ? "Min konto · Nulstil adgangskode"
       : "My Account · Reset password";
+
+    if(emailEl) emailEl.hidden = true;
+
     return;
+
   }
 
   /*
@@ -42329,21 +42445,25 @@ function paintAppAccountStatus(){
   */
 
   if(!user){
-    el.textContent = da
+
+    label.textContent = da
       ? "Log ind / Opret konto"
       : "Log in / Sign up";
+
     return;
+
   }
 
   /*
     AUTHENTICATED USER
   */
 
-  el.textContent = premium
+  label.textContent = premium
     ? (da ? "Min konto · Premium" : "My Account · Premium")
     : (da ? "Min konto · Gratis" : "My Account · Free");
 
 }
+
 
 document
   .getElementById("btnExportExcel")
@@ -42857,6 +42977,7 @@ bindPortfolioSettingsLink();
 console.log("BOOT 19");
 bindScenarioExplanations();
 bindLifeCycleAccountModal();
+bindGlobalSaveSettings();
 
 console.log("BOOT 20");
 //////////////////////
