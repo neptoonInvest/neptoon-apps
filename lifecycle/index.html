@@ -21202,11 +21202,6 @@ welcomeStartDescription:
 welcomeViewsKicker:
   "NAVIGATION AND DYNAMIC OVERVIEW",
     
-        lcAccountFeatureCloud: "Cloud Gem 'Mine Indtillinger'",
-lcAccountFeatureExcel: "Excel Fleksibel mappe",
-lcAccountFeatureLifeCycle: "Fuld Livscyklus analyse",
-lcStorageSaveButton: "Gem nuværende Plan",
-    lcAccountWelcome:"Velkommen tilbage",
 
 welcomeViewsTitle:
   "Personal Adjustments and Perspectives",
@@ -22094,6 +22089,13 @@ lcConfirmCancel: "Annuller",
   lifeConstraintConclusionTitle:
     "Spar tilstrækkeligt op. Men ikke mere end dine mål kræver.",
 
+        lcAccountFeatureCloud: "Cloud Gem 'Mine Indtillinger'",
+lcAccountFeatureExcel: "Excel Fleksibel mappe",
+lcAccountFeatureLifeCycle: "Fuld Livscyklus analyse",
+lcStorageSaveButton: "Gem nuværende Plan",
+    lcAccountWelcome:"Velkommen tilbage",
+
+
   lifeConstraintConclusionText:
     "Sparer du for lidt op, kan dine fremtidige målsætninger komme under pres. Sparer du mere end nødvendigt, kan du give afkald på forbrug og muligheder i dag. Den rette balance afhænger af dine personlige prioriteter — herunder den Legacy, du ønsker at efterlade.",
 
@@ -22167,7 +22169,7 @@ lcConfirmCancel: "Annuller",
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "Navigationmaria111 mellem privatøkonomi og finansielle formuer",
+appName: "Navigationmaria115 mellem privatøkonomi og finansielle formuer",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
@@ -25323,67 +25325,7 @@ function clamp(value,min,max){
   return Math.min(max,Math.max(min,value));
 }
 
-
-function applyLang(lang){
-
-  const L =
-    TXT[lang] ||
-    TXT.en;
-
-  /*
-    =========================
-    TEXT TRANSLATIONS
-    =========================
-  */
-
-  document
-    .querySelectorAll("[data-lang]")
-    .forEach(el => {
-
-      const key =
-        el.dataset.lang;
-
-      if(
-        Object.prototype.hasOwnProperty.call(
-          L,
-          key
-        )
-      ){
-        el.textContent =
-          L[key];
-      }
-
-    });
-
-
-  /*
-    =========================
-    PLACEHOLDER TRANSLATIONS
-    =========================
-  */
-
-  document
-    .querySelectorAll("[data-lang-placeholder]")
-    .forEach(el => {
-
-      const key =
-        el.dataset.langPlaceholder;
-
-      if(
-        Object.prototype.hasOwnProperty.call(
-          L,
-          key
-        )
-      ){
-        el.placeholder =
-          L[key];
-      }
-
-    });
-
-}
-
-
+	
 	
 /* =========================================
    LIFE CYCLE — AGE SELECTOR BINDER
@@ -39899,6 +39841,9 @@ function openLifeCycleLogin(){
   overlay.hidden = false;
   document.body.style.overflow = "hidden";
 
+if(typeof window.applyLang === "function"){
+  window.applyLang(INIT.lang);
+}
   if(recovering){
 
     document.getElementById("lcAccountNewPassword")?.focus();
