@@ -42488,6 +42488,64 @@ function detectLifeCycleLanguage(){
 /*
   LOAD PORTFOLIO DATA
 */
+function applyLang(lang){
+
+  const L =
+    TXT[lang] ||
+    TXT.en;
+
+  /*
+    =========================
+    TEXT TRANSLATIONS
+    =========================
+  */
+
+  document
+    .querySelectorAll("[data-lang]")
+    .forEach(el => {
+
+      const key =
+        el.dataset.lang;
+
+      if(
+        Object.prototype.hasOwnProperty.call(
+          L,
+          key
+        )
+      ){
+        el.textContent =
+          L[key];
+      }
+
+    });
+
+
+  /*
+    =========================
+    PLACEHOLDER TRANSLATIONS
+    =========================
+  */
+
+  document
+    .querySelectorAll("[data-lang-placeholder]")
+    .forEach(el => {
+
+      const key =
+        el.dataset.langPlaceholder;
+
+      if(
+        Object.prototype.hasOwnProperty.call(
+          L,
+          key
+        )
+      ){
+        el.placeholder =
+          L[key];
+      }
+
+    });
+
+}
 
 async function fetchLifeCyclePortfolios(){
 
