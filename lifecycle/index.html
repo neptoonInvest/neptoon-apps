@@ -12246,6 +12246,131 @@ margin-top:15px !important;
 
 
 
+/* =========================================
+   FOOTER INFORMATION DOCUMENTS
+========================================= */
+
+.lcFooterInfoBody{
+  width:100%;
+  box-sizing:border-box;
+  padding:38px 32px 48px;
+  background:#fff;
+  color:#243247;
+}
+
+.lcFooterDocument{
+  width:100%;
+  max-width:900px;
+  margin:0 auto;
+}
+
+.lcFooterDocument[hidden]{
+  display:none!important;
+}
+
+/* DOCUMENT TITLE */
+
+.lcFooterDocument > h3{
+  margin:0 0 32px;
+  padding:0 0 18px;
+  border-bottom:2px solid #4E79BD;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:30px;
+  font-weight:400;
+  line-height:1.3;
+  color:#18263B;
+}
+
+/* BODY TEXT */
+
+.lcFooterDocumentText{
+  font-size:15px;
+  line-height:1.85;
+  color:#39485C;
+  overflow-wrap:break-word;
+}
+
+.lcFooterDocumentText p{
+  margin:0 0 20px;
+}
+
+/* SECTION HEADINGS */
+
+.lcFooterDocumentText h3,
+.lcFooterDocumentText h4{
+  margin:34px 0 12px;
+  font-family:Arial,sans-serif;
+  font-size:15px;
+  font-weight:700;
+  line-height:1.5;
+  letter-spacing:.035em;
+  text-transform:uppercase;
+  color:#1C3556;
+}
+
+/* SECONDARY HEADINGS */
+
+.lcFooterDocumentText h5{
+  margin:24px 0 10px;
+  font-size:14px;
+  font-weight:700;
+  color:#243247;
+}
+
+/* LISTS */
+
+.lcFooterDocumentText ul,
+.lcFooterDocumentText ol{
+  margin:12px 0 24px;
+  padding-left:24px;
+}
+
+.lcFooterDocumentText li{
+  margin-bottom:9px;
+}
+
+/* LINKS */
+
+.lcFooterDocumentText a{
+  color:#4E79BD;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+/* DIVIDERS */
+
+.lcFooterDocumentText hr{
+  border:0;
+  border-top:1px solid #E2E8F0;
+  margin:32px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:640px){
+
+  .lcFooterInfoBody{
+    padding:26px 18px 36px;
+  }
+
+  .lcFooterDocument > h3{
+    font-size:25px;
+    margin-bottom:24px;
+  }
+
+  .lcFooterDocumentText{
+    font-size:14px;
+    line-height:1.8;
+  }
+
+  .lcFooterDocumentText h3,
+  .lcFooterDocumentText h4{
+    margin-top:28px;
+    font-size:14px;
+  }
+
+}
+
 
 </style>
 
@@ -17893,55 +18018,46 @@ margin-top:15px !important;
 
 
 
+<!-- =========================================
+     INFORMATION CONTENT
+========================================= -->
 
-    <!-- =========================================
-         INFORMATION CONTENT
-    ========================================= -->
+<div class="lcFooterInfoBody">
 
-    <div class="lcFooterInfoBody">
+  <!-- ABOUT -->
+  <section class="lcFooterDocument"
+           data-footer-content="about"
+           hidden>
 
-      <!-- ABOUT -->
+    <h3 data-lang="lifeCycleAbout">About</h3>
 
-      <section data-footer-content="about" hidden>
+    <div id="lcFooterAboutText" class="lcFooterDocumentText"></div>
 
-        <h3 data-lang="lifeCycleAbout">
-          About
-        </h3>
+  </section>
 
-        <div id="lcFooterAboutText"></div>
+  <!-- PRIVACY -->
+  <section class="lcFooterDocument"
+           data-footer-content="privacy"
+           hidden>
 
-      </section>
+    <h3 data-lang="lifeCyclePrivacy">Privacy Policy</h3>
 
+    <div id="lcFooterPrivacyText" class="lcFooterDocumentText"></div>
 
-      <!-- PRIVACY -->
+  </section>
 
-      <section data-footer-content="privacy" hidden>
+  <!-- TERMS -->
+  <section class="lcFooterDocument"
+           data-footer-content="terms"
+           hidden>
 
-        <h3 data-lang="lifeCyclePrivacy">
-          Privacy Policy
-        </h3>
+    <h3 data-lang="lifeCycleTerms">Terms &amp; Conditions</h3>
 
-        <div id="lcFooterPrivacyText"></div>
+    <div id="lcFooterTermsText" class="lcFooterDocumentText"></div>
 
-      </section>
+  </section>
 
-
-      <!-- TERMS -->
-
-      <section data-footer-content="terms" hidden>
-
-        <h3 data-lang="lifeCycleTerms">
-          Terms &amp; Conditions
-        </h3>
-
-        <div id="lcFooterTermsText"></div>
-
-      </section>
-
-    </div>
-
-  </div>
-
+</div>
 
   <!-- =========================================
        VISIBLE LEGAL NAVIGATION
@@ -20198,9 +20314,9 @@ footerUsePortfolio:
 footerFreedomRange:
   "Financial Freedom Range",
 
-    navWelcome: "Introduction",
-    navLifeCycle: "Savings and Consumption",
-    navBalanceSheet: "Balance Sheets And Time",
+    navWelcome: "Get started",
+    navLifeCycle: "Savings & Consumption",
+    navBalanceSheet: "Balance Sheets & Time",
     navHistory: "Investment Portfolios",
     navAccount: "My Settings",
 navLegal: "Legal & Method",
@@ -21966,9 +22082,9 @@ welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 portfolioConfigTitle:
   "Overblik over professionelle investeringsporteføljer",
 
-    navWelcome: "Introduktion",
+    navWelcome: "Kom i gang",
     navLifeCycle: "Forbrug og opsparing",
-    navBalanceSheet: "Balancer og Formueudvikling",
+    navBalanceSheet: "Balancer og formueudvikling",
     navHistory: "Porteføljer og historik",
     navAccount: "Mine indstillinger",
     navLegal: "Andet", 
@@ -23371,252 +23487,470 @@ otherAssetTaxNote:
    FOOTER TRANSLATIONS
 ========================================= */
 
+
 const footerTranslations = {
 
   da: {
 
     lcFooterAboutText: `
 
-Neptoon Wealth udvikler digitale værktøjer til investeringsanalyse, porteføljevalg og langsigtet privatøkonomisk planlægning.
+OM NEPTOON WEALTH
 
-Neptoon Life Cycle er en økonomisk model, der samler husstandens opsparing, investeringer, ejendomme, pensioner, gæld, fremtidige økonomiske ressourcer og forventede forbrug i ét samlet livsforløb.
+Neptoon Wealth udvikler digitale værktøjer til investeringsanalyse, porteføljestyring og langsigtet økonomisk planlægning.
 
-Formålet er at gøre det lettere at forstå de økonomiske sammenhænge mellem tre centrale beslutninger:
+Vores ambition er at gøre avancerede økonomiske analyser tilgængelige gennem gennemsigtige, brugervenlige digitale løsninger.
 
-FINANSIEL FRIHED
-Hvornår kan husstandens økonomiske ressourcer under de valgte forudsætninger understøtte et liv uden yderligere arbejdsopsparing?
+Neptoon Life Cycle er en del af denne ambition og giver brugeren mulighed for at undersøge sin økonomiske fremtid på grundlag af egne oplysninger og forudsætninger.
 
-FORBRUG
-Hvilket forbrug ønsker husstanden at finansiere gennem den resterende levetid?
+UAFHÆNGIGHED OG FILOSOFI
 
-ARV
-Hvor stor en formue ønsker husstanden at bevare til næste generation?
+Neptoon Wealth lægger vægt på økonomisk forståelse, gennemsigtighed og brugerens selvstændige beslutningskompetence.
 
-Modellen viser, hvordan ændringer i investeringsporteføljer, økonomiske forudsætninger og personlige mål påvirker de beregnede muligheder.
-
-Neptoon Life Cycle er ikke udviklet til at bestemme, hvad brugeren bør prioritere. Den kortlægger de økonomiske muligheder og afvejninger, mens brugeren selv vælger retningen.
+Vores digitale værktøjer er udviklet til at understøtte analyser og oplyste beslutninger – ikke til at træffe beslutninger på brugerens vegne.
 
 Vi kortlægger mulighederne. Du vælger retningen.
+
+VIRKSOMHEDSOPLYSNINGER
+
+Neptoon Wealth drives af Neptoon ApS.
+
+CVR: 41668504
+Adresse: Gammel Køge Landevej 22Z, sth, 2500 Valby, Danmark
+Kontakt: kontakt@neptooninvest.dk
+
 `,
 
     lcFooterPrivacyText: `
 
-HVAD ER EN COOKIE?
+DATAANSVARLIG
 
-En cookie er en lille tekstfil, der kan gemmes på din enhed, når du besøger en hjemmeside. Tilsvarende kan browserens lokale lager (localStorage) anvendes til at huske indstillinger mellem besøg.
+Neptoon Wealth, drevet af Neptoon ApS CVR: 41668504, er dataansvarlig for den behandling af personoplysninger, der beskrives i denne politik.
 
-NØDVENDIG LOKAL LAGRING
+Kontakt: kontakt@neptooninvest.dk
+Adresse: Gammel Køge Landevej 22Z, sth, 2500 Valby, Danmark
 
-Neptoon Life Cycle kan anvende lokal browserlagring til tekniske indstillinger, eksempelvis sprogvalg og andre brugerpræferencer.
+HVILKE OPLYSNINGER BEHANDLER VI?
 
-Formålet er at gøre værktøjet lettere at anvende og bevare relevante indstillinger mellem besøg.
+Når du opretter en konto, behandler vi blandt andet din e-mailadresse, en teknisk brugeridentifikation og oplysninger om kontoens status.
 
-ØKONOMISKE OPLYSNINGER
+Ved køb af Premium behandler vi oplysninger om dit køb, din adgangsstatus og relevante betalingsreferencer.
 
-Neptoon Life Cycle behandler de økonomiske oplysninger, som brugeren indtaster, herunder formue, gæld, opsparing, forbrug, pensioner og investeringsforudsætninger.
+Hvis du anvender Cloud Save, gemmes de indstillinger og økonomiske oplysninger, du aktivt vælger at gemme, på din brugerkonto. Disse oplysninger kan omfatte formue, gæld, opsparing, pensioner, forbrug og øvrige økonomiske forudsætninger.
 
-Oplysningerne anvendes til at beregne og illustrere husstandens økonomiske livsforløb.
+FORMÅL OG BEHANDLINGSGRUNDLAG
 
-Hvordan oplysningerne eventuelt lagres, overføres eller deles, afhænger af den konkrete tekniske implementering og eventuelle funktioner til lagring af brugerens beregninger.
+Vi behandler nødvendige konto- og tjenesteoplysninger for at oprette og administrere din konto, levere de valgte funktioner og opfylde vores aftale med dig, jf. GDPR artikel 6, stk. 1, litra b.
 
-STATISTIK OG ANALYSE
+Oplysninger om betalinger og transaktioner kan behandles for at opfylde retlige forpligtelser, herunder relevante regnskabs- og bogføringskrav, jf. artikel 6, stk. 1, litra c.
 
-Neptoon Wealth kan anvende statistik til at forstå brugen af Life Cycle og forbedre værktøjets funktionalitet og brugeroplevelse.
+Nødvendige tekniske oplysninger kan desuden behandles med henblik på drift, sikkerhed og forebyggelse af misbrug efter en konkret interesseafvejning, jf. artikel 6, stk. 1, litra f.
 
-Hvis der anvendes analyse- eller markedsføringsteknologier, som kræver samtykke, skal disse være omfattet af en passende samtykkeløsning.
+CLOUD SAVE OG ØKONOMISKE OPLYSNINGER
 
-PERSONOPLYSNINGER
+Life Cycle foretager sine almindelige modelberegninger i brugerens browser.
 
-Hvis Neptoon Wealth behandler personoplysninger, sker det med henblik på at levere de relevante funktioner og tjenester.
+Når en Premium-bruger aktivt vælger Cloud Save, overføres de relevante indstillinger til Neptoon Wealth's cloudbaserede lagringsløsning.
 
-Den konkrete behandling, herunder eventuelle tekniske underleverandører, afhænger af de funktioner, der er taget i brug.
+Formålet er at gøre det muligt at gemme og senere gendanne brugerens egne indstillinger.
+
+Cloud Save er en frivillig funktion. Brugeren bør undlade at indtaste oplysninger om andre personer, medmindre der er et relevant grundlag for dette.
+
+TEKNISKE LEVERANDØRER
+
+Neptoon Life Cycle anvender eksterne tekniske tjenester, herunder:
+
+Supabase – brugerkonti, autentifikation og cloudbaseret datalagring.
+
+Stripe – behandling af betalinger og betalingsrelaterede oplysninger.
+
+GitHub Pages – hosting og levering af applikationens offentlige filer.
+
+Disse leverandører behandler oplysninger i det omfang, det er nødvendigt for deres respektive funktioner. Deres konkrete databeskyttelsesroller og eventuelle underleverandører afhænger af de relevante tjenester og aftaler.
+
+INTERNATIONALE DATAOVERFØRSLER
+
+Hvis personoplysninger overføres til lande uden for EU/EØS, skal overførslen ske på et gyldigt overførselsgrundlag og med de nødvendige beskyttelsesforanstaltninger.
+
+COOKIES OG LOKAL LAGRING
+
+Life Cycle kan anvende browserens lokale lager og tilsvarende teknologier til nødvendige funktioner såsom autentifikation, sprogvalg og brugerindstillinger.
+
+Ikke-nødvendige analyse- og markedsføringsteknologier, der kræver samtykke, anvendes kun efter et gyldigt samtykke.
+
+STATISTIK OG KOMMUNIKATION
+
+Vi kan behandle nødvendige tekniske driftsoplysninger for at vedligeholde og forbedre tjenesten.
+
+Eventuel markedsføring via e-mail kræver et særskilt gyldigt grundlag. Oprettelse af en brugerkonto indebærer ikke i sig selv samtykke til markedsføring.
+
+**OPBEVARING OG SLETNING**
+
+Vi opbevarer personoplysninger, så længe det er nødvendigt for at administrere brugerens konto, levere de tilknyttede tjenester og opfylde gældende retlige forpligtelser.
+
+Indstillinger og økonomiske oplysninger, som brugeren aktivt gemmer via Cloud Save, opbevares som udgangspunkt, så længe brugerkontoen er aktiv og tjenesten tilbydes.
+
+En længere periode uden login medfører ikke i sig selv, at brugerens konto eller gemte indstillinger slettes.
+
+Brugeren kan til enhver tid anmode om sletning af sin konto og sine gemte oplysninger ved at kontakte Neptoon Wealth på kontakt@neptooninvest.dk.
+
+Ved sletning af en konto fjernes tilknyttede personoplysninger og gemte indstillinger i overensstemmelse med gældende lovgivning. Oplysninger, som Neptoon Wealth er retligt forpligtet til at opbevare, kan dog fortsat opbevares i den lovpligtige periode.
+
+SIKKERHED
+
+Vi anvender relevante tekniske og organisatoriske foranstaltninger for at beskytte personoplysninger mod uautoriseret adgang, tab og misbrug.
+Ingen internetbaseret tjeneste kan dog garantere fuldstændig sikkerhed.
 
 DINE RETTIGHEDER
 
-Efter gældende databeskyttelseslovgivning har du efter omstændighederne ret til indsigt i, berigtigelse og sletning af dine personoplysninger samt øvrige rettigheder efter GDPR.
+Du har efter GDPR og den øvrige gældende databeskyttelseslovgivning blandt andet ret til indsigt, berigtigelse og under visse betingelser sletning, begrænsning, dataportabilitet og indsigelse.
 
-Oplysninger om dataansvarlig, kontaktadresse, behandlingsgrundlag, databehandlere og opbevaringsperioder skal fremgå af den endelige privatlivspolitik.
+Du kan kontakte os på kontakt@neptooninvest.dk for at gøre dine rettigheder gældende.
+
+Du kan også indgive en klage til Datatilsynet på www.datatilsynet.dk.
 
 ÆNDRINGER
 
-Privatlivspolitikken kan blive opdateret i takt med ændringer i Life Cycle og de tilknyttede tekniske funktioner.
+Vi kan opdatere denne privatlivspolitik ved ændringer i vores tjenester, tekniske løsninger eller gældende regler.
+
+Senest opdateret: 31-10-2026
+
 `,
 
     lcFooterTermsText: `
 
-FORMÅL
+TJENESTEN OG AFTALEPARTEN
 
-Neptoon Life Cycle er et digitalt informations- og analyseværktøj til at undersøge økonomiske muligheder gennem livet.
+Neptoon Life Cycle er en digital tjeneste leveret af Neptoon Wealth, drevet af Neptoon ApS på primærside www.neptoonwealth.com og webapps.neptoonwealth.com.
 
-Værktøjet bygger på økonomiske modeller, brugerens egne oplysninger og valgte forudsætninger om blandt andet investering, inflation, beskatning, opsparing, forbrug og forventet levetid.
+Disse vilkår regulerer brugerens adgang til og anvendelse af tjenesten.
 
-IKKE PERSONLIG INVESTERINGSRÅDGIVNING
+Kontakt: kontakt@neptooninvest.dk
 
-Beregninger, porteføljeeksempler og modelresultater er generelle, illustrative oplysninger og udgør ikke personlig investeringsrådgivning eller anbefalinger om konkrete finansielle dispositioner.
+GRATIS ADGANG OG BRUGERKONTI
 
-Brugeren er selv ansvarlig for sine økonomiske beslutninger og bør søge relevant professionel rådgivning, når det er nødvendigt.
+De funktioner, der tilbydes uden betaling, kan anvendes i overensstemmelse med de til enhver tid oplyste adgangsbetingelser.
 
-MODELRESULTATER OG USIKKERHED
+Oprettelse af en gratis konto giver adgang til de funktioner, der er knyttet til den pågældende kontotype.
 
-Life Cycle beregner økonomiske muligheder under de valgte forudsætninger.
+Brugeren er ansvarlig for at beskytte sine loginoplysninger og for at give korrekte oplysninger ved registrering.
 
-Resultaterne er ikke garantier for fremtidige afkast, finansiel frihed, forbrugsmuligheder eller terminalformue.
+**PREMIUM-ADGANG**
 
-Den beregnede Financial Freedom-dato er en betinget økonomisk modelberegning og ikke en anbefaling om at ophøre med at arbejde.
+Premium tilbydes mod en engangsbetaling og er ikke et abonnement. Der opkræves ingen automatiske eller tilbagevendende betalinger.
 
-Modellen anvender forenklinger, herunder deterministiske afkastforudsætninger og antagelser om finansiering og adgang til økonomiske ressourcer.
+Betalingen giver adgang til Premium-funktionerne, herunder Cloud Save og gendannelse af brugerens gemte indstillinger, så længe Neptoon Life Cycle tilbyder Premium-tjenesten.
 
-En økonomisk mulighed, som modellen beregner som gennemførlig, er derfor ikke nødvendigvis praktisk gennemførlig på de faktiske finansierings- og kreditvilkår, der gælder for den enkelte husstand.
+Neptoon Wealth tilstræber at opretholde Premium-funktionerne og informere brugerne om væsentlige ændringer. Eventuelle ændringer eller ophør af tjenesten sker under hensyntagen til brugerens rettigheder efter gældende lovgivning.
 
-INVESTERING OG RISIKO
+**FORTRYDELSESRET OG REFUSION**
 
-Investering indebærer risiko for tab. Faktiske markedsafkast kan afvige væsentligt fra modellens forventede afkast.
+Ved køb af Premium har forbrugeren som udgangspunkt 14 dages fortrydelsesret i overensstemmelse med gældende forbrugerlovgivning. Eventuelle lovlige undtagelser fra fortrydelsesretten skal være opfyldt og tydeligt oplyst inden købet.
 
-Valget af investeringsportefølje i både Opsparings- og Nedsparingsfasen kan have væsentlig betydning for de beregnede resultater.
+Hvis Premium-funktionerne ikke fungerer som aftalt, kan brugeren kontakte Neptoon Wealth på kontakt@neptooninvest.dk.
 
-Højere forventet afkast indebærer ikke sikkerhed for et bedre faktisk økonomisk forløb.
+Neptoon Wealth vil søge at afhjælpe tekniske fejl inden for rimelig tid og uden omkostninger for brugeren.
 
-BESKATNING OG ØVRIGE FORUDSÆTNINGER
+Hvis væsentlige fejl ikke kan afhjælpes, kan brugeren efter gældende regler være berettiget til et forholdsmæssigt afslag eller til at ophæve købet og få betalingen tilbage.
 
-Modellens behandling af skat, pensioner, ejendomme, gæld og fremtidige økonomiske ressourcer er forenklet og kan afvige fra den enkelte brugers faktiske juridiske og skattemæssige forhold.
+Disse vilkår begrænser ikke brugerens ufravigelige rettigheder efter dansk forbrugerlovgivning.
 
-Brugeren bør ikke anvende modelresultater som erstatning for individuel skatte-, pensions- eller juridisk rådgivning.
+CLOUD SAVE OG BRUGERENS DATA
 
-TEKNISKE FORHOLD OG ANSVAR
+Cloud Save gør det muligt for berettigede brugere at gemme og gendanne indstillinger på deres konto.
 
-Neptoon Wealth tilstræber korrekte beregninger og en stabil tjeneste, men der kan forekomme fejl i data, beregningsmodeller, tekniske funktioner eller tilgængelighed.
+Brugeren er ansvarlig for at kontrollere, at de gemte og gendannede oplysninger er korrekte.
 
-Neptoon Wealth påtager sig ikke ansvar for økonomiske dispositioner truffet alene på baggrund af Life Cycle-resultater, i det omfang dette lovligt kan begrænses.
+Cloud Save er ikke beregnet som en garanteret, permanent sikkerhedskopi eller som erstatning for brugerens egen opbevaring af vigtige oplysninger.
 
-METODE OG DOKUMENTATION
+SLETNING, EKSPORT OG KONTOOPHØR
 
-En nærmere beskrivelse af modellens økonomiske principper, beregningsmetoder og begrænsninger findes i Neptoon Life Cycle — Technical Model Note.
+Brugeren kan til enhver tid anmode om at få sin konto og de tilknyttede Cloud Save-indstillinger slettet ved at kontakte Neptoon Wealth på kontakt@neptooninvest.dk.
+
+Brugeren kan ligeledes anmode om at få udleveret sine gemte personoplysninger i et almindeligt anvendt, maskinlæsbart format, i det omfang dette følger af gældende databeskyttelseslovgivning.
+
+Ved kontoophør ophører adgangen til de tilknyttede Premium-funktioner og gemte indstillinger. Brugeren bør derfor anmode om udlevering af relevante oplysninger inden kontoen slettes.
+
+Personoplysninger slettes eller anonymiseres i overensstemmelse med gældende lovgivning. Oplysninger, som Neptoon Wealth er retligt forpligtet til at opbevare, kan dog fortsat opbevares i den nødvendige periode.
+
+Kontoophør og sletning af oplysninger begrænser ikke brugerens ufravigelige rettigheder efter gældende forbruger- og databeskyttelseslovgivning.
+
+TJENESTENS TILGÆNGELIGHED
+
+Neptoon Wealth arbejder for at levere en stabil og sikker tjeneste.
+
+Midlertidige driftsforstyrrelser, vedligeholdelse og tekniske fejl kan dog forekomme.
+
+Funktioner kan ændres som led i vedligeholdelse, sikkerhedsforbedringer og videreudvikling under hensyntagen til gældende lovgivning og brugerens aftaleretlige rettigheder.
+
+IMMATERIELLE RETTIGHEDER
+
+Neptoon Wealths software, design, tekster, modeller og øvrige originale indhold er beskyttet efter gældende regler om immaterielle rettigheder.
+
+Brugeren får adgang til at anvende tjenesten til egne lovlige formål, men erhverver ikke ejendomsretten til softwaren eller dens underliggende teknologi.
+
+Brugeren bevarer sine eventuelle rettigheder til egne indtastede oplysninger.
+
+INFORMATION OG ANSVAR
+
+Neptoon Life Cycle er et informations- og analyseværktøj.
+
+Tjenesten yder ikke personlig investeringsrådgivning, skatterådgivning eller juridisk rådgivning.
+
+Beregninger og resultater er illustrative og afhænger af brugerens oplysninger og forudsætninger.
+
+Neptoon Wealth tilstræber korrekt funktionalitet, men garanterer ikke fejlfri drift eller bestemte økonomiske resultater.
+
+Ansvar kan alene begrænses i det omfang, gældende ufravigelig lovgivning tillader det.
+
+KLAGER OG KONTAKT
+
+Spørgsmål eller klager vedrørende tjenesten kan sendes til kontakt@neptooninvest.dk.
+
+Oplysninger om relevante forbrugerklagemuligheder skal fremgå, hvor dette følger af gældende regler.
+
+ÆNDRINGER AF VILKÅR
+
+Vilkårene kan opdateres som følge af ændringer i tjenesten, lovgivningen eller tekniske forhold.
+
+Væsentlige ændringer, som berører eksisterende betalingsaftaler eller forbrugerrettigheder, håndteres efter gældende lovgivning.
+
+Senest opdateret: 31-10-2026
+
 `
 
   },
+
+
+
 
   en: {
 
     lcFooterAboutText: `
 
-Neptoon Wealth develops digital tools for investment analysis, portfolio selection and long-term household financial planning.
+ABOUT NEPTOON WEALTH
 
-Neptoon Life Cycle is an economic model that brings together household savings, investments, real estate, pensions, debt, future financial resources and expected consumption into one integrated life cycle.
+Neptoon Wealth develops digital tools for investment analysis, portfolio management and long-term financial planning.
 
-Its purpose is to help users understand the economic relationships between three fundamental decisions:
+Our ambition is to make advanced financial analysis accessible through transparent, user-friendly digital solutions.
 
-FINANCIAL FREEDOM
-When can the household's financial resources, under the selected assumptions, support a life without further employment-related savings?
+Neptoon Life Cycle is part of this ambition, enabling users to explore their financial future based on their own information and assumptions.
 
-CONSUMPTION
-What level of consumption does the household wish to finance throughout its remaining lifetime?
+INDEPENDENCE AND PHILOSOPHY
 
-LEGACY
-How much wealth does the household wish to preserve for the next generation?
+Neptoon Wealth emphasizes financial understanding, transparency and users' ability to make independent decisions.
 
-The model illustrates how changes in investment portfolios, economic assumptions and personal objectives affect the calculated opportunities.
+Our digital tools are designed to support analysis and informed decisions — not to make decisions on behalf of users.
 
-Neptoon Life Cycle is not designed to determine what users should prioritize. It maps the economic opportunities and trade-offs while leaving the direction to the user.
+We map the possibilities. You choose the direction.
 
-We map the opportunities. You choose the direction.
+COMPANY INFORMATION
+
+Neptoon Wealth is operated by Neptoon ApS.
+
+Danish company registration number (CVR): 41668504
+Address: Gammel Køge Landevej 22Z, sth, 2500 Valby, Denmark
+Contact: kontakt@neptooninvest.dk
+
 `,
 
     lcFooterPrivacyText: `
 
-WHAT IS A COOKIE?
+DATA CONTROLLER
 
-A cookie is a small text file that may be stored on your device when visiting a website. Similarly, browser local storage (localStorage) can be used to remember settings between visits.
+Neptoon Wealth, operated by Neptoon ApS (CVR: 41668504), is the data controller for the processing of personal data described in this policy.
 
-NECESSARY LOCAL STORAGE
+Contact: kontakt@neptooninvest.dk
+Address: Gammel Køge Landevej 22Z, sth, 2500 Valby, Denmark
 
-Neptoon Life Cycle may use local browser storage for technical settings, such as language selection and other user preferences.
+WHAT INFORMATION DO WE PROCESS?
 
-The purpose is to make the tool easier to use and preserve relevant settings between visits.
+When you create an account, we process information including your email address, a technical user identifier and your account status.
 
-FINANCIAL INFORMATION
+When you purchase Premium, we process information about your purchase, access status and relevant payment references.
 
-Neptoon Life Cycle processes financial information entered by users, including wealth, debt, savings, consumption, pensions and investment assumptions.
+If you use Cloud Save, the settings and financial information you actively choose to save are stored in association with your user account. This information may include assets, liabilities, savings, pensions, consumption and other financial assumptions.
 
-This information is used to calculate and illustrate the household's financial life cycle.
+PURPOSES AND LEGAL BASES
 
-Whether information is stored, transmitted or shared depends on the actual technical implementation and any functionality for saving user calculations.
+We process account and service information necessary to create and manage your account, provide the selected features and perform our contract with you, pursuant to Article 6(1)(b) of the GDPR.
 
-STATISTICS AND ANALYTICS
+Payment and transaction information may be processed to comply with legal obligations, including applicable accounting and record-keeping requirements, pursuant to Article 6(1)(c).
 
-Neptoon Wealth may use analytics to understand how Life Cycle is used and to improve its functionality and user experience.
+Necessary technical information may also be processed for operations, security and prevention of misuse on the basis of a legitimate interests assessment, pursuant to Article 6(1)(f).
 
-Where analytics or marketing technologies require consent, they must be covered by an appropriate consent mechanism.
+CLOUD SAVE AND FINANCIAL INFORMATION
 
-PERSONAL DATA
+Life Cycle performs its ordinary model calculations in the user's browser.
 
-Where Neptoon Wealth processes personal data, this is done to provide the relevant features and services.
+When a Premium user actively selects Cloud Save, the relevant settings are transferred to Neptoon Wealth's cloud-based storage solution.
 
-The specific processing arrangements, including any technical service providers, depend on the functionality implemented.
+The purpose is to enable users to save and subsequently restore their own settings.
+
+Cloud Save is optional. Users should avoid entering information about other individuals unless they have an appropriate basis for doing so.
+
+TECHNICAL SERVICE PROVIDERS
+
+Neptoon Life Cycle uses external technical services, including:
+
+Supabase — user accounts, authentication and cloud-based data storage.
+
+Stripe — payment processing and payment-related information.
+
+GitHub Pages — hosting and delivery of the application's public files.
+
+These providers process information to the extent necessary for their respective functions. Their specific data protection roles and any subprocessors depend on the relevant services and agreements.
+
+INTERNATIONAL DATA TRANSFERS
+
+If personal data is transferred to countries outside the EU/EEA, the transfer must be based on a valid transfer mechanism and accompanied by the necessary safeguards.
+
+COOKIES AND LOCAL STORAGE
+
+Life Cycle may use the browser's local storage and similar technologies for essential functions such as authentication, language selection and user settings.
+
+Non-essential analytics and marketing technologies that require consent will only be used after valid consent has been obtained.
+
+STATISTICS AND COMMUNICATIONS
+
+We may process technical information necessary for operating, maintaining and improving the service.
+
+Any email marketing requires a separate valid legal basis. Creating a user account does not, in itself, constitute consent to marketing.
+
+RETENTION AND DELETION
+
+We retain personal data for as long as necessary to administer user accounts, provide the associated services and comply with applicable legal obligations.
+
+Settings and financial information actively saved through Cloud Save are generally retained for as long as the user account remains active and the service is offered.
+
+An extended period without logging in does not, in itself, result in deletion of the user's account or saved settings.
+
+Users may request deletion of their account and saved information at any time by contacting Neptoon Wealth at kontakt@neptooninvest.dk.
+
+When an account is deleted, associated personal data and saved settings are removed in accordance with applicable law. Information that Neptoon Wealth is legally required to retain may continue to be stored for the statutory retention period.
+
+SECURITY
+
+We apply appropriate technical and organizational measures to protect personal data against unauthorized access, loss and misuse.
+
+However, no internet-based service can guarantee complete security.
 
 YOUR RIGHTS
 
-Under applicable data protection legislation, you may have rights to access, rectify or erase your personal data, as well as other rights under the GDPR.
+Under the GDPR and other applicable data protection laws, you have rights including access, rectification and, subject to applicable conditions, erasure, restriction of processing, data portability and objection.
 
-Information about the data controller, contact details, legal bases for processing, processors and retention periods must be included in the final privacy policy.
+You may contact us at kontakt@neptooninvest.dk to exercise your rights.
+
+You may also lodge a complaint with the Danish Data Protection Agency (Datatilsynet) at www.datatilsynet.dk.
 
 CHANGES
 
-This privacy policy may be updated as Life Cycle and its associated technical functionality evolve.
+We may update this Privacy Policy to reflect changes to our services, technical solutions or applicable regulations.
+
+Last updated: 31 October 2026
+
 `,
 
     lcFooterTermsText: `
 
-PURPOSE
+THE SERVICE AND CONTRACTING PARTY
 
-Neptoon Life Cycle is a digital information and analysis tool designed to explore financial opportunities throughout life.
+Neptoon Life Cycle is a digital service provided by Neptoon Wealth, operated by Neptoon ApS, with its main website at www.neptoonwealth.com and application website at webapps.neptoonwealth.com.
 
-The tool is based on economic models, user-provided information and selected assumptions concerning investments, inflation, taxation, savings, consumption and expected lifespan.
+These Terms & Conditions govern users' access to and use of the service.
 
-NOT PERSONAL INVESTMENT ADVICE
+Contact: kontakt@neptooninvest.dk
 
-Calculations, portfolio examples and model results are general, illustrative information and do not constitute personalized investment advice or recommendations regarding specific financial transactions.
+FREE ACCESS AND USER ACCOUNTS
 
-Users remain responsible for their own financial decisions and should seek relevant professional advice when necessary.
+Features offered free of charge may be used in accordance with the access conditions communicated at the relevant time.
 
-MODEL RESULTS AND UNCERTAINTY
+Creating a free account provides access to the features associated with that account type.
 
-Life Cycle calculates financial opportunities under the selected assumptions.
+Users are responsible for safeguarding their login credentials and providing accurate information when registering.
 
-Results are not guarantees of future returns, Financial Freedom, consumption possibilities or terminal wealth.
+PREMIUM ACCESS
 
-The calculated Financial Freedom date is a conditional economic model result, not a recommendation to stop working.
+Premium is offered for a one-time payment and is not a subscription. No automatic or recurring payments are charged.
 
-The model applies simplifying assumptions, including deterministic expected returns and assumptions regarding financing and access to financial resources.
+Payment provides access to Premium features, including Cloud Save and restoration of saved settings, for as long as Neptoon Life Cycle offers the Premium service.
 
-An opportunity calculated as financially feasible by the model may therefore not be practically achievable under the actual financing and credit conditions applicable to an individual household.
+Neptoon Wealth aims to maintain Premium features and inform users of material changes. Any changes to or discontinuation of the service will take users' rights under applicable law into account.
 
-INVESTMENT AND RISK
+RIGHT OF WITHDRAWAL AND REFUNDS
 
-Investing involves the risk of loss. Actual market returns may differ significantly from the model's expected returns.
+When purchasing Premium, consumers generally have a 14-day right of withdrawal under applicable consumer protection law. Any lawful exceptions to this right must meet the relevant legal requirements and be clearly disclosed before purchase.
 
-Portfolio selection in both the BUILDING and USING phases may materially affect the calculated results.
+If Premium features do not function as agreed, users may contact Neptoon Wealth at kontakt@neptooninvest.dk.
 
-Higher expected returns do not guarantee a better realized financial outcome.
+Neptoon Wealth will seek to remedy technical defects within a reasonable time and at no cost to the user.
 
-TAXATION AND OTHER ASSUMPTIONS
+If material defects cannot be remedied, users may, under applicable law, be entitled to a proportionate price reduction or to terminate the purchase and receive a refund.
 
-The model's treatment of taxation, pensions, real estate, debt and future financial resources is simplified and may differ from the user's actual legal and tax circumstances.
+These terms do not limit users' mandatory rights under Danish consumer protection law.
 
-Model results should not replace individual tax, pension or legal advice.
+CLOUD SAVE AND USER DATA
 
-TECHNICAL CONDITIONS AND LIABILITY
+Cloud Save allows eligible users to save and restore settings associated with their accounts.
 
-Neptoon Wealth seeks to provide accurate calculations and a reliable service, but errors in data, calculation models, technical functionality or availability may occur.
+Users are responsible for verifying that saved and restored information is accurate.
 
-To the extent permitted by applicable law, Neptoon Wealth does not accept liability for financial decisions made solely in reliance on Life Cycle results.
+Cloud Save is not intended to serve as a guaranteed, permanent backup or as a substitute for users' own retention of important information.
 
-METHODOLOGY AND DOCUMENTATION
+DELETION, EXPORT AND ACCOUNT CLOSURE
 
-A more detailed description of the model's economic principles, calculation methods and limitations is provided in the Neptoon Life Cycle — Technical Model Note.
+Users may request deletion of their account and associated Cloud Save settings at any time by contacting Neptoon Wealth at kontakt@neptooninvest.dk.
+
+Users may also request their stored personal data in a commonly used, machine-readable format to the extent required by applicable data protection law.
+
+When an account is closed, access to the associated Premium features and saved settings ends. Users should therefore request a copy of relevant information before their account is deleted.
+
+Personal data is deleted or anonymized in accordance with applicable law. Information that Neptoon Wealth is legally required to retain may continue to be stored for the necessary period.
+
+SERVICE AVAILABILITY
+
+Neptoon Wealth works to provide a stable and secure service.
+
+However, temporary outages, maintenance and technical errors may occur.
+
+Features may change as part of maintenance, security improvements and further development, subject to applicable law and users' contractual rights.
+
+INTELLECTUAL PROPERTY RIGHTS
+
+Neptoon Wealth's software, design, texts, models and other original content are protected under applicable intellectual property laws.
+
+Users are granted access to use the service for their own lawful purposes but do not acquire ownership of the software or its underlying technology.
+
+Users retain any rights they may have in the information they enter themselves.
+
+INFORMATION AND LIABILITY
+
+Neptoon Life Cycle is an information and analysis tool.
+
+The service does not provide personalized investment, tax or legal advice.
+
+Calculations and results are illustrative and depend on the information and assumptions provided by the user.
+
+Neptoon Wealth strives to ensure correct functionality but does not guarantee error-free operation or particular financial outcomes.
+
+Liability may be limited only to the extent permitted by mandatory applicable law.
+
+COMPLAINTS AND CONTACT
+
+Questions or complaints regarding the service may be sent to kontakt@neptooninvest.dk.
+
+Information about relevant consumer complaint mechanisms will be provided where required by applicable law.
+
+CHANGES TO THE TERMS
+
+These terms may be updated to reflect changes to the service, legislation or technical circumstances.
+
+Material changes affecting existing paid agreements or consumer rights will be handled in accordance with applicable law.
+
+Last updated: 31 October 2026
+
 `
 
-  }
-
+  },
 };
 
 
