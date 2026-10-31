@@ -12370,7 +12370,76 @@ margin-top:15px !important;
   }
 
 }
+.lcConfirmOverlay[hidden]{display:none!important}
 
+.lcConfirmOverlay{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  background:rgba(20,35,60,.48);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.lcConfirmModal{
+  width:min(100%,480px);
+  background:#fff;
+  border:1px solid #d7e0ec;
+  border-radius:0;
+  padding:30px 34px;
+  box-shadow:0 14px 45px rgba(0,0,0,.18);
+}
+
+.lcConfirmKicker{
+  font:600 10px Arial,sans-serif;
+  letter-spacing:1.5px;
+  color:#4E79BD;
+  margin-bottom:20px;
+}
+
+.lcConfirmModal h2{
+  font:normal 27px "Times New Roman",serif;
+  color:#182b48;
+  margin:0 0 15px;
+}
+
+.lcConfirmModal p{
+  font:14px/1.7 Arial,sans-serif;
+  color:#526784;
+  margin:0 0 28px;
+}
+
+.lcConfirmActions{
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+}
+
+.lcConfirmActions button{
+  border-radius:0;
+  padding:11px 22px;
+  font:600 13px Arial,sans-serif;
+  cursor:pointer;
+}
+
+#lcConfirmCancel{
+  background:#fff;
+  border:1px solid #cbd5e1;
+  color:#334155;
+}
+
+#lcConfirmAccept{
+  background:#4E79BD;
+  border:1px solid #4E79BD;
+  color:#fff;
+}
+
+@media(max-width:480px){
+  .lcConfirmModal{padding:24px 20px}
+  .lcConfirmActions button{flex:1}
+}
 
 </style>
 
@@ -18616,7 +18685,31 @@ margin-top:15px !important;
   </div>
 </div>
 
+<div id="lcConfirmOverlay" class="lcConfirmOverlay" hidden>
+  <div class="lcConfirmModal" role="dialog" aria-modal="true"
+       aria-labelledby="lcConfirmTitle">
 
+    <div class="lcConfirmKicker">
+      NEPTOON WEALTH · LIFE CYCLE
+    </div>
+
+    <h2 id="lcConfirmTitle"></h2>
+    <p id="lcConfirmMessage"></p>
+
+    <div class="lcConfirmActions">
+      <button id="lcConfirmCancel"
+              type="button"
+              data-lang="lcConfirmCancel">
+        Cancel
+      </button>
+
+      <button id="lcConfirmAccept" type="button">
+        Continue
+      </button>
+    </div>
+
+  </div>
+</div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -20839,7 +20932,7 @@ pensionTaxHint:
 
 lifePhasesReadMore:
   "Want to understand the model?",
-
+lcConfirmCancel: "Cancel",
 lifePhasesPdf:
   "Technical documentation (PDF)",
 mortgageAnnualCosts:"Annual costs",
@@ -21938,6 +22031,8 @@ welcomeHowCloudLabel:"PREMIUM · ENGANGSBETALING",
 
   lifeObjectiveToday:
     "I dag",
+
+lcConfirmCancel: "Annuller",
 
   lifeObjectiveEnd:
     "Livets afslutning",
@@ -31325,7 +31420,72 @@ function paintEdgeState(
    RESULT HEADER
 ===================================================== */
 
+function neptoonConfirm(title,message,acceptLabel,options={}){
 
+  return new Promise(resolve => {
+
+    const overlay = byId("lcConfirmOverlay");
+    const titleEl = byId("lcConfirmTitle");
+    const messageEl = byId("lcConfirmMessage");
+    const accept = byId("lcConfirmAccept");
+    const cancel = byId("lcConfirmCancel");
+
+    if(!overlay || !titleEl || !messageEl || !accept || !cancel){
+      resolve(false);
+      return;
+    }
+
+    const da = INIT.lang === "da";
+    const infoOnly = options.infoOnly === true;
+
+    titleEl.textContent = title;
+    messageEl.textContent = message;
+    accept.textContent = acceptLabel;
+
+    cancel.hidden = infoOnly;
+
+    overlay.hidden = false;
+
+    const previousFocus = document.activeElement;
+
+    function close(result){
+      overlay.hidden = true;
+      accept.onclick = null;
+      cancel.onclick = null;
+      overlay.removeEventListener("click",onBackdrop);
+      document.removeEventListener("keydown",onKeydown);
+      previousFocus?.focus?.();
+      resolve(result);
+    }
+
+    function onBackdrop(e){
+      if(e.target === overlay) close(false);
+    }
+
+    function onKeydown(e){
+      if(e.key === "Escape"){
+        e.preventDefault();
+        close(false);
+      }
+      if(e.key === "Tab"){
+        const focusable = infoOnly ? [accept] : [cancel,accept];
+        const i = focusable.indexOf(document.activeElement);
+        e.preventDefault();
+        focusable[(i + (e.shiftKey ? focusable.length-1 : 1)) % focusable.length].focus();
+      }
+    }
+
+    accept.onclick = () => close(true);
+    cancel.onclick = () => close(false);
+
+    overlay.addEventListener("click",onBackdrop);
+    document.addEventListener("keydown",onKeydown);
+
+    accept.focus();
+
+  });
+
+}
 
 
 
@@ -41832,16 +41992,25 @@ function bindLifeCycleStorageButtons(){
   const premium =
     ACCOUNT.plan === "premium" && !!ACCOUNT.user;
 
+  const da = INIT.lang === "da";
+
   if(saveBtn){
 
     saveBtn.disabled = !premium;
 
     saveBtn.onclick = async () => {
 
-      if(!confirm(
-        "Save your current financial plan to the cloud? " +
-        "This will replace your previous saved plan."
-      )) return;
+      if(!premium) return;
+
+      const confirmed = await neptoonConfirm(
+        da ? "Gem mine indstillinger" : "Save My Settings",
+        da
+          ? "Vil du gemme din aktuelle finansielle plan i skyen? Din tidligere gemte plan bliver overskrevet."
+          : "Save your current financial plan to the cloud? Your previously saved plan will be replaced.",
+        da ? "Gem i skyen" : "Save to Cloud"
+      );
+
+      if(!confirmed) return;
 
       await saveLifeCycleSettings();
 
@@ -41857,16 +42026,31 @@ function bindLifeCycleStorageButtons(){
 
       if(!premium) return;
 
-      if(!confirm(
-        "Restore your saved financial plan? " +
-        "Your current unsaved inputs will be replaced."
-      )) return;
+      const confirmed = await neptoonConfirm(
+        da ? "Gendan mine indstillinger" : "Restore My Settings",
+        da
+          ? "Vil du gendanne din gemte finansielle plan? Dine aktuelle ændringer, som ikke er gemt, vil blive overskrevet."
+          : "Restore your saved financial plan? Your current unsaved changes will be replaced.",
+        da ? "Gendan" : "Restore"
+      );
+
+      if(!confirmed) return;
 
       const data = await loadLifeCycleSettings();
 
       if(!data?.settings){
-        alert("No saved financial plan was found.");
+
+        await neptoonConfirm(
+          da ? "Ingen gemt plan" : "No Saved Plan",
+          da
+            ? "Vi kunne ikke finde en gemt finansiel plan på din konto."
+            : "No saved financial plan was found for your account.",
+          "OK",
+          {infoOnly:true}
+        );
+
         return;
+
       }
 
       try{
@@ -41880,18 +42064,30 @@ function bindLifeCycleStorageButtons(){
         const status = byId("lcStorageStatus");
         const lastSaved = byId("lcStorageLastSaved");
 
-        if(status) status.textContent = "Restored";
+        if(status){
+          status.textContent = da ? "Gendannet" : "Restored";
+        }
 
         if(lastSaved){
           lastSaved.textContent =
-            "Last saved: " +
-            new Date(data.updated_at).toLocaleString();
+            (da ? "Sidst gemt: " : "Last saved: ") +
+            new Date(data.updated_at).toLocaleString(
+              da ? "da-DK" : "en-GB"
+            );
         }
 
       }catch(error){
 
         console.error("CLOUD RESTORE FAILED",error);
-        alert("Unable to restore your saved financial plan.");
+
+        await neptoonConfirm(
+          da ? "Gendannelse mislykkedes" : "Restore Failed",
+          da
+            ? "Din gemte finansielle plan kunne ikke gendannes."
+            : "Unable to restore your saved financial plan.",
+          "OK",
+          {infoOnly:true}
+        );
 
       }
 
@@ -41900,7 +42096,6 @@ function bindLifeCycleStorageButtons(){
   }
 
 }
-
 async function refreshLifeCycleMembership(user){
 console.time("PREMIUM LOOKUP");
   if(!user){
