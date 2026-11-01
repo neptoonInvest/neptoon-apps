@@ -24372,7 +24372,7 @@ lcStorageSaveButton: "Gem nuværende Plan",
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "Min privatøkonomi og formue 200",
+appName: "Min privatøkonomi og formue 300",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
@@ -35082,10 +35082,21 @@ function bindLifeCycleAuthState(){
 
           if(ACCOUNT.user?.id !== user.id) return;
 
-          refreshLifeCycleMembership(user)
-            .catch(error=>{
-              console.error("MEMBERSHIP REFRESH FAILED",error);
-            });
+refreshLifeCycleMembership(user)
+  .then(async ()=>{
+
+    if(ACCOUNT.user?.id !== user.id) return;
+
+    if(ACCOUNT.plan === "premium"){
+      await loadSavedCompareLedger();
+    }
+
+    compareUpdateButton();
+
+  })
+  .catch(error=>{
+    console.error("MEMBERSHIP REFRESH FAILED",error);
+  });
 
         },0);
 
@@ -45211,9 +45222,12 @@ function bindLifeCycleStorageButtons(){
   }
 
 }
+
+
 async function refreshLifeCycleMembership(user){
 console.time("PREMIUM LOOKUP");
-  if(!user){
+ 
+ if(!user){
     ACCOUNT.plan = "visitor";
     paintAppAccountStatus();
     renderAccountMembership();
@@ -45240,6 +45254,22 @@ console.timeEnd("PREMIUM LOOKUP");
     data?.plan === "premium"
       ? "premium"
       : "free";
+
+
+/* COMPARE — LOAD SAVED BASELINE */
+
+if(ACCOUNT.plan === "premium"){
+
+  await loadSavedCompareLedger();
+if(ACCOUNT.user?.id !== user.id) return;
+
+}else{
+
+  savedCompareLedger = null;
+
+}
+
+compareUpdateButton();
 
 paintAppAccountStatus();
 renderAccountMembership();
