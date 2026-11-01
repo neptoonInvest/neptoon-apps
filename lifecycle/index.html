@@ -24450,7 +24450,7 @@ lcStorageSaveButton: "Gem nuværende Plan",
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "Min privatøkonomi og formue 1400",
+appName: "Min privatøkonomi og formue 2400",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
@@ -29255,13 +29255,15 @@ futureResources:[
   Both pensions use the same growth assumption.
 */
 
+/*
+  SUPPLEMENTARY PUBLIC PENSION / ATP
+*/
+
 supplementaryPension:
-  publicPensionEnabled
-    ? Math.max(
-        0,
-        moneyValue("supplementaryPensionAnnual")
-      ) / 12
-    : 0,
+  Math.max(
+    0,
+    moneyValue("supplementaryPensionAnnual")
+  ) / 12,
 
 supplementaryPensionStatus:
   document.querySelector(
@@ -40304,21 +40306,21 @@ function buildFreedomDayInformation(
 
     assets:"Aktiver",
     liabilities:"Forpligtelser",
-    netWealth:"Økonomisk nettoformue",
+    netWealth:"Egenkapital",
     mortgage:"Realkredit restgæld",
     bankLoan:"Bank restgæld",
 
-    employment:"Arbejde",
-    freedomAmount:"Frihedsbeløb",
-    freePortfolio:"Fri investeringsportefølje",
-    realEstate:"Din bolig",
+    employment:"Arbejde og fritid",
+    freedomAmount:"Fast passiv indkomst (til forbrug i Fase 2 nedsparing)",
+    freePortfolio:"'Frie Midler' investeringsportefølje",
+    realEstate:"Din private bolig",
     enterprise:"Din virksomhed",
     privatePension:"Privat pension",
     publicPension:"Offentlig pension",
 supplementaryPension:"ATP Livslang Pension",
-    inheritance:"Forventet arv",
+    inheritance:"Forventet egen arv",
     otherResources:"Øvrige ressourcer",
-    legacy:"Din efterladte formue",
+    legacy:"Din efterladte arv",
 
     realUnit:"Dagens købekraft",
     monthly:"pr. måned",
@@ -40334,16 +40336,16 @@ employmentText:(age)=>
     minimumFractionDigits:1,
     maximumFractionDigits:1
   })} år kan du ifølge modellen `+
-      `finansiere din valgte levestandard uden `+
-      `yderligere arbejdsindkomst. Du kan `+
+      `finansiere din valgte levestandard I fase 2 uden `+
+      `yderligere arbejdsindkomst. Dvs. teknisk set uden yderligere indskud i nedsparingsporteføljen I fase 2. Du kan `+
       `fortsætte med at arbejde, stoppe eller `+
       `vælge en helt anden retning i livet.`,
 
     freedomText:(amount)=>
-      `Dit frihedsbeløb på ${amount} pr. måned `+
-      `er den levestandard, dine økonomiske `+
-      `ressourcer skal finansiere frem til `+
-      `modellens slutalder.`,
+      `Din passive indkomst til forbrug er på ${amount} pr. måned `+
+      `er den levestandard, dine akkumulerede og fremtidige I fase 2 økonomiske muskler`+
+      `skal finansiere frem til `+
+      `din død.`,
 
 portfolioText:(amount)=>
   `Din frie investeringsportefølje udgør ${amount} `+
@@ -40363,7 +40365,7 @@ homeText:(amount)=>
   `af værdistigninger vises særskilt under `+
   `forpligtelser og reducerer din økonomiske `+
   `nettoformue. Du behøver ikke nødvendigvis `+
-  `sælge boligen for at opnå økonomisk frihed. `+
+  `sælge boligen før du dør - det er modellen automatisk ellers. `+
   `Beholder du den, forudsætter modellen `+
   `tilsvarende økonomisk afkast og adgang til `+
   `den nødvendige finansiering. Ved et `+
@@ -40464,17 +40466,13 @@ mortgageText:(amount)=>
   `for din samlede økonomiske plan.`,
 
 legacyText:(real,nominal)=>
-  `Dit ønskede beløb til efterladt formue `+
-  `er ${real} i dagens købekraft. Med den `+
-  `valgte inflationsforudsætning svarer `+
-  `det til ${nominal} nominelt ved modellens `+
-  `slutalder. Målet vedrører den økonomiske `+
-  `nettoformue efter fradrag af modellens `+
-  `resterende gæld og indregnede `+
-  `skatteforpligtelser. Beløbet er et `+
-  `økonomisk planlægningsmål og ikke `+
-  `en beregning af arveafgift hos `+
-  `de efterladte.`,
+  `Dit ønskede beløb til efterladt formue er ${real} i dagens købekraft. `+
+  `Med den valgte inflationsforudsætning svarer det til ${nominal} nominelt ved modellens slutalder. `+
+  `Arv til efterkommere opgøres som den resterende egenkapital ved slutalderen, dvs. aktiver fratrukket `+
+  `resterende gæld og indregnede skatteforpligtelser. `+
+  `Det beregnede beløb kan i særlige tilfælde afvige væsentligt fra dit ønskede beløb. `+
+  `Arveafgift er ikke inkluderet i modellen, da en eventuel afgift hos de efterladte `+
+  `først opstår i forbindelse med overdragelsen af formuen. Når du dør står din beregnede arv på en kontantsaldo i banken - minimum 0. Dvs. du kan IKKE trække på efterkommeres økonomi med et lån`,
 
 methodNote:
   `Alle økonomiske værdier opgøres i dagens `+
@@ -40484,7 +40482,7 @@ methodNote:
   `under forpligtelser. Modellen anvender `+
   `de valgte forudsætninger om realafkast, `+
   `skat, inflation og finansiering. `+
-  `Økonomisk frihed og balance er en modelberegning `+
+  `Økonomisk Balance er en modelberegning `+
   `og er ikke en garanti for fremtidige `+
   `afkast, låneadgang eller likviditet.`
 
@@ -40496,7 +40494,7 @@ methodNote:
 
     assets:"Assets",
     liabilities:"Liabilities",
-    netWealth:"Net economic wealth",
+    netWealth:"Net Equity",
     mortgage:"Mortgage outstanding debt",
     bankLoan:"Bank outstanding debt",
 
@@ -41538,7 +41536,7 @@ setText("lifeBalanceLiabilitiesCurrency", ccy);
 
     assets:"Aktiver",
     liabilities:"Forpligtelser og egenkapital",
-    netEquity:"Økonomisk nettoformue",
+    netEquity:"Egenkapital",
 
     totalAssets:"Aktiver i alt",
     totalLiabilitiesEquity:"Passiver i alt",
