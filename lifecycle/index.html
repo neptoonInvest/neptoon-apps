@@ -16787,7 +16787,7 @@ document.querySelectorAll(
       <a
         id="faqTechnicalPDF"
         class="faqTechnicalPDF"
-        href="https://ebacf41d-1b42-4022-ac7d-5373af231779.usrfiles.com/ugd/ebacf4_edae94ecfbcf43319f1de80cfa41ba55.pdf	"
+        href="YOUR_EXISTING_TECHNICAL_PDF_URL"
         target="_blank"
         rel="noopener noreferrer">
 
@@ -24878,16 +24878,16 @@ footerUsePortfolio:
   "Nedsparingsportefølje",
 
 footerFreedomRange:
-  "Usikkerhed for Øko. Balance Alder",
+  "Usikkerhed for Økonomisk Balance N*",
 
 footerFreedomAge:
-  "Økonomisk Balance Alder",
+  "Økonomisk balance (N*)",
 
 footerWealthInput:
   "Nettoformue i dag",
 
 footerSavingsMonthly:
-  "Månedlig opsparing (indskud)",
+  "Månedlig fri opsparing",
 
 footerLegacy:
   "Arv til efterkommere (ønsket)",
@@ -29245,11 +29245,23 @@ futureResources:[
         ? inflation + 0.005
         : 0,
 
+
+/*
+  SUPPLEMENTARY PUBLIC PENSION / ATP
+
+  Annual amount entered in today's kroner.
+  Convert to monthly pension.
+
+  Both pensions use the same growth assumption.
+*/
+
 supplementaryPension:
-  Math.max(
-    0,
-    moneyValue("supplementaryPensionAnnual")
-  ) / 12,
+  publicPensionEnabled
+    ? Math.max(
+        0,
+        moneyValue("supplementaryPensionAnnual")
+      ) / 12
+    : 0,
 
 supplementaryPensionStatus:
   document.querySelector(
@@ -34927,7 +34939,88 @@ window.currentLifeCycleBalanceSheets =
 
 
 
-		
+function renderMetrics(
+  inputs,
+  scenario
+){
+
+  const ledger =
+    scenario.ledger || [];
+
+  const economicToday =
+    ledger[0]?.lifeCycleWealth;
+
+  const calculatedLegacy =
+    ledger.length
+      ? ledger[ledger.length - 1]
+          .lifeCycleWealth
+      : null;
+
+
+  byId("metricToday")
+    .textContent =
+      formatMoneyPlain(
+        economicToday
+      );
+
+
+  byId("metricConsumption")
+    .textContent =
+      formatMoneyPlain(
+        inputs.monthlyConsumption
+      );
+
+
+  byId("metricLegacy")
+    .textContent =
+      Number.isFinite(calculatedLegacy)
+        ? formatMoneyPlain(
+            calculatedLegacy
+          )
+        : "—";
+
+
+  byId("metricFreedom")
+    .textContent =
+      (
+        scenario.expected &&
+        scenario.expected.status !== "notReached"
+      )
+        ? formatMoneyPlain(
+            scenario.expected
+              .accumulatedWealth
+          )
+        : "—";
+
+}
+
+console.log("simutest 3", freedomDay);
+
+window.currentFreedomDayInformation =
+  freedomDay;
+
+renderFreedomDayInformation(freedomDay);
+  /*
+    FREEDOM HEADER
+  */
+
+  renderFreedomHeader(
+    scenario
+  );
+
+renderLifeCycleAssessment(scenario);
+
+
+  /*
+    EDGE STATES
+  */
+
+  paintEdgeState(
+    scenario
+  );
+
+
+  /*
     EXPECTED PATH
   */
 
@@ -45814,26 +45907,79 @@ console.log("WEB INIT 2");
     initOtherAssetNames(INIT.lang);
     initExcelAccessSection();
     lockDanishOtherAssetNames();
-   initSupplementaryPension();  
-
-   restoreLifeCycleAccount();
+initSupplementaryPension();  
+console.log("WEB INIT 3");
+restoreLifeCycleAccount();
 
     paintAppAccountStatus();
-
+console.log("WEB INIT 4");
     renderAccountMembership();
     renderLifeCycleFAQ(INIT.lang);
-   initExcelExportAccess();
+initExcelExportAccess();
+console.log("WEB INIT 5");
+
+    /*
+      3. FETCH GITHUB PORTFOLIOS
+    */
+
+    const portfolios =
+      await fetchLifeCyclePortfolios();
+console.log("WEB INIT 6");
+    console.log(
+      "LIFE CYCLE PORTFOLIOS LOADED",
+      portfolios.length
+    );
 
 
+    /*
+      4. INITIALIZE PORTFOLIO SELECTORS
 
+      This function already:
+      - Populates issuers
+      - Selects default models
+      - Updates selectedModels
+      - Renders portfolio details
+    */
+
+console.log("BEFORE PORTFOLIO INIT", portfolios.length);
+
+console.log("BEFORE PORTFOLIO INIT", portfolios.length);
+
+console.log("BEFORE PORTFOLIO INIT", portfolios.length);
+
+console.log("BEFORE PORTFOLIO INIT", portfolios.length);
+
+console.log("BEFORE PORTFOLIO INIT", portfolios.length);
+
+console.log("BEFORE PORTFOLIO INIT", portfolios.length);
 
 
     initializeAccountPortfolioSelectors(
       portfolios
     );
+console.log("WEB INIT 7");
+
+console.log(
+  "AFTER PORTFOLIO INIT",
+  ACCOUNT_PORTFOLIOS.length,
+  selectedModels.phase1?.identity,
+  selectedModels.phase2?.identity
+);
 
 
+console.log(
+  "AFTER PORTFOLIO INIT",
+  ACCOUNT_PORTFOLIOS.length,
+  selectedModels.phase1?.identity,
+  selectedModels.phase2?.identity
+);
 
+console.log(
+  "AFTER PORTFOLIO INIT",
+  ACCOUNT_PORTFOLIOS.length,
+  selectedModels.phase1?.identity,
+  selectedModels.phase2?.identity
+);
 
     /*
       5. VERIFY BOTH PHASES
