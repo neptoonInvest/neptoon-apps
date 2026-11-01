@@ -12497,6 +12497,319 @@ margin-top:15px !important;
 }
 
 
+/* =============================================
+   BALANCE SHEET ANALYTICS
+============================================= */
+
+.lifeBalanceChartsBody{
+  padding:20px;
+}
+
+.balanceChartsTimeline{
+  padding:18px 20px;
+  border:1px solid #e2e8f0;
+  margin-bottom:18px;
+}
+
+.balanceChartsTimelineHead,
+.balanceChartsTimelineFoot{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.balanceChartsSelectedAge,
+.balanceChartsFreedomAge{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+
+.balanceChartsFreedomAge{
+  text-align:right;
+}
+
+.balanceChartsSmallLabel{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.8px;
+  color:#64748b;
+}
+
+#balanceChartsAgeValue{
+  font-size:26px;
+  font-weight:700;
+  color:#172b4d;
+}
+
+#balanceChartsFreedomValue{
+  font-size:17px;
+  color:#4E79BD;
+}
+
+.balanceChartsSliderWrap{
+  position:relative;
+  margin:25px 0 12px;
+  height:24px;
+}
+
+.balanceChartsPhaseTrack{
+  display:flex;
+  width:100%;
+  height:6px;
+  position:absolute;
+  top:9px;
+  background:#e5e7eb;
+}
+
+.balanceChartsPhaseBuild{
+  width:50%;
+  background:#4E79BD;
+}
+
+.balanceChartsPhaseUse{
+  flex:1;
+  background:#d89a54;
+}
+
+.balanceChartsFreedomMarker{
+  position:absolute;
+  left:50%;
+  top:-12px;
+  height:37px;
+  pointer-events:none;
+  z-index:2;
+}
+
+.balanceChartsMarkerLine{
+  display:block;
+  height:100%;
+  border-left:2px dashed #334155;
+}
+
+.balanceChartsMarkerLabel{
+  position:absolute;
+  top:-12px;
+  left:-5px;
+  font-size:11px;
+  font-weight:700;
+  color:#334155;
+}
+
+#balanceChartsAgeSlider{
+  position:absolute;
+  width:100%;
+  height:24px;
+  margin:0;
+  top:0;
+  left:0;
+  background:transparent;
+  cursor:pointer;
+  z-index:3;
+}
+
+.balanceChartsTimelineFoot{
+  font-size:12px;
+  color:#64748b;
+}
+
+#balanceChartsPhaseLabel{
+  font-weight:600;
+  color:#334155;
+}
+
+/* VALUATION TOOLBAR */
+
+.balanceChartsToolbar{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.balanceChartsUnitLabel,
+.balanceChartsCurrency{
+  font-size:12px;
+  color:#64748b;
+}
+
+.balanceChartsModeSwitch{
+  display:flex;
+  border:1px solid #d5dce5;
+}
+
+.balanceChartsModeBtn{
+  padding:7px 15px;
+  border:0;
+  background:#fff;
+  color:#475569;
+  font-size:12px;
+  cursor:pointer;
+  border-radius:0;
+}
+
+.balanceChartsModeBtn.is-active{
+  background:#4E79BD;
+  color:#fff;
+}
+
+/* TWO CHARTS */
+
+.balanceChartsGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.balanceChartsCard{
+  border:1px solid #e2e8f0;
+  padding:20px;
+  min-width:0;
+}
+
+.balanceChartsCardTitle{
+  font-size:16px;
+  font-weight:700;
+  color:#172b4d;
+}
+
+.balanceChartsCardHint{
+  font-size:12px;
+  color:#64748b;
+  margin-top:5px;
+  line-height:1.5;
+}
+
+.balanceChartsDonutWrap{
+  height:270px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:12px 0;
+}
+
+#balanceChartsDonut{
+  max-width:100%;
+  max-height:100%;
+}
+
+.balanceChartsTotals{
+  border-top:1px solid #e2e8f0;
+  padding-top:12px;
+}
+
+.balanceChartsTotal{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:8px 0;
+  font-size:13px;
+  color:#475569;
+}
+
+.balanceChartsTotal strong{
+  color:#172b4d;
+  font-variant-numeric:tabular-nums;
+}
+
+.balanceChartsTotal.is-net{
+  border-top:1px solid #e2e8f0;
+  margin-top:5px;
+  font-weight:700;
+}
+
+/* COMPONENT ATTRIBUTION */
+
+.balanceChartsAttributionWrap{
+  margin-top:20px;
+  min-height:310px;
+}
+
+/* CONTEXTUAL NOTE */
+
+.balanceChartsPhaseNote{
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+  margin-top:16px;
+  padding:12px;
+  border-left:3px solid #d89a54;
+  background:#f8fafc;
+  color:#475569;
+  font-size:12px;
+  line-height:1.5;
+}
+
+.balanceChartsPhaseNote[hidden]{
+  display:none;
+}
+
+/* MOBILE */
+
+@media(max-width:760px){
+
+  .lifeBalanceChartsBody{
+    padding:14px;
+  }
+
+  .balanceChartsGrid{
+    grid-template-columns:1fr;
+  }
+
+  .balanceChartsTimeline{
+    padding:15px 12px;
+  }
+
+  .balanceChartsCard{
+    padding:15px;
+  }
+
+  .balanceChartsDonutWrap{
+    height:230px;
+  }
+
+  .balanceChartsToolbar{
+    flex-wrap:wrap;
+  }
+
+}
+#balanceChartsAgeSlider{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:24px;
+  margin:0;
+  padding:0;
+
+  appearance:none;
+  -webkit-appearance:none;
+
+  background:transparent;
+  cursor:pointer;
+  z-index:10;
+}
+
+#balanceChartsAgeSlider::-webkit-slider-runnable-track{
+  height:6px;
+  background:transparent;
+}
+
+#balanceChartsAgeSlider::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#1677f2;
+  border:0;
+  margin-top:-4px;
+  cursor:grab;
+}
+
+#balanceChartsAgeSlider:active::-webkit-slider-thumb{
+  cursor:grabbing;
+}
 </style>
 
 </head>
@@ -15178,6 +15491,244 @@ margin-top:15px !important;
 
 
 </section> <!-- Close preceding panel/section -->
+
+
+<!-- =============================================
+     LIFE CYCLE · BALANCE SHEET ANALYTICS
+============================================= -->
+
+<section class="panel" id="lifeBalanceChartsPanel">
+
+  <div class="panelHead">
+    <div>
+      <div class="sectionTitle" data-lang="balanceChartsTitle">
+        Your Wealth Through Life
+      </div>
+      <div class="sectionHint" data-lang="balanceChartsHint">
+        Explore how your assets, liabilities and net wealth
+        evolve throughout your lifetime.
+      </div>
+    </div>
+  </div>
+
+  <div class="lifeBalanceChartsBody">
+
+    <!-- MONTHLY AGE NAVIGATION -->
+
+    <div class="balanceChartsTimeline">
+
+      <div class="balanceChartsTimelineHead">
+
+        <div class="balanceChartsSelectedAge">
+          <span class="balanceChartsSmallLabel"
+                data-lang="balanceChartsSelectedAge">
+            SELECTED AGE
+          </span>
+
+          <strong id="balanceChartsAgeValue">—</strong>
+        </div>
+
+        <div class="balanceChartsFreedomAge">
+          <span class="balanceChartsSmallLabel"
+                data-lang="balanceChartsFreedomAge">
+            ECONOMIC BALANCE DAY
+          </span>
+
+          <strong id="balanceChartsFreedomValue">—</strong>
+        </div>
+
+      </div>
+
+      <div class="balanceChartsSliderWrap">
+
+        <div class="balanceChartsPhaseTrack">
+          <div class="balanceChartsPhaseBuild"
+               id="balanceChartsPhaseBuild"></div>
+
+          <div class="balanceChartsPhaseUse"
+               id="balanceChartsPhaseUse"></div>
+        </div>
+
+        <div class="balanceChartsFreedomMarker"
+             id="balanceChartsFreedomMarker">
+          <span class="balanceChartsMarkerLine"></span>
+          <span class="balanceChartsMarkerLabel">n*</span>
+        </div>
+
+        <input
+          type="range"
+          id="balanceChartsAgeSlider"
+          min="0"
+          max="1"
+          step="1"
+          value="0"
+          aria-label="Selected age">
+
+      </div>
+
+      <div class="balanceChartsTimelineFoot">
+
+        <span id="balanceChartsMinAge">—</span>
+
+        <span id="balanceChartsPhaseLabel"
+              data-lang="balanceChartsBuilding">
+          Building wealth
+        </span>
+
+        <span id="balanceChartsMaxAge">—</span>
+
+      </div>
+
+    </div>
+
+    <!-- REAL / NOMINAL CONTROL -->
+
+    <div class="balanceChartsToolbar">
+
+      <div class="balanceChartsUnitLabel"
+           data-lang="balanceChartsValuation">
+        Valuation
+      </div>
+
+      <div class="balanceChartsModeSwitch"
+           role="group"
+           aria-label="Valuation basis">
+
+        <button type="button"
+                class="balanceChartsModeBtn is-active"
+                data-balance-mode="real"
+                aria-pressed="true">
+          Real
+        </button>
+
+        <button type="button"
+                class="balanceChartsModeBtn"
+                data-balance-mode="nominal"
+                aria-pressed="false">
+          Nominal
+        </button>
+
+      </div>
+
+      <span class="balanceChartsCurrency"
+            id="balanceChartsCurrency">
+        DKK
+      </span>
+
+    </div>
+
+    <!-- TWO CHARTS -->
+
+    <div class="balanceChartsGrid">
+
+      <!-- LEFT: BALANCE SHEET DONUT -->
+
+      <div class="balanceChartsCard">
+
+        <div class="balanceChartsCardHead">
+          <div class="balanceChartsCardTitle"
+               data-lang="balanceChartsSummaryTitle">
+            Economic Balance Sheet
+          </div>
+
+          <div class="balanceChartsCardHint"
+               data-lang="balanceChartsSummaryHint">
+            Your household's financial position
+            at the selected age.
+          </div>
+        </div>
+
+        <div class="balanceChartsDonutWrap">
+          <canvas id="balanceChartsDonut"></canvas>
+        </div>
+
+        <div class="balanceChartsTotals">
+
+          <div class="balanceChartsTotal">
+            <span data-lang="balanceChartsGrossAssets">
+              Total Assets
+            </span>
+            <strong id="balanceChartsGrossAssets">—</strong>
+          </div>
+
+          <div class="balanceChartsTotal">
+            <span data-lang="balanceChartsLiabilities">
+              Total Liabilities
+            </span>
+            <strong id="balanceChartsLiabilities">—</strong>
+          </div>
+
+          <div class="balanceChartsTotal is-net">
+            <span data-lang="balanceChartsNetWealth">
+              Net Wealth
+            </span>
+            <strong id="balanceChartsNetWealth">—</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT: COMPONENT ATTRIBUTION -->
+
+      <div class="balanceChartsCard">
+
+        <div class="balanceChartsCardHead">
+          <div class="balanceChartsCardTitle"
+               data-lang="balanceChartsAttributionTitle">
+            Assets &amp; Liabilities
+          </div>
+
+          <div class="balanceChartsCardHint"
+               data-lang="balanceChartsAttributionHint">
+            Individual Balance Sheet components
+            at the selected age.
+          </div>
+        </div>
+
+        <div class="balanceChartsAttributionWrap"
+             id="balanceChartsAttribution">
+
+          <!-- Dynamically populated component bars -->
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- CONSUMPTION PORTFOLIO EXPLANATION -->
+
+    <div class="balanceChartsPhaseNote"
+         id="balanceChartsPhaseNote"
+         hidden>
+
+      <span class="balanceChartsPhaseNoteIcon">ⓘ</span>
+
+      <span id="balanceChartsPhaseNoteText"></span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </section> <!-- Close preceding app tab -->
 
 
@@ -20861,6 +21412,27 @@ lifeFAQSubtitle:
   "Understand the assumptions and economic principles behind your Economic Balance Day.",
 
 
+balanceChartsTitle:"Your Wealth Through Life",
+balanceChartsHint:"Explore how your assets, liabilities and net wealth evolve throughout your lifetime.",
+
+balanceChartsSelectedAge:"SELECTED AGE",
+balanceChartsFreedomAge:"ECONOMIC BALANCE DAY",
+balanceChartsBuilding:"Building wealth",
+
+balanceChartsValuation:"Valuation",
+
+balanceChartsSummaryTitle:"Economic Balance Sheet",
+balanceChartsSummaryHint:"Your household's financial position at the selected age.",
+
+balanceChartsGrossAssets:"Total Assets",
+balanceChartsLiabilities:"Total Liabilities",
+balanceChartsNetWealth:"Net Wealth",
+
+balanceChartsAttributionTitle:"Assets & Liabilities",
+balanceChartsAttributionHint:"Individual Balance Sheet components at the selected age.",
+
+
+
 
 
 
@@ -22179,6 +22751,14 @@ welcomeHowView1Desc:"Explore your wealth path and Economic Balance Day.",
 welcomeHowView2Title:"Balances & Wealth",
 welcomeHowView2Desc:"See your economic balance at any age.",
 
+
+/* EN */
+balanceChartsUsing:"Using wealth",
+balanceChartsConsumption:"Consumption Portfolio",
+balanceChartsPhaseNote:"The Consumption Portfolio becomes a liability in the month following Economic Balance Day.",
+balanceChartsReal:"Real",
+balanceChartsNominal:"Nominal",
+
 welcomeHowView3Title:"Portfolios & History",
 welcomeHowView3Desc:"Explore investment strategies, risk and historical returns.",
 
@@ -22984,7 +23564,7 @@ lcStorageSaveButton: "Gem nuværende Plan",
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "Navigation mellem privatøkonomi og finansielle formuer",
+appName: "Navigation13 mellem privatøkonomi og finansielle formuer",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
@@ -23028,6 +23608,34 @@ portfolioPhaseUse:"Nedsparing",
 
 settingsNavAssetsSub:
   "Fast ejendom · Private Pensioner · Private Selskaber · Folkepension · ASK · Realkreditlån · Banklån · Udskudt Skat",
+
+/* DA */
+balanceChartsUsing:"Formueforbrug",
+balanceChartsConsumption:"Forbrugsportefølje",
+balanceChartsPhaseNote:"Forbrugsporteføljen indgår som en forpligtelse fra måneden efter Økonomisk Balancedag.",
+balanceChartsReal:"Reale",
+balanceChartsNominal:"Nominelle",
+
+
+balanceChartsTitle:"Din formue gennem livet",
+balanceChartsHint:"Udforsk, hvordan dine aktiver, forpligtelser og nettoformue udvikler sig gennem livet.",
+
+balanceChartsSelectedAge:"VALGT ALDER",
+balanceChartsFreedomAge:"ØKONOMISK BALANCEDAG",
+balanceChartsBuilding:"Formueopbygning",
+
+balanceChartsValuation:"Værdiansættelse",
+
+balanceChartsSummaryTitle:"Økonomisk balance",
+balanceChartsSummaryHint:"Din husstands økonomiske balance ved den valgte alder.",
+
+balanceChartsGrossAssets:"Aktiver i alt",
+balanceChartsLiabilities:"Forpligtelser i alt",
+balanceChartsNetWealth:"Nettoformue",
+
+balanceChartsAttributionTitle:"Aktiver og forpligtelser",
+balanceChartsAttributionHint:"De enkelte balanceposter ved den valgte alder.",
+
 
 
 tabMetricsTitle: "Porteføljens nøgletal (årligt)",
@@ -33009,6 +33617,9 @@ paintAssetAssumptionStatus();
 window.currentLifeCycleLedger =
   scenario.ledger || [];	
 
+window.currentLifeCycleFreedomMonth =
+  scenario.expected?.month;
+
 
 
 
@@ -33170,61 +33781,9 @@ renderLifeCycleAssessment(scenario);
     scenario
   );
 
-
-  /*
-    LIFE CYCLE CHART
-  */
+initBalanceChartsSlider();
 
 
-
-console.log("===== MOUNTAIN RENDER DEBUG =====");
-
-console.log("1. ECONOMIC STATE", {
-  outlook: ECONOMIC_OUTLOOK,
-  base: RISK_RETURN_BASE
-});
-
-console.log("2. SELECTED PORTFOLIOS", {
-  build: selectedModels.phase1?.objKeyFigures,
-  use: selectedModels.phase2?.objKeyFigures
-});
-
-console.log("3. ENGINE INPUTS", inputs);
-
-console.log("4. SCENARIO", {
-  status: scenario.expected?.status,
-  ledgerLength: scenario.ledger?.length,
-  simulationFeasible:
-    scenario.expected?.simulation?.feasible
-});
-
-console.log("5. LEDGER SAMPLE",
-  scenario.ledger?.slice(0, 3)
-);
-
-console.log("6. EXPECTED PATH", {
-  exists: !!path,
-  length: Array.isArray(path)
-    ? path.length
-    : null,
-  sample: Array.isArray(path)
-    ? path.slice(0, 3)
-    : path
-});
-
-console.log("EXPECTED PATH INPUTS", path,scenario);
-
-console.log("===== END MOUNTAIN DEBUG =====");
-
-console.log("MOUNTAIN RENDER DEBUG", {
-  pathLength: path?.length,
-  firstWealth: path?.[0]?.wealth,
-  lastWealth: path?.at(-1)?.wealth,
-  canvasWidth:
-    byId("lifeChart")?.getBoundingClientRect().width,
-  canvasHeight:
-    byId("lifeChart")?.getBoundingClientRect().height
-});
 
 drawChart(
   inputs,
@@ -42054,7 +42613,104 @@ function paintFutureResourceRates(){
 
    
       console.log(" BOOT 15 - READY FOR INIT");
+function initBalanceChartsSlider(){
 
+  const ledger = window.currentLifeCycleLedger || [];
+  const slider = document.getElementById("balanceChartsAgeSlider");
+
+  if(!slider || !ledger.length) return;
+
+  const freedomMonth =
+    Number(window.currentLifeCycleFreedomMonth);
+
+  const maxIndex = ledger.length - 1;
+
+  slider.min = 0;
+  slider.max = maxIndex;
+  slider.step = 1;
+
+  // Initially select Economic Balance Day
+  const initialIndex = Number.isFinite(freedomMonth)
+    ? Math.max(0, Math.min(maxIndex, freedomMonth))
+    : 0;
+
+  slider.value = initialIndex;
+
+  // Fixed n* marker
+  const position = maxIndex > 0
+    ? (initialIndex / maxIndex) * 100
+    : 0;
+
+  const marker = document.getElementById("balanceChartsFreedomMarker");
+  const build = document.getElementById("balanceChartsPhaseBuild");
+
+  if(marker) marker.style.left = position + "%";
+  if(build) build.style.width = position + "%";
+
+  updateBalanceChartsSlider();
+}
+
+function updateBalanceChartsSlider(){
+
+  const ledger = window.currentLifeCycleLedger || [];
+  const slider = document.getElementById("balanceChartsAgeSlider");
+
+  if(!slider || !ledger.length) return;
+
+  const index = Number(slider.value);
+  const row = ledger[index];
+
+  if(!row) return;
+
+  const freedomMonth =
+    Number(window.currentLifeCycleFreedomMonth);
+
+  const using = Number.isFinite(freedomMonth) &&
+                index > freedomMonth;
+
+  const lang = INIT.lang || "en";
+
+  const age = Number(row.age);
+
+  document.getElementById("balanceChartsAgeValue").textContent =
+    age.toFixed(1);
+
+  document.getElementById("balanceChartsFreedomValue").textContent =
+    Number.isFinite(freedomMonth) && ledger[freedomMonth]
+      ? Number(ledger[freedomMonth].age).toFixed(1)
+      : "—";
+
+  document.getElementById("balanceChartsMinAge").textContent =
+    Number(ledger[0].age).toFixed(1);
+
+  document.getElementById("balanceChartsMaxAge").textContent =
+    Number(ledger[ledger.length - 1].age).toFixed(1);
+
+  const phaseLabel =
+    document.getElementById("balanceChartsPhaseLabel");
+
+  if(phaseLabel){
+    phaseLabel.dataset.lang =
+      using ? "balanceChartsUsing" : "balanceChartsBuilding";
+
+    phaseLabel.textContent = using
+      ? (lang === "da" ? "Formueforbrug" : "Using wealth")
+      : (lang === "da" ? "Formueopbygning" : "Building wealth");
+  }
+
+  const note = document.getElementById("balanceChartsPhaseNote");
+  const noteText = document.getElementById("balanceChartsPhaseNoteText");
+
+  if(note && noteText){
+    note.hidden = !using;
+
+    if(using){
+      noteText.textContent = lang === "da"
+        ? "Forbrugsporteføljen indgår som en forpligtelse fra måneden efter Økonomisk Balancedag."
+        : "The Consumption Portfolio becomes a liability in the month following Economic Balance Day.";
+    }
+  }
+}
 
 
 
@@ -43752,7 +44408,8 @@ console.log("BOOT 23");
 document.getElementById("appBuildNumber").textContent =
   "BUILD " + Math.floor(Math.random() * 1001);
   
-  
+  document.getElementById("balanceChartsAgeSlider")
+  ?.addEventListener("input", updateBalanceChartsSlider);
   
   
   
