@@ -12810,6 +12810,308 @@ margin-top:15px !important;
 #balanceChartsAgeSlider:active::-webkit-slider-thumb{
   cursor:grabbing;
 }
+
+
+
+
+#balanceChartsAttribution{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.balanceChartsBarGroup{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.balanceChartsBarGroupTitle{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.09em;
+  color:#64748b;
+  border-bottom:1px solid #e5e7eb;
+  padding-bottom:7px;
+}
+
+.balanceChartsBarRow{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+
+.balanceChartsBarHead{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  font-size:12px;
+}
+
+.balanceChartsBarLabel{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  min-width:0;
+}
+
+.balanceChartsBarLabel svg{
+  width:15px;
+  height:15px;
+  flex:0 0 15px;
+  color:#64748b;
+}
+
+.balanceChartsBarLabel span{
+  overflow-wrap:anywhere;
+}
+
+.balanceChartsBarHead strong{
+  white-space:nowrap;
+  font-size:12px;
+  font-weight:600;
+  font-variant-numeric:tabular-nums;
+}
+
+.balanceChartsBarTrack{
+  height:7px;
+  width:100%;
+  background:#edf0f4;
+  overflow:hidden;
+}
+
+.balanceChartsBarFill{
+  height:100%;
+  transition:width .15s ease;
+}
+
+.balanceChartsBarFill.asset{
+  background:#4E79BD;
+}
+
+.balanceChartsBarFill.liability{
+  background:#d89a54;
+}
+
+
+
+document.querySelectorAll(
+  "[data-balance-mode]"
+).forEach(button => {
+
+  button.classList.toggle(
+    "active",
+    button.dataset.balanceMode === balanceChartsMode
+  );
+
+});
+
+
+
+/* GLOBAL HEADER — FOUR FEATURES */
+
+.app-header-actions{
+  display:flex;
+  align-items:stretch;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.app-header-card{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:6px;
+  padding:9px 12px;
+  border:1px solid #dce3ec;
+  border-radius:0;
+  background:#fff;
+  min-height:58px;
+}
+
+.app-header-card-title{
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:#94a3b8;
+  line-height:1.2;
+}
+
+.app-header-language .lang-switch{
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+
+.app-header-card button{
+  border-radius:0;
+}
+
+.app-compare-button{
+  padding:7px 12px;
+  background:#fff;
+  border:1px solid #4E79BD;
+  color:#4E79BD;
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.app-compare-button:hover{
+  background:#eef3fa;
+}
+
+.app-header-save .app-save-settings{
+  background:#4E79BD;
+  color:#fff;
+  border:1px solid #4E79BD;
+}
+
+.app-header-account .app-account-label{
+  text-align:left;
+}
+
+/* TABLET / MOBILE */
+
+@media(max-width:900px){
+  .app-header{
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  .app-header-actions{
+    justify-content:flex-start;
+    width:100%;
+  }
+}
+
+@media(max-width:560px){
+  .app-header-actions{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+  }
+
+  .app-header-card{
+    min-width:0;
+  }
+}
+
+
+/* GLOBAL HEADER — UNIFIED NAVIGATION */
+
+.app-header-actions{
+  display:flex;
+  align-items:stretch;
+  justify-content:flex-end;
+  flex-wrap:nowrap;
+  gap:0;
+}
+
+.app-header-card{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:flex-start;
+
+  gap:6px;
+  padding:9px 12px;
+
+  background:#fff;
+  border:1px solid #dce3ec;
+  border-radius:0;
+
+  min-height:64px;
+  box-sizing:border-box;
+}
+
+/* ONE BORDER BETWEEN ADJACENT CARDS */
+
+.app-header-card + .app-header-card{
+  border-left:0;
+}
+
+/* CONSISTENT TITLE POSITION */
+
+.app-header-card-title{
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:#94a3b8;
+  line-height:1.2;
+}
+
+/* ALIGN CONTROLS ON SAME BASELINE */
+
+.app-header-card > button,
+.app-header-card > .lang-switch{
+  margin-top:auto;
+}
+
+/* TABLET */
+
+@media(max-width:900px){
+  .app-header-actions{
+    width:100%;
+    justify-content:flex-start;
+  }
+}
+
+/* MOBILE — TWO BY TWO */
+
+@media(max-width:560px){
+  .app-header-actions{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:0;
+  }
+
+  .app-header-card{
+    min-width:0;
+  }
+
+  .app-header-card:nth-child(3){
+    border-left:1px solid #dce3ec;
+    border-top:0;
+  }
+
+  .app-header-card:nth-child(4){
+    border-top:0;
+  }
+}
+
+
+
+.lcCompareOverlay[hidden]{display:none!important}
+.lcCompareOverlay{position:fixed;inset:0;z-index:9999;background:rgba(17,24,39,.5);display:flex;align-items:center;justify-content:center;padding:16px}
+.lcCompareModal{width:min(780px,100%);max-height:85vh;overflow:auto;background:#fff;border:1px solid #d6deea;box-shadow:0 16px 45px #0003}
+.lcCompareModal,.lcCompareModal *{border-radius:0!important;box-sizing:border-box}
+.lcCompareHeader{display:flex;align-items:center;justify-content:space-between;background:#4E79BD;color:#fff;padding:15px 20px}
+.lcCompareHeader small{font-size:10px;letter-spacing:.08em;opacity:.85}
+.lcCompareHeader h2{margin:4px 0 0;font-size:21px;color:#fff}
+.lcCompareHeader button{background:none;border:0;color:#fff;font-size:25px;cursor:pointer}
+.lcCompareBody{padding:18px 20px}
+.lcCompareBody h3{font-size:11px;letter-spacing:.05em;color:#4E79BD;margin:8px 0 10px}
+.lcCompareBody h3 span{float:right;color:#7b8491;font-weight:400;letter-spacing:0}
+.lcCompareTable{width:100%;border-collapse:collapse;margin:0 0 20px;table-layout:fixed;font-size:12px}
+.lcCompareTable th,.lcCompareTable td{padding:10px 8px;border-bottom:1px solid #e5e9ef}
+.lcCompareTable th{background:#f0f4fa;font-weight:600}
+.lcCompareTable th:first-child,.lcCompareTable td:first-child{text-align:left;width:37%}
+.lcCompareTable th:not(:first-child),.lcCompareTable td:not(:first-child){text-align:center;font-variant-numeric:tabular-nums}
+.lcComparePortfolios th:first-child,.lcComparePortfolios td:first-child{width:22%}
+.lcComparePortfolios strong{display:block;font-weight:600}
+.lcComparePortfolios td small{display:block;margin-top:4px;color:#667085;font-size:10px}
+.lcCompareFooter{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid #e5e9ef;padding-top:14px}
+.lcCompareFooter small{color:#7b8491}
+.lcCompareFooter button{background:#4E79BD;border:1px solid #4E79BD;color:white;padding:9px 16px;cursor:pointer}
+#appCompareLifeCycle:disabled{background:#e5e7eb!important;color:#9ca3af!important;border-color:#d1d5db!important;cursor:not-allowed!important;opacity:.7}
+@media(max-width:560px){.lcCompareBody{padding:12px}.lcCompareTable{font-size:10px}.lcCompareTable th,.lcCompareTable td{padding:8px 4px}.lcCompareFooter{flex-wrap:wrap}}
+
 </style>
 
 </head>
@@ -12826,6 +13128,7 @@ margin-top:15px !important;
 
 
 
+
 <header class="app-header">
 
   <div class="app-brand">
@@ -12836,67 +13139,98 @@ margin-top:15px !important;
 
   <div class="app-header-actions">
 
-    <!-- TECHNICAL DOCUMENTATION -->
-    <a
-      class="app-pdf-link"
-      id="lifePhasesPdfLink"
-      href="https://ebacf41d-1b42-4022-ac7d-5373af231779.usrfiles.com/ugd/ebacf4_edae94ecfbcf43319f1de80cfa41ba55.pdf"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Technical documentation (PDF)"
-      title="Technical documentation (PDF)">
-    </a>
+    <!-- A. LANGUAGE -->
+    <div class="app-header-card app-header-language">
 
-    <!-- LANGUAGE SWITCH -->
-    <div class="lang-switch">
+      <div class="app-header-card-title" data-lang="headerLanguage">
+        Language
+      </div>
 
-      <button data-ui-lang="da" type="button" aria-label="Dansk" title="Dansk">
-        <img
-          src="https://static.wixstatic.com/media/ebacf4_b9f4191365ce4a0d8daef9d273c39c64~mv2.png"
-          alt="Dansk flag">
-      </button>
+      <div class="lang-switch">
 
-      <button data-ui-lang="en" type="button" aria-label="English" title="English">
-        <img
-          src="https://static.wixstatic.com/media/ebacf4_98eeee093b2647f9945efb7b4c5c8be3~mv2.png"
-          alt="British flag">
+        <button data-ui-lang="da" type="button" aria-label="Dansk" title="Dansk">
+          <img
+            src="https://static.wixstatic.com/media/ebacf4_b9f4191365ce4a0d8daef9d273c39c64~mv2.png"
+            alt="Dansk flag">
+        </button>
+
+        <button data-ui-lang="en" type="button" aria-label="English" title="English">
+          <img
+            src="https://static.wixstatic.com/media/ebacf4_98eeee093b2647f9945efb7b4c5c8be3~mv2.png"
+            alt="British flag">
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- B. COMPARE -->
+    <div class="app-header-card app-header-compare">
+
+      <div class="app-header-card-title" data-lang="headerCompareTitle">
+        Scenarios
+      </div>
+
+      <button
+        type="button"
+        class="app-compare-button"
+        id="appCompareLifeCycle"
+        data-lang="headerCompare">
+        Compare
       </button>
 
     </div>
 
-    <!-- GLOBAL CLOUD SAVE -->
-    <button
-      type="button"
-      class="app-save-settings"
-      id="appSaveSettings"
-      data-lang="lcGlobalSaveSettings">
-      Gem mine indstillinger
-    </button>
+    <!-- C. SAVE MY LIFE CYCLE -->
+    <div class="app-header-card app-header-save">
 
-    <!-- ACCOUNT STATUS -->
-    <button
-      type="button"
-      class="app-account-label"
-      id="appAccountStatus"
-      aria-label="Account login and registration">
+      <div class="app-header-card-title" data-lang="headerSaveTitle">
+        My Life Cycle
+      </div>
 
-      <span
-        id="appAccountStatusText"
-        data-lang="accountHeaderLogin">
-        Log ind / Opret konto
-      </span>
+      <button
+        type="button"
+        class="app-save-settings"
+        id="appSaveSettings"
+        data-lang="lcGlobalSaveSettings">
+        Gem mine indstillinger
+      </button>
 
-      <span
-        id="appAccountEmail"
-        class="app-account-email"
-        hidden>
-      </span>
+    </div>
 
-    </button>
+    <!-- D. ACCOUNT STATUS -->
+    <div class="app-header-card app-header-account">
+
+      <div class="app-header-card-title" data-lang="headerAccountTitle">
+        Account
+      </div>
+
+      <button
+        type="button"
+        class="app-account-label"
+        id="appAccountStatus"
+        aria-label="Account login and registration">
+
+        <span
+          id="appAccountStatusText"
+          data-lang="accountHeaderLogin">
+          Log ind / Opret konto
+        </span>
+
+        <span
+          id="appAccountEmail"
+          class="app-account-email"
+          hidden>
+        </span>
+
+      </button>
+
+    </div>
 
   </div>
 
 </header>
+
 
 
   <nav
@@ -19320,6 +19654,104 @@ margin-top:15px !important;
 </div>
 
 
+
+
+<!-- NEPTOON COMPARE MODAL: insert near end of existing <body> -->
+<div id="lcCompareOverlay" class="lcCompareOverlay" hidden>
+  <section class="lcCompareModal" role="dialog" aria-modal="true" aria-labelledby="lcCompareTitle">
+    <header class="lcCompareHeader">
+      <div><small>NEPTOON LIFE CYCLE · PREMIUM</small><h2 id="lcCompareTitle">Saved vs Live</h2></div>
+      <button type="button" id="lcCompareClose" aria-label="Close comparison">×</button>
+    </header>
+    <div class="lcCompareBody">
+      <h3>FINANCIAL OUTCOMES <span>Real DKK</span></h3>
+      <table class="lcCompareTable">
+        <thead><tr><th>Metric</th><th>Saved</th><th>Live</th><th>Δ Live − Saved</th></tr></thead>
+        <tbody id="lcCompareMetrics">
+          <tr><td>Monthly savings</td><td>10,000</td><td>15,000</td><td>+5,000</td></tr>
+          <tr><td>Monthly consumption</td><td>28,000</td><td>28,000</td><td>0</td></tr>
+          <tr><td>Economic wealth today</td><td>500,000</td><td>500,000</td><td>0</td></tr>
+          <tr><td>Economic Balance Age</td><td>67.7</td><td>65.2</td><td>−2.5</td></tr>
+          <tr><td>Wealth at Balance</td><td>5.74m</td><td>5.61m</td><td>−0.13m</td></tr>
+          <tr><td>Calculated Legacy</td><td>1.01m</td><td>1.38m</td><td>+0.37m</td></tr>
+        </tbody>
+      </table>
+      <h3>SELECTED INVESTMENT PORTFOLIOS</h3>
+      <table class="lcCompareTable lcComparePortfolios">
+        <thead><tr><th>Phase</th><th>Saved</th><th>Live</th></tr></thead>
+        <tbody id="lcComparePortfolioRows">
+          <tr><td>Building</td><td><strong>Neptoon Tycho</strong><small>Risk 3/7 · Net 6.8% · Cost 0.35%</small></td><td><strong>Neptoon Turing</strong><small>Risk 5/7 · Net 8.2% · Cost 0.42%</small></td></tr>
+          <tr><td>Using</td><td><strong>Neptoon Ørsted</strong><small>Risk 2/7 · Net 4.9% · Cost 0.28%</small></td><td><strong>Neptoon Tycho</strong><small>Risk 3/7 · Net 6.8% · Cost 0.35%</small></td></tr>
+        </tbody>
+      </table>
+      <footer class="lcCompareFooter">
+        <small>Saved baseline compared with current Live model</small>
+        <button type="button" id="lcComparePdf">Compare PDF</button>
+      </footer>
+    </div>
+  </section>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   
 <script>    
@@ -19433,8 +19865,8 @@ riskID:3
 
 
 let accountUpdateTimer = null;
-
-
+let currentCompareLedger = null;
+let savedCompareLedger = null;         // SUPABASE
 
 
 const INPUT_BOUNDS = {
@@ -23564,7 +23996,7 @@ lcStorageSaveButton: "Gem nuværende Plan",
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "Navigation13 mellem privatøkonomi og finansielle formuer",
+appName: "Min privatøkonomi og formue 1",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
@@ -25685,6 +26117,35 @@ console.log("explanation 2 focus");
 
 }
 
+async function loadSavedCompareLedger(){
+
+  savedCompareLedger = null;
+compareUpdateButton();
+
+  if(!ACCOUNT.user || ACCOUNT.plan !== "premium"){
+    return;
+  }
+
+  const {data,error} = await supabaseClient
+    .from("life_cycle_settings")
+    .select("settings")
+    .eq("user_id",ACCOUNT.user.id)
+    .maybeSingle();
+
+
+
+  if(error){
+    console.error("COMPARE LOAD FAILED",error);
+    return;
+  }
+
+  savedCompareLedger =
+    data?.settings?.ledgerSnapShot ?? null;
+compareUpdateButton();
+
+  console.log("SAVED COMPARE LEDGER",savedCompareLedger);
+
+}
 
 /* =====================================================
    2. FIRE / LEGACY PERSPECTIVE
@@ -25989,6 +26450,264 @@ console.log("BOOT 2c — Language functions defined");
 /* =====================================================
    4. LEGACY SLIDER
 ===================================================== */
+/* =========================================
+   COMPARE — FORMATTING
+========================================= */
+
+function compareNumber(value,decimals=0){
+
+  if(value===null || value===undefined || value==="") return "—";
+
+  const n=Number(value);
+
+  return Number.isFinite(n)
+    ? n.toLocaleString("en-US",{
+        minimumFractionDigits:decimals,
+        maximumFractionDigits:decimals
+      })
+    : "—";
+
+}
+
+function compareMoney(value){
+
+  return compareNumber(value,0);
+
+}
+
+function compareAge(value){
+
+  return compareNumber(value,1);
+
+}
+
+function comparePercent(value){
+
+  return value===null || value===undefined
+    ? "—"
+    : compareNumber(Number(value)*100,2)+"%";
+
+}
+
+function compareDelta(live,saved,decimals=0){
+
+  if(live===null || live===undefined ||
+     saved===null || saved===undefined) return "—";
+
+  const delta=Number(live)-Number(saved);
+
+  if(!Number.isFinite(delta)) return "—";
+
+  return (delta>0?"+":"")+compareNumber(delta,decimals);
+
+}
+
+/* =========================================
+   COMPARE — METRICS PAINTER
+========================================= */
+
+function compareRenderMetrics(live,saved){
+
+  const body=byId("compareMetricsBody");
+
+  if(!body) return;
+
+  const rows=[
+    ["Monthly savings","monthlySavings",0],
+    ["Monthly consumption","monthlyConsumption",0],
+    ["Economic wealth today","economicToday",0],
+    ["Economic Balance Age","freedomAge",1],
+    ["Wealth at Balance","wealthAtFreedom",0],
+    ["Calculated Legacy","calculatedLegacy",0]
+  ];
+
+  body.innerHTML=rows.map(([label,key,decimals])=>{
+
+    const liveValue=live?.[key];
+    const savedValue=saved?.[key];
+
+    const format=decimals===1?compareAge:compareMoney;
+
+    return `
+      <tr>
+        <td>${label}</td>
+        <td>${format(savedValue)}</td>
+        <td>${format(liveValue)}</td>
+        <td>${compareDelta(liveValue,savedValue,decimals)}</td>
+      </tr>
+    `;
+
+  }).join("");
+
+}
+
+/* =========================================
+   COMPARE — PORTFOLIO PAINTER
+========================================= */
+
+function comparePortfolioHTML(portfolio){
+
+  if(!portfolio) return "—";
+
+  const label=compareEscapeHTML(portfolio.modelLabel || "—");
+
+  const risk=compareEscapeHTML(portfolio.riskLevel || "—");
+
+  return `
+    <div class="comparePortfolioName">${label}</div>
+    <div class="comparePortfolioMeta">
+      Risk ${risk} ·
+      Net ${comparePercent(portfolio.expRetNet)} ·
+      Cost ${comparePercent(portfolio.costs)}
+    </div>
+  `;
+
+}
+
+function compareEscapeHTML(value){
+
+  return String(value).replace(/[&<>"']/g,c=>({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  })[c]);
+
+}
+
+function compareRenderPortfolios(live,saved){
+
+  const body=byId("comparePortfoliosBody");
+
+  if(!body) return;
+
+  body.innerHTML=["build","use"].map(phase=>`
+
+    <tr>
+      <td>${phase==="build"?"Building":"Using"}</td>
+      <td>${comparePortfolioHTML(saved?.portfolios?.[phase])}</td>
+      <td>${comparePortfolioHTML(live?.portfolios?.[phase])}</td>
+    </tr>
+
+  `).join("");
+
+}
+
+/* =========================================
+   COMPARE — MODAL CONTROLLER
+========================================= */
+
+function compareOpenModal(){
+
+  if(ACCOUNT.plan!=="premium") return;
+
+  if(!savedCompareLedger) return;
+
+  compareRenderMetrics(
+    currentCompareLedger,
+    savedCompareLedger
+  );
+
+  compareRenderPortfolios(
+    currentCompareLedger,
+    savedCompareLedger
+  );
+
+  const modal=byId("compareModal");
+
+  if(modal){
+    modal.hidden=false;
+  }
+
+}
+
+function compareCloseModal(){
+
+  const modal=byId("compareModal");
+
+  if(modal){
+    modal.hidden=true;
+  }
+
+}
+
+/* =========================================
+   COMPARE — MODAL CONTROLLER
+========================================= */
+
+function compareOpenModal(){
+
+  if(ACCOUNT.plan!=="premium") return;
+
+  if(!savedCompareLedger) return;
+
+  compareRenderMetrics(
+    currentCompareLedger,
+    savedCompareLedger
+  );
+
+  compareRenderPortfolios(
+    currentCompareLedger,
+    savedCompareLedger
+  );
+
+  const modal=byId("compareModal");
+
+  if(modal){
+    modal.hidden=false;
+  }
+
+}
+
+function compareCloseModal(){
+
+  const modal=byId("compareModal");
+
+  if(modal){
+    modal.hidden=true;
+  }
+
+}
+
+/* =========================================
+   COMPARE — BUTTON STATE
+========================================= */
+
+function compareUpdateButton(){
+
+  const btn=byId("appCompareLifeCycle");
+
+  if(!btn) return;
+
+  const enabled=
+    ACCOUNT.plan==="premium" &&
+    !!savedCompareLedger &&
+    !!currentCompareLedger;
+
+  btn.disabled=!enabled;
+
+  btn.title=enabled
+    ? "Compare saved and live Life Cycle"
+    : ACCOUNT.plan!=="premium"
+      ? "Premium membership required"
+      : "Save your Life Cycle first";
+
+}
+
+function compareBindEvents(){
+
+  byId("appCompareLifeCycle")
+    ?.addEventListener("click",compareOpenModal);
+
+  byId("compareClose")
+    ?.addEventListener("click",compareCloseModal);
+
+  document.addEventListener("keydown",event=>{
+    if(event.key==="Escape") compareCloseModal();
+  });
+
+}
 
 function numberFromLegacyInput(value){
 
@@ -28902,12 +29621,75 @@ function getUserSettings(){
     savedAt:new Date().toISOString(),
     inputs,
     radios,
-    components
+    components,
+    ledgerSnapShot:currentCompareLedger
   };
 
 }
 
+function getCompareLedgerLive(inputs,scenario){
 
+  const ledger = scenario?.ledger || [];
+  const expected = scenario?.expected;
+
+  const reached =
+    expected &&
+    expected.status !== "notReached";
+
+  return {
+
+    // FINANCIAL DECISIONS
+    monthlySavings:inputs.monthlySavings ?? null,
+    monthlyConsumption:inputs.monthlyConsumption ?? null,
+ 
+
+    // LIFE CYCLE OUTPUTS
+    economicToday:ledger[0]?.lifeCycleWealth ?? null,
+
+    freedomAge:
+      reached ? expected.age : null,
+
+    freedomMonth:
+      reached ? expected.month : null,
+
+    wealthAtFreedom:
+      reached ? expected.accumulatedWealth : null,
+
+    calculatedLegacy:
+      ledger.length
+        ? ledger[ledger.length-1].lifeCycleWealth
+        : null,
+
+    // SELECTED INVESTMENT PORTFOLIOS
+    portfolios:getComparePortfolioSnapshot()
+
+  };
+
+}
+
+function getComparePortfolioSnapshot(){
+
+  const extract = model => {
+
+    const m = model?.objKeyFigures || {};
+
+    return {
+      modelLabel:model?.identity?.modelLabel ?? null,
+      riskLevel:Number.isFinite(Number(m.risk))
+        ? `${riskDotFromRisk(m.risk)}/7`
+        : null,
+      expRetNet:m.expRetNet ?? null,
+      costs:m.costs ?? null
+    };
+
+  };
+
+  return {
+    build:extract(selectedModels?.phase1),
+    use:extract(selectedModels?.phase2)
+  };
+
+}
 
 function renderSelectedModelRiskDots(phase){
 
@@ -33428,6 +34210,39 @@ function buildSupplementaryPensionPV(
    LIFE CYCLE — AGE SELECTOR
 ========================================= */
 
+
+document.querySelectorAll(
+  "[data-balance-mode]"
+).forEach(btn => {
+
+  btn.addEventListener("click",event => {
+
+    event.stopPropagation();
+
+    balanceChartsMode =
+      btn.dataset.balanceMode === "nominal"
+        ? "nominal"
+        : "real";
+
+    document.querySelectorAll(
+      "[data-balance-mode]"
+    ).forEach(button => {
+
+      button.classList.toggle(
+        "active",
+        button.dataset.balanceMode === balanceChartsMode
+      );
+
+    });
+
+    renderBalanceChartsAttribution();
+    renderBalanceChartsDonut();
+
+  });
+
+});
+
+
 function populateLifeBalanceAgeSelect(
   inputs,
   scenario
@@ -33582,6 +34397,10 @@ paintAssetAssumptionStatus();
   inputs =
     readInputs();
 
+
+balanceChartsInflation =
+  Number(inputs.inflation) || 0;
+
   /*
     KEEP LEGACY SLIDER SYNCHRONIZED
   */
@@ -33612,6 +34431,10 @@ paintAssetAssumptionStatus();
 
   const scenario =
     solveAllScenarios(inputs);
+
+currentCompareLedger =
+  getCompareLedgerLive(inputs,scenario);
+compareUpdateButton();
 
 
 window.currentLifeCycleLedger =
@@ -33659,7 +34482,8 @@ if(
 
 }
 
-
+window.currentLifeCycleBalanceSheets =
+  freedomDay?.monthlyBalanceSheets || [];
 
 
 
@@ -33981,6 +34805,117 @@ function bindComponentButtons(){
 }
 
 
+
+function renderBalanceChartsAttribution(){
+
+  const slider =
+    document.getElementById("balanceChartsAgeSlider");
+
+  const container =
+    document.getElementById("balanceChartsAttribution");
+
+if(!slider || !container)return;
+
+const balance =
+  getBalanceChartsSnapshot();
+
+  if(!balance){
+    container.replaceChildren();
+    return;
+  }
+
+  const da = INIT.lang === "da";
+
+  const locale = da ? "da-DK" : "en-GB";
+  const currency = da ? "DKK" : "EUR";
+
+  const money = value =>
+    new Intl.NumberFormat(locale,{
+      style:"currency",
+      currency,
+      maximumFractionDigits:0
+    }).format(value);
+
+  const maxValue = Math.max(
+    1,
+    ...balance.assets.map(item => item.amount),
+    ...balance.liabilities.map(item => item.amount)
+  );
+
+  const renderGroup = (items, title, type) => {
+
+    if(!items.length)return "";
+
+    const rows = items.map(item => {
+
+      const width =
+        Math.max(0,100 * item.amount / maxValue);
+
+      return `
+        <div class="balanceChartsBarRow">
+
+          <div class="balanceChartsBarHead">
+
+            <div class="balanceChartsBarLabel">
+              <i data-lucide="${item.icon || "wallet"}"></i>
+              <span>${escapeBalanceChartText(item.label)}</span>
+            </div>
+
+            <strong>${money(item.amount)}</strong>
+
+          </div>
+
+          <div class="balanceChartsBarTrack">
+            <div
+              class="balanceChartsBarFill ${type}"
+              style="width:${width}%">
+            </div>
+          </div>
+
+        </div>
+      `;
+
+    }).join("");
+
+    return `
+      <div class="balanceChartsBarGroup">
+        <div class="balanceChartsBarGroupTitle">${title}</div>
+        ${rows}
+      </div>
+    `;
+
+  };
+
+  container.innerHTML =
+    renderGroup(
+      balance.assets,
+      da ? "AKTIVER" : "ASSETS",
+      "asset"
+    ) +
+    renderGroup(
+      balance.liabilities,
+      da ? "FORPLIGTELSER" : "LIABILITIES",
+      "liability"
+    );
+
+  if(window.lucide?.createIcons){
+    window.lucide.createIcons({
+      attrs:{"stroke-width":1.8}
+    });
+  }
+
+}
+
+function escapeBalanceChartText(value){
+
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#39;");
+
+}
 
 
 
@@ -39623,6 +40558,35 @@ function buildBalanceSheet(snapshot, state){
         formattedAmount:money(item.amount)
       }));
 
+
+
+
+/* ================================================
+   NEGATIVE FREE PORTFOLIO
+   Reclassify as Portfolio Financing
+================================================ */
+
+const freePortfolio =
+  number(snapshot.freePortfolioClosing);
+
+if(freePortfolio < 0){
+
+  const financing =
+    Math.abs(freePortfolio);
+
+  liabilities.push({
+    key:"portfolioFinancing",
+    icon:"chart-no-axes-combined",
+    label:da
+      ? "Porteføljefinansiering"
+      : "Portfolio Financing",
+    amount:financing,
+    formattedAmount:money(financing)
+  });
+
+}
+
+
   /*
     =========================================
     FUNDING PORTFOLIO
@@ -42634,7 +43598,10 @@ function initBalanceChartsSlider(){
     ? Math.max(0, Math.min(maxIndex, freedomMonth))
     : 0;
 
+if(!slider.dataset.initialized){
   slider.value = initialIndex;
+  slider.dataset.initialized = "true";
+}
 
   // Fixed n* marker
   const position = maxIndex > 0
@@ -42710,6 +43677,14 @@ function updateBalanceChartsSlider(){
         : "The Consumption Portfolio becomes a liability in the month following Economic Balance Day.";
     }
   }
+
+
+
+
+
+renderBalanceChartsAttribution();
+renderBalanceChartsDonut();
+
 }
 
 
@@ -42742,10 +43717,16 @@ function renderPhaseLabelSelection(phase){
 
 }
 
+
 async function saveLifeCycleSettings(){
 
   if(!ACCOUNT.user || ACCOUNT.plan !== "premium"){
     console.warn("Premium membership required");
+    return;
+  }
+
+  if(!currentCompareLedger){
+    console.warn("Life Cycle snapshot unavailable");
     return;
   }
 
@@ -42756,7 +43737,7 @@ async function saveLifeCycleSettings(){
     .upsert({
       user_id: ACCOUNT.user.id,
       settings,
-      updated_at: new Date().toISOString()
+      updated_at:new Date().toISOString()
     },{
       onConflict:"user_id"
     })
@@ -42768,12 +43749,20 @@ async function saveLifeCycleSettings(){
     return;
   }
 
+  // UPDATE GLOBAL SAVED BASELINE
+
+  savedCompareLedger =
+    structuredClone(settings.ledgerSnapShot);
+compareUpdateButton();
+
   console.log("CLOUD SAVE SUCCESS",data);
+  console.log("SAVED COMPARE LEDGER",savedCompareLedger);
 
   const status = byId("lcStorageStatus");
   const lastSaved = byId("lcStorageLastSaved");
 
   if(status) status.textContent = "Saved";
+
   if(lastSaved){
     lastSaved.textContent =
       "Last saved: " +
@@ -43067,6 +44056,302 @@ function getAccountIssuer(row){
 }
 
 
+function renderBalanceChartsDonut(){
+
+  const slider =
+    document.getElementById("balanceChartsAgeSlider");
+
+  const canvas =
+    document.getElementById("balanceChartsDonut");
+
+if(!slider || !canvas)return;
+
+const balance =
+  getBalanceChartsSnapshot();
+
+  if(!balance)return;
+
+  const assets =
+    Number(balance.grossAssets) || 0;
+
+  const liabilities =
+    Number(balance.totalLiabilities) || 0;
+
+  const equity =
+    assets - liabilities;
+
+  const da =
+    INIT.lang === "da";
+
+  const locale =
+    da ? "da-DK" : "en-GB";
+
+  const currency =
+    da ? "DKK" : "EUR";
+
+  const money = value =>
+    new Intl.NumberFormat(locale,{
+      style:"currency",
+      currency,
+      maximumFractionDigits:0
+    }).format(value);
+
+  /* ================================================
+     1. SUMMARY VALUES
+  ================================================ */
+
+  const setText = (id,value) => {
+    const el = document.getElementById(id);
+    if(el)el.textContent = value;
+  };
+
+  setText("balanceChartsGrossAssets",money(assets));
+  setText("balanceChartsLiabilities",money(liabilities));
+  setText("balanceChartsNetWealth",money(equity));
+
+  /* ================================================
+     2. CANVAS
+  ================================================ */
+
+  const rect =
+    canvas.getBoundingClientRect();
+
+  const width =
+    rect.width || 300;
+
+  const height =
+    rect.height || 240;
+
+  const dpr =
+    window.devicePixelRatio || 1;
+
+  canvas.width =
+    Math.round(width*dpr);
+
+  canvas.height =
+    Math.round(height*dpr);
+
+  const ctx =
+    canvas.getContext("2d");
+
+  if(!ctx)return;
+
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.clearRect(0,0,width,height);
+
+  const cx = width/2;
+  const cy = height/2;
+
+  const radius =
+    Math.min(width,height)*0.32;
+
+  const thickness =
+    Math.min(width,height)*0.10;
+
+  const start =
+    -Math.PI/2;
+
+  const full =
+    Math.PI*2;
+
+  const arc = (from,to,color) => {
+
+    if(to <= from)return;
+
+    ctx.beginPath();
+    ctx.arc(cx,cy,radius,from,to);
+
+    ctx.strokeStyle = color;
+    ctx.lineWidth = thickness;
+    ctx.lineCap = "butt";
+
+    ctx.stroke();
+
+  };
+
+  /* ================================================
+     3. ECONOMIC BALANCE DONUT
+
+     Positive equity:
+       Assets = Liabilities + Equity
+
+     Negative equity:
+       Show assets against liabilities.
+       Net wealth remains signed in center.
+  ================================================ */
+
+  const base =
+    Math.max(assets,liabilities,1);
+
+  const positiveEquity =
+    Math.max(0,equity);
+
+  const liabilityShare =
+    Math.min(1,liabilities/base);
+
+  const equityShare =
+    Math.min(1,positiveEquity/base);
+
+  arc(start,start+full,"#edf0f4");
+
+  if(equity >= 0){
+
+    arc(
+      start,
+      start+full*liabilityShare,
+      "#d89a54"
+    );
+
+    arc(
+      start+full*liabilityShare,
+      start+full*(liabilityShare+equityShare),
+      "#4E79BD"
+    );
+
+  }else{
+
+    const assetShare =
+      Math.max(0,assets/base);
+
+    arc(
+      start,
+      start+full*assetShare,
+      "#4E79BD"
+    );
+
+    arc(
+      start+full*assetShare,
+      start+full,
+      "#d89a54"
+    );
+
+  }
+
+  /* ================================================
+     4. CENTER: ABSOLUTE NET WEALTH
+  ================================================ */
+
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  ctx.fillStyle = "#64748b";
+  ctx.font = "11px Arial";
+
+  ctx.fillText(
+    da ? "NETTOFORMUE" : "NET WEALTH",
+    cx,
+    cy-17
+  );
+
+  /*
+    Compact center value in millions or thousands.
+    Full monetary amount remains below the donut.
+  */
+
+  const compact = value => {
+
+    const abs = Math.abs(value);
+    const sign = value < 0 ? "-" : "";
+
+    if(abs >= 1e9){
+      return sign+(abs/1e9).toFixed(2)+"bn";
+    }
+
+    if(abs >= 1e6){
+      return sign+(abs/1e6).toFixed(2)+"m";
+    }
+
+    if(abs >= 1e3){
+      return sign+(abs/1e3).toFixed(0)+"k";
+    }
+
+    return sign+abs.toFixed(0);
+
+  };
+
+  ctx.fillStyle =
+    equity < 0 ? "#b45309" : "#334155";
+
+  ctx.font = "600 26px Arial";
+
+  ctx.fillText(
+    compact(equity),
+    cx,
+    cy+12
+  );
+
+  ctx.font = "11px Arial";
+  ctx.fillStyle = "#64748b";
+
+  ctx.fillText(
+    currency,
+    cx,
+    cy+35
+  );
+
+}
+
+
+let balanceChartsMode = "real";
+
+let balanceChartsInflation = 0;
+
+function getBalanceChartsSnapshot(){
+
+  const slider =
+    document.getElementById("balanceChartsAgeSlider");
+
+  const sheets =
+    window.currentLifeCycleBalanceSheets || [];
+
+  if(!slider)return null;
+
+  const monthIndex =
+    Number(slider.value);
+
+  const source =
+    sheets[monthIndex];
+
+  if(!source)return null;
+
+  const inflationFactor =
+    balanceChartsMode === "nominal"
+      ? Math.pow(
+          1 + balanceChartsInflation,
+          monthIndex / 12
+        )
+      : 1;
+
+  const convert = item => ({
+    ...item,
+    amount:item.amount * inflationFactor
+  });
+
+  const assets =
+    source.assets.map(convert);
+
+  const liabilities =
+    source.liabilities.map(convert);
+
+  return {
+    ...source,
+
+    assets,
+    liabilities,
+
+    grossAssets:
+      source.grossAssets * inflationFactor,
+
+    totalLiabilities:
+      source.totalLiabilities * inflationFactor,
+
+    netWealth:
+      source.netWealth * inflationFactor
+
+  };
+
+}
+
 function initExcelAccessSection(){
 
   const section =
@@ -43233,7 +44518,7 @@ function bindWelcomeNavigation(){
 async function loadLifeCycleSettings(){
 
   if(!ACCOUNT.user || ACCOUNT.plan !== "premium"){
-    console.warn("Premium membership required");
+    console.log("Premium membership required");
     return null;
   }
 
@@ -43818,6 +45103,7 @@ function paintAppAccountStatus(){
 
   const user = ACCOUNT.user || null;
   const premium = ACCOUNT.plan === "premium";
+compareUpdateButton();
 
   /*
     EMAIL SUBTEXT
@@ -44387,6 +45673,8 @@ console.log("BOOT 19");
 bindScenarioExplanations();
 bindLifeCycleAccountModal();
 bindGlobalSaveSettings();
+compareBindEvents();
+compareUpdateButton();
 
 console.log("BOOT 20");
 //////////////////////
