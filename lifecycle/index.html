@@ -13112,6 +13112,367 @@ document.querySelectorAll(
 #appCompareLifeCycle:disabled{background:#e5e7eb!important;color:#9ca3af!important;border-color:#d1d5db!important;cursor:not-allowed!important;opacity:.7}
 @media(max-width:560px){.lcCompareBody{padding:12px}.lcCompareTable{font-size:10px}.lcCompareTable th,.lcCompareTable td{padding:8px 4px}.lcCompareFooter{flex-wrap:wrap}}
 
+
+/* =========================================
+   APP NAV — LANGUAGE SELECTOR
+========================================= */
+
+.app-nav-language{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  padding:0 8px 0 18px;
+  flex-shrink:0;
+}
+
+.app-nav-language .lang-switch{
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+
+.app-nav-language .lang-switch button{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:3px;
+  border:1px solid transparent;
+  background:transparent;
+  border-radius:0;
+  cursor:pointer;
+}
+
+.app-nav-language .lang-switch img{
+  width:19px;
+  height:auto;
+  display:block;
+}
+
+/* Active language */
+
+.app-nav-language .lang-switch button.active{
+  border-color:#4E79BD;
+  background:#EEF3FA;
+}
+
+/* Mobile */
+
+@media(max-width:700px){
+
+  .app-nav-language{
+    margin-left:auto;
+    padding:6px 4px;
+  }
+
+}		
+
+/* =========================================
+   NEPTOON — GLOBAL HEADER
+========================================= */
+
+.app-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  width:100%;
+  padding:12px 20px;
+  box-sizing:border-box;
+}
+
+/* BRAND */
+
+.app-brand{
+  flex:1 1 auto;
+  min-width:0;
+}
+
+.app-kicker{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  color:#4E79BD;
+  text-transform:uppercase;
+}
+
+.app-name{
+  font-family:"Times New Roman",serif;
+  font-size:26px;
+  line-height:1.15;
+  color:#172033;
+  margin:3px 0;
+}
+
+/* THREE CONNECTED HEADER CARDS */
+
+.app-header-actions{
+  display:flex;
+  align-items:stretch;
+  flex:0 0 auto;
+  gap:0;
+}
+
+.app-header-card{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:7px;
+  padding:10px 12px;
+  background:#fff;
+  border:1px solid #D7DFE9;
+  border-radius:0;
+  min-width:0;
+}
+
+.app-header-card + .app-header-card{
+  border-left:0;
+}
+
+.app-header-card-title{
+  font-family:"Times New Roman",serif;
+  font-size:10px;
+  font-weight:700;
+  text-transform:uppercase;
+  color:#8190AA;
+  white-space:nowrap;
+}
+
+/* =========================================
+   COMPARE — SLATE
+========================================= */
+
+#appCompareLifeCycle{
+  background:#526579;
+  border:1px solid #526579;
+  color:#fff;
+  font-size:12px;
+  font-weight:600;
+  padding:8px 15px;
+  border-radius:0;
+  cursor:pointer;
+  white-space:nowrap;
+}
+
+#appCompareLifeCycle:hover:not(:disabled){
+  background:#405165;
+  border-color:#405165;
+}
+
+#appCompareLifeCycle:disabled{
+  background:#E5E7EB;
+  border-color:#D1D5DB;
+  color:#9CA3AF;
+  cursor:not-allowed;
+}
+
+/* =========================================
+   SAVE — DEEP TEAL
+========================================= */
+
+#appSaveSettings{
+  background:#287C78;
+  border:1px solid #287C78;
+  color:#fff;
+  font-size:12px;
+  font-weight:600;
+  padding:8px 15px;
+  border-radius:0;
+  cursor:pointer;
+  white-space:nowrap;
+}
+
+#appSaveSettings:hover:not(:disabled){
+  background:#206662;
+  border-color:#206662;
+}
+
+#appSaveSettings:disabled{
+  background:#E5E7EB;
+  border-color:#D1D5DB;
+  color:#9CA3AF;
+  cursor:not-allowed;
+}
+
+/* =========================================
+   ACCOUNT — CHARCOAL
+========================================= */
+
+.app-header-account{
+  min-width:150px;
+}
+
+#appAccountStatus{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  gap:3px;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:#374151;
+  font-family:inherit;
+  text-align:left;
+  cursor:pointer;
+  border-radius:0;
+}
+
+#appAccountStatus:hover{
+  color:#287C78;
+}
+
+#appAccountStatusText{
+  font-size:12px;
+  font-weight:700;
+}
+
+.app-account-email{
+  font-size:10px;
+  font-weight:400;
+  color:#64748B;
+  overflow-wrap:anywhere;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:850px){
+
+  .app-header{
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  .app-brand{
+    flex-basis:100%;
+  }
+
+  .app-header-actions{
+    width:100%;
+  }
+
+  .app-header-card{
+    flex:1 1 0;
+  }
+
+}
+
+@media(max-width:480px){
+
+  .app-header{
+    padding:12px;
+  }
+
+  .app-name{
+    font-size:23px;
+  }
+
+  .app-header-card{
+    padding:9px 7px;
+  }
+
+  #appCompareLifeCycle,
+  #appSaveSettings{
+    padding:8px 7px;
+    font-size:10px;
+    white-space:normal;
+  }
+
+  .app-header-account{
+    min-width:0;
+  }
+
+  #appAccountStatusText{
+    font-size:10px;
+  }
+
+  .app-account-email{
+    font-size:9px;
+  }
+
+}
+
+
+/* KNOWLEDGE ROOM — TECHNICAL PDF */
+
+.faqHeaderLayout{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:28px;
+}
+
+.faqHeaderIntro{
+  flex:1;
+  min-width:0;
+}
+
+.faqTechnicalPDF{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex:0 0 215px;
+  padding:13px 15px;
+  background:#F0F4FA;
+  border:1px solid #CBD8EA;
+  border-left:3px solid #4E79BD;
+  border-radius:0;
+  color:#334155;
+  text-decoration:none;
+  box-sizing:border-box;
+  transition:background .15s;
+}
+
+.faqTechnicalPDF:hover{
+  background:#E4EDF8;
+}
+
+.faqTechnicalPDF > svg:first-child{
+  width:21px;
+  height:21px;
+  color:#4E79BD;
+  flex-shrink:0;
+}
+
+.faqTechnicalPDF > span{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  flex:1;
+}
+
+.faqTechnicalPDF strong{
+  font-size:12px;
+  font-weight:700;
+  line-height:1.3;
+}
+
+.faqTechnicalPDF small{
+  font-size:10px;
+  color:#64748B;
+}
+
+.faqTechnicalPDF > svg:last-child{
+  width:14px;
+  height:14px;
+  color:#4E79BD;
+}
+
+@media(max-width:700px){
+
+  .faqHeaderLayout{
+    flex-direction:column;
+    gap:16px;
+  }
+
+  .faqTechnicalPDF{
+    flex:0 0 auto;
+    width:100%;
+  }
+
+}
+
 </style>
 
 </head>
@@ -13128,8 +13489,7 @@ document.querySelectorAll(
 
 
 
-
-<header class="app-header">
+	<header class="app-header">
 
   <div class="app-brand">
     <div class="app-kicker" data-lang="appKicker">NEPTOON WEALTH</div>
@@ -13139,32 +13499,7 @@ document.querySelectorAll(
 
   <div class="app-header-actions">
 
-    <!-- A. LANGUAGE -->
-    <div class="app-header-card app-header-language">
-
-      <div class="app-header-card-title" data-lang="headerLanguage">
-        Language
-      </div>
-
-      <div class="lang-switch">
-
-        <button data-ui-lang="da" type="button" aria-label="Dansk" title="Dansk">
-          <img
-            src="https://static.wixstatic.com/media/ebacf4_b9f4191365ce4a0d8daef9d273c39c64~mv2.png"
-            alt="Dansk flag">
-        </button>
-
-        <button data-ui-lang="en" type="button" aria-label="English" title="English">
-          <img
-            src="https://static.wixstatic.com/media/ebacf4_98eeee093b2647f9945efb7b4c5c8be3~mv2.png"
-            alt="British flag">
-        </button>
-
-      </div>
-
-    </div>
-
-    <!-- B. COMPARE -->
+    <!-- A. COMPARE -->
     <div class="app-header-card app-header-compare">
 
       <div class="app-header-card-title" data-lang="headerCompareTitle">
@@ -13175,13 +13510,14 @@ document.querySelectorAll(
         type="button"
         class="app-compare-button"
         id="appCompareLifeCycle"
-        data-lang="headerCompare">
+        data-lang="headerCompare"
+        disabled>
         Compare
       </button>
 
     </div>
 
-    <!-- C. SAVE MY LIFE CYCLE -->
+    <!-- B. SAVE MY LIFE CYCLE -->
     <div class="app-header-card app-header-save">
 
       <div class="app-header-card-title" data-lang="headerSaveTitle">
@@ -13198,7 +13534,7 @@ document.querySelectorAll(
 
     </div>
 
-    <!-- D. ACCOUNT STATUS -->
+    <!-- C. ACCOUNT STATUS -->
     <div class="app-header-card app-header-account">
 
       <div class="app-header-card-title" data-lang="headerAccountTitle">
@@ -13232,58 +13568,66 @@ document.querySelectorAll(
 </header>
 
 
+<nav
+  aria-label="Main navigation"
+  class="app-nav"
+  id="appNavigation">
 
-  <nav
-    aria-label="Main navigation"
-    class="app-nav"
-    id="appNavigation">
+  <button data-go-tab="Welcome" data-lang="navWelcome" type="button">
+    Welcome
+  </button>
 
-    <button
-      data-go-tab="Welcome"
-      data-lang="navWelcome"
-      type="button">
-      Welcome
-    </button>
+  <button data-go-tab="LifeCycle" data-lang="navLifeCycle" type="button">
+    Life Cycle
+  </button>
 
-    <button
-      data-go-tab="LifeCycle"
-      data-lang="navLifeCycle"
-      type="button">
-      Life Cycle
-    </button>
+  <button data-go-tab="BalanceSheet" data-lang="navBalanceSheet" type="button">
+    Balance Sheet
+  </button>
 
-    <button
-      data-go-tab="BalanceSheet"
-      data-lang="navBalanceSheet"
-      type="button">
-      Balance Sheet
-    </button>
+  <button data-go-tab="History" data-lang="navHistory" type="button">
+    Portfolio History
+  </button>
 
-    <button
-      data-go-tab="History"
-      data-lang="navHistory"
-      type="button">
-      Portfolio History
-    </button>
+  <button data-go-tab="FAQ" data-lang="navFAQ" type="button">
+    FAQ
+  </button>
 
-<button
-  data-go-tab="FAQ"
-  data-lang="navFAQ"
-  type="button">
-  FAQ
-</button>
+  <button data-go-tab="Account" data-lang="navAccount" type="button">
+    My Account
+  </button>
 
+  <!-- LANGUAGE SELECTOR — RIGHT SIDE -->
 
+  <div class="app-nav-language">
 
-    <button
-      data-go-tab="Account"
-      data-lang="navAccount"
-      type="button">
-      My Account
-    </button>
+    <div class="lang-switch">
 
+      <button
+        data-ui-lang="da"
+        type="button"
+        aria-label="Dansk"
+        title="Dansk">
+        <img
+          src="https://static.wixstatic.com/media/ebacf4_b9f4191365ce4a0d8daef9d273c39c64~mv2.png"
+          alt="Dansk flag">
+      </button>
 
-  </nav>
+      <button
+        data-ui-lang="en"
+        type="button"
+        aria-label="English"
+        title="English">
+        <img
+          src="https://static.wixstatic.com/media/ebacf4_98eeee093b2647f9945efb7b4c5c8be3~mv2.png"
+          alt="British flag">
+      </button>
+
+    </div>
+
+  </div>
+
+</nav>
 
   <main id="appContent">
 
@@ -16358,25 +16702,57 @@ document.querySelectorAll(
 
   <!-- KNOWLEDGE ROOM HEADER -->
 
-  <div class="panelHead accountMainHeader">
+<div class="panelHead accountMainHeader">
 
-    <div class="accountHeaderContent">
+  <div class="accountHeaderContent">
 
-      <div class="accountHeaderTop">
-        <span class="accountHeaderKicker">
-          NEPTOON LIFE CYCLE · KNOWLEDGE
+    <div class="faqHeaderLayout">
+
+      <div class="faqHeaderIntro">
+
+        <div class="accountHeaderTop">
+          <span class="accountHeaderKicker">
+            NEPTOON LIFE CYCLE · KNOWLEDGE
+          </span>
+        </div>
+
+        <div class="sectionTitle" data-lang="faqMainTitle">
+          Knowledge Room
+        </div>
+
+        <div class="sectionHint" data-lang="faqMainHint">
+          Understand the economics behind your financial life.
+          Explore Neptoon's official FAQ or use AI to deepen
+          your understanding of the model.
+        </div>
+
+      </div>
+
+      <!-- TECHNICAL DOCUMENTATION -->
+
+      <a
+        id="faqTechnicalPDF"
+        class="faqTechnicalPDF"
+        href="YOUR_EXISTING_TECHNICAL_PDF_URL"
+        target="_blank"
+        rel="noopener noreferrer">
+
+        <i data-lucide="file-text"></i>
+
+        <span>
+          <strong data-lang="faqTechnicalPDFTitle">
+            Technical Model Note
+          </strong>
+          <small data-lang="faqTechnicalPDFSub">
+            Download PDF
+          </small>
         </span>
-      </div>
 
-      <div class="sectionTitle" data-lang="faqMainTitle">
-        Knowledge Room
-      </div>
+        <i data-lucide="arrow-up-right"></i>
 
-      <div class="sectionHint" data-lang="faqMainHint">
-        Understand the economics behind your financial life.
-        Explore Neptoon's official FAQ or use AI to deepen
-        your understanding of the model.
-      </div>
+      </a>
+
+    </div>
 
       <!-- TWO WAYS TO LEARN -->
 
@@ -23996,7 +24372,7 @@ lcStorageSaveButton: "Gem nuværende Plan",
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "Min privatøkonomi og formue 2",
+appName: "Min privatøkonomi og formue 200",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
