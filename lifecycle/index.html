@@ -13519,7 +13519,14 @@ document.querySelectorAll(
   padding-bottom:14px;
 }
 
-
+#btnExportExcel:disabled{
+  background:#E5E7EB !important;
+  border-color:#D1D5DB !important;
+  color:#9CA3AF !important;
+  cursor:not-allowed !important;
+  opacity:1;
+  border-radius:0;
+}
 </style>
 
 </head>
@@ -45378,97 +45385,73 @@ function closeExcelAccessModal(){
 }
 
 
-function requestExcelAccess1(){
+/* =========================================
+   EXCEL — ACCOUNT-AWARE PRESENTATION
+========================================= */
 
-console.log("EXCEL CLICKED 1");
-  /*
-    Registered member:
-    Export directly.
-  */
+function updateExcelAccessButton(){
 
-  if(
-    INIT.tierKey &&
-    INIT.tierKey !== "visitor"
-  ){
-console.log("EXCEL CLICKED 2 - USER IS NOT VISIOT");
+  const button = byId("btnExportExcel");
+  const hint = byId("lcExcelAccessHint");
+  const message = byId("lcMountainExportMessage");
 
-    exportLifeCycleExcel();
-    return;
+  if(!button) return;
 
+  const visitor = !ACCOUNT.user;
+  const da = INIT.lang === "da";
+
+  button.disabled = visitor;
+  button.classList.toggle("excelDisabled",visitor);
+
+  button.textContent = visitor
+    ? (da ? "Kræver gratis konto" : "Free account required")
+    : (da ? "Download Excel →" : "Download Excel →");
+
+  if(hint){
+    hint.textContent = visitor
+      ? (da
+          ? "Gratis Excel-download · Kræver gratis konto · Ingen betaling"
+          : "Free Excel download · Free account required · No payment")
+      : (da
+          ? "Inkluderet i din konto · Ingen betaling"
+          : "Included with your account · No payment");
   }
 
-  /*
-    Visitor:
-    Open registration modal.
-  */
-
-console.log("EXCEL CLICKED 3 - USER IS  VISIOT");
-  const modal =
-    document.getElementById("lcExcelAccessModal");
-
-  const status =
-    document.getElementById("lcExcelModalStatus");
-
-  if(status){
-    status.hidden = true;
-    status.textContent = "";
+  if(message && visitor){
+    message.textContent = da
+      ? "Opret en gratis konto eller log ind for at downloade Excel."
+      : "Create a free account or log in to download Excel.";
   }
 
-  if(modal){
-    modal.hidden = false;
+  if(message && !visitor &&
+     (message.textContent.includes("Opret en gratis konto") ||
+      message.textContent.includes("Create a free account"))){
+    message.textContent = da
+      ? "Klar til download."
+      : "Ready to download.";
   }
 
 }
 
 /* =========================================
-   EXCEL ACCESS — SUPABASE AUTH
+   EXCEL ACCESS — FREE + PREMIUM
 ========================================= */
 
 document
   .getElementById("btnExportExcel")
-  ?.addEventListener("click", async () => {
+  ?.addEventListener("click",async()=>{
 
-    const button =
-      document.getElementById("btnExportExcel");
-
-    const message =
-      document.getElementById("lcMountainExportMessage");
-
+    const button = byId("btnExportExcel");
+    const message = byId("lcMountainExportMessage");
     const da = INIT.lang === "da";
 
-    if(!button || button.disabled) return;
+    if(!button || button.disabled || !ACCOUNT.user) return;
 
     button.disabled = true;
 
     try{
 
-      /*
-        VERIFY AUTHENTICATED USER
-      */
-
-      const {data,error} =
-        await supabaseClient.auth.getUser();
-
-      const user = error ? null : data?.user;
-
-      if(!user){
-
-        if(message){
-          message.textContent = da
-            ? "Opret en gratis konto eller log ind for at downloade Excel."
-            : "Create a free account or log in to download Excel.";
-        }
-
-        openLifeCycleLogin();
-        return;
-
-      }
-
-      /*
-        AUTHENTICATED — DOWNLOAD EXCEL
-      */
-
-      console.log("EXCEL ACCESS GRANTED",user.email);
+      console.log("EXCEL ACCESS GRANTED",ACCOUNT.user.email);
 
       if(message) message.textContent = "";
 
@@ -45492,7 +45475,7 @@ document
 
     }finally{
 
-      button.disabled = false;
+      updateExcelAccessButton();
 
     }
 
@@ -45632,15 +45615,22 @@ compareUpdateButton();
     ? (da ? "Min konto · Premium" : "My Account · Premium")
     : (da ? "Min konto · Gratis" : "My Account · Free");
 
+
+updateExcelAccessButton();
+
+
 }
 
 
-document
-  .getElementById("btnExportExcel")
-  ?.addEventListener(
-    "click",
-    requestExcelAccess
-  );
+
+
+
+
+
+
+
+
+
 
 byId("bankEnabled")?.addEventListener(
   "change",
