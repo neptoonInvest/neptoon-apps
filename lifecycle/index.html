@@ -13473,6 +13473,15 @@ document.querySelectorAll(
 
 }
 
+#lcCompareOverlay[hidden]{
+  display:none !important;
+}	
+
+.lcCompareOverlay{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+}
 </style>
 
 </head>
@@ -24372,7 +24381,7 @@ lcStorageSaveButton: "Gem nuværende Plan",
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "Min privatøkonomi og formue 300",
+appName: "Min privatøkonomi og formue 400",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
@@ -26884,7 +26893,7 @@ function compareDelta(live,saved,decimals=0){
 
 function compareRenderMetrics(live,saved){
 
-  const body=byId("compareMetricsBody");
+const body = byId("lcCompareMetrics");
 
   if(!body) return;
 
@@ -26954,7 +26963,7 @@ function compareEscapeHTML(value){
 
 function compareRenderPortfolios(live,saved){
 
-  const body=byId("comparePortfoliosBody");
+ const body = byId("lcComparePortfolioRows");
 
   if(!body) return;
 
@@ -26973,50 +26982,14 @@ function compareRenderPortfolios(live,saved){
 /* =========================================
    COMPARE — MODAL CONTROLLER
 ========================================= */
-
-function compareOpenModal(){
-
-  if(ACCOUNT.plan!=="premium") return;
-
-  if(!savedCompareLedger) return;
-
-  compareRenderMetrics(
-    currentCompareLedger,
-    savedCompareLedger
-  );
-
-  compareRenderPortfolios(
-    currentCompareLedger,
-    savedCompareLedger
-  );
-
-  const modal=byId("compareModal");
-
-  if(modal){
-    modal.hidden=false;
-  }
-
-}
-
-function compareCloseModal(){
-
-  const modal=byId("compareModal");
-
-  if(modal){
-    modal.hidden=true;
-  }
-
-}
-
 /* =========================================
    COMPARE — MODAL CONTROLLER
 ========================================= */
 
 function compareOpenModal(){
 
-  if(ACCOUNT.plan!=="premium") return;
-
-  if(!savedCompareLedger) return;
+  if(ACCOUNT.plan !== "premium") return;
+  if(!savedCompareLedger || !currentCompareLedger) return;
 
   compareRenderMetrics(
     currentCompareLedger,
@@ -27028,20 +27001,20 @@ function compareOpenModal(){
     savedCompareLedger
   );
 
-  const modal=byId("compareModal");
+  const modal = byId("lcCompareOverlay");
 
   if(modal){
-    modal.hidden=false;
+    modal.hidden = false;
   }
 
 }
 
 function compareCloseModal(){
 
-  const modal=byId("compareModal");
+  const modal = byId("lcCompareOverlay");
 
   if(modal){
-    modal.hidden=true;
+    modal.hidden = true;
   }
 
 }
@@ -27071,16 +27044,22 @@ function compareUpdateButton(){
 
 }
 
+/* =========================================
+   COMPARE — EVENT BINDING
+========================================= */
+
 function compareBindEvents(){
 
   byId("appCompareLifeCycle")
     ?.addEventListener("click",compareOpenModal);
 
-  byId("compareClose")
+  byId("lcCompareClose")
     ?.addEventListener("click",compareCloseModal);
 
   document.addEventListener("keydown",event=>{
-    if(event.key==="Escape") compareCloseModal();
+    if(event.key === "Escape"){
+      compareCloseModal();
+    }
   });
 
 }
