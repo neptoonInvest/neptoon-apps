@@ -14066,7 +14066,7 @@ margin-bottom:-35px !important;
         aria-label="English"
         title="English">
         <img
-          src="https://static.wixstatic.com/media/ebacf4_98eeee093b2647f9945efb7b4c5c8be3~mv2.png"
+          src="https://static.wixstatic.com/shapes/ebacf4_23e079c536f74445bc68e53c8ea7f3ed.svg"
           alt="British flag">
       </button>
 
@@ -29171,8 +29171,10 @@ function bindLiabilitiesPanel(){
 
 function renderLifeStageNarrative(){
 
-  const lang =
-    String(INIT?.lang || "en").toLowerCase() === "da"
+const lang =
+  document.documentElement.lang
+    .toLowerCase()
+    .startsWith("da")
       ? "da"
       : "en";
 
