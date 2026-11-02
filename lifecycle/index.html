@@ -48238,18 +48238,17 @@ async function fetchLifeCyclePortfolios(){
 */
 
 async function initStandaloneLifeCycle(){
-console.log("WEB INIT 1");
+
   try{
 
     /*
       1. LANGUAGE
     */
 
-    INIT.lang ="en";
-     // detectLifeCycleLanguage();
+    INIT.lang =detectLifeCycleLanguage();
 
     applyLang(INIT.lang);
-console.log("WEB INIT 2");
+
 
     /*
       2. INITIAL VISITOR STATE
@@ -48265,78 +48264,29 @@ console.log("WEB INIT 2");
     initExcelAccessSection();
     lockDanishOtherAssetNames();
 initSupplementaryPension();  
-console.log("WEB INIT 3");
+
 restoreLifeCycleAccount();
 
     paintAppAccountStatus();
-console.log("WEB INIT 4");
+
     renderAccountMembership();
     renderLifeCycleFAQ(INIT.lang);
 initExcelExportAccess();
-console.log("WEB INIT 5");
 
-    /*
-      3. FETCH GITHUB PORTFOLIOS
-    */
+
 
     const portfolios =
       await fetchLifeCyclePortfolios();
-console.log("WEB INIT 6");
-    console.log(
-      "LIFE CYCLE PORTFOLIOS LOADED",
-      portfolios.length
-    );
 
 
-    /*
-      4. INITIALIZE PORTFOLIO SELECTORS
 
-      This function already:
-      - Populates issuers
-      - Selects default models
-      - Updates selectedModels
-      - Renders portfolio details
-    */
 
-console.log("BEFORE PORTFOLIO INIT", portfolios.length);
-
-console.log("BEFORE PORTFOLIO INIT", portfolios.length);
-
-console.log("BEFORE PORTFOLIO INIT", portfolios.length);
-
-console.log("BEFORE PORTFOLIO INIT", portfolios.length);
-
-console.log("BEFORE PORTFOLIO INIT", portfolios.length);
-
-console.log("BEFORE PORTFOLIO INIT", portfolios.length);
 
 
     initializeAccountPortfolioSelectors(
       portfolios
     );
-console.log("WEB INIT 7");
 
-console.log(
-  "AFTER PORTFOLIO INIT",
-  ACCOUNT_PORTFOLIOS.length,
-  selectedModels.phase1?.identity,
-  selectedModels.phase2?.identity
-);
-
-
-console.log(
-  "AFTER PORTFOLIO INIT",
-  ACCOUNT_PORTFOLIOS.length,
-  selectedModels.phase1?.identity,
-  selectedModels.phase2?.identity
-);
-
-console.log(
-  "AFTER PORTFOLIO INIT",
-  ACCOUNT_PORTFOLIOS.length,
-  selectedModels.phase1?.identity,
-  selectedModels.phase2?.identity
-);
 
     /*
       5. VERIFY BOTH PHASES
