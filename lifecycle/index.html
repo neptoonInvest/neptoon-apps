@@ -13919,7 +13919,42 @@ margin-bottom:-35px !important;
   }
 }
 
+.mode-header {
+  background: #ffffff;
+}
 
+.modeDescriptionText {
+  max-width:260px;
+  margin:4px auto 12px;
+  font-size:10px;
+  line-height:1.5;
+  color:#8993a3;
+  text-align:left;
+}
+.mode-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: #ffffff;
+}
+
+.mode-header > div:first-child {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.modeDescriptionText {
+  width: 100%;
+  max-width: 680px;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 6px 0 0;
+}
+
+.mode-header .mode-switch {
+  flex: 0 0 auto;
+}
 </style>
 
 </head>
@@ -15677,26 +15712,39 @@ margin-bottom:-35px !important;
          data-tab="LifeCycle"
          id="tabLifeCycle">
 
-  <div class="mode-header">
-    <div>
-      <div class="app-kicker" data-lang="lifeCyclePerspective">
-        YOUR LIFE CYCLE PERSPECTIVE
-      </div>
-<h2 class="modeTitleHeading"
-    id="modeTitle"
-    data-lang="modeTitleFire">
-  Financial Freedom
-</h2>
-      <p id="modeDescription" data-lang="modeDescriptionFire">
-        Explore when your desired lifestyle becomes sustainable.
-      </p>
+<div class="mode-header">
+  <div>
+    <div class="app-kicker" data-lang="lifeCyclePerspective">
+      YOUR LIFE CYCLE PERSPECTIVE
     </div>
 
-    <div aria-label="Life Cycle perspective" class="mode-switch" role="group">
-      <button aria-pressed="true" data-mode="fire" data-lang="modeButtonFire" type="button">FIRE</button>
-      <button aria-pressed="false" data-mode="legacy" data-lang="modeButtonLegacy" type="button">LEGACY</button>
-    </div>
+    <h2 class="modeTitleHeading"
+        id="modeTitle"
+        data-lang="modeTitleFire">
+      Financial Freedom
+    </h2>
+
+    <p class="modeDescriptionText"
+       id="modeDescription"
+       data-lang="modeDescriptionFire">
+      Explore when your desired lifestyle becomes sustainable.
+    </p>
   </div>
+
+  <div aria-label="Life Cycle perspective"
+       class="mode-switch"
+       role="group">
+    <button aria-pressed="true"
+            data-mode="fire"
+            data-lang="modeButtonFire"
+            type="button">FIRE</button>
+
+    <button aria-pressed="false"
+            data-mode="legacy"
+            data-lang="modeButtonLegacy"
+            type="button">LEGACY</button>
+  </div>
+</div>
 
 
 <section class="panel" id="scenarioInputsPanel">
@@ -24080,10 +24128,10 @@ accountPlanIntro: "Keep your Life Cycle inputs, Balance Sheet and selected portf
 
 
 modeButtonFire:
-  "INCOME RETIREMENT",
+  "PASSIVE INCOME",
 
 modeButtonLegacy:
-  "LEGACY - YOUR DEATH",
+  "LEGACY",
 
 lifeCycleFooterTagline:
   "LIFE CYCLE · FINANCIAL MODELLING",
@@ -24457,7 +24505,7 @@ accountRiskClassification:
 
 welcomeHowKicker:"DISCOVER NEPTOON · HOW IT WORKS",
 welcomeHowTitle:"Five views. One live financial model.",
-welcomeHowDescription:"Start anywhere. Explore freely. Change your assumptions at any time — all five views use the same live model.",
+welcomeHowDescription:"Start anywhere. Change your assumptions at any time — all five views use the same live model. Get Excel and PDF LIVE. Note you will be redirected on thumbnail click",
 
 welcomeHowView1Title:"Consumption & Savings",
 welcomeHowView1Desc:"Explore your wealth path and Economic Balance Day.",
@@ -24782,18 +24830,18 @@ headerCompare:"Compare",
     "You choose your consumption and Legacy. Neptoon calculates the earliest feasible Economic Balance age under your economic assumptions.",
 
 lifeCyclePerspective:
-  "MINIMIZE WORKING YEARS OR MAXIMIZE LEGACY",
+  "MINIMIZE WORKING YEARS - MAXIMIZE LEGACY & WEALTH",
 
 modeTitleFire:
   "Financial Balance — Freedom",
 
 modeDescriptionFire:
-  "Examine when your desired lifestyle becomes financially sustainable.",
+  "Use these core inputs to view consequences of your financial decisions today. See how they shape your lifetime net wealth and the Economic Balance tipping point on the Life Cycle mountain below. Remember to customize your personal assets and liabilities under 'My Settings' to reflect your individual financial circumstances.",
 supplementaryPension: "Supplementary public pension",
 supplementaryPensionDescription: "Additional lifetime pension entitlement.",
 atpExpected: "I expect to receive this amount (value today) from Pension Age",
 atpReceiving: "I already receive this pension amount",
-supplementaryPensionAnnual: "Annual Amount",
+supplementaryPensionAnnual: "Annual Amount (today value)",
 
 
 /* ==========================================
@@ -25072,7 +25120,7 @@ supplementaryPension: "ATP Livslang Pension",
 supplementaryPensionDescription: "Supplerende livsvarig pensionsydelse.",
 atpExpected: "Jeg forventer at modtage ATP pension (dagens priser) fra Folkpensionsalder",
 atpReceiving: "Jeg modtager allerede ATP Pension",
-supplementaryPensionAnnual: "Årligt beløb",
+supplementaryPensionAnnual: "Årligt beløb (nuværende)",
 
 lcMountainExcelConsent:"Jeg accepterer, at Neptoon gemmer min e-mailadresse i forbindelse med registrering til Excel-download.",
 
@@ -25126,7 +25174,7 @@ navFAQ: "Viden og metode",
 
 welcomeHowKicker:"HVORDAN FUNGERER DET SÅ? - SÅDAN HER",
 welcomeHowTitle:"5 døre med LIVE opdatering af din livsøkonomi",
-welcomeHowDescription:"Du bestemmer selv hvor du starter og slutter, men det er selvfølgelig oplagt at starte med alder og forventet død lige herunder og derefter gå til fanebladet 'Mine Indstillinger' som samler dine formue, skat, porteføljevalg og eventuelt holdninger til finansielle aktier og generel økonomi i fremtiden. Systemet har præ-indstillet bedste bud på dine skattesatser. Du kan overskrive." ,
+welcomeHowDescription:"Du bestemmer selv hvor du starter og slutter, men det er selvfølgelig oplagt at starte med alder og forventet død lige herunder og derefter gå til fanebladet 'Mine Indstillinger' som samler dine formue, skat, porteføljevalg og eventuelt holdninger til finansielle aktier og generel økonomi i fremtiden. Systemet har præ-indstillet bedste bud på dine skattesatser. Du kan overskrive. Vær opmærksom på du bliver omdirigeret ved at klikke på ikonet." ,
 
 welcomeHowView1Title:"Forbrug og opsparing",
 welcomeHowView1Desc:"Udforsk din formueudvikling og dagen for økonomisk frihed.",
@@ -25323,7 +25371,7 @@ portfolioConfigTitle:
 
     navWelcome: "Kom i gang",
     navLifeCycle: "Forbrug og opsparing",
-    navBalanceSheet: "Balancer og formueudvikling",
+    navBalanceSheet: "Formueudvikling",
     navHistory: "Porteføljer og historik",
     navAccount: "Mine indstillinger",
     navLegal: "Andet", 
@@ -25936,13 +25984,13 @@ modeButtonLegacy: "EFTERLADT ARV",
 
 // DA
 lifeCyclePerspective:
-  "MINIMÈR ARBEJDSTID ELLER MAKSIMÈR ARV",
+  "MINIMÈR ARBEJDSTID - MAKSIMÈR ARV - MAKSIMÈR FORMUE ",
 
 modeTitleFire:
-  "Økonomisk balance - frihed",
+  "Navigation med din livsøkonomi",
 
 modeDescriptionFire:
-  "Undersøg, hvornår din ønskede livsstil bliver økonomisk bæredygtig.",
+  "Anvend disse kerneinput for dine direkte eller indirekte beslutninger idag og se konsekvens på 'livsbjerget' nedenfor med nettoformue over tid og det økonomiske balancepunkt. Husk at ændre netop dine personlige formueforhold i 'Mine forpligtelser' herunder også Folkepension og ATP som er indsat some bedste bud allerede. ",
 
 scenarioDecisionsKicker:
   "DYNAMISK NAVIGATION",
@@ -26731,7 +26779,7 @@ financialTaxIntro:
       "FRIE MIDLER PORTEFØLJER I DE 2 FASER · FORVENTNINGER . OMKOSTNINGER · HISTORIK",
 
     riskAnchorTitle:
-      "'De 'frie' porteføljer'",
+      "De frie investeringsporteføljer'",
 
     riskAnchorSub:
       "Vælg en af de 2 faser for at se den valgte porteføljes forventninger og historik. Din formue er bestemt af bruttoafkast efter omkostninger",
@@ -27540,12 +27588,19 @@ function setPerspective(mode){
   const title =
     document.getElementById("modeTitle");
 
+
+const descDa="Anvend disse kerneinput for dine direkte eller indirekte beslutninger i dag og se konsekvens på 'livsbjerget' nedenfor med nettoformue over tid og det økonomiske balancepunkt. Husk at ændre netop dine personlige formueforhold i 'Mine forpligtelser' herunder også Folkepension og ATP som er indsat some bedste bud allerede.";
+const descEn="Use these core inputs to view consequences of your financial decisions today. See how they shape your lifetime net wealth and the Economic Balance tipping point on the Life Cycle Mountain below. Remember to customize your personal assets and liabilities under 'My Settings' to reflect your individual financial circumstances.";
+
+
+
   if(title){
 
-    title.textContent =
-      mode === "fire"
-        ? (da ? "Passiv indkomst" : "Passive Income")
-        : (da ? "Arv efterladt" : "Legacy");
+
+  title.textContent =
+    mode === "fire"
+      ? (da ? "Passiv indkomst" : "Passive Income")
+      : (da ? "Arv efterladt" : "Legacy");
 
   }
 
@@ -27558,13 +27613,13 @@ function setPerspective(mode){
       mode === "fire"
         ? (
             da
-              ? "Hvornår kan dit ønskede forbrug finansieres af dine finansielle muskler alene?"
-              : "Explore when your desired consumption can be financed by your financial assets alone."
+              ? descDa
+              : descEn
           )
         : (
             da
-              ? "Hvad vil du efterlade til børn, og hvor er grænserne for hvornår du efterlader for meget eller for lidt ?"
-              : "When do you save too much or have too much financial risk to ultimately in life to achieve a desired legacy. This tool delivers this answers and explores the trade-off between your lifetime consumption and the legacy target."
+              ?  descDa
+              : descEn
           );
 
   }
@@ -32694,23 +32749,32 @@ if(
 
 
 
+/*
+  PUBLIC PENSION + ATP
+
+  Statutory pension age governs commencement.
+  Independent of Financial Freedom Day (n*).
+*/
+
+publicPensionCashflow =
+  publicPensionAtMonth(inputs, month);
+
+supplementaryPensionCashflow =
+  supplementaryPensionAtMonth(inputs, month);
+
+portfolio +=
+  publicPensionCashflow +
+  supplementaryPensionCashflow;
+
+
+/*
+  BUILDING / USING
+*/
+
 if(month <= freedomMonth){
 
-  /*
-    Monthly savings grow smoothly
-    from the annual nominal
-    savings-growth assumption.
-
-    S_m =
-      S_0 *
-      (1 + g)^(m/12)
-  */
-
   const savingsGrowthNominal =
-    Number(
-      inputs.savingsGrowthNominal
-    ) || 0;
-
+    Number(inputs.savingsGrowthNominal) || 0;
 
   savings =
     inputs.monthlySavings *
@@ -32719,9 +32783,7 @@ if(month <= freedomMonth){
       month / 12
     );
 
-
-  portfolio +=
-    savings;
+  portfolio += savings;
 
 }else{
 
@@ -32735,21 +32797,7 @@ if(month <= freedomMonth){
           side here. It is represented by Funding Portfolio.
         */
 
-publicPensionCashflow =
-  publicPensionAtMonth(
-    inputs,
-    month
-  );
 
-supplementaryPensionCashflow =
-  supplementaryPensionAtMonth(
-    inputs,
-    month
-  );
-
-portfolio +=
-  publicPensionCashflow +
-  supplementaryPensionCashflow;
 
         consumption =
           inputs.monthlyConsumption;
