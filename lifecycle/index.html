@@ -14282,7 +14282,29 @@ margin-bottom:-35px !important;
   font-variant-numeric: tabular-nums;
 }
 
+.flexiblePortfolioChoices {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+}
 
+.flexiblePortfolioChoice {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: auto;
+  white-space: nowrap;
+}
+
+.flexiblePortfolioChoice input[type="radio"] {
+  width: 13px;
+  height: 13px;
+  margin: 0;
+  flex: 0 0 13px;
+  accent-color: #4E79BD;
+}
 
 </style>
 
@@ -31114,10 +31136,25 @@ supplementaryPensionStatus:
    FLEXIBLE PORTFOLIO INITIALIZATION
 ========================================== */
 
+/* =====================================================
+   FLEXIBLE PORTFOLIO INITIALIZATION
+
+   Phase 1 = Building Wealth
+   Phase 2 = Using Wealth
+
+   - Populate custom assumption dropdowns
+   - Preserve initial radio selection
+   - Show/hide custom assumption fields
+   - Refresh portfolio display on changes
+   - No direct changes to financial solver
+===================================================== */
+
 function initFlexiblePortfolioSelection(){
 
   /*
-    BUILD DROPDOWN OPTIONS
+    =========================
+    POPULATE PERCENT DROPDOWNS
+    =========================
   */
 
   function populatePercentSelect(
@@ -31141,12 +31178,15 @@ function initFlexiblePortfolioSelection(){
     for(let i = 0; i <= count; i++){
 
       const value =
-        Number((min + i * step).toFixed(2));
+        Number(
+          (min + i * step).toFixed(2)
+        );
 
       const option =
         document.createElement("option");
 
-      option.value = String(value);
+      option.value =
+        String(value);
 
       option.textContent =
         value.toFixed(2) + "%";
@@ -31162,27 +31202,45 @@ function initFlexiblePortfolioSelection(){
 
 
   /*
-    INITIALIZE BOTH PHASES
+    =========================
+    PHASE CONFIGURATION
+    =========================
   */
 
   const phases = [
+
     {
       key:"Build",
       name:"portfolioSourceBuild",
+      view:"build",
       grossDefault:6.0,
       costDefault:0.5,
       riskDefault:"5"
     },
+
     {
       key:"Use",
       name:"portfolioSourceUse",
+      view:"use",
       grossDefault:6.0,
       costDefault:0.5,
       riskDefault:"3"
     }
+
   ];
 
+
+  /*
+    =========================
+    INITIALIZE EACH PHASE
+    =========================
+  */
+
   phases.forEach(phase => {
+
+    /*
+      POPULATE DROPDOWNS
+    */
 
     populatePercentSelect(
       `custom${phase.key}GrossReturn`,
@@ -31200,14 +31258,27 @@ function initFlexiblePortfolioSelection(){
       phase.costDefault
     );
 
+
+    /*
+      RISK LEVEL
+    */
+
     const riskSelect =
       document.getElementById(
         `custom${phase.key}Risk`
       );
 
     if(riskSelect){
-      riskSelect.value = phase.riskDefault;
+
+      riskSelect.value =
+        phase.riskDefault;
+
     }
+
+
+    /*
+      RADIO SELECTIONS
+    */
 
     const radios =
       document.querySelectorAll(
@@ -31219,22 +31290,60 @@ function initFlexiblePortfolioSelection(){
         `customPortfolio${phase.key}Inputs`
       );
 
+
     /*
-      Preserve initial HTML selection.
-      If none selected, default to Neptoon.
+      PRESERVE INITIAL HTML SELECTION
+
+      Default to Neptoon if no radio
+      button is selected.
     */
 
     if(
       radios.length &&
-      !Array.from(radios).some(r => r.checked)
+      !Array.from(radios).some(
+        radio => radio.checked
+      )
     ){
+
       const fallback =
         document.querySelector(
           `input[name="${phase.name}"][value="neptoon"]`
         );
 
-      if(fallback) fallback.checked = true;
+      if(fallback){
+        fallback.checked = true;
+      }
+
     }
+
+
+    /*
+      =========================
+      REFRESH VISIBLE PORTFOLIO
+
+      Only repaint if this phase
+      is currently displayed.
+      =========================
+    */
+
+    function refreshPortfolio(){
+
+      if(
+        portfolioViewPhase === phase.view
+      ){
+
+        renderRiskModel();
+
+      }
+
+    }
+
+
+    /*
+      =========================
+      SHOW / HIDE CUSTOM INPUTS
+      =========================
+    */
 
     function updateVisibility(){
 
@@ -31244,26 +31353,74 @@ function initFlexiblePortfolioSelection(){
         );
 
       if(panel){
+
         panel.hidden =
           selected?.value !== "custom";
+
       }
 
     }
+
+
+    /*
+      =========================
+      RADIO CHANGE HANDLERS
+      =========================
+    */
 
     radios.forEach(radio => {
 
       radio.addEventListener(
         "change",
-        updateVisibility
+        () => {
+
+          updateVisibility();
+
+          refreshPortfolio();
+
+        }
       );
 
     });
+
+
+    /*
+      =========================
+      CUSTOM ASSUMPTION CHANGES
+      =========================
+    */
+
+    [
+      `custom${phase.key}GrossReturn`,
+      `custom${phase.key}Costs`,
+      `custom${phase.key}Risk`
+    ].forEach(id => {
+
+      document
+        .getElementById(id)
+        ?.addEventListener(
+          "change",
+          refreshPortfolio
+        );
+
+    });
+
+
+    /*
+      =========================
+      INITIAL VISIBILITY
+
+      Do not trigger solver or
+      repaint during initialization.
+      =========================
+    */
 
     updateVisibility();
 
   });
 
 }
+
 
 
 function financialAssetReturnValue(id){
@@ -34812,95 +34969,171 @@ function getScenarioRates(
 
 
 
+
 function solveAllScenarios(inputs, testMode = false){
-
-/*
-  =====================================
-  SELECTED PORTFOLIO RETURNS
-  CASH POSITION OVERRIDE
-  =====================================
-*/
-
-const nominalReturns =
-  getRiskReturns();
-
-const taxRate =
-  getTaxRate();
-
-/*
-  Common risk-free rate from existing
-  selected portfolio model.
-
-  selectedModels remains unchanged.
-*/
-
-const riskFreeRate =
-  Number(
-    selectedModels.phase1
-      ?.objKeyFigures
-      ?.riskFreeRate
-  );
-
-const CASH_BANK_SPREAD = 0.015;
-
-const cashNominalReturn =
-  riskFreeRate - CASH_BANK_SPREAD;
-
-/*
-  Effective nominal returns
-*/
-
-const buildNominalReturn =
-  cashPosition.phase1
-    ? cashNominalReturn
-    : nominalReturns.phase1;
-
-const useNominalReturn =
-  cashPosition.phase2
-    ? cashNominalReturn
-    : nominalReturns.phase2;
-
-
-/*
-  =====================================
-  REAL AFTER-TAX EXPECTED RETURNS
-  =====================================
-*/
-
-const buildExpected =
-  nominalToRealAfterTax(
-    buildNominalReturn,
-    taxRate,
-    inputs.inflation
-  );
-
-const useExpected =
-  nominalToRealAfterTax(
-    useNominalReturn,
-    taxRate,
-    inputs.inflation
-  );
 
   /*
     =====================================
-    RISK CLASSIFICATION
-    0 = SYNTHETIC CASH POSITION
+    SELECTED PORTFOLIO RETURNS
     =====================================
   */
 
+  const nominalReturns =
+    getRiskReturns();
+
+  const taxRate =
+    getTaxRate();
+
+  /*
+    =====================================
+    CASH RETURN ASSUMPTIONS
+    =====================================
+  */
+
+  const riskFreeRate =
+    Number(
+      selectedModels.phase1
+        ?.objKeyFigures
+        ?.riskFreeRate
+    );
+
+  const CASH_BANK_SPREAD = 0.015;
+
+  const cashNominalReturn =
+    riskFreeRate - CASH_BANK_SPREAD;
+
+
+  /*
+    =====================================
+    FLEXIBLE PORTFOLIO SELECTION
+    =====================================
+  */
+
+  const flexible =
+    getFlexiblePortfolioSelection();
+
+
+  /*
+    =====================================
+    RESOLVE EFFECTIVE PORTFOLIO
+
+    Neptoon:
+      Existing nominal return and risk.
+
+    Cash:
+      Bank return, risk class 0.
+
+    Custom:
+      Gross return geometrically
+      adjusted for portfolio costs.
+      Risk class selected by user.
+    =====================================
+  */
+
+  function resolvePortfolio(phase){
+
+    const selection =
+      flexible[phase];
+
+    /*
+      CASH POSITION
+    */
+
+    if(selection.source === "cash"){
+
+      return {
+        nominalReturn: cashNominalReturn,
+        risk: 0
+      };
+
+    }
+
+    /*
+      CUSTOM PORTFOLIO
+    */
+
+    if(selection.source === "custom"){
+
+      const gross =
+        selection.expRetGross;
+
+      const costs =
+        selection.costs;
+
+      const nominalReturn =
+        (1 + gross) /
+        (1 + costs) - 1;
+
+      return {
+        nominalReturn,
+        risk: selection.riskLevel
+      };
+
+    }
+
+    /*
+      SELECTED NEPTOON PORTFOLIO
+    */
+
+    return {
+      nominalReturn:
+        nominalReturns[phase],
+
+      risk:
+        riskDotFromRisk(
+          selectedModels[phase]
+            ?.objKeyFigures
+            ?.risk
+        )
+    };
+
+  }
+
+
+  /*
+    =====================================
+    EFFECTIVE RETURNS AND RISK
+    =====================================
+  */
+
+  const buildPortfolio =
+    resolvePortfolio("phase1");
+
+  const usePortfolio =
+    resolvePortfolio("phase2");
+
+  const buildNominalReturn =
+    buildPortfolio.nominalReturn;
+
+  const useNominalReturn =
+    usePortfolio.nominalReturn;
+
   const buildRisk =
-    cashPosition.phase1
-      ? 0
-      : riskDotFromRisk(
-          selectedModels.phase1?.objKeyFigures?.risk
-        );
+    buildPortfolio.risk;
 
   const useRisk =
-    cashPosition.phase2
-      ? 0
-      : riskDotFromRisk(
-          selectedModels.phase2?.objKeyFigures?.risk
-        );
+    usePortfolio.risk;
+
+
+  /*
+    =====================================
+    REAL AFTER-TAX EXPECTED RETURNS
+    =====================================
+  */
+
+  const buildExpected =
+    nominalToRealAfterTax(
+      buildNominalReturn,
+      taxRate,
+      inputs.inflation
+    );
+
+  const useExpected =
+    nominalToRealAfterTax(
+      useNominalReturn,
+      taxRate,
+      inputs.inflation
+    );
 
 
   /*
@@ -34921,8 +35154,11 @@ const useExpected =
       useExpected
     );
 
+
   /*
+    =====================================
     EXPECTED SCENARIO
+    =====================================
   */
 
   const expected =
@@ -37845,6 +38081,90 @@ drawChart(
 //initLifeBalanceStateSelector(INIT.lang);
 
 }
+
+
+
+
+
+
+
+
+
+
+
+function getCustomPortfolioNetReturn(phase){
+
+  const selection =
+    getFlexiblePortfolioSelection()[phase];
+
+  if(selection?.source !== "custom"){
+    return null;
+  }
+
+  const gross =
+    selection.expRetGross;
+
+  const costs =
+    selection.costs;
+
+  if(
+    !Number.isFinite(gross) ||
+    !Number.isFinite(costs)
+  ){
+    return null;
+  }
+
+  return (1 + gross) / (1 + costs) - 1;
+
+}
+
+
+
+
+
+function getFlexiblePortfolioSelection(){
+
+  function readPhase(key){
+
+    const source =
+      document.querySelector(
+        `input[name="portfolioSource${key}"]:checked`
+      )?.value || "neptoon";
+
+    return {
+      source,
+
+      expRetGross:
+        Number(
+          document.getElementById(
+            `custom${key}GrossReturn`
+          )?.value
+        ) / 100,
+
+      costs:
+        Number(
+          document.getElementById(
+            `custom${key}Costs`
+          )?.value
+        ) / 100,
+
+      riskLevel:
+        Number(
+          document.getElementById(
+            `custom${key}Risk`
+          )?.value
+        )
+    };
+
+  }
+
+  return {
+    phase1: readPhase("Build"),
+    phase2: readPhase("Use")
+  };
+
+}
+
 
 /* =====================================================
    COMPONENT BUTTONS
@@ -41181,6 +41501,265 @@ function renderSelectedModelAllocation(phase){
 }
 
 
+/* =====================================================
+   CUSTOM PORTFOLIO — DISPLAY ONLY
+
+   Uses user-defined assumptions for the
+   currently displayed phase.
+
+   Does not modify selectedModels or
+   the Life Cycle solver.
+===================================================== */
+
+function renderCustomPortfolio(phase){
+
+  const isDA =
+    INIT.lang === "da";
+
+  const key =
+    phase === "phase1"
+      ? "Build"
+      : "Use";
+
+  /*
+    =========================
+    READ USER ASSUMPTIONS
+    =========================
+  */
+
+  const grossPct =
+    Number(
+      document.getElementById(
+        `custom${key}GrossReturn`
+      )?.value
+    );
+
+  const costsPct =
+    Number(
+      document.getElementById(
+        `custom${key}Costs`
+      )?.value
+    );
+
+  const riskLevel =
+    Number(
+      document.getElementById(
+        `custom${key}Risk`
+      )?.value
+    );
+
+  const expRetGross =
+    grossPct / 100;
+
+  const costs =
+    costsPct / 100;
+
+  const expRetNet =
+    (1 + expRetGross) /
+    (1 + costs) - 1;
+
+  /*
+    =========================
+    HEADER
+    =========================
+  */
+
+  const modelName =
+    isDA
+      ? "Min investeringsportefølje"
+      : "My Investment Portfolio";
+
+  const modelLabel =
+    document.getElementById("modelLabel");
+
+  if(modelLabel){
+    modelLabel.textContent = modelName;
+  }
+
+  const modelMeta =
+    document.getElementById("modelMeta");
+
+  if(modelMeta){
+
+    modelMeta.textContent =
+      isDA
+        ? "Egne forudsætninger · Brugerdefineret"
+        : "Personal Assumptions · User Defined";
+
+  }
+
+  /*
+    =========================
+    RISK CLASSIFICATION
+
+    User-defined exogenous indicator.
+    Does not determine returns.
+    =========================
+  */
+
+  renderRiskDots(
+    document.getElementById("riskDots"),
+    riskLevel
+  );
+
+  const riskText =
+    document.getElementById("riskText");
+
+  if(riskText){
+    riskText.textContent =
+      `${riskLevel} / 7`;
+  }
+
+  /*
+    =========================
+    METRICS
+
+    No numerical volatility or
+    asset allocation is inferred.
+    =========================
+  */
+
+  const metricFields = {
+
+    mReturn:
+      pct(expRetGross, 2),
+
+    mReturnNet:
+      pct(expRetNet, 2),
+
+    mRisk:
+      "—",
+
+    mCost:
+      pct(costs, 2),
+
+    mEquity:
+      "—",
+
+    mBonds:
+      "—",
+
+    mAlternatives:
+      "—",
+
+    mSharpeNet:
+      "—"
+
+  };
+
+  Object.entries(metricFields)
+    .forEach(([id,value]) => {
+
+      const el =
+        document.getElementById(id);
+
+      if(el){
+        el.textContent = value;
+      }
+
+    });
+
+  /*
+    =========================
+    PHASE LABELS
+    =========================
+  */
+
+  const phaseLabel =
+    phase === "phase1"
+      ? (
+          isDA
+            ? "Formueopbygning"
+            : "Building Wealth"
+        )
+      : (
+          isDA
+            ? "Formueforbrug"
+            : "Using Wealth"
+        );
+
+  const holdingsSub =
+    document.getElementById("holdingsSub");
+
+  if(holdingsSub){
+
+    holdingsSub.textContent =
+      phaseLabel + " · " + modelName;
+
+  }
+
+  const chartHeader =
+    document.getElementById("chartHeader");
+
+  if(chartHeader){
+
+    chartHeader.textContent =
+      modelName +
+      (
+        isDA
+          ? " · historik"
+          : " · history"
+      );
+
+  }
+
+  /*
+    =========================
+    SYNTHETIC HOLDING
+
+    Presentation only.
+    =========================
+  */
+
+  renderHoldings([
+
+    {
+      instrumentName: modelName,
+
+      typeLabel:
+        isDA
+          ? "Egne investeringsforudsætninger"
+          : "Personal Investment Assumptions",
+
+      classMajorTop:
+        isDA
+          ? "Brugerdefineret portefølje"
+          : "User-defined Portfolio",
+
+      weight: 1
+    }
+
+  ]);
+
+  /*
+    =========================
+    HISTORY
+
+    No historical series supplied.
+    =========================
+  */
+
+  drawHistory([]);
+
+  /*
+    =========================
+    DIAGNOSTICS
+    =========================
+  */
+
+  console.log(
+    "CUSTOM PORTFOLIO RENDERED",
+    {
+      phase,
+      expRetGross,
+      costs,
+      expRetNet,
+      riskLevel
+    }
+  );
+
+}
+
 
 
 function renderEmpty(id){
@@ -41205,6 +41784,7 @@ console.log("BOOT 5");
 ===================================================== */
 
 
+
 function renderRiskModel(){
 
   const phase =
@@ -41212,8 +41792,21 @@ function renderRiskModel(){
       ? "phase2"
       : "phase1";
 
-  const isCash =
-    cashPosition[phase] === true;
+  /*
+    =========================
+    DETERMINE PORTFOLIO SOURCE
+    =========================
+  */
+
+  const radioName =
+    phase === "phase1"
+      ? "portfolioSourceBuild"
+      : "portfolioSourceUse";
+
+  const source =
+    document.querySelector(
+      `input[name="${radioName}"]:checked`
+    )?.value || "neptoon";
 
 
   /*
@@ -41243,9 +41836,24 @@ function renderRiskModel(){
     =========================
   */
 
-  if(isCash){
+  if(source === "cash"){
 
     renderCashPortfolio(phase);
+
+    return;
+
+  }
+
+
+  /*
+    =========================
+    CUSTOM PORTFOLIO OVERRIDE
+    =========================
+  */
+
+  if(source === "custom"){
+
+    renderCustomPortfolio(phase);
 
     return;
 
@@ -41257,6 +41865,8 @@ function renderRiskModel(){
     EXISTING INVESTMENT PORTFOLIO
     =========================
   */
+
+  // Your existing code continues unchanged.
 
   const model =
     selectedModels[phase];
@@ -46922,35 +47532,73 @@ function initOtherAssetNames(lang = INIT.lang || "en"){
 
 }
 
+
+/* =====================================================
+   BIND FLEXIBLE PORTFOLIO SELECTION
+
+   Neptoon / Cash / Custom
+
+   Preserves global cashPosition state.
+   Refreshes financial solver and displays.
+===================================================== */
+
 function bindCashPosition(){
 
-  const bindings = [
-    ["cashPositionBuild", "phase1"],
-    ["cashPositionUse", "phase2"]
+  const phases = [
+    {
+      name:"portfolioSourceBuild",
+      phase:"phase1",
+      key:"Build"
+    },
+    {
+      name:"portfolioSourceUse",
+      phase:"phase2",
+      key:"Use"
+    }
   ];
 
-  bindings.forEach(([id, phase]) => {
+  phases.forEach(({name, phase, key}) => {
 
-    const checkbox =
-      document.getElementById(id);
+    const radios =
+      document.querySelectorAll(
+        `input[name="${name}"]`
+      );
 
-    if(!checkbox){
-      return;
-    }
+    /*
+      =========================
+      SYNCHRONIZE CASH STATE
+      =========================
+    */
 
-    checkbox.checked =
-      cashPosition[phase];
+    function updateCashState(){
 
-    checkbox.addEventListener("change", () => {
+      const source =
+        document.querySelector(
+          `input[name="${name}"]:checked`
+        )?.value || "neptoon";
 
       cashPosition[phase] =
-        checkbox.checked;
+        source === "cash";
 
       console.log(
-        "CASH POSITION CHANGED",
+        "PORTFOLIO SOURCE CHANGED",
         phase,
+        source,
         cashPosition[phase]
       );
+
+    }
+
+
+    /*
+      =========================
+      REFRESH FINANCIAL MODEL
+      =========================
+    */
+
+    function refreshModel(){
+
+      updateCashState();
 
       renderPortfolioRiskDisplays();
 
@@ -46958,11 +47606,59 @@ function bindCashPosition(){
 
       render();
 
+    }
+
+
+    /*
+      =========================
+      RADIO BUTTON CHANGES
+      =========================
+    */
+
+    radios.forEach(radio => {
+
+      radio.addEventListener(
+        "change",
+        refreshModel
+      );
+
     });
+
+
+    /*
+      =========================
+      CUSTOM ASSUMPTION CHANGES
+      =========================
+    */
+
+    [
+      `custom${key}GrossReturn`,
+      `custom${key}Costs`,
+      `custom${key}Risk`
+    ].forEach(id => {
+
+      document
+        .getElementById(id)
+        ?.addEventListener(
+          "change",
+          refreshModel
+        );
+
+    });
+
+
+    /*
+      =========================
+      INITIAL STATE
+      =========================
+    */
+
+    updateCashState();
 
   });
 
 }
+
 
 function updateAccountSelectedModel(phase){
 
