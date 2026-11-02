@@ -6241,6 +6241,7 @@ font-weight:500;
   line-height: 1.6;
   color: #64748b;
   margin: 0 0 16px;
+font-family: "Times New Roman", serif;
 }
 
 .accountPhaseField {
@@ -13956,6 +13957,333 @@ margin-bottom:-35px !important;
 .mode-header .mode-switch {
   flex: 0 0 auto;
 }
+
+
+
+
+/* ==========================================
+   FLEXIBLE INVESTMENT PORTFOLIO SELECTION
+========================================== */
+
+#cashPositionPanel {
+  background: #ffffff;
+  border: 1px solid #d7e0ed;
+  padding: 20px;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+/* HEADER */
+
+.cashPositionTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #4E79BD;
+  margin-bottom: 6px;
+}
+
+.flexiblePortfolioIntro {
+  font-size: 12px;
+  line-height: 1.55;
+  color: #64748b;
+  margin: 0 0 18px;
+  max-width: 850px;
+}
+
+
+/* ==========================================
+   TWO PHASES
+========================================== */
+
+.flexiblePortfolioGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.flexiblePortfolioPhase {
+  min-width: 0;
+  padding: 15px;
+  background: #f7f9fc;
+  border: 1px solid #dce4ef;
+  border-top: 3px solid #4E79BD;
+  border-radius: 0;
+}
+
+.flexiblePortfolioPhaseTitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: #315b96;
+  margin-bottom: 13px;
+  letter-spacing: 0.2px;
+}
+
+
+/* ==========================================
+   RADIO SELECTION
+========================================== */
+
+.flexiblePortfolioChoices {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.flexiblePortfolioChoice {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #263b57;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.flexiblePortfolioChoice input[type="radio"] {
+  appearance: auto;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  padding: 0;
+  accent-color: #4E79BD;
+  flex: 0 0 14px;
+  cursor: pointer;
+}
+
+.flexiblePortfolioChoice span {
+  display: inline-block;
+}
+
+
+/* ==========================================
+   CUSTOM PORTFOLIO INPUTS
+========================================== */
+
+.flexiblePortfolioInputs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 17px;
+  padding-top: 15px;
+  border-top: 1px solid #dce4ef;
+}
+
+/* Respect the HTML hidden attribute */
+
+.flexiblePortfolioInputs[hidden] {
+  display: none !important;
+}
+
+.flexiblePortfolioField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.flexiblePortfolioField label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #526987;
+  line-height: 1.35;
+}
+
+.flexiblePortfolioField input,
+.flexiblePortfolioField select {
+  width: 100%;
+  min-width: 0;
+  height: 34px;
+  padding: 6px 9px;
+  background: #ffffff;
+  border: 1px solid #cbd6e5;
+  border-radius: 0;
+  color: #20344f;
+  font-size: 12px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.flexiblePortfolioField input:focus,
+.flexiblePortfolioField select:focus {
+  outline: none;
+  border-color: #4E79BD;
+  box-shadow: 0 0 0 1px #4E79BD;
+}
+
+
+/* ==========================================
+   BANK DEPOSIT FOOTNOTE
+========================================== */
+
+.cashPositionFootnote {
+  margin-top: 17px;
+  padding: 12px 0;
+  border-top: 1px solid #dce4ef;
+  font-size: 11px;
+  line-height: 1.55;
+  color: #64748b;
+}
+
+
+/* ==========================================
+   RISK SCALE PANEL
+========================================== */
+
+.flexibleRiskPanel {
+  margin-top: 14px;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #dce4ef;
+  border-radius: 0;
+}
+
+.flexibleRiskTitle {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: #243b5a;
+  margin-bottom: 13px;
+}
+
+/* SEVEN RISK SEGMENTS */
+
+.flexibleRiskScale {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 3px;
+  margin-bottom: 15px;
+}
+
+.flexibleRiskStep {
+  position: relative;
+  padding-top: 12px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: #315b96;
+  border-top: 6px solid #4E79BD;
+}
+
+.flexibleRiskStep.extended {
+  border-top-color: #b45353;
+  color: #9b4040;
+}
+
+
+/* RISK EXPLANATIONS */
+
+.flexibleRiskDescriptions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.flexibleRiskDescriptions strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #263b57;
+  margin-bottom: 4px;
+}
+
+.flexibleRiskDescriptions p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.55;
+  color: #64748b;
+}
+
+.flexibleRiskFootnote {
+  margin: 14px 0 0;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #64748b;
+}
+
+
+/* ==========================================
+   DISCLAIMER
+========================================== */
+
+.flexiblePortfolioDisclaimer {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #dce4ef;
+  font-size: 11px;
+  line-height: 1.55;
+  color: #64748b;
+}
+
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 900px) {
+
+  .flexiblePortfolioInputs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 640px) {
+
+  #cashPositionPanel {
+    padding: 14px;
+  }
+
+  .flexiblePortfolioGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .flexiblePortfolioPhase {
+    padding: 13px;
+  }
+
+  .flexiblePortfolioInputs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .flexibleRiskPanel {
+    padding: 12px;
+  }
+
+  .flexibleRiskDescriptions {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .flexibleRiskScale {
+    gap: 2px;
+  }
+
+  .flexibleRiskStep {
+    font-size: 10px;
+  }
+
+}
+
+
+
+.flexiblePortfolioField select {
+  cursor: pointer;
+  appearance: auto;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+
+
 </style>
 
 </head>
@@ -17601,55 +17929,236 @@ margin-bottom:-35px !important;
      CASH POSITION — PHASE 1 / PHASE 2
 =========================================== -->
 
+<!-- ==========================================
+     FLEXIBLE INVESTMENT PORTFOLIO SELECTION
+=========================================== -->
+
 <section
   class="cashPositionPanel"
   id="cashPositionPanel">
 
   <div
     class="cashPositionTitle"
-    data-lang="cashPositionTitle">
-    Cash Position — Bank Deposits
+    data-lang="flexiblePortfolioTitle">
+    Flexible Investment Portfolio Selection
   </div>
 
-  <div class="cashPositionGrid">
+  <p
+    class="flexiblePortfolioIntro"
+    data-lang="flexiblePortfolioIntro">
+    Use bank deposits or your own investment assumptions
+    independently for each phase. Otherwise, your selected
+    Neptoon investment portfolios apply.
+  </p>
 
-    <!-- PHASE 1 — BUILDING WEALTH -->
-    <label class="cashPositionOption">
 
-      <span data-lang="cashPositionBuild">
-        Building Wealth
-      </span>
+<!-- ==========================================
+     PHASE 1 — BUILDING WEALTH
+========================================== -->
 
+<div class="flexiblePortfolioPhase">
+
+  <div
+    class="flexiblePortfolioPhaseTitle"
+    data-lang="cashPositionBuild">
+    Building Wealth — Phase 1
+  </div>
+
+  <div class="flexiblePortfolioChoices">
+
+    <label class="flexiblePortfolioChoice">
       <input
-        type="checkbox"
-        id="cashPositionBuild"
-      >
-
-      <span data-lang="cashPositionYes">
-        100% Cash
+        type="radio"
+        name="portfolioSourceBuild"
+        value="neptoon"
+        id="portfolioSourceBuildNeptoon"
+        checked>
+      <span data-lang="portfolioNoOverride">
+        Use selected portfolio
       </span>
-
     </label>
 
-    <!-- PHASE 2 — USING WEALTH -->
-    <label class="cashPositionOption">
-
-      <span data-lang="cashPositionUse">
-        Using Wealth
-      </span>
-
+    <label class="flexiblePortfolioChoice">
       <input
-        type="checkbox"
-        id="cashPositionUse"
-      >
-
+        type="radio"
+        name="portfolioSourceBuild"
+        value="cash"
+        id="cashPositionBuild">
       <span data-lang="cashPositionYes">
-        100% Cash
+        100% Cash — Bank Deposits
       </span>
+    </label>
 
+    <label class="flexiblePortfolioChoice">
+      <input
+        type="radio"
+        name="portfolioSourceBuild"
+        value="custom"
+        id="portfolioSourceBuildCustom">
+      <span data-lang="portfolioMyAssumptions">
+        My Portfolio Assumptions
+      </span>
     </label>
 
   </div>
+
+  <!-- CUSTOM ASSUMPTIONS — BUILD -->
+
+  <div
+    class="flexiblePortfolioInputs"
+    id="customPortfolioBuildInputs"
+    hidden>
+
+    <div class="flexiblePortfolioField">
+      <label
+        for="customBuildGrossReturn"
+        data-lang="portfolioGrossReturn">
+        Expected gross return p.a. (%)
+      </label>
+
+      <select id="customBuildGrossReturn"></select>
+    </div>
+
+    <div class="flexiblePortfolioField">
+      <label
+        for="customBuildCosts"
+        data-lang="portfolioCosts">
+        Annual portfolio costs (%)
+      </label>
+
+      <select id="customBuildCosts"></select>
+    </div>
+
+    <div class="flexiblePortfolioField">
+      <label
+        for="customBuildRisk"
+        data-lang="portfolioRiskLevel">
+        Risk level (1–7)
+      </label>
+
+      <select id="customBuildRisk">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5" selected>5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+      </select>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ==========================================
+     PHASE 2 — USING WEALTH
+========================================== -->
+
+<div class="flexiblePortfolioPhase">
+
+  <div
+    class="flexiblePortfolioPhaseTitle"
+    data-lang="cashPositionUse">
+    Using Wealth — Phase 2
+  </div>
+
+  <div class="flexiblePortfolioChoices">
+
+    <label class="flexiblePortfolioChoice">
+      <input
+        type="radio"
+        name="portfolioSourceUse"
+        value="neptoon"
+        id="portfolioSourceUseNeptoon"
+        checked>
+      <span data-lang="portfolioNoOverride">
+        Use selected portfolio
+      </span>
+    </label>
+
+    <label class="flexiblePortfolioChoice">
+      <input
+        type="radio"
+        name="portfolioSourceUse"
+        value="cash"
+        id="cashPositionUse">
+      <span data-lang="cashPositionYes">
+        100% Cash — Bank Deposits
+      </span>
+    </label>
+
+    <label class="flexiblePortfolioChoice">
+      <input
+        type="radio"
+        name="portfolioSourceUse"
+        value="custom"
+        id="portfolioSourceUseCustom">
+      <span data-lang="portfolioMyAssumptions">
+        My Portfolio Assumptions
+      </span>
+    </label>
+
+  </div>
+
+  <!-- CUSTOM ASSUMPTIONS — USE -->
+
+  <div
+    class="flexiblePortfolioInputs"
+    id="customPortfolioUseInputs"
+    hidden>
+
+    <div class="flexiblePortfolioField">
+      <label
+        for="customUseGrossReturn"
+        data-lang="portfolioGrossReturn">
+        Expected gross return p.a. (%)
+      </label>
+
+      <select id="customUseGrossReturn"></select>
+    </div>
+
+    <div class="flexiblePortfolioField">
+      <label
+        for="customUseCosts"
+        data-lang="portfolioCosts">
+        Annual portfolio costs (%)
+      </label>
+
+      <select id="customUseCosts"></select>
+    </div>
+
+    <div class="flexiblePortfolioField">
+      <label
+        for="customUseRisk"
+        data-lang="portfolioRiskLevel">
+        Risk level (1–7)
+      </label>
+
+      <select id="customUseRisk">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3" selected>3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+      </select>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- END OF FLEXIBLE PORTFOLIO GRID -->
+</div>
+
+
+<!-- ==========================================
+     BANK DEPOSIT ASSUMPTIONS
+========================================== -->
+  
 
   <div
     class="cashPositionFootnote"
@@ -17660,7 +18169,84 @@ margin-bottom:-35px !important;
     Free Portfolio applies.
   </div>
 
+
+  <!-- ========================================
+       NEPTOON RISK SCALE
+  ========================================= -->
+
+  <div class="flexibleRiskPanel">
+
+    <div
+      class="flexibleRiskTitle"
+      data-lang="flexibleRiskTitle">
+      UNDERSTANDING NEPTOON'S RISK SCALE
+    </div>
+
+    <div
+      class="flexibleRiskScale"
+      aria-label="Risk levels 1 to 7">
+
+      <div class="flexibleRiskStep">1</div>
+      <div class="flexibleRiskStep">2</div>
+      <div class="flexibleRiskStep">3</div>
+      <div class="flexibleRiskStep">4</div>
+      <div class="flexibleRiskStep">5</div>
+      <div class="flexibleRiskStep extended">6</div>
+      <div class="flexibleRiskStep extended">7</div>
+
+    </div>
+
+    <div class="flexibleRiskDescriptions">
+
+      <div>
+        <strong data-lang="flexibleRiskDiversifiedTitle">
+          1–5 · Diversified investing
+        </strong>
+
+        <p data-lang="flexibleRiskDiversifiedText">
+          From defensive portfolios to globally diversified,
+          equity-oriented investment strategies.
+        </p>
+      </div>
+
+      <div>
+        <strong data-lang="flexibleRiskExtendedTitle">
+          6–7 · Extended risk
+        </strong>
+
+        <p data-lang="flexibleRiskExtendedText">
+          Concentrated equities, leverage or highly volatile
+          assets such as Bitcoin.
+        </p>
+      </div>
+
+    </div>
+
+    <p
+      class="flexibleRiskFootnote"
+      data-lang="flexibleRiskFootnote">
+      Level 5 marks the upper end of Neptoon's predefined
+      diversified investment range, not the maximum
+      possible investment risk.
+    </p>
+
+  </div>
+
+
+  <!-- ========================================
+       USER ASSUMPTION DISCLAIMER
+  ========================================= -->
+
+  <div
+    class="flexiblePortfolioDisclaimer"
+    data-lang="flexiblePortfolioDisclaimer">
+    Manually entered returns and risk levels are
+    user-defined assumptions, not Neptoon investment
+    forecasts or independent portfolio risk assessments.
+  </div>
+
 </section>
+
 
   <div class="accountPhaseGrid">
 
@@ -30524,6 +31110,162 @@ supplementaryPensionStatus:
 }
 
 
+/* ==========================================
+   FLEXIBLE PORTFOLIO INITIALIZATION
+========================================== */
+
+function initFlexiblePortfolioSelection(){
+
+  /*
+    BUILD DROPDOWN OPTIONS
+  */
+
+  function populatePercentSelect(
+    id,
+    min,
+    max,
+    step,
+    defaultValue
+  ){
+
+    const select =
+      document.getElementById(id);
+
+    if(!select) return;
+
+    select.innerHTML = "";
+
+    const count =
+      Math.round((max - min) / step);
+
+    for(let i = 0; i <= count; i++){
+
+      const value =
+        Number((min + i * step).toFixed(2));
+
+      const option =
+        document.createElement("option");
+
+      option.value = String(value);
+
+      option.textContent =
+        value.toFixed(2) + "%";
+
+      option.selected =
+        Math.abs(value - defaultValue) < 0.000001;
+
+      select.appendChild(option);
+
+    }
+
+  }
+
+
+  /*
+    INITIALIZE BOTH PHASES
+  */
+
+  const phases = [
+    {
+      key:"Build",
+      name:"portfolioSourceBuild",
+      grossDefault:6.0,
+      costDefault:0.5,
+      riskDefault:"5"
+    },
+    {
+      key:"Use",
+      name:"portfolioSourceUse",
+      grossDefault:6.0,
+      costDefault:0.5,
+      riskDefault:"3"
+    }
+  ];
+
+  phases.forEach(phase => {
+
+    populatePercentSelect(
+      `custom${phase.key}GrossReturn`,
+      -10,
+      20,
+      0.5,
+      phase.grossDefault
+    );
+
+    populatePercentSelect(
+      `custom${phase.key}Costs`,
+      0,
+      5,
+      0.1,
+      phase.costDefault
+    );
+
+    const riskSelect =
+      document.getElementById(
+        `custom${phase.key}Risk`
+      );
+
+    if(riskSelect){
+      riskSelect.value = phase.riskDefault;
+    }
+
+    const radios =
+      document.querySelectorAll(
+        `input[name="${phase.name}"]`
+      );
+
+    const panel =
+      document.getElementById(
+        `customPortfolio${phase.key}Inputs`
+      );
+
+    /*
+      Preserve initial HTML selection.
+      If none selected, default to Neptoon.
+    */
+
+    if(
+      radios.length &&
+      !Array.from(radios).some(r => r.checked)
+    ){
+      const fallback =
+        document.querySelector(
+          `input[name="${phase.name}"][value="neptoon"]`
+        );
+
+      if(fallback) fallback.checked = true;
+    }
+
+    function updateVisibility(){
+
+      const selected =
+        document.querySelector(
+          `input[name="${phase.name}"]:checked`
+        );
+
+      if(panel){
+        panel.hidden =
+          selected?.value !== "custom";
+      }
+
+    }
+
+    radios.forEach(radio => {
+
+      radio.addEventListener(
+        "change",
+        updateVisibility
+      );
+
+    });
+
+    updateVisibility();
+
+  });
+
+}
+
+
 function financialAssetReturnValue(id){
 
   const input =
@@ -35797,20 +36539,50 @@ canvas.onmouseleave =
 
 
 
+}
 
 
 
+function getFlexiblePortfolioSelection(){
 
+  function readPhase(key){
 
+    const source =
+      document.querySelector(
+        `input[name="portfolioSource${key}"]:checked`
+      )?.value || "neptoon";
 
+    return {
+      source,
 
+      expRetGross:
+        Number(
+          document.getElementById(
+            `custom${key}GrossReturn`
+          )?.value
+        ) / 100,
 
+      costs:
+        Number(
+          document.getElementById(
+            `custom${key}Costs`
+          )?.value
+        ) / 100,
 
+      riskLevel:
+        Number(
+          document.getElementById(
+            `custom${key}Risk`
+          )?.value
+        )
+    };
 
+  }
 
-
-
-
+  return {
+    phase1:readPhase("Build"),
+    phase2:readPhase("Use")
+  };
 
 }
 
@@ -48530,6 +49302,7 @@ compareBindEvents();
 compareUpdateButton();
 bindCashPosition();
 bindLifeStageNarrative();
+initFlexiblePortfolioSelection();
 
 console.log("BOOT 20");
 //////////////////////
