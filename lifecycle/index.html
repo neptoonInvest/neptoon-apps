@@ -13950,6 +13950,7 @@ margin-bottom:-35px !important;
   font-size: 13px;
   line-height: 1.5;
   margin: 6px 0 0;
+  font-family:"Times New Roman",serif;
 }
 
 .mode-header .mode-switch {
@@ -20797,6 +20798,14 @@ const supabaseClient =
     SUPABASE_ANON_KEY
   );
 
+let LIFE_CYCLE_FREEDOM = {
+  month: null,
+  status: null,
+  alreadyFree: false
+};
+
+
+
 /*
   =====================================
   CASH POSITION — GLOBAL STATE
@@ -21242,8 +21251,8 @@ monthlySavings:{
 
   monthlyConsumption:{
     da:{
-      title:"Ønsket fast månedlig indkomst i nedsparingsfasen",
-      text:"Den ønskede månedlige passive indkomst i dagens priser, fra det tidspunkt hvor modellens beregninger viser, at dine finansielle nettoaktiver samt den lovpligtige Folkepension og ATP kan finansiere beløbet. Indkomsten er efter skat og efter betaling af renter, afdrag og øvrige forpligtelser."
+      title:"Ønsket fast månedlig indkomst i nedsparingsfasen - til forbrug i Fase 2",
+      text:"Den ønskede månedlige passive indkomst i dagens priser, fra det tidspunkt hvor modellens beregninger viser, at dine finansielle nettoaktiver samt den lovpligtige Folkepension og ATP kan finansiere beløbet livet ud samt arven. Indkomsten er efter skat og efter betaling af renter, afdrag og øvrige forpligtelser. Beløbet er ofte populært kaldet 'FIRE' beløbet med referencen til livsstilen 'Financial Independence, Retire Early'"
     },
     en:{
       title:"Desired monthly income during Phase 2",
@@ -24833,7 +24842,7 @@ lifeCyclePerspective:
   "MINIMIZE WORKING YEARS - MAXIMIZE LEGACY & WEALTH",
 
 modeTitleFire:
-  "Financial Balance — Freedom",
+  "Navigation with passive income and future consumption",
 
 modeDescriptionFire:
   "Use these core inputs to view consequences of your financial decisions today. See how they shape your lifetime net wealth and the Economic Balance tipping point on the Life Cycle mountain below. Remember to customize your personal assets and liabilities under 'My Settings' to reflect your individual financial circumstances.",
@@ -25987,7 +25996,7 @@ lifeCyclePerspective:
   "MINIMÈR ARBEJDSTID - MAKSIMÈR ARV - MAKSIMÈR FORMUE ",
 
 modeTitleFire:
-  "Navigation med din livsøkonomi",
+  "Navigation med passiv indkomst og fremtidigt forbrug",
 
 modeDescriptionFire:
   "Anvend disse kerneinput for dine direkte eller indirekte beslutninger idag og se konsekvens på 'livsbjerget' nedenfor med nettoformue over tid og det økonomiske balancepunkt. Husk at ændre netop dine personlige formueforhold i 'Mine forpligtelser' herunder også Folkepension og ATP som er indsat some bedste bud allerede. ",
@@ -27599,8 +27608,8 @@ const descEn="Use these core inputs to view consequences of your financial decis
 
   title.textContent =
     mode === "fire"
-      ? (da ? "Passiv indkomst" : "Passive Income")
-      : (da ? "Arv efterladt" : "Legacy");
+      ? (da ? "Navigation med passiv indkomst og fremtidigt forbrug" : "Navigation with passive income and future consumption")
+      : (da ? "Navigation med arv til efterkommere og formuer" : "Navigation with legacy, wealth and future consumption");
 
   }
 
@@ -28536,7 +28545,26 @@ if(accountDots){
 
 }
 
+function updateLifeCycleFreedom(scenario){
 
+  const expected = scenario?.expected;
+  const rawMonth = expected?.month;
+
+  const month =
+    rawMonth != null && Number.isFinite(Number(rawMonth))
+      ? Number(rawMonth)
+      : null;
+
+  LIFE_CYCLE_FREEDOM = {
+    month,
+    status: expected?.status ?? null,
+    alreadyFree:
+      expected?.status !== "notReached" &&
+      expected?.status != null &&
+      month === 0
+  };
+
+}
 /* =====================================================
    LIFE CYCLE — STRIPE PREMIUM CHECKOUT
 ===================================================== */
@@ -36822,6 +36850,8 @@ balanceChartsInflation =
   const scenario =
     solveAllScenarios(inputs);
 
+updateLifeCycleFreedom(scenario);
+
 currentCompareLedger =
   getCompareLedgerLive(inputs,scenario);
 compareUpdateButton();
@@ -37344,24 +37374,55 @@ function escapeBalanceChartText(value){
 
 
 
+
 function renderLifeCycleAssessment(scenario){
 
   const lang = INIT.lang === "da" ? "da" : "en";
-  const status = scenario?.expected?.status;
+
+  const status = LIFE_CYCLE_FREEDOM.status;
+  const alreadyFree = LIFE_CYCLE_FREEDOM.alreadyFree;
 
   const T = {
     da:{
-      feasibleTitle:"Din livscyklus hænger økonomisk sammen",
-      feasibleText:"Med dine valgte forudsætninger kan dine økonomiske ressourcer finansiere dit planlagte forbrug og din Legacy gennem livet.",
-      infeasibleTitle:"Din livscyklus kræver en økonomisk tilpasning",
-      infeasibleText:"Med dine valgte forudsætninger er der ikke tilstrækkelige økonomiske ressourcer til at finansiere dit ønskede forbrug og din Legacy. Overvej at øge opsparingen, reducere forbruget eller justere dine øvrige forudsætninger."
+      alreadyFreeTitle:
+        "Tillykke - dit økonomiske balancepunkt er allerede opnået i dag",
+
+      alreadyFreeText:
+        "Med dine valgte finansielle og institutionelle forudsætninger kan du såmænd allerede i dag påbegynde nedsparingsfasen. Flytte til Dubai og nyde frugterne af dine finansielle udsigter uden løbende månedlig opsparing - indskud. Din nuværende formue og dine fremtidige økonomiske ressourcer herunder offentlige ydelser kan finansiere dit ønskede forbrug resten af livet og samtidig sikre din planlagte arv til dine børn.",
+
+      feasibleTitle:
+        "Din livscyklus hænger økonomisk sammen",
+
+      feasibleText:
+        "Med dine valgte forudsætninger kan dine økonomiske ressourcer finansiere dit planlagte forbrug og din arv gennem livet fra det økonomiske balancepunkt. Prøv eventuelt at skifte investeringsporteføljer for at se ny situation. Højere risiko giver højere forventet afkast og umiddelbart bedre nøgletal, men  'prisen' for det er i modellen dog større usikkerked omkring balancepunktets tidspunkt og nettoformue ",
+
+      infeasibleTitle:
+        "Din livscyklus kræver en økonomisk tilpasning",
+
+      infeasibleText:
+        "Med dine valgte forudsætninger er der ikke tilstrækkelige økonomiske ressourcer til at finansiere dit ønskede forbrug og din arv. Overvej at øge opsparingen, reducere forbruget eller justere dine øvrige forudsætninger - eksempelvis prøv med højere risiko i investeringsporteføljerne."
     },
-    en:{
-      feasibleTitle:"Your Life Cycle is financially feasible",
-      feasibleText:"Under your selected assumptions, your financial resources can finance your planned consumption and Legacy throughout your lifetime.",
-      infeasibleTitle:"Your Life Cycle requires financial adjustment",
-      infeasibleText:"Under your selected assumptions, your financial resources are insufficient to finance your desired consumption and Legacy. Consider increasing savings, reducing consumption or adjusting your other assumptions."
-    }
+
+
+en:{
+  alreadyFreeTitle:
+    "Congratulations — you have already reached your Economic Balance",
+
+  alreadyFreeText:
+    "Under your selected financial and institutional assumptions, you could already begin the decumulation phase today. Perhaps even move to Dubai and enjoy the rewards of your financial position without making further monthly savings contributions. Your current wealth and expected future financial resources, including public pension benefits, are sufficient to finance your desired lifestyle for the rest of your life while preserving your planned Legacy for the next generation.",
+
+  feasibleTitle:
+    "Your Life Cycle is financially sustainable",
+
+  feasibleText:
+    "Under your selected assumptions, your financial resources can support your planned lifetime consumption and Legacy once you reach your Economic Balance tipping point. Consider exploring alternative investment portfolios to see how your financial outlook changes. Higher investment risk generally offers higher expected returns and potentially more attractive financial projections. However, the trade-off in the model is greater uncertainty surrounding the timing of the tipping point and the evolution of your net wealth.",
+
+  infeasibleTitle:
+    "Your Life Cycle requires financial adjustment",
+
+  infeasibleText:
+    "Under your selected assumptions, your financial resources are insufficient to finance your desired lifetime consumption and planned Legacy. Consider increasing your savings, reducing consumption or adjusting other assumptions. You may also explore investment portfolios with higher expected returns, while recognizing the additional investment risk and uncertainty involved."
+},
   }[lang];
 
   const root = byId("lifeCycleAssessment");
@@ -37382,59 +37443,29 @@ function renderLifeCycleAssessment(scenario){
 
   root.classList.toggle("isFeasible",feasible);
   root.classList.toggle("isInfeasible",!feasible);
+  root.classList.toggle("isAlreadyFree",alreadyFree);
 
-  icon.textContent = feasible ? "✓" : "!";
-  title.textContent = feasible ? T.feasibleTitle : T.infeasibleTitle;
-  text.textContent = feasible ? T.feasibleText : T.infeasibleText;
-}
-function bindAccountFinancialInputs(){
+  if(icon){
+    icon.textContent = feasible ? "✓" : "!";
+  }
 
-  const pairs = [
+  if(title){
+    title.textContent =
+      alreadyFree
+        ? T.alreadyFreeTitle
+        : feasible
+          ? T.feasibleTitle
+          : T.infeasibleTitle;
+  }
 
-    ["accountWealthToday", "wealthToday"],
-
-    ["accountMonthlySavings", "monthlySavings"]
-
-  ];
-
-  pairs.forEach(([accountId, engineId]) => {
-
-    const accountInput = byId(accountId);
-    const engineInput = byId(engineId);
-
-    if(!accountInput || !engineInput) return;
-
-    /*
-      Initialize My Account from authoritative inputs
-    */
-
-    accountInput.value = engineInput.value;
-
-    /*
-      My Account -> Engine input
-    */
-
-    accountInput.addEventListener("input", () => {
-
-      engineInput.value = accountInput.value;
-
-      engineInput.dispatchEvent(
-        new Event("input", { bubbles:true })
-      );
-
-    });
-
-    /*
-      Engine input -> My Account
-    */
-
-    engineInput.addEventListener("input", () => {
-
-      accountInput.value = engineInput.value;
-
-    });
-
-  });
+  if(text){
+    text.textContent =
+      alreadyFree
+        ? T.alreadyFreeText
+        : feasible
+          ? T.feasibleText
+          : T.infeasibleText;
+  }
 
 }
 
@@ -42571,7 +42602,7 @@ function buildFreedomDayInformation(
     bankLoan:"Bank restgæld",
 
     employment:"Arbejde og fritid",
-    freedomAmount:"Fast passiv indkomst (til forbrug i Fase 2 nedsparing)",
+    freedomAmount:"Fast indkomst (til forbrug i Fase 2)",
     freePortfolio:"'Frie Midler' investeringsportefølje",
     realEstate:"Din private bolig",
     enterprise:"Din virksomhed",
@@ -42759,7 +42790,7 @@ methodNote:
     bankLoan:"Bank outstanding debt",
 
     employment:"Employment",
-    freedomAmount:"Freedom Amount",
+    freedomAmount:"Passive Income (Phase 2)",
     freePortfolio:"Free investment portfolio",
     realEstate:"Your home",
     enterprise:"Your business",
@@ -48293,7 +48324,7 @@ async function initStandaloneLifeCycle(){
       1. LANGUAGE
     */
 
-    INIT.lang =detectLifeCycleLanguage();
+    INIT.lang ="da"; //detectLifeCycleLanguage();
 
     applyLang(INIT.lang);
 
