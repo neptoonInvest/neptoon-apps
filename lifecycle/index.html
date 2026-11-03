@@ -14313,6 +14313,10 @@ margin-bottom:-35px !important;
   color:#64748b;
 }
 
+.componentRow.pension{
+  padding-bottom:16px;
+}
+
 </style>
 
 </head>
@@ -19041,7 +19045,7 @@ margin-bottom:-35px !important;
         max="120"
         min="18"
         type="number"
-        value="65">
+        value="71">
 
     </div>
 
@@ -24379,7 +24383,7 @@ freedomDayChoicesTitle:"What Does This Mean for Your Life?",
       "Public pension",
 
     publicPensionDescription:
-      "Monthly pension in today's purchasing power.",
+      "Monthly pension in today's value - current amount.",
 
     monthlyPension:
       "Monthly pension",
@@ -25540,7 +25544,7 @@ modeTitleFire:
 modeDescriptionFire:
   "Use these core inputs to view consequences of your financial decisions today. See how they shape your lifetime net wealth and the Economic Balance tipping point on the Life Cycle mountain below. Remember to customize your personal assets and liabilities under 'My Settings' to reflect your individual financial circumstances.",
 supplementaryPension: "Supplementary public pension",
-supplementaryPensionDescription: "Additional lifetime pension entitlement.",
+supplementaryPensionDescription: "Additional lifetime pension entitlement (after-tax).",
 atpExpected: "I expect to receive this amount (value today) from Pension Age",
 atpReceiving: "I already receive this pension amount",
 supplementaryPensionAnnual: "Annual Amount (today value)",
@@ -25819,7 +25823,7 @@ expectedLifetime: "Forventet levetid",
   compareScenarios:
     "Undersøger fremtidige scenarier",
 supplementaryPension: "ATP Livslang Pension",
-supplementaryPensionDescription: "Supplerende livsvarig pensionsydelse.",
+supplementaryPensionDescription: "Årlig livsvarig pensionsydelse (efter-skat) - beløb som det er i  dag.",
 atpExpected: "Jeg forventer at modtage ATP pension (dagens priser) fra Folkpensionsalder",
 atpReceiving: "Jeg modtager allerede ATP Pension",
 supplementaryPensionAnnual: "Årligt beløb (nuværende)",
@@ -31670,26 +31674,44 @@ function publicPensionAtMonth(
     return 0;
   }
 
+  const yearsSinceToday =
+    month / 12;
+
   const age =
     inputs.currentAge +
-    month / 12;
+    yearsSinceToday;
 
   if(age < inputs.publicPensionAge){
     return 0;
   }
 
-  const yearsSinceStart =
-    Math.max(
-      0,
-      age - inputs.publicPensionAge
-    );
+  /*
+    PUBLIC PENSION — REAL CASHFLOW
 
-  return (
+    Input pension is expressed in today's money.
+
+    Grow nominally from current age,
+    then convert to today's purchasing power.
+
+    Inflation is applied exactly once.
+  */
+
+  const nominalPension =
     inputs.publicPension *
     Math.pow(
       1 + inputs.publicPensionGrowth,
-      yearsSinceStart
-    )
+      yearsSinceToday
+    );
+
+  const inflationFactor =
+    Math.pow(
+      1 + inputs.inflation,
+      yearsSinceToday
+    );
+
+  return (
+    nominalPension /
+    inflationFactor
   );
 
 }
@@ -31760,11 +31782,6 @@ function buildPublicPensionPV(
   const totalMonths =
     totalMonthsFor(inputs);
 
-  const monthlyRate =
-    annualToMonthly(
-      annualUseRealRate
-    );
-
   const pv =
     new Array(totalMonths + 1).fill(0);
 
@@ -31773,8 +31790,22 @@ function buildPublicPensionPV(
   }
 
   /*
-    BACKWARD RECURSION
+    PUBLIC PENSION — INFLATION PV
+
+    1. Recover nominal pension cashflows.
+    2. Discount backwards using inflation only.
+    3. Convert each shadow value to t=0 real DKK.
+
+    No portfolio return discounting.
   */
+
+  const monthlyInflation =
+    Math.pow(
+      1 + inputs.inflation,
+      1 / 12
+    );
+
+  let nominalPV = 0;
 
   for(
     let month = totalMonths - 1;
@@ -31782,24 +31813,54 @@ function buildPublicPensionPV(
     month--
   ){
 
-    const nextPension =
-      publicPensionAtMonth(
-        inputs,
-        month + 1
+    const paymentMonth =
+      month + 1;
+
+    const inflationFactor =
+      Math.pow(
+        monthlyInflation,
+        paymentMonth
       );
 
-    pv[month] =
+    /*
+      Cashflow helper returns real t=0 DKK.
+      Recover its nominal payment.
+    */
+
+    const nominalPension =
+      publicPensionAtMonth(
+        inputs,
+        paymentMonth
+      ) * inflationFactor;
+
+    /*
+      Backward inflation discount.
+    */
+
+    nominalPV =
       (
-        nextPension +
-        pv[month + 1]
-      ) /
-      (1 + monthlyRate);
+        nominalPension +
+        nominalPV
+      ) / monthlyInflation;
+
+    /*
+      Convert valuation-date nominal PV
+      to common t=0 purchasing power.
+    */
+
+    pv[month] =
+      nominalPV /
+      Math.pow(
+        monthlyInflation,
+        month
+      );
 
   }
 
   return pv;
 
 }
+
 
 function supplementaryPensionShadowAtMonth(
   inputs,
@@ -48869,6 +48930,7 @@ function initFolkepension(){
 
   if(
     !Number.isFinite(currentAge) ||
+    currentAge < 18 ||
     !ageField ||
     !amountField
   ) return;
@@ -48883,11 +48945,11 @@ function initFolkepension(){
     birthYear <= 1974 ? 70 :
     birthYear <= 1978 ? 71 : 72;
 
-  // Monthly Folkepension amount (DKK)
-  const pensionAmount = 0; // Set Danish default here
+  // Danish monthly Folkepension
+  amountField.value =
+    (13500).toLocaleString("da-DK");
 
   ageField.value = pensionAge;
-  amountField.value = pensionAmount;
 
 }
 
@@ -50172,6 +50234,7 @@ bindCashPosition();
 bindLifeStageNarrative();
 initFlexiblePortfolioSelection();
 bindPensionAgeHint();
+initFolkepension();
 
 console.log("BOOT 20");
 //////////////////////
