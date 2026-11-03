@@ -30651,8 +30651,7 @@ function readInputs(){
   const privatePensionEnabled =
     componentEnabled("privatePension");
 
-  const publicPensionEnabled =
-    componentEnabled("publicPension");
+ 
 
 
 
@@ -31217,25 +31216,21 @@ futureResources:[
       No user-selected growth rate.
     */
 
-    publicPension:
-      publicPensionEnabled
-        ? Math.max(
-            0,
-            moneyValue("publicPension")
-          )
-        : 0,
+publicPension:
+  Math.max(
+    0,
+    moneyValue("publicPension")
+  ),
 
-    publicPensionAge:
-      clamp(
-        numberValue("publicPensionAge"),
-        currentAge,
-        deathAge
-      ),
+publicPensionAge:
+  clamp(
+    numberValue("publicPensionAge"),
+    currentAge,
+    deathAge
+  ),
 
-    publicPensionGrowth:
-      publicPensionEnabled
-        ? inflation + 0.005
-        : 0,
+publicPensionGrowth:
+  (1 + inflation) * 1.005 - 1,
 
 
 /*
@@ -44181,7 +44176,7 @@ function buildFreedomDayInformation(
 
     employment:"Arbejde og fritid",
     freedomAmount:"Fast indkomst (til forbrug i Fase 2)",
-    freePortfolio:"'Frie Midler' investeringsportefølje",
+    freePortfolio:"Likvid investeringsportefølje",
     realEstate:"Din private bolig",
     enterprise:"Din virksomhed",
     privatePension:"Privat pension",
