@@ -11799,6 +11799,7 @@ font-weight:500
   color:#53647c;
   font-size:13px;
   line-height:1.6;
+font-family:"Times New Roman",serif;
 }
 
 .lifeWelcomeHowGrid{
@@ -14316,7 +14317,1109 @@ margin-bottom:-35px !important;
 .componentRow.pension{
   padding-bottom:16px;
 }
+#pensionAgeHint{
+  grid-column:1 / -1;
+  width:100%;
+  margin-top:6px;
+  font-size:11px;
+  line-height:1.5;
+  color:#64748b;
+  white-space:nowrap;
+  text-align:left;
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+/* =========================================================
+   NEPTOON LIFE CYCLE
+   WELCOME HERO + NL-111 CALCULATOR
+   ========================================================= */
 
+.lifeHero{
+  --hero-blue:#4E79BD;
+  --hero-navy:#243B5B;
+  --hero-red:#D62828;
+  --hero-text:#25364A;
+  --hero-muted:#65758A;
+  --hero-border:#DCE4EF;
+
+  position:relative;
+  width:100%;
+  padding:54px 42px 58px;
+  background:#FFFFFF;
+  color:var(--hero-text);
+  box-sizing:border-box;
+}
+
+.lifeHero *,
+.lifeHero *::before,
+.lifeHero *::after{
+  box-sizing:border-box;
+}
+
+.lifeHeroInner{
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(300px,0.9fr);
+  align-items:center;
+  gap:clamp(30px,5vw,82px);
+  max-width:1400px;
+  margin:0 auto;
+}
+
+/* =========================================================
+   HERO INTRODUCTION
+   ========================================================= */
+
+.lifeHeroContent{
+  min-width:0;
+}
+
+.lifeHeroKicker{
+  margin-bottom:19px;
+  color:var(--hero-blue);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.lifeHeroTitle{
+  margin:0 0 25px;
+  max-width:720px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(36px,3.5vw,59px);
+  line-height:1.12;
+  font-weight:500;
+  letter-spacing:-1.5px;
+  color:var(--hero-navy);
+}
+
+.lifeHeroTitle span{
+  display:block;
+  color:var(--hero-blue);
+}
+
+.lifeHeroLead{
+  max-width:610px;
+  margin:0 0 18px;
+  font-size:clamp(16px,1.3vw,19px);
+  line-height:1.7;
+  font-weight:500;
+  color:var(--hero-text);
+}
+
+.lifeHeroDescription{
+  max-width:610px;
+  margin:0;
+  font-size:15px;
+  line-height:1.85;
+  color:var(--hero-muted);
+}
+
+/* =========================================================
+   HERO ACTION BUTTONS
+   ========================================================= */
+
+.lifeHeroActions{
+  display:flex;
+  align-items:stretch;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:32px;
+}
+
+.lifeHeroButton{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:50px;
+  padding:13px 19px;
+
+  border:1px solid var(--hero-blue);
+  border-radius:0;
+
+  font-family:inherit;
+  font-size:13px;
+  line-height:1.4;
+  font-weight:750;
+  letter-spacing:.15px;
+
+  cursor:pointer;
+  transition:
+    background .18s ease,
+    color .18s ease,
+    border-color .18s ease,
+    transform .18s ease;
+}
+
+.lifeHeroButton:hover{
+  transform:translateY(-2px);
+}
+
+.lifeHeroButton:focus-visible{
+  outline:3px solid var(--hero-red);
+  outline-offset:3px;
+}
+
+.lifeHeroButtonPrimary{
+  background:var(--hero-blue);
+  color:#FFFFFF;
+}
+
+.lifeHeroButtonPrimary:hover{
+  background:#365F9D;
+  border-color:#365F9D;
+}
+
+.lifeHeroButtonSecondary{
+  background:#FFFFFF;
+  color:var(--hero-blue);
+}
+
+.lifeHeroButtonSecondary:hover{
+  background:#F0F5FC;
+}
+
+/* =========================================================
+   SMALL THREE-STEP JOURNEY
+   ========================================================= */
+
+.lifeHeroJourney{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:27px;
+  padding-top:20px;
+  border-top:1px solid var(--hero-border);
+
+  color:var(--hero-navy);
+  font-size:10px;
+  line-height:1.6;
+  font-weight:800;
+  letter-spacing:.7px;
+}
+
+.lifeHeroJourneyArrow{
+  color:var(--hero-red);
+  font-size:18px;
+  line-height:1;
+  font-weight:400;
+}
+
+.lifeHeroFootnote{
+  max-width:560px;
+  margin:14px 0 0;
+  color:var(--hero-muted);
+  font-size:12px;
+  line-height:1.7;
+}
+
+/* =========================================================
+   CALCULATOR POSITIONING
+   ========================================================= */
+
+.lifeHeroInstrument{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-width:0;
+}
+
+/* =========================================================
+   NL-111 PHYSICAL INSTRUMENT
+   ========================================================= */
+
+.nl111{
+  --nl-body:#242A31;
+  --nl-body-dark:#151A20;
+  --nl-champagne:#B9A78B;
+  --nl-champagne-light:#E1D5C2;
+  --nl-lcd:#C4D59C;
+  --nl-lcd-dark:#253A25;
+  --nl-ivory:#E6E0D3;
+  --nl-orange:#D95112;
+
+  position:relative;
+  width:min(100%,390px);
+  padding:19px 19px 17px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #3A414A 0%,
+      #252B33 35%,
+      #171C22 100%
+    );
+
+  border:5px solid var(--nl-champagne);
+  border-radius:0;
+
+  box-shadow:
+    0 6px 0 #8C7A60,
+    0 18px 28px rgba(22,31,42,.23),
+    inset 0 1px 2px rgba(255,255,255,.25),
+    inset 0 -3px 7px rgba(0,0,0,.45);
+
+  color:#FFFFFF;
+}
+
+/* Subtle casing texture */
+
+.nl111::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.015) 0px,
+      rgba(255,255,255,.015) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+}
+
+/* =========================================================
+   CALCULATOR HEADER
+   ========================================================= */
+
+.nl111Header{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  gap:5px 12px;
+  margin-bottom:16px;
+}
+
+.nl111Brand{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:2px;
+}
+
+.nl111Brand strong{
+  font-size:20px;
+  line-height:1;
+  letter-spacing:1.5px;
+  color:#FFFFFF;
+}
+
+.nl111Brand span{
+  color:#C9D1DC;
+  font-size:9px;
+  letter-spacing:2px;
+}
+
+.nl111Model{
+  color:var(--nl-champagne-light);
+  font-size:19px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+.nl111Edition{
+  grid-column:1 / -1;
+  padding-top:5px;
+  border-top:1px solid rgba(255,255,255,.18);
+
+  color:#D0D4D9;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:2px;
+}
+
+/* =========================================================
+   MAIN LCD DISPLAY
+   ========================================================= */
+
+.nl111Screen{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+
+  min-height:215px;
+  padding:16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #D4E1B1 0%,
+      #C4D59C 45%,
+      #A9BD83 100%
+    );
+
+  border:5px solid #11171B;
+  border-radius:0;
+
+  box-shadow:
+    inset 0 3px 7px rgba(0,0,0,.3),
+    0 1px 0 rgba(255,255,255,.15);
+
+  color:var(--nl-lcd-dark);
+  font-family:"Courier New",monospace;
+}
+
+.nl111ScreenInputs{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px 12px;
+}
+
+.nl111ScreenInputs > div{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:5px;
+  padding-bottom:4px;
+  border-bottom:1px solid rgba(37,58,37,.22);
+}
+
+.nl111ScreenInputs span{
+  font-size:13px;
+  font-weight:800;
+}
+
+.nl111ScreenInputs output{
+  font-size:12px;
+  font-weight:800;
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+}
+
+/* =========================================================
+   LCD WEALTH CHART
+   ========================================================= */
+
+.nl111ChartWrap{
+  flex:1;
+  position:relative;
+  min-height:110px;
+  width:100%;
+}
+
+#nl111Chart{
+  display:block;
+  width:100%;
+  height:110px;
+}
+
+.nl111ScreenFooter{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+
+  padding-top:7px;
+  border-top:1px solid rgba(37,58,37,.35);
+
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.5px;
+}
+
+#nl111FreedomDisplay{
+  font-size:15px;
+}
+
+/* =========================================================
+   HORIZONTAL EXPLANATORY DISPLAY
+   ========================================================= */
+
+.nl111InfoDisplay{
+  display:flex;
+  align-items:center;
+  gap:13px;
+
+  min-height:40px;
+  margin:17px 0 12px;
+  padding:9px 13px;
+
+  background:#D9D7C9;
+  border:3px solid #14191E;
+  border-radius:0;
+
+  box-shadow:inset 0 2px 4px rgba(0,0,0,.22);
+
+  color:#26372C;
+  font-family:"Courier New",monospace;
+}
+
+#nl111InfoSymbol{
+  flex:0 0 auto;
+  min-width:28px;
+  font-size:16px;
+  font-weight:900;
+}
+
+#nl111InfoText{
+  font-size:11px;
+  line-height:1.3;
+  font-weight:800;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+}
+
+/* =========================================================
+   VARIABLE KEYS: W0 S C L
+   ========================================================= */
+
+.nl111VariableKeys{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:9px;
+  margin-bottom:15px;
+}
+
+.nl111VariableKeys button{
+  min-height:43px;
+  padding:7px 3px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #F6F0E3,
+      #D8CEBC
+    );
+
+  border:1px solid #A79B87;
+  border-bottom:4px solid #8F8575;
+  border-radius:0;
+
+  color:#252B31;
+  font-family:Georgia,serif;
+  font-size:20px;
+  font-weight:800;
+
+  cursor:pointer;
+  box-shadow:0 3px 5px rgba(0,0,0,.25);
+}
+
+.nl111VariableKeys button:hover{
+  background:#FFFFFF;
+}
+
+.nl111VariableKeys button:active,
+.nl111VariableKeys button.active{
+  transform:translateY(2px);
+  border-bottom-width:2px;
+  background:#F2C879;
+}
+
+/* =========================================================
+   NUMERIC KEYPAD
+   ========================================================= */
+
+.nl111Keypad{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:9px;
+}
+
+.nl111Keypad button{
+  min-height:47px;
+  padding:7px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #525B66,
+      #303842
+    );
+
+  border:1px solid #626B75;
+  border-bottom:4px solid #11161B;
+  border-radius:0;
+
+  color:#FFFFFF;
+  font-family:Arial,sans-serif;
+  font-size:19px;
+  font-weight:700;
+
+  cursor:pointer;
+  box-shadow:0 3px 5px rgba(0,0,0,.25);
+
+  transition:
+    background .12s ease,
+    transform .12s ease;
+}
+
+.nl111Keypad button:hover{
+  background:#626E7B;
+}
+
+.nl111Keypad button:active{
+  transform:translateY(2px);
+  border-bottom-width:2px;
+}
+
+.nl111Keypad button[data-nl111-key="backspace"]{
+  background:#B7A17D;
+  color:#222831;
+  border-color:#C6B69B;
+  border-bottom-color:#77664E;
+  font-size:25px;
+}
+
+.nl111Keypad button[data-nl111-key="clear"]{
+  background:#6D3432;
+  border-color:#95504B;
+  border-bottom-color:#3B1D1B;
+  font-size:13px;
+  letter-spacing:1px;
+}
+
+/* =========================================================
+   ORANGE RESULT BUTTONS
+   ========================================================= */
+
+.nl111ResultKeys{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:17px;
+}
+
+.nl111ResultKeys button{
+  min-height:56px;
+  padding:10px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #F17A26,
+      #D95112
+    );
+
+  border:1px solid #FA9855;
+  border-bottom:5px solid #8D2E08;
+  border-radius:0;
+
+  color:#FFFFFF;
+  font-family:Georgia,serif;
+  font-size:22px;
+  font-weight:800;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 4px 8px rgba(0,0,0,.3),
+    inset 0 1px 0 rgba(255,255,255,.3);
+}
+
+.nl111ResultKeys button:hover{
+  background:#F38434;
+}
+
+.nl111ResultKeys button:active{
+  transform:translateY(3px);
+  border-bottom-width:2px;
+}
+
+/* =========================================================
+   CALCULATOR FOOTER
+   ========================================================= */
+
+.nl111Footer{
+  margin-top:17px;
+  padding-top:11px;
+  border-top:1px solid rgba(255,255,255,.18);
+
+  color:#B9C2CD;
+  text-align:center;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:1.6px;
+}
+
+/* =========================================================
+   KEYBOARD ACCESSIBILITY
+   ========================================================= */
+
+.nl111 button:focus-visible{
+  outline:3px solid #F3C46D;
+  outline-offset:3px;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media(max-width:1050px){
+
+  .lifeHero{
+    padding:42px 28px 48px;
+  }
+
+  .lifeHeroInner{
+    grid-template-columns:minmax(0,1fr) minmax(285px,.9fr);
+    gap:28px;
+  }
+
+  .lifeHeroTitle{
+    font-size:clamp(32px,4vw,46px);
+  }
+
+  .lifeHeroLead{
+    font-size:16px;
+  }
+
+  .lifeHeroDescription{
+    font-size:14px;
+  }
+
+  .lifeHeroActions{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .lifeHeroButton{
+    width:100%;
+  }
+
+  .nl111{
+    padding:15px;
+  }
+
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:760px){
+
+  .lifeHero{
+    padding:32px 17px 42px;
+  }
+
+  .lifeHeroInner{
+    grid-template-columns:minmax(0,1fr);
+    gap:35px;
+  }
+
+  .lifeHeroContent{
+    text-align:left;
+  }
+
+  .lifeHeroTitle{
+    max-width:600px;
+    font-size:clamp(34px,8vw,46px);
+    letter-spacing:-.8px;
+  }
+
+  .lifeHeroLead{
+    font-size:16px;
+  }
+
+  .lifeHeroDescription{
+    font-size:14px;
+  }
+
+  .lifeHeroActions{
+    margin-top:25px;
+    gap:10px;
+  }
+
+  .lifeHeroJourney{
+    gap:7px;
+    font-size:9px;
+  }
+
+  .lifeHeroJourneyArrow{
+    font-size:15px;
+  }
+
+  .lifeHeroInstrument{
+    width:100%;
+  }
+
+  .nl111{
+    width:min(100%,390px);
+  }
+
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media(max-width:390px){
+
+  .lifeHero{
+    padding-left:12px;
+    padding-right:12px;
+  }
+
+  .lifeHeroTitle{
+    font-size:32px;
+  }
+
+  .lifeHeroJourney{
+    font-size:8px;
+    gap:5px;
+  }
+
+  .nl111{
+    padding:12px;
+    border-width:4px;
+  }
+
+  .nl111Brand strong{
+    font-size:17px;
+  }
+
+  .nl111Model{
+    font-size:17px;
+  }
+
+  .nl111Screen{
+    padding:10px;
+  }
+
+  .nl111ScreenInputs output{
+    font-size:10px;
+  }
+
+  .nl111VariableKeys,
+  .nl111Keypad{
+    gap:7px;
+  }
+
+  .nl111Keypad button{
+    min-height:44px;
+  }
+
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  .lifeHeroButton,
+  .nl111 button{
+    transition:none;
+  }
+
+}
+
+  
+  .nl111ResultKeys button{
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:21px;
+  font-weight:800;
+}
+  
+  .nl111VariableKeys button{
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:20px;
+  font-weight:800;
+  letter-spacing:0;
+}
+  /* =====================================================
+   HERO · CALCULATOR VS LIFE CYCLE ENGINE
+===================================================== */
+
+.lifeHeroDifference{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+
+  margin-top:30px;
+  padding:22px 0;
+
+  border-top:1px solid #DCE4EF;
+  border-bottom:1px solid #DCE4EF;
+}
+
+.lifeHeroDifferenceItem{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  min-width:0;
+}
+
+.lifeHeroDifferenceItem > svg{
+  width:28px;
+  height:28px;
+  flex:0 0 28px;
+
+  stroke:#4E79BD;
+  stroke-width:1.7;
+}
+
+.lifeHeroDifferenceNeptoon{
+  padding-left:18px;
+  border-left:1px solid #DCE4EF;
+}
+
+.lifeHeroDifferenceNeptoon > svg{
+  stroke:#D62828;
+}
+
+.lifeHeroDifferenceItem > div{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  min-width:0;
+}
+
+.lifeHeroDifferenceItem strong{
+  color:#243B5B;
+  font-size:13px;
+  font-weight:800;
+  line-height:1.4;
+}
+
+.lifeHeroDifferenceItem span{
+  color:#65758A;
+  font-size:12px;
+  line-height:1.6;
+}
+
+
+/* =====================================================
+   HERO · GET STARTED
+===================================================== */
+
+.lifeHeroStartFlow{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+
+  margin-top:25px;
+}
+
+.lifeHeroStartText{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  min-width:0;
+}
+
+.lifeHeroStartText strong{
+  color:#243B5B;
+  font-size:14px;
+  font-weight:800;
+  line-height:1.4;
+}
+
+.lifeHeroStartText span{
+  color:#65758A;
+  font-size:12px;
+  line-height:1.6;
+}
+
+.lifeHeroStartButton{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+
+  flex:0 0 auto;
+  min-height:46px;
+  padding:13px 18px;
+
+  background:#4E79BD;
+  border:1px solid #4E79BD;
+  border-radius:0;
+
+  color:#FFFFFF;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.6px;
+  white-space:nowrap;
+
+  cursor:pointer;
+
+  transition:background .18s ease;
+}
+
+.lifeHeroStartButton:hover{
+  background:#365F9D;
+  border-color:#365F9D;
+}
+
+.lifeHeroStartButton svg{
+  width:16px;
+  height:16px;
+  stroke:currentColor;
+  stroke-width:2;
+}
+
+.lifeHeroStartButton:focus-visible{
+  outline:3px solid #D62828;
+  outline-offset:3px;
+}
+
+
+/* =====================================================
+   RESPONSIVE · TABLET
+===================================================== */
+
+@media(max-width:1050px){
+
+  .lifeHeroDifference{
+    gap:12px;
+  }
+
+  .lifeHeroDifferenceNeptoon{
+    padding-left:12px;
+  }
+
+  .lifeHeroStartFlow{
+    flex-direction:column;
+    align-items:stretch;
+    gap:14px;
+  }
+
+  .lifeHeroStartButton{
+    width:100%;
+  }
+
+}
+
+
+/* =====================================================
+   RESPONSIVE · MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+  .lifeHeroDifference{
+    grid-template-columns:1fr;
+    gap:18px;
+    margin-top:24px;
+    padding:18px 0;
+  }
+
+  .lifeHeroDifferenceNeptoon{
+    padding-left:0;
+    border-left:0;
+  }
+
+  .lifeHeroDifferenceItem strong{
+    font-size:13px;
+  }
+
+  .lifeHeroDifferenceItem span{
+    font-size:12px;
+  }
+
+  .lifeHeroStartFlow{
+    margin-top:20px;
+  }
+
+  .lifeHeroStartButton{
+    width:100%;
+  }
+
+}
+  .nl111VariableKeys button.active{
+  background:#F2C879;
+  border-color:#C99540;
+  border-bottom-color:#8F6428;
+  color:#222831;
+}
+  
+  /* ==========================================
+   NW-111 · SMALLER KEY LABELS
+========================================== */
+
+/* Ivory input keys */
+
+.nl111VariableKeys button{
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:16px;
+  font-weight:800;
+  letter-spacing:0;
+}
+
+/* Orange output keys */
+
+.nl111ResultKeys button{
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:0;
+  white-space:nowrap;
+}
+  
+  /* ==========================================
+   NW-111 · TABLET & TOUCH SUPPORT
+========================================== */
+
+.nl111{
+  touch-action:pan-y;
+}
+
+.nl111 button{
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+  -webkit-user-select:none;
+}
+
+/* Prevent sticky hover effects on touch devices */
+
+@media(hover:none){
+
+  .nl111VariableKeys button:hover{
+    background:linear-gradient(
+      180deg,
+      #F6F0E3,
+      #D8CEBC
+    );
+  }
+
+  .nl111VariableKeys button.active:hover{
+    background:#F2C879;
+  }
+
+  .nl111Keypad button:hover{
+    background:linear-gradient(
+      180deg,
+      #525B66,
+      #303842
+    );
+  }
+
+  .nl111ResultKeys button:hover{
+    background:linear-gradient(
+      180deg,
+      #F17A26,
+      #D95112
+    );
+  }
+
+}
+
+/* NW-111 · INTERACTIVE LCD */
+
+#nl111Chart{
+  display:block;
+  width:100%;
+  height:110px;
+
+  cursor:crosshair;
+  touch-action:pan-y;
+}
 </style>
 
 </head>
@@ -14481,114 +15584,365 @@ margin-bottom:-35px !important;
       <section class="hero">
 
 
-<!-- NEPTOON LIFE CYCLE · WELCOME -->
-<section class="lifeWelcomeHero" id="lifeWelcomeHero">
-  <div class="lifeWelcomeHeroCopy">
-    <div class="heroKicker" data-lang="heroKicker">NEPTOONWEALTH · LIFE CYCLE</div>
-    <h1 class="heroTitle" data-lang="welcomeObjectiveTitle">What would you like your wealth to achieve?</h1>
-    <div class="heroSub" data-lang="welcomeObjectiveSub">Two financial objectives. One Life Cycle model. Explore your results immediately, or customize your assumptions first.</div>
+
+
+<!-- =====================================================
+     NEPTOON LIFE CYCLE · WELCOME HERO
+     HERO + NW-111 CALCULATOR
+===================================================== -->
+
+<section class="lifeHero" id="lifeWelcomeHero">
+
+  <div class="lifeHeroInner">
+
+    <!-- ================================================
+         LEFT · INTRODUCTION
+    ================================================= -->
+
+    <div class="lifeHeroContent">
+
+      <div class="lifeHeroKicker">
+        NEPTOON WEALTH · LIFE CYCLE
+      </div>
+
+      <h1 class="lifeHeroTitle">
+        Hele dit økonomiske liv.
+        <span>Fra i dag til næste generation.</span>
+      </h1>
+
+      <p class="lifeHeroLead">
+        Én sammenhængende økonomisk model, der forbinder
+        din formue, dine investeringer, pensioner,
+        dit forbrug og din arv gennem hele livet.
+      </p>
+
+      <p class="lifeHeroDescription">
+        Udforsk din økonomiske frihed, din fremtidige
+        balance og dine investeringsmuligheder.
+        Se, hvordan dine beslutninger påvirker
+        dit økonomiske liv.
+      </p>
+
+
+      <!-- ============================================
+           CALCULATOR VS LIFE CYCLE ENGINE
+      ============================================= -->
+
+      <div class="lifeHeroDifference">
+
+        <div class="lifeHeroDifferenceItem">
+
+          <i
+            data-lucide="calculator"
+            aria-hidden="true">
+          </i>
+
+          <div>
+            <strong>
+              En traditionel beregner
+            </strong>
+
+            <span>
+              Et spørgsmål. Et resultat.
+            </span>
+          </div>
+
+        </div>
+
+
+        <div class="lifeHeroDifferenceItem lifeHeroDifferenceNeptoon">
+
+          <i
+            data-lucide="layers-3"
+            aria-hidden="true">
+          </i>
+
+          <div>
+            <strong>
+              Neptoon Life Cycle
+            </strong>
+
+            <span>
+              Ét sammenhængende økonomisk system.
+              Hele livet.
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ============================================
+           GET STARTED
+      ============================================= -->
+
+      <div class="lifeHeroStartFlow">
+
+        <div class="lifeHeroStartText">
+
+          <strong>
+            Klar til at udforske dit økonomiske liv?
+          </strong>
+
+          <span>
+            Start med din alder længere nede på siden.
+          </span>
+
+        </div>
+
+        <button
+          type="button"
+          class="lifeHeroStartButton"
+          id="lifeHeroStart">
+
+          KOM GODT I GANG
+
+          <i
+            data-lucide="arrow-down"
+            aria-hidden="true">
+          </i>
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- ================================================
+         RIGHT · NW-111 CALCULATOR
+    ================================================= -->
+
+    <div class="lifeHeroInstrument">
+
+      <div
+        class="nl111"
+        id="nl111Calculator"
+        aria-label="Neptoon NW-111 Life Cycle Calculator">
+
+
+        <!-- ==========================================
+             INSTRUMENT BRANDING
+        =========================================== -->
+
+        <div class="nl111Header">
+
+          <div class="nl111Brand">
+
+            <strong>
+              NEPTOON
+            </strong>
+
+            <span>
+              WEALTH
+            </span>
+
+          </div>
+
+          <div class="nl111Model">
+            NW-111
+          </div>
+
+          <div class="nl111Edition">
+            LIFE CYCLE CALCULATOR
+          </div>
+
+        </div>
+
+
+        <!-- ==========================================
+             MAIN GREEN LCD
+        =========================================== -->
+
+        <div class="nl111Screen">
+
+          <div class="nl111ScreenInputs">
+
+            <div>
+              <span>W₀</span>
+              <output id="nl111Wealth">
+                1,000,000
+              </output>
+            </div>
+
+            <div>
+              <span>S</span>
+              <output id="nl111Savings">
+                10,000
+              </output>
+            </div>
+
+            <div>
+              <span>C</span>
+              <output id="nl111Consumption">
+                25,000
+              </output>
+            </div>
+
+            <div>
+              <span>L</span>
+              <output id="nl111Legacy">
+                2,000,000
+              </output>
+            </div>
+
+          </div>
+
+
+          <!-- WEALTH MOUNTAIN -->
+
+          <div class="nl111ChartWrap">
+
+            <canvas
+              id="nl111Chart"
+              aria-label="Expected lifetime wealth chart">
+            </canvas>
+
+          </div>
+
+
+          <!-- LCD STATUS + FINANCIAL FREEDOM -->
+
+          <div class="nl111ScreenFooter">
+
+            <span id="nl111ScreenStatus">
+              READY
+            </span>
+
+            <output id="nl111FreedomDisplay">
+              Freedom n* = —
+            </output>
+
+          </div>
+
+        </div>
+
+
+        <!-- ==========================================
+             VARIABLE INFORMATION DISPLAY
+        =========================================== -->
+
+        <div class="nl111InfoDisplay">
+
+          <span id="nl111InfoSymbol">
+            W₀
+          </span>
+
+          <span id="nl111InfoText">
+            FORMUE I DAG
+          </span>
+
+        </div>
+
+
+        <!-- ==========================================
+             VARIABLE KEYS
+        =========================================== -->
+
+        <div class="nl111VariableKeys">
+
+          <button
+            type="button"
+            data-nl111-variable="wealth">
+            W₀
+          </button>
+
+          <button
+            type="button"
+            data-nl111-variable="savings">
+            S
+          </button>
+
+          <button
+            type="button"
+            data-nl111-variable="consumption">
+            C
+          </button>
+
+          <button
+            type="button"
+            data-nl111-variable="legacy">
+            L
+          </button>
+
+        </div>
+
+
+        <!-- ==========================================
+             NUMERIC KEYPAD
+        =========================================== -->
+
+        <div class="nl111Keypad">
+
+          <button type="button" data-nl111-key="7">7</button>
+          <button type="button" data-nl111-key="8">8</button>
+          <button type="button" data-nl111-key="9">9</button>
+
+          <button type="button" data-nl111-key="4">4</button>
+          <button type="button" data-nl111-key="5">5</button>
+          <button type="button" data-nl111-key="6">6</button>
+
+          <button type="button" data-nl111-key="1">1</button>
+          <button type="button" data-nl111-key="2">2</button>
+          <button type="button" data-nl111-key="3">3</button>
+
+          <button
+            type="button"
+            data-nl111-key="backspace"
+            aria-label="Delete last digit">
+            ←
+          </button>
+
+          <button type="button" data-nl111-key="0">0</button>
+
+          <button
+            type="button"
+            data-nl111-key="clear">
+            CLR
+          </button>
+
+        </div>
+
+
+        <!-- ==========================================
+             ORANGE RESULT KEYS
+        =========================================== -->
+
+        <div class="nl111ResultKeys">
+
+          <button
+            type="button"
+            id="nl111FreedomButton">
+            Freedom n*
+          </button>
+
+          <button
+            type="button"
+            id="nl111WealthButton">
+            Max Wealth
+          </button>
+
+        </div>
+
+
+        <!-- ==========================================
+             INSTRUMENT FOOTER
+        =========================================== -->
+
+        <div class="nl111Footer">
+          DETERMINISTIC LIFE CYCLE MODEL
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
-  <div class="lifeWelcomeHeroMountain" aria-hidden="true">
 
-
-<svg viewBox="0 0 360 160" preserveAspectRatio="xMidYMid meet">
-
-  <!-- Baseline -->
-  <path
-    d="M12 133 H348"
-    stroke="#dce5f0"
-    fill="none"
-  />
-
-  <!-- Wealth mountain fill -->
-  <path
-    d="M12 130
-       C68 126 95 97 140 59
-       C163 40 181 31 192 31
-       C246 31 315 49 348 123
-       L348 133
-       L12 133 Z"
-    fill="#4E79BD"
-    fill-opacity=".08"
-  />
-
-  <!-- Wealth mountain line -->
-  <path
-    d="M12 130
-       C68 126 95 97 140 59
-       C163 40 181 31 192 31
-       C246 31 315 49 348 123"
-    stroke="#4E79BD"
-    stroke-width="2.5"
-    fill="none"
-  />
-
-  <!-- TODAY dot -->
-  <circle
-    cx="12" cy="130" r="3"
-    fill="#4E79BD"
-  />
-
-  <!-- Economic Balance -->
-  <line
-    x1="192" y1="31"
-    x2="192" y2="133"
-    stroke="#4E79BD"
-    stroke-dasharray="3 4"
-    opacity=".6"
-  />
-
-  <circle
-    cx="192" cy="31" r="4"
-    fill="#4E79BD"
-  />
-
-  <!-- HERITAGE dot -->
-  <circle
-    cx="348" cy="123" r="3"
-    fill="#4E79BD"
-  />
-
-  <!-- Economic Balance marker -->
-  <text
-    x="192" y="19"
-    text-anchor="middle"
-    fill="#4E79BD"
-    font-size="16"
-    font-weight="600"
-    font-family="Georgia,serif">N*</text>
-
-  <!-- Bilingual labels -->
-  <text
-    x="12" y="153"
-    fill="#344861"
-    font-size="12"
-    font-weight="600"
-    font-family="Arial,sans-serif"
-    data-lang="introToday">TODAY</text>
-
-  <text
-    x="192" y="153"
-    text-anchor="middle"
-    fill="#344861"
-    font-size="12"
-    font-weight="600"
-    font-family="Arial,sans-serif"
-    data-lang="introFreedom">FREEDOM</text>
-
-  <text
-    x="348" y="153"
-    text-anchor="end"
-    fill="#344861"
-    font-size="12"
-    font-weight="600"
-    font-family="Arial,sans-serif"
-    data-lang="introFuture">HERITAGE</text>
-
-</svg>
-
-  </div>
 </section>
+
+
 <!-- NEPTOON LIFE CYCLE · WELCOME PAGE CONTENT -->
 <!-- Keep the existing lifeWelcomeHero above this section unchanged. -->
 
@@ -26326,7 +27680,7 @@ assetPrivatePension:
   "Privat pension",
 
 assetPublicPension:
-  "Offentlig pension",
+  "Folkepension",
 
 assetInheritance:
   "Arv / fremtidig værdi",
@@ -26677,7 +28031,7 @@ lifePhaseText2:
 lifePhaseStep3: "C · EFTER N* tidspunkt",
 lifePhaseTitle3: "Det arbejdsfrie liv",
 lifePhaseText3:
-  "Din finansielle nettoformue samt evt. offentlig pension og modtaget arv finansierer dit forbrug gennem resten af livet. Modellen har en irrelevansmetode som gør at timingen for afhændelse af dine ubelånte formueaktiver i denne phase ikke påvirker N* tidspunktet.",
+  "Din finansielle nettoformue samt Folkepension, ATP og modtaget arv mm., finansierer dit forbrug gennem resten af livet. Modellen har en irrelevansmetode som gør at timingen for afhændelse af dine ubelånte formueaktiver i denne phase ikke påvirker N* tidspunktet.",
 
 lifePhaseStep4: "D · AFSLUTNING OG DØD",
 lifePhaseTitle4: "Arv efterladt",
@@ -27307,7 +28661,7 @@ lcMountainExcelButtonMember:
     /* PUBLIC PENSION */
 
     publicPension:
-      "Offentlig pension",
+      "Folkepension",
 
     publicPensionDescription:
       "Månedlig udbetalt (efter-skat) pension - beløb som det er i dag.",
@@ -27429,7 +28783,7 @@ lifeCycleTargetsNote:
     /* MODEL NOTE */
 
     lifeCycleModelNote:
-      "Note: Profilen repræsenterer den reale formueudvikling. Altså din forventede formueudvikling målt i dagens priser. Realisering af aktiver og passiver samt pensionsudbetalinger behandles som forskydninger mellem formuekomponenter og skaber eller reducerer derfor ikke i sig selv husstandens formue. Toppen af bjerget er præcis hvor din nettoforme inklusive evt. offentlig pension kan finansiere din ønskede indkomst efter skat og betalinger på forpligtelser. Læs mere om metode i PDF.",
+      "Note: Profilen repræsenterer den reale formueudvikling. Altså din forventede formueudvikling målt i dagens priser. Realisering af aktiver og passiver samt pensionsudbetalinger behandles som forskydninger mellem formuekomponenter og skaber eller reducerer derfor ikke i sig selv husstandens formue. Toppen af bjerget er præcis hvor din nettoforme inklusive evt. Folkepension kan finansiere din ønskede indkomst efter skat og betalinger på forpligtelser. Læs mere om metode i PDF.",
 
 otherAssetTaxNote:
   "Det implicitte årlige forventede afkast er nominelt, efter effektiv (lager) skat, men før inflation. Eksempel: 8 % bruttoafkast på aktier med 17 % effektiv lagerskat svarer til 6,64 % årligt. Modsat realisationsskat på Privat Pension som fungerer som udskudt akkumuleret skat, trækkes skatten her direkte og løbende i investeringsdepotet eller af investeringstypen. Der registreres, modsat Privat Pension, altså ikke en fremtidig ventende gæld på den økonomiske balance da Staten altså løbende opkræver via lagerskat", 
@@ -28113,6 +29467,11 @@ console.log("BOOT 2 — APP SHELL START");
 ===================================================== */
 
 function openTab(name){
+
+
+if(name === "Welcome"){
+  nl111ReadLifeCycleInputs();
+}
 
   document.querySelectorAll(".app-tab")
     .forEach(tab => {
@@ -29241,7 +30600,29 @@ if(accountDots){
   });
 
 }
+/* =====================================================
+   NW-111 · READ FINANCIAL FREEDOM AGE
+===================================================== */
 
+function nl111ReadFreedomAge(){
+
+  const source =
+    document.getElementById("freedomAge");
+
+  const target =
+    document.getElementById("nl111FreedomDisplay");
+
+  if(!source || !target){
+    return;
+  }
+
+  const age =
+    source.textContent.trim();
+
+  target.textContent =
+    "Freedom n* = " + (age || "—");
+
+}
 function updateLifeCycleFreedom(scenario){
 
   const expected = scenario?.expected;
@@ -29647,6 +31028,722 @@ function byId(id){
 function clamp(value,min,max){
   return Math.min(max,Math.max(min,value));
 }
+
+	
+	
+/* =========================================
+   LIFE CYCLE — CALCULATOR PAD
+========================================= */
+
+
+
+/* =====================================================
+   NEPTOON NW-111
+   INDEPENDENT CALCULATOR CONTROLLER
+   STAGE 1 · KEYPAD + LCD INPUTS
+===================================================== */
+
+const nl111State = {
+
+  values:{
+    wealth:1000000,
+    savings:10000,
+    consumption:25000,
+    legacy:2000000,
+outputMode:"freedom",
+  },
+
+  selected:"wealth",
+
+  editing:false,
+
+  entry:"",
+
+  dirty:false
+
+};
+
+
+/* =====================================================
+   VARIABLE DEFINITIONS
+===================================================== */
+
+const NL111_VARIABLES = {
+
+  wealth:{
+    symbol:"W₀",
+    labelDa:"FORMUE I DAG",
+    labelEn:"WEALTH TODAY",
+    outputId:"nl111Wealth"
+  },
+
+  savings:{
+    symbol:"S",
+    labelDa:"MÅNEDLIG OPSPARING",
+    labelEn:"MONTHLY SAVINGS",
+    outputId:"nl111Savings"
+  },
+
+  consumption:{
+    symbol:"C",
+    labelDa:"MÅNEDLIGT FORBRUG",
+    labelEn:"MONTHLY CONSUMPTION",
+    outputId:"nl111Consumption"
+  },
+
+  legacy:{
+    symbol:"L",
+    labelDa:"MÅL FOR ARV",
+    labelEn:"TARGET LEGACY",
+    outputId:"nl111Legacy"
+  }
+
+};
+
+/* =====================================================
+   NW-111 · OUTPUT MODE CONTROLLER
+===================================================== */
+
+function nl111SetOutputMode(mode){
+
+  if(mode !== "freedom" && mode !== "wealth"){
+    return;
+  }
+
+  nl111State.outputMode = mode;
+
+  nl111UpdateOutput();
+
+}
+
+
+/* =====================================================
+   NW-111 · REFRESH SELECTED OUTPUT
+===================================================== */
+
+function nl111UpdateOutput(){
+
+  const display =
+    document.getElementById("nl111FreedomDisplay");
+
+  if(!display){
+    return;
+  }
+
+  let label = "";
+  let value = "—";
+
+  if(nl111State.outputMode === "wealth"){
+
+    label = "Max Wealth";
+
+    /*
+      Read the existing Life Cycle metric.
+      We need to confirm its DOM ID.
+    */
+
+    const source =
+      document.getElementById("metricFreedom");
+
+    if(source){
+      value = source.textContent.trim() || "—";
+    }
+
+  }else{
+
+    label = "Freedom n*";
+
+    const source =
+      document.getElementById("freedomAge");
+
+    if(source){
+      value = source.textContent.trim() || "—";
+    }
+
+  }
+
+  display.textContent =
+    label + " = " + value;
+
+}
+
+/* =====================================================
+   NW-111 · ORANGE OUTPUT BUTTONS
+===================================================== */
+
+document.getElementById("nl111FreedomButton")
+  ?.addEventListener("click", () => {
+
+    nl111SetOutputMode("freedom");
+
+  });
+
+
+document.getElementById("nl111WealthButton")
+  ?.addEventListener("click", () => {
+
+    nl111SetOutputMode("wealth");
+
+  });
+
+/* =====================================================
+   LANGUAGE
+===================================================== */
+
+function nl111Language(){
+
+  return (
+    typeof INIT !== "undefined" &&
+    INIT.lang === "en"
+  )
+    ? "en"
+    : "da";
+
+}
+
+
+/* =====================================================
+   NUMBER FORMATTING
+===================================================== */
+
+function nl111FormatNumber(value){
+
+  return new Intl.NumberFormat(
+    nl111Language() === "da" ? "da-DK" : "en-US",
+    {
+      maximumFractionDigits:0
+    }
+  ).format(value);
+
+}
+
+
+/* =====================================================
+   RENDER CALCULATOR
+===================================================== */
+
+function renderNL111(){
+
+  const root =
+    document.getElementById("nl111Calculator");
+
+  if(!root){
+    return;
+  }
+
+  const lang =
+    nl111Language();
+
+  /* -----------------------------------------------
+     MAIN LCD VALUES
+  ----------------------------------------------- */
+
+  Object.entries(NL111_VARIABLES)
+    .forEach(([key,meta]) => {
+
+      const output =
+        document.getElementById(meta.outputId);
+
+      if(!output){
+        return;
+      }
+
+      output.textContent =
+        nl111FormatNumber(
+          nl111State.values[key]
+        );
+
+    });
+
+
+  /* -----------------------------------------------
+     SELECTED VARIABLE INFORMATION
+  ----------------------------------------------- */
+
+  const selected =
+    NL111_VARIABLES[nl111State.selected];
+
+  const infoSymbol =
+    document.getElementById("nl111InfoSymbol");
+
+  const infoText =
+    document.getElementById("nl111InfoText");
+
+  if(infoSymbol){
+    infoSymbol.textContent =
+      selected.symbol;
+  }
+
+  if(infoText){
+
+    const label =
+      lang === "da"
+        ? selected.labelDa
+        : selected.labelEn;
+
+    infoText.textContent =
+      label +
+      "  ·  " +
+      nl111FormatNumber(
+        nl111State.values[nl111State.selected]
+      );
+
+  }
+
+
+  /* -----------------------------------------------
+     ACTIVE VARIABLE KEY
+  ----------------------------------------------- */
+
+  root.querySelectorAll(
+    "[data-nl111-variable]"
+  ).forEach(button => {
+
+    const active =
+      button.dataset.nl111Variable ===
+      nl111State.selected;
+
+    button.classList.toggle(
+      "active",
+      active
+    );
+
+    button.setAttribute(
+      "aria-pressed",
+      String(active)
+    );
+
+  });
+
+
+  /* -----------------------------------------------
+     STATUS DISPLAY
+  ----------------------------------------------- */
+
+  const status =
+    document.getElementById("nl111ScreenStatus");
+
+  if(status){
+
+    if(nl111State.editing){
+
+      status.textContent =
+        lang === "da"
+          ? "INDTASTER"
+          : "ENTERING";
+
+    }else if(nl111State.dirty){
+
+      status.textContent =
+        lang === "da"
+          ? "OPDATERET"
+          : "UPDATED";
+
+    }else{
+
+      status.textContent =
+        "READY";
+
+    }
+
+  }
+
+}
+
+
+/* =====================================================
+   SELECT VARIABLE
+===================================================== */
+
+function nl111SelectVariable(key){
+
+  if(!NL111_VARIABLES[key]){
+    return;
+  }
+
+  nl111State.selected =
+    key;
+
+  nl111State.editing =
+    false;
+
+  nl111State.entry =
+    "";
+
+  renderNL111();
+
+
+}
+
+
+/* =====================================================
+   ENTER DIGIT
+===================================================== */
+
+function nl111EnterDigit(digit){
+
+  if(!/^[0-9]$/.test(digit)){
+    return;
+  }
+
+  if(!nl111State.editing){
+
+    nl111State.entry =
+      digit;
+
+    nl111State.editing =
+      true;
+
+  }else{
+
+    nl111State.entry +=
+      digit;
+
+  }
+
+  /* Maximum 12 digits */
+
+  nl111State.entry =
+    nl111State.entry.slice(0,12);
+
+  const value =
+    Number(nl111State.entry);
+
+  if(!Number.isFinite(value)){
+    return;
+  }
+
+  nl111State.values[nl111State.selected] =
+    value;
+
+  nl111State.dirty =
+    true;
+
+  renderNL111();
+nl111UpdateLifeCycleInput();
+
+
+}
+
+
+/* =====================================================
+   BACKSPACE
+===================================================== */
+
+function nl111Backspace(){
+
+  if(!nl111State.editing){
+
+    nl111State.entry =
+      String(
+        nl111State.values[
+          nl111State.selected
+        ]
+      );
+
+    nl111State.editing =
+      true;
+
+  }
+
+  nl111State.entry =
+    nl111State.entry.slice(0,-1);
+
+  nl111State.values[nl111State.selected] =
+    Number(nl111State.entry || 0);
+
+  nl111State.dirty =
+    true;
+
+  renderNL111();
+nl111UpdateLifeCycleInput();
+}
+
+
+/* =====================================================
+   CLEAR CURRENT VARIABLE
+===================================================== */
+
+function nl111Clear(){
+
+  nl111State.entry =
+    "";
+
+  nl111State.editing =
+    true;
+
+  nl111State.values[nl111State.selected] =
+    0;
+
+  nl111State.dirty =
+    true;
+
+  renderNL111();
+nl111UpdateLifeCycleInput();
+
+}
+
+
+/* =====================================================
+   INITIALIZE CALCULATOR
+===================================================== */
+
+function initNL111(){
+
+  const root =
+    document.getElementById("nl111Calculator");
+
+  if(!root){
+    return;
+  }
+
+  /* Avoid duplicate event bindings */
+
+  if(root.dataset.nl111Initialized === "1"){
+    return;
+  }
+
+  root.dataset.nl111Initialized =
+    "1";
+
+
+  /* -----------------------------------------------
+     VARIABLE KEYS
+  ----------------------------------------------- */
+
+  root.querySelectorAll(
+    "[data-nl111-variable]"
+  ).forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      nl111SelectVariable(
+        button.dataset.nl111Variable
+      );
+
+    });
+
+  });
+
+
+  /* -----------------------------------------------
+     NUMERIC KEYPAD
+  ----------------------------------------------- */
+
+  root.querySelectorAll(
+    "[data-nl111-key]"
+  ).forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const key =
+        button.dataset.nl111Key;
+
+      if(key === "backspace"){
+
+        nl111Backspace();
+
+      }else if(key === "clear"){
+
+        nl111Clear();
+
+      }else{
+
+        nl111EnterDigit(key);
+
+      }
+
+    });
+
+  });
+
+
+  /* -----------------------------------------------
+     INITIAL DISPLAY
+  ----------------------------------------------- */
+
+nl111ReadLifeCycleInputs();
+
+  console.log(
+    "NW-111 CALCULATOR INITIALIZED",
+    nl111State
+  );
+
+}
+
+/* =====================================================
+   NW-111 · READ CURRENT LIFE CYCLE INPUTS
+===================================================== */
+
+/* =====================================================
+   NW-111 · INITIALIZE FROM LIFE CYCLE DOM
+===================================================== */
+/* =====================================================
+   NW-111 → LIFE CYCLE → NW-111
+   LIVE FINANCIAL FREEDOM UPDATE
+===================================================== */
+
+
+
+function nl111UpdateLifeCycleInput(){
+
+  const key =
+    nl111State.selected;
+
+  const id =
+    NL111_INPUT_MAP[key];
+
+  const input =
+    document.getElementById(id);
+
+  if(!input){
+    console.warn(
+      "NW-111 INPUT NOT FOUND",
+      id
+    );
+    return;
+  }
+
+  const value =
+    nl111State.values[key];
+
+  /*
+    Life Cycle money fields use
+    formatted monetary strings.
+  */
+
+  input.value =
+    nl111FormatNumber(value);
+
+  /*
+    Existing model calculation.
+    render() reads the updated DOM.
+  */
+
+  render();
+nl111UpdateOutput();
+
+  /*
+    Read the new solver result.
+  */
+
+nl111UpdateOutput();
+
+}
+
+function nl111ReadLifeCycleInputs(){
+
+  const inputMap = {
+    wealth:"wealthToday",
+    savings:"monthlySavings",
+    consumption:"monthlyConsumption",
+    legacy:"legacy"
+  };
+
+  Object.entries(inputMap).forEach(([key,id]) => {
+
+    const input =
+      document.getElementById(id);
+
+    if(!input){
+      console.warn("NW-111 INPUT NOT FOUND",id);
+      return;
+    }
+
+    /*
+      Danish monetary formatting:
+      "500.000" → 500000
+      "10.000"  → 10000
+    */
+
+    const value =
+      Number(
+        String(input.value)
+          .replace(/[.\s]/g,"")
+          .replace(",",".")
+      );
+
+    if(!Number.isFinite(value)){
+      return;
+    }
+
+    nl111State.values[key] =
+      value;
+
+  });
+
+  nl111State.editing = false;
+  nl111State.entry = "";
+  nl111State.dirty = false;
+
+  renderNL111();
+nl111UpdateOutput();
+
+
+}
+/* =====================================================
+   NW-111 → LIFE CYCLE INPUT BRIDGE
+===================================================== */
+
+const NL111_INPUT_MAP = {
+  wealth:"wealthToday",
+  savings:"monthlySavings",
+  consumption:"monthlyConsumption",
+  legacy:"legacy"
+};
+
+
+function nl111SyncToLifeCycle(){
+
+  let changed = false;
+
+  Object.entries(NL111_INPUT_MAP)
+    .forEach(([key,id]) => {
+
+      const input =
+        document.getElementById(id);
+
+      if(!input){
+        console.warn(
+          "NW-111 INPUT NOT FOUND",
+          id
+        );
+        return;
+      }
+
+      const value =
+        nl111State.values[key];
+
+      const current =
+        Number(input.value);
+
+      if(current === value){
+        return;
+      }
+
+      input.value =
+        String(value);
+
+      input.dispatchEvent(
+        new Event("input",{
+          bubbles:true
+        })
+      );
+
+      input.dispatchEvent(
+        new Event("change",{
+          bubbles:true
+        })
+      );
+
+      changed = true;
+
+    });
+
+  return changed;
+
+}
+
 
 	
 	
@@ -31720,9 +33817,12 @@ function supplementaryPensionAtMonth(
     return 0;
   }
 
+  const yearsSinceToday =
+    month / 12;
+
   const age =
     inputs.currentAge +
-    month / 12;
+    yearsSinceToday;
 
   const startAge =
     inputs.supplementaryPensionStatus === "receiving"
@@ -31733,18 +33833,31 @@ function supplementaryPensionAtMonth(
     return 0;
   }
 
-  const yearsSinceStart =
-    Math.max(
-      0,
-      age - startAge
-    );
+  /*
+    ATP — REAL CASHFLOW
 
-  return (
+    Nominal growth from current age.
+    Convert to today's purchasing power.
+
+    Same methodology as public pension.
+  */
+
+  const nominalPension =
     inputs.supplementaryPension *
     Math.pow(
       1 + inputs.publicPensionGrowth,
-      yearsSinceStart
-    )
+      yearsSinceToday
+    );
+
+  const inflationFactor =
+    Math.pow(
+      1 + inputs.inflation,
+      yearsSinceToday
+    );
+
+  return (
+    nominalPension /
+    inflationFactor
   );
 
 }
@@ -32079,6 +34192,19 @@ function createMortgageState(inputs){
 
 function mortgageMonthStep(state,month,inputs){
 
+  /*
+    DANISH INTEREST TAX SHIELD
+
+    DA: 25% effective deductibility.
+    Other languages: 0%.
+
+    Applies to interest and annual costs.
+    Does not affect contractual amortization.
+  */
+
+  const taxShieldRate =
+    INIT.lang === "da" ? 0.25 : 0;
+
   const realDebt = () =>
     state.enabled
       ? mortgageRealDebt(state.nominalDebt,month,inputs)
@@ -32177,6 +34303,9 @@ function mortgageMonthStep(state,month,inputs){
 
   /*
     TOTAL MONTHLY DEBT SERVICE
+
+    Nominal payment remains contractual
+    and before tax deductions.
   */
 
   const paymentNominal =
@@ -32199,6 +34328,23 @@ function mortgageMonthStep(state,month,inputs){
       ? value / inflationFactor
       : value;
 
+  /*
+    TAX-ADJUSTED REAL DEBT SERVICE
+
+    Principal is never tax deductible.
+    Interest and annual costs receive
+    the effective Danish tax shield.
+
+    The tax benefit is applied exactly once.
+  */
+
+  const paymentReal =
+    toReal(
+      principalNominal +
+      (interestNominal + costsNominal) *
+      (1 - taxShieldRate)
+    );
+
   return {
     principalNominal,
     principalReal:toReal(principalNominal),
@@ -32210,7 +34356,7 @@ function mortgageMonthStep(state,month,inputs){
     costsReal:toReal(costsNominal),
 
     paymentNominal,
-    paymentReal:toReal(paymentNominal),
+    paymentReal,
 
     realDebt:realDebt()
   };
@@ -33813,10 +35959,31 @@ if(
       inputs.inflation
     ) || 0;
 
+  /*
+    PRIVATE PENSION CONTRIBUTION GROWTH
+
+    Minimum: inflation
+    Wage-growth proxy capped at 5% nominal.
+
+    Extreme savings-growth assumptions do not
+    automatically inflate pension contributions.
+  */
+
+  const pensionGrowthNominal =
+    Math.max(
+      inflation,
+      Math.min(savingsGrowthNominal, 0.05)
+    );
+
+  /*
+    Convert nominal contribution growth
+    into today's purchasing power.
+  */
+
   const contributionReal =
     contributionToday *
     Math.pow(
-      (1 + savingsGrowthNominal) /
+      (1 + pensionGrowthNominal) /
       (1 + inflation),
       month / 12
     );
@@ -33835,11 +36002,20 @@ if(
   state.value +=
     privatePensionContribution;
 
-  /* Contributions increase nominal cost basis, not taxable gains. */
+  /*
+    Contributions increase nominal cost basis,
+    not taxable capital gains.
+  */
+
   const contributionNominal =
-    privatePensionContribution * inflationIndexAtMonth(month);
-  state.taxBasisNominal += contributionNominal;
-  state.previousNominalValue += contributionNominal;
+    privatePensionContribution *
+    inflationIndexAtMonth(month);
+
+  state.taxBasisNominal +=
+    contributionNominal;
+
+  state.previousNominalValue +=
+    contributionNominal;
 
 }
 
@@ -33894,12 +36070,13 @@ if(month <= freedomMonth){
   const savingsGrowthNominal =
     Number(inputs.savingsGrowthNominal) || 0;
 
-  savings =
-    inputs.monthlySavings *
-    Math.pow(
-      1 + savingsGrowthNominal,
-      month / 12
-    );
+savings =
+  inputs.monthlySavings *
+  Math.pow(
+    (1 + savingsGrowthNominal) /
+    (1 + inputs.inflation),
+    month / 12
+  );
 
   portfolio += savings;
 
@@ -35924,6 +38101,9 @@ function drawChart(
   path
 ){
 
+
+updateNL111Mountain(inputs,scenario,path);
+
   const canvasData =
     prepareCanvas();
 
@@ -36970,6 +39150,562 @@ canvas.onmouseleave =
 
 
 
+/* =====================================================
+   NW-111 · LIVE LEDGER MOUNTAIN + TRACE
+===================================================== */
+
+let nl111ChartData = null;
+let nl111TraceIndex = null;
+let nl111TraceActive = false;
+
+
+/* =====================================================
+   RECEIVE EXISTING LIFE CYCLE RESULTS
+===================================================== */
+
+function updateNL111Mountain(inputs,scenario,path){
+
+  if(
+    !inputs ||
+    !scenario?.expected ||
+    !Array.isArray(path)
+  ){
+    return;
+  }
+
+  nl111ChartData = {
+    currentAge:Number(inputs.currentAge),
+    deathAge:Number(inputs.deathAge),
+    freedomMonth:Number(scenario.expected.month),
+    path:path
+      .filter(p =>
+        Number.isFinite(p.month) &&
+        Number.isFinite(p.wealth)
+      )
+      .map(p => ({
+        month:p.month,
+        wealth:p.wealth
+      }))
+  };
+
+  nl111TraceIndex = null;
+  nl111TraceActive = false;
+
+  drawNL111Chart();
+
+}
+
+
+/* =====================================================
+   DRAW LCD MOUNTAIN
+===================================================== */
+
+function drawNL111Chart(){
+
+  const canvas =
+    document.getElementById("nl111Chart");
+
+  const data =
+    nl111ChartData;
+
+  if(!canvas || !data || data.path.length < 2){
+    return;
+  }
+
+  const rect =
+    canvas.getBoundingClientRect();
+
+  if(rect.width <= 0 || rect.height <= 0){
+    return;
+  }
+
+  const dpr =
+    window.devicePixelRatio || 1;
+
+  const width =
+    rect.width;
+
+  const height =
+    rect.height;
+
+  canvas.width =
+    Math.round(width * dpr);
+
+  canvas.height =
+    Math.round(height * dpr);
+
+  const ctx =
+    canvas.getContext("2d");
+
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+
+  ctx.clearRect(0,0,width,height);
+
+
+  /* -----------------------------------------------
+     COMPACT LCD PLOT
+  ----------------------------------------------- */
+
+  const pad = {
+    left:5,
+    right:5,
+    top:14,
+    bottom:15
+  };
+
+  const plotW =
+    width - pad.left - pad.right;
+
+  const plotH =
+    height - pad.top - pad.bottom;
+
+  const path =
+    data.path;
+
+  const totalMonths =
+    Math.max(
+      1,
+      (data.deathAge - data.currentAge) * 12
+    );
+
+  const values =
+    path.map(p => p.wealth);
+
+  const minValue =
+    Math.min(0,...values);
+
+  const maxValue =
+    Math.max(0,...values);
+
+  const range =
+    Math.max(1,maxValue-minValue);
+
+  const axisMax =
+    maxValue + range * .08;
+
+  const axisMin =
+    minValue - range * .04;
+
+  const xForMonth =
+    month =>
+      pad.left +
+      (month / totalMonths) * plotW;
+
+  const yForValue =
+    value =>
+      pad.top +
+      (
+        1 -
+        (value-axisMin)/(axisMax-axisMin)
+      ) * plotH;
+
+
+  /* -----------------------------------------------
+     SUBTLE LCD GRID
+  ----------------------------------------------- */
+
+  ctx.strokeStyle =
+    "rgba(37,58,37,.12)";
+
+  ctx.lineWidth =
+    .5;
+
+  for(let i=1;i<=3;i++){
+
+    const y =
+      pad.top + plotH*i/4;
+
+    ctx.beginPath();
+    ctx.moveTo(pad.left,y);
+    ctx.lineTo(pad.left+plotW,y);
+    ctx.stroke();
+
+  }
+
+
+  /* -----------------------------------------------
+     MOUNTAIN AREA
+  ----------------------------------------------- */
+
+  ctx.beginPath();
+
+  path.forEach((p,i) => {
+
+    const x = xForMonth(p.month);
+    const y = yForValue(p.wealth);
+
+    if(i===0){
+      ctx.moveTo(x,y);
+    }else{
+      ctx.lineTo(x,y);
+    }
+
+  });
+
+  const last =
+    path[path.length-1];
+
+  ctx.lineTo(
+    xForMonth(last.month),
+    pad.top+plotH
+  );
+
+  ctx.lineTo(
+    xForMonth(path[0].month),
+    pad.top+plotH
+  );
+
+  ctx.closePath();
+
+  ctx.fillStyle =
+    "rgba(37,58,37,.12)";
+
+  ctx.fill();
+
+
+  /* -----------------------------------------------
+     REAL WEALTH LINE
+  ----------------------------------------------- */
+
+  ctx.beginPath();
+
+  path.forEach((p,i) => {
+
+    const x = xForMonth(p.month);
+    const y = yForValue(p.wealth);
+
+    if(i===0){
+      ctx.moveTo(x,y);
+    }else{
+      ctx.lineTo(x,y);
+    }
+
+  });
+
+  ctx.strokeStyle =
+    "#253A25";
+
+  ctx.lineWidth =
+    1.7;
+
+  ctx.lineJoin =
+    "round";
+
+  ctx.lineCap =
+    "round";
+
+  ctx.stroke();
+
+
+  /* -----------------------------------------------
+     FINANCIAL FREEDOM MARKER
+  ----------------------------------------------- */
+
+  const freedomPoint =
+    path.reduce((nearest,p) =>
+      Math.abs(p.month-data.freedomMonth) <
+      Math.abs(nearest.month-data.freedomMonth)
+        ? p
+        : nearest
+    );
+
+  const fx =
+    xForMonth(freedomPoint.month);
+
+  const fy =
+    yForValue(freedomPoint.wealth);
+
+  ctx.beginPath();
+  ctx.setLineDash([2,3]);
+
+  ctx.moveTo(fx,fy);
+  ctx.lineTo(fx,pad.top+plotH);
+
+  ctx.strokeStyle =
+    "rgba(37,58,37,.55)";
+
+  ctx.lineWidth =
+    .8;
+
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  ctx.beginPath();
+  ctx.arc(fx,fy,3,0,Math.PI*2);
+
+  ctx.fillStyle =
+    "#253A25";
+
+  ctx.fill();
+
+
+  /* -----------------------------------------------
+     AGE LABELS
+  ----------------------------------------------- */
+
+  ctx.font =
+    '9px "Courier New",monospace';
+
+  ctx.fillStyle =
+    "#253A25";
+
+  ctx.textBaseline =
+    "bottom";
+
+  ctx.textAlign =
+    "left";
+
+  ctx.fillText(
+    String(Math.round(data.currentAge)),
+    pad.left,
+    height
+  );
+
+  ctx.textAlign =
+    "right";
+
+  ctx.fillText(
+    String(Math.round(data.deathAge)),
+    width-pad.right,
+    height
+  );
+
+
+  /* -----------------------------------------------
+     TRACE CROSSHAIR
+  ----------------------------------------------- */
+
+  if(
+    nl111TraceActive &&
+    nl111TraceIndex !== null
+  ){
+
+    const point =
+      path[nl111TraceIndex];
+
+    if(point){
+
+      const tx =
+        xForMonth(point.month);
+
+      const ty =
+        yForValue(point.wealth);
+
+      ctx.beginPath();
+
+      ctx.moveTo(tx,pad.top);
+      ctx.lineTo(tx,pad.top+plotH);
+
+      ctx.strokeStyle =
+        "rgba(37,58,37,.75)";
+
+      ctx.lineWidth =
+        .8;
+
+      ctx.setLineDash([2,2]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.beginPath();
+      ctx.arc(tx,ty,3,0,Math.PI*2);
+
+      ctx.fillStyle =
+        "#253A25";
+
+      ctx.fill();
+
+    }
+
+  }
+
+}
+
+
+/* =====================================================
+   TRACE COORDINATES
+===================================================== */
+
+function nl111TraceAt(clientX){
+
+  const canvas =
+    document.getElementById("nl111Chart");
+
+  const data =
+    nl111ChartData;
+
+  if(!canvas || !data || !data.path.length){
+    return;
+  }
+
+  const rect =
+    canvas.getBoundingClientRect();
+
+  const plotW =
+    rect.width - 10;
+
+  if(plotW <= 0){
+    return;
+  }
+
+  const fraction =
+    Math.max(
+      0,
+      Math.min(
+        1,
+        (clientX-rect.left-5)/plotW
+      )
+    );
+
+  const totalMonths =
+    (data.deathAge-data.currentAge)*12;
+
+  const month =
+    fraction*totalMonths;
+
+  let nearestIndex = 0;
+
+  let nearestDistance =
+    Infinity;
+
+  data.path.forEach((p,i) => {
+
+    const distance =
+      Math.abs(p.month-month);
+
+    if(distance < nearestDistance){
+
+      nearestDistance = distance;
+      nearestIndex = i;
+
+    }
+
+  });
+
+  nl111TraceIndex =
+    nearestIndex;
+
+  nl111TraceActive =
+    true;
+
+  const point =
+    data.path[nearestIndex];
+
+  const age =
+    data.currentAge +
+    point.month/12;
+
+  const display =
+    document.getElementById(
+      "nl111FreedomDisplay"
+    );
+
+  if(display){
+
+    display.textContent =
+      "AGE " +
+      age.toFixed(1) +
+      " · W " +
+      nl111FormatNumber(point.wealth);
+
+  }
+
+  drawNL111Chart();
+
+}
+
+
+/* =====================================================
+   END TRACE · RESTORE SELECTED OUTPUT
+===================================================== */
+
+function nl111EndTrace(){
+
+  if(!nl111TraceActive){
+    return;
+  }
+
+  nl111TraceActive = false;
+  nl111TraceIndex = null;
+
+  drawNL111Chart();
+
+  nl111UpdateOutput();
+
+}
+
+
+/* =====================================================
+   BIND MOUSE + TOUCH ONCE
+===================================================== */
+
+function initNL111Trace(){
+
+initNL111Trace();
+
+  const canvas =
+    document.getElementById("nl111Chart");
+
+  if(!canvas){
+    return;
+  }
+
+  if(canvas.dataset.traceInitialized === "1"){
+    return;
+  }
+
+  canvas.dataset.traceInitialized = "1";
+
+  canvas.addEventListener(
+    "pointermove",
+    event => {
+
+      if(
+        event.pointerType === "mouse" ||
+        (
+          event.pointerType === "touch" &&
+          event.buttons > 0
+        )
+      ){
+        nl111TraceAt(event.clientX);
+      }
+
+    }
+  );
+
+  canvas.addEventListener(
+    "pointerdown",
+    event => {
+
+      nl111TraceAt(event.clientX);
+
+    }
+  );
+
+  canvas.addEventListener(
+    "pointerleave",
+    nl111EndTrace
+  );
+
+  canvas.addEventListener(
+    "pointerup",
+    event => {
+
+      if(event.pointerType !== "mouse"){
+        nl111EndTrace();
+      }
+
+    }
+  );
+
+  canvas.addEventListener(
+    "pointercancel",
+    nl111EndTrace
+  );
+
+}
+
+
+
 function getFlexiblePortfolioSelection(){
 
   function readPhase(key){
@@ -37770,6 +40506,8 @@ function formatMoneyPlain(value){
     });
 
 }
+
+
 function buildSupplementaryPensionPV(
   inputs,
   annualUseRealRate
@@ -37777,11 +40515,6 @@ function buildSupplementaryPensionPV(
 
   const totalMonths =
     totalMonthsFor(inputs);
-
-  const monthlyRate =
-    annualToMonthly(
-      annualUseRealRate
-    );
 
   const pv =
     new Array(totalMonths + 1).fill(0);
@@ -37791,8 +40524,22 @@ function buildSupplementaryPensionPV(
   }
 
   /*
-    BACKWARD RECURSION
+    ATP — INFLATION PV
+
+    1. Recover nominal ATP cashflows.
+    2. Discount backwards using inflation only.
+    3. Convert shadow values to t=0 real DKK.
+
+    No portfolio return discounting.
   */
+
+  const monthlyInflation =
+    Math.pow(
+      1 + inputs.inflation,
+      1 / 12
+    );
+
+  let nominalPV = 0;
 
   for(
     let month = totalMonths - 1;
@@ -37800,18 +40547,33 @@ function buildSupplementaryPensionPV(
     month--
   ){
 
-    const nextPension =
-      supplementaryPensionAtMonth(
-        inputs,
-        month + 1
+    const paymentMonth =
+      month + 1;
+
+    const inflationFactor =
+      Math.pow(
+        monthlyInflation,
+        paymentMonth
       );
 
-    pv[month] =
+    const nominalPension =
+      supplementaryPensionAtMonth(
+        inputs,
+        paymentMonth
+      ) * inflationFactor;
+
+    nominalPV =
       (
-        nextPension +
-        pv[month + 1]
-      ) /
-      (1 + monthlyRate);
+        nominalPension +
+        nominalPV
+      ) / monthlyInflation;
+
+    pv[month] =
+      nominalPV /
+      Math.pow(
+        monthlyInflation,
+        month
+      );
 
   }
 
@@ -44179,8 +46941,8 @@ function buildFreedomDayInformation(
     freePortfolio:"Likvid investeringsportefølje",
     realEstate:"Din private bolig",
     enterprise:"Din virksomhed",
-    privatePension:"Privat pension",
-    publicPension:"Offentlig pension",
+    privatePension:"Private pensionsordninger",
+    publicPension:"Folkepension",
 supplementaryPension:"ATP Livslang Pension",
     inheritance:"Forventet egen arv",
     otherResources:"Øvrige ressourcer",
@@ -48912,10 +51674,69 @@ function getBalanceChartsSnapshot(){
 
 function initFolkepension(){
 
-  if(INIT.lang !== "da") return;
+  if(INIT.lang !== "da"){
+    return;
+  }
+
+  const amountField =
+    document.getElementById("publicPension");
+
+  const atpField =
+    document.getElementById("supplementaryPensionAnnual");
+
+  /*
+    DANISH DEFAULTS
+    Only populate empty fields.
+  */
+
+if(
+  amountField &&
+  !Number(
+    String(amountField.value)
+      .replace(/\./g, "")
+      .replace(",", ".")
+  )
+){
+  amountField.value =
+    (13500).toLocaleString("da-DK");
+}
+
+  if(
+    atpField &&
+    !String(atpField.value).trim()
+  ){
+    atpField.value =
+      (20000).toLocaleString("da-DK");
+  }
+
+  renderFolkepension();
+
+}
+
+function renderFolkepension(){
+
+  const infoField =
+    document.getElementById("pensionAgeHint");
+
+  /*
+    INTERNATIONAL USERS
+  */
+
+  if(INIT.lang !== "da"){
+
+    if(infoField){
+      infoField.textContent =
+        "Go to My Settings to add your age-dependent " +
+        "public pension income and benefits.";
+    }
+
+    return;
+  }
 
   const currentAge =
-    Number(document.getElementById("currentAge")?.value);
+    Number(
+      document.getElementById("currentAge")?.value
+    );
 
   const ageField =
     document.getElementById("publicPensionAge");
@@ -48923,15 +51744,24 @@ function initFolkepension(){
   const amountField =
     document.getElementById("publicPension");
 
+  const atpField =
+    document.getElementById("supplementaryPensionAnnual");
+
   if(
     !Number.isFinite(currentAge) ||
     currentAge < 18 ||
-    !ageField ||
-    !amountField
-  ) return;
+    !ageField
+  ){
+    return;
+  }
+
+  /*
+    DANISH FOLKEPENSION AGE
+  */
 
   const birthYear =
-    new Date().getFullYear() - Math.floor(currentAge);
+    new Date().getFullYear() -
+    Math.floor(currentAge);
 
   const pensionAge =
     birthYear <= 1962 ? 67 :
@@ -48940,11 +51770,56 @@ function initFolkepension(){
     birthYear <= 1974 ? 70 :
     birthYear <= 1978 ? 71 : 72;
 
-  // Danish monthly Folkepension
-  amountField.value =
-    (13500).toLocaleString("da-DK");
-
   ageField.value = pensionAge;
+
+  /*
+    READ DANISH FORMATTED AMOUNTS
+  */
+
+  const readAmount = field => {
+
+    const value =
+      String(field?.value || "0");
+
+    return Number(
+      value
+        .replace(/\./g, "")
+        .replace(",", ".")
+        .replace(/\s/g, "")
+    ) || 0;
+
+  };
+
+  /*
+    MONTHLY AFTER-TAX INCOME
+
+    ATP input remains annual.
+  */
+
+  const monthlyPension =
+    readAmount(amountField) || 13500;
+
+  const monthlyATP =
+    (readAmount(atpField) || 20000) / 12;
+
+  const formatDKK = value =>
+    value.toLocaleString("da-DK", {
+      maximumFractionDigits:0
+    });
+
+  /*
+    DYNAMIC INFORMATION
+  */
+
+  if(infoField){
+
+    infoField.textContent =
+      `Pensionsalder ${pensionAge} år · ` +
+      `Månedlig indkomst efter skat (2026): ` +
+      `Folkepension ${formatDKK(monthlyPension)} · ` +
+      `ATP ${formatDKK(monthlyATP)}`;
+
+  }
 
 }
 
@@ -50234,10 +53109,11 @@ initFolkepension();
 console.log("BOOT 20");
 //////////////////////
 render();
+drawNL111Chart();
 
 console.log("BOOT 21");
 bindFooterInfo();
-
+initNL111();
 
 console.log("BOOT 22");
 applyLang("da");
@@ -50260,6 +53136,9 @@ console.log("BOOT 23");
   renderComparePDF
 );
   
+document
+  .getElementById("currentAge")
+  ?.addEventListener("change", initFolkepension);
   
   
   
