@@ -15688,6 +15688,184 @@ margin-bottom:-35px !important;
   .nl111InfoDisplay{
   margin-top:2px;
 }
+
+
+
+
+
+/* ================================================
+   LIFE CYCLE · FINANCIAL FREEDOM HEADER
+================================================ */
+
+.freedomBox{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+}
+
+.freedomEstimates{
+  display:flex;
+  align-items:end;
+  justify-content:center;
+  gap:24px;
+}
+
+.freedomEstimate{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:end;
+  gap:4px;
+  min-width:55px;
+}
+
+.freedomEstimateLabel{
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  color:#66758c;
+}
+
+.freedomEstimateValue{
+  font-size:19px;
+  font-weight:500;
+  color:#71829a;
+  font-variant-numeric:tabular-nums;
+}
+
+.freedomEstimate.expected{
+  min-width:90px;
+}
+
+.freedomEstimate.expected .freedomEstimateLabel{
+  color:#243b5a;
+  font-size:11px;
+}
+
+.freedomAge{
+  font-size:32px;
+  line-height:1.1;
+  font-weight:500;
+  color:#dc2626;
+  font-variant-numeric:tabular-nums;
+}
+
+.freedomRange{
+  font-size:10px;
+  color:#718096;
+  text-align:center;
+}
+
+
+/* ================================================
+   MOUNTAIN · FINANCIAL METRICS
+================================================ */
+
+.metricsMountain{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  margin-top:0;
+  border:1px solid #d7dfeb;
+  background:#f8fafd;
+}
+
+.metricsMountain .metric{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  min-width:0;
+  padding:15px 13px;
+  border-right:1px solid #d7dfeb;
+}
+
+.metricsMountain .metric:last-child{
+  border-right:none;
+}
+
+.metricsMountain .metricLabel{
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.055em;
+  text-transform:uppercase;
+  color:#405a83;
+  margin-bottom:7px;
+}
+
+.metricsMountain .metricValue{
+  font-size:19px;
+  line-height:1.2;
+  font-weight:500;
+  color:#4e79bd;
+  font-variant-numeric:tabular-nums;
+  text-align:right;
+  margin-bottom:6px;
+}
+
+.metricsMountain .metricSub{
+  font-size:10px;
+  line-height:1.4;
+  color:#74839b;
+}
+
+
+/* ================================================
+   METHODOLOGICAL NOTE
+================================================ */
+
+.modelNote{
+  margin-top:12px;
+  margin-bottom:14px;
+  font-size:10px;
+  line-height:1.5;
+  color:#74839b;
+}
+
+
+/* ================================================
+   RESPONSIVE
+================================================ */
+
+@media(max-width:600px){
+
+  .freedomEstimates{
+    gap:13px;
+  }
+
+  .freedomAge{
+    font-size:28px;
+  }
+
+  .metricsMountain{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .metricsMountain .metric:nth-child(2){
+    border-right:none;
+  }
+
+  .metricsMountain .metric:nth-child(-n+2){
+    border-bottom:1px solid #d7dfeb;
+  }
+
+  .metricsMountain .metricValue{
+    font-size:17px;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
 </style>
 
 </head>
@@ -17913,45 +18091,76 @@ margin-bottom:-35px !important;
       </div>
 
       <!-- RIGHT: FINANCIAL FREEDOM -->
-      <div class="freedomBox">
-        <div class="freedomLabel" data-lang="financialFreedom">
-          Expected financial freedom
-        </div>
 
-        <div class="freedomEstimates">
-          <!-- MINIMUM -->
-          <div class="freedomEstimate side">
-            <div class="freedomEstimateLabel" data-lang="freedomMinLabel">
-              MIN
-            </div>
-            <div class="freedomEstimateValue" id="freedomMin">
-              —
-            </div>
-          </div>
+<!-- RIGHT: FINANCIAL FREEDOM -->
 
-          <!-- EXPECTED -->
-          <div class="freedomEstimate expected">
-            <div class="freedomAge" id="freedomAge">
-              —
-            </div>
-          </div>
+<div class="freedomBox">
 
-          <!-- MAXIMUM -->
-          <div class="freedomEstimate side">
-            <div class="freedomEstimateLabel" data-lang="freedomMaxLabel">
-              MAX
-            </div>
-            <div class="freedomEstimateValue" id="freedomMax">
-              —
-            </div>
-          </div>
-        </div>
+  <div class="freedomLabel"
+       data-lang="financialFreedom">
+    Expected financial freedom
+  </div>
 
-        <!-- DYNAMIC SCENARIO EXPLANATION -->
-        <div class="freedomRange" id="freedomRange">
-        </div>
+  <div class="freedomEstimates">
+
+    <!-- FAVORABLE -->
+    <div class="freedomEstimate side">
+
+      <div class="freedomEstimateLabel"
+           data-lang="freedomMinLabel">
+        FAVORABLE
       </div>
+
+      <div class="freedomEstimateValue"
+           id="freedomMin">
+        —
+      </div>
+
     </div>
+
+    <!-- EXPECTED -->
+    <div class="freedomEstimate expected">
+
+      <div class="freedomEstimateLabel"
+           data-lang="freedomExpectedLabel">
+        EXPECTED
+      </div>
+
+      <div class="freedomAge"
+           id="freedomAge">
+        —
+      </div>
+
+    </div>
+
+    <!-- ADVERSE -->
+    <div class="freedomEstimate side">
+
+      <div class="freedomEstimateLabel"
+           data-lang="freedomMaxLabel">
+        ADVERSE
+      </div>
+
+      <div class="freedomEstimateValue"
+           id="freedomMax">
+        —
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="freedomRange"
+       id="freedomRange">
+  </div>
+
+</div>
+
+
+
+
+
+</div>
   </section>
 
   <div class="chartSection">
@@ -18008,69 +18217,107 @@ margin-bottom:-35px !important;
 </div> <!-- Existing Mountain chart container -->
 
 
-<div class="modelNote" data-lang="lifeCycleModelNote">
-
-  The mountain represents synthetic household wealth.
-  Asset realization and pension payments are treated as
-  substitutions between wealth components and do not themselves
-  create or destroy household wealth.
-
-</div>
-
-
-
 <!-- =========================================
      MOUNTAIN — FINANCIAL METRICS
+     Directly below the chart
 ========================================= -->
 
 <div class="metricsMountain">
 
   <div class="metric">
-    <div class="metricLabel" data-lang="wealthToday">
+
+    <div class="metricLabel"
+         data-lang="wealthToday">
       Wealth today
     </div>
-    <div class="metricValue" id="metricToday">—</div>
-    <div class="metricSub" data-lang="economicHouseholdResources">
+
+    <div class="metricValue"
+         id="metricToday">—</div>
+
+    <div class="metricSub"
+         data-lang="economicHouseholdResources">
       economic household resources
     </div>
+
   </div>
 
+
   <div class="metric">
-    <div class="metricLabel" data-lang="wealthAtFreedom">
+
+    <div class="metricLabel"
+         data-lang="wealthAtFreedom">
       Wealth at freedom
     </div>
-    <div class="metricValue" id="metricFreedom">—</div>
-    <div class="metricSub" data-lang="expectedRealValue">
+
+    <div class="metricValue"
+         id="metricFreedom">—</div>
+
+    <div class="metricSub"
+         data-lang="expectedRealValue">
       expected real value
     </div>
+
   </div>
 
+
   <div class="metric">
-    <div class="metricLabel" data-lang="monthlyConsumption">
+
+    <div class="metricLabel"
+         data-lang="monthlyConsumption">
       Monthly consumption
     </div>
-    <div class="metricValue" id="metricConsumption">—</div>
-    <div class="metricSub" data-lang="todaysPurchasingPower">
+
+    <div class="metricValue"
+         id="metricConsumption">—</div>
+
+    <div class="metricSub"
+         data-lang="todaysPurchasingPower">
       today's purchasing power
     </div>
+
   </div>
 
+
   <div class="metric">
-    <div class="metricLabel" data-lang="legacy">
+
+    <div class="metricLabel"
+         data-lang="legacy">
       Legacy
     </div>
-    <div class="metricValue" id="metricLegacy">—</div>
-    <div class="metricSub" data-lang="afterFinalConsumption">
+
+    <div class="metricValue"
+         id="metricLegacy">—</div>
+
+    <div class="metricSub"
+         data-lang="afterFinalConsumption">
       after final consumption
     </div>
+
   </div>
 
 </div> <!-- metricsMountain -->
 
 
 <!-- =========================================
+     LIFE CYCLE — METHODOLOGICAL NOTE
+     Below the financial metrics
+========================================= -->
+
+<div class="modelNote"
+     data-lang="lifeCycleModelNote">
+
+  The mountain represents synthetic household wealth.
+  Asset realization and pension payments are treated as
+  substitutions between wealth components and do not
+  themselves create or destroy household wealth.
+
+</div>
+
+
+<!-- =========================================
      LIFE CYCLE — EXCEL EXPORT
 ========================================= -->
+
 
 <section class="lcMountainExport"
          aria-labelledby="lcMountainExportTitle">
@@ -23166,7 +23413,7 @@ const LIFE_STAGE_PERSONAS = {
 {
   stage:"EARLY ECONOMIC AND FINANCIAL REFLECTIONS",
   age:"18–30 YEARS",
-  name:"Emma Burton, 25",
+  name:"Emma Burton (25)",
   profile:"Early economic reflections and future perspectives · Building long-term wealth while having fun",
 
   statement:
@@ -23196,7 +23443,7 @@ const LIFE_STAGE_PERSONAS = {
     {
       stage:"FAMILY & WEALTH",
       age:"30–50 YEARS",
-      name:"Michael Patton, 42",
+      name:"Michael (37) & Elizabeth Patton (32)",
       profile:"Family · Home ownership · Growing household wealth",
 
       statement:
@@ -23223,7 +23470,7 @@ const LIFE_STAGE_PERSONAS = {
     {
       stage:"ECONOMIC LIFE BALANCE",
       age:"50–67 YEARS",
-      name:"Charlotte B. Jones, 57",
+      name:"Charlotte-Marie B. Jones (49)",
       profile:"Established wealth · Approaching financial life balance",
 
       statement:
@@ -23251,7 +23498,7 @@ const LIFE_STAGE_PERSONAS = {
     {
       stage:"RETIREMENT - LEGACY - DEATH",
       age:"67+ YEARS",
-      name:"Gary Z. Adams, 72",
+      name:"Gary (71) & Carrie Adams (69)",
       profile:"Retirement · Chewing remaining wealth · Planning Legacy",
 
       statement:
@@ -23283,7 +23530,7 @@ da:[
   {
     stage:"DE FØRSTE ØKONOMISKE VALG",
     age:"18–30 ÅR",
-    name:"Karoline M. Clausen, 21",
+    name:"Karoline M. Clausen (21)",
     profile:"De første økonomiske overvejelser · Formueopbygning og plads til at nyde livet",
 
     statement:
@@ -23315,7 +23562,7 @@ da:[
   {
     stage:"FAMILIE & FORMUE",
     age:"30–50 ÅR",
-    name:"Michael B. Petersen, 42",
+    name:"Michael (37) & Marie Nielsen (32)",
     profile:"Familieliv · Ejerbolig · Opbygning af husstandens samlede formue",
 
     statement:
@@ -23348,7 +23595,7 @@ da:[
   {
     stage:"ØKONOMISK BALANCE I LIVET",
     age:"50–67 ÅR",
-    name:"Charlotte Frederiksen, 57",
+    name:"Charlotte Frederiksen (49)",
     profile:"Opbygget formue · På vej mod økonomisk frihed og balance",
 
     statement:
@@ -23381,7 +23628,7 @@ da:[
   {
     stage:"PENSION - ARV - DØD",
     age:"67+ ÅR",
-    name:"Finn Eriksen, 72",
+    name:"Finn (71) & Inge Eriksen (68)",
     profile:"Aktiv og bekymringsfri pensionisttilværelse · Brug af opsparet formue · Arv til efterkommere",
 
     statement:
@@ -23661,6 +23908,28 @@ const LIFE_CYCLE_FAQ = {
 {
   q: "Can I trust Neptoon's calculations?",
   a: "Neptoon uses a consistent economic model with explicit assumptions concerning expected returns, risk, taxation, inflation, financing and life expectancy. The calculations illustrate the consequences of these assumptions, but they cannot predict the future with certainty. The purpose is to give you a better foundation for understanding your financial opportunities, exploring alternatives and making your own decisions."
+},
+
+
+{
+  q: "Is the NW-111 a real, live calculator?",
+  a: "Yes. Despite its vintage appearance, the NW-111 is a fully functional financial calculator connected directly to Neptoon Life Cycle. Every calculation uses the same financial engine as the main application."
+},
+{
+  q: "Does the NW-111 synchronize with Neptoon Life Cycle?",
+  a: "Yes, automatically. When you change your age, savings, consumption or Legacy in the calculator, the corresponding inputs in Neptoon Life Cycle are updated. The wealth mountain and financial results are recalculated using your new assumptions."
+},
+{
+  q: "Can I download the NW-111 as an app?",
+  a: "Not currently. The NW-111 is available directly on the Neptoon Life Cycle website without downloading or installing anything. A standalone app may become available in the future."
+},
+{
+  q: "What are the Equity, Bonds and Cash buttons for?",
+  a: "These buttons let you quickly compare three investment approaches. Your selection is applied to both the wealth-building and wealth-using phases, allowing you to see how different investment choices affect your financial lifetime."
+},
+{
+  q: "Is the NW-111 just a simplified version of Neptoon Life Cycle?",
+  a: "No. It is another way to interact with the same financial model. The NW-111 provides quick access to the most important financial choices, while the main application offers more detailed settings, portfolios and financial information."
 },
 
 
@@ -24056,6 +24325,13 @@ const LIFE_CYCLE_FAQ = {
   q: "How does Neptoon calculate my home's future value?",
   a: "The property's value is projected using your selected expected real appreciation rate and the model's inflation assumption. Neptoon therefore distinguishes between real appreciation and nominal appreciation, which also includes inflation. The calculated property value is continuously included as a gross asset on your Balance Sheet, while any outstanding debt and deferred taxes are recorded separately as liabilities."
 },
+
+{
+  q: "How does Neptoon handle tax deductibility on interest expense and loan costs?",
+  a: "System has a tax deductibility mechanism, but currently it only applies to people that logs in as Danish where the deduction is set to fixed 25% of total expense in the remaining loan period.",
+},
+
+
 {
   q: "How does Neptoon handle property value tax and land tax?",
   a: "Neptoon does not calculate Danish property value tax (ejendomsværdiskat) or land tax (grundskyld). These recurring property taxes fall outside the Life Cycle model and are assumed to be handled through the household's ordinary budget and income. They are therefore not included as separate payments through the model's central financing account, the Free Investment Portfolio. These recurring property taxes should not be confused with any capital gains tax payable when the property is sold."
@@ -24583,7 +24859,7 @@ const LIFE_CYCLE_FAQ = {
     },
     {
       q: "Hvad er forskellen på økonomisk formue og traditionel regnskabsmæssig formue?",
-      a: "En traditionel formueopgørelse viser typisk værdien af dine nuværende aktiver minus din gæld. Neptoons økonomiske balance går videre og medregner også nutidsværdien af forventede fremtidige indkomster, eksempelvis folkepension og ATP. Princippet minder om værdiansættelse af aktier, hvor analytikere ikke kun ser på virksomhedens nuværende aktiver, men også på værdien af dens fremtidige indtjening. Økonomisk formue er derfor et bredere begreb end den formue, du kan hæve eller sælge i dag."
+      a: "En traditionel formueopgørelse viser typisk værdien af dine nuværende aktiver minus din gæld. Neptoon's økonomiske balance går videre og medregner også nutidsværdien af forventede fremtidige indkomster, eksempelvis folkepension og ATP. Princippet minder om værdiansættelse af aktier, hvor analytikere ikke kun ser på virksomhedens nuværende aktiver, men også på værdien af dens fremtidige indtjening. Økonomisk formue er derfor et bredere begreb end den formue, du kan hæve eller sælge i dag."
     },
     {
       q: "Kan min bolig finansiere mit forbrug, selv om jeg først sælger den senere?",
@@ -24597,9 +24873,32 @@ const LIFE_CYCLE_FAQ = {
       q: "Bestemmer Neptoon, hvor meget jeg bør forbruge eller spare op?",
       a: "Nej. Du bestemmer selv din månedlige opsparing, dit ønskede fremtidige forbrug og din arv. Neptoon optimerer ikke dine personlige præferencer eller vælger dine økonomiske mål. Modellen beregner i stedet, hvornår dine valgte mål kan finansieres under de angivne forudsætninger. Du kan derefter ændre dine valg og undersøge konsekvenserne."
     },
+
+
+{
+  q: "Er NW-111 en rigtig, levende lommeregner?",
+  a: "Ja. Bag det nostalgiske design gemmer sig en fuldt fungerende finansiel lommeregner, som er direkte forbundet med Neptoon Life Cycle. Beregningerne udføres af den samme økonomiske model som i hovedværktøjet."
+},
+{
+  q: "Synkroniserer NW-111 med Neptoon Life Cycle?",
+  a: "Ja, automatisk. Når du ændrer alder, opsparing, forbrug eller arv på lommeregneren, opdateres de tilsvarende oplysninger i Neptoon Life Cycle. Formuebjerget og de økonomiske resultater beregnes på ny."
+},
+{
+  q: "Kan jeg hente NW-111 som en app?",
+  a: "Ikke endnu. NW-111 kan bruges direkte på Neptoon Wealth Life Cycles hjemmeside uden installation eller download. En selvstændig app kan blive en mulighed senere."
+},
+{
+  q: "Hvad bruges knapperne Equity, Bonds og Cash til?",
+  a: "De tre knapper giver dig mulighed for hurtigt at sammenligne aktier, obligationer og kontanter. Dit valg anvendes i både opsparings- og nedsparingsfasen, så du med det samme kan se betydningen for din økonomiske livscyklus."
+},
+{
+  q: "Er NW-111 blot en forenklet udgave af Neptoon Life Cycle?",
+  a: "Nej. Det er en anden måde at betjene den samme økonomiske model på. NW-111 giver hurtig adgang til de vigtigste økonomiske valg, mens hovedværktøjet giver mulighed for mere detaljerede indstillinger, porteføljer og økonomiske analyser."
+},
+
     {
-      q: "Hvor kommer Neptoons investeringsmodeller fra?",
-      a: "Neptoon udvikler egne investeringsmodeller og sammenligningsporteføljer med udgangspunkt i blandt andet børsnoterede investeringsfonde, ETF'er, aktier og obligationer. Nogle porteføljer er konstrueret til at illustrere investeringsprofiler hos større europæiske banker, mens andre bygger på Neptoons egne strategiske og taktiske investeringsprincipper. Neptoon beregner selv porteføljernes forventede afkast, risiko og omkostninger ud fra sine modelantagelser. Bankrelaterede porteføljer er Neptoons egne repræsentationer og ikke nødvendigvis bankernes officielle anbefalinger eller produkter."
+      q: "Hvor kommer Neptoon's investeringsmodeller fra?",
+      a: "Neptoon udvikler egne investeringsmodeller og sammenligningsporteføljer med udgangspunkt i blandt andet børsnoterede investeringsfonde, ETF'er, aktier og obligationer. Nogle porteføljer er konstrueret til at illustrere investeringsprofiler hos større europæiske banker, mens andre bygger på Neptoons egne strategiske og taktiske investeringsprincipper. Neptoon beregner selv porteføljernes forventede afkast, risiko og omkostninger ud fra sine modelantagelser. Bankrelaterede porteføljer er Neptoon's egne repræsentationer og ikke nødvendigvis bankernes officielle anbefalinger eller produkter."
     },
     {
       q: "Vælger Neptoon automatisk mine investeringer?",
@@ -25024,6 +25323,13 @@ const LIFE_CYCLE_FAQ = {
       q: "Skal jeg betale skat af boligens værdistigning?",
       a: "Neptoon anvender som udgangspunkt en kapitalgevinstskat på 0 % for den primære private bolig. Det afspejler den almindelige danske parcelhusregel, hvor fortjeneste ved salg af en ejerbolig typisk er skattefri, når lovens betingelser er opfyldt. Modellen foretager ikke en individuel skattemæssig vurdering. Hvis en fortjeneste er skattepligtig, kan dette afspejles gennem de relevante skatteforudsætninger. En eventuel udskudt skat registreres særskilt frem til realisation."
     },
+
+    {
+      q: "Hvad med rentefradrag - det er vel ikke med?",
+      a: "Absolut er det da det. Der anvendes 25% rentefradrag på renter og øvrige årlige låneomkostninger i resten af lånets løbetid. Det foregår ved at den frie portefølje modtager den skattemæssige værdi hver måned af rentefradraget."
+    },
+
+
     {
       q: "Hvordan håndterer Neptoon renter og afdrag?",
       a: "Neptoon beregner løbende renter, afdrag og eventuelle låneomkostninger på den registrerede ejendomsfinansiering. Betalingerne håndteres gennem modellens centrale finansieringskonto Frie Midler. Renter og låneomkostninger reducerer den økonomiske formue, mens afdrag reducerer både den udestående gæld og de finansielle ressourcer, der anvendes til betalingen. Modellen kræver ikke, at alle låneydelser nødvendigvis finansieres af den løbende arbejdsindkomst."
@@ -26695,8 +27001,8 @@ welcomeStartDescription:
   "Begin with your current age, expected lifetime and annual savings growth.",
 
 
-lifeHeroTitle: "Your entire financial life.",
-lifeHeroTitleSub: "From today to the next generation.",
+lifeHeroTitle: "Your entire financial life - From today to the next generation...",
+lifeHeroTitleSub: "",
 
 lifeHeroLead:
   "One integrated financial model connecting your wealth, investments, pensions, consumption and legacy throughout your lifetime.",
@@ -26857,6 +27163,12 @@ lcMountainExcelBenefit1:
 
 lcMountainExcelBenefit2:
   "✓ Complete Balance Sheet",
+
+
+freedomMinLabel: "FAVORABLE",
+freedomExpectedLabel: "EXPECTED",
+freedomMaxLabel: "ADVERSE",
+
 
 scenarioExplanationDefaultTitle:
   "Explanation",
@@ -27193,44 +27505,33 @@ headerCompare:"Compare",
   lifePhasesIntro:
     "From building wealth to Economic Balance, consumption and Legacy. Neptoon connects your entire financial life in one model.",
 
-  lifePhaseStep1:
-    "01 · BEFORE n*",
 
-  lifePhaseStep2:
-    "02 · AT n*",
+lifePhaseTitle1:
+  "Building Wealth",
 
-  lifePhaseStep3:
-    "03 · AFTER n*",
+lifePhaseTitle2:
+  "Economic Balance Day",
 
-  lifePhaseStep4:
-    "04 · END OF LIFE",
+lifePhaseTitle3:
+  "Using Wealth",
 
-  lifePhaseTitle1:
-    "Building Wealth",
+lifePhaseTitle4:
+  "Legacy",
 
-  lifePhaseTitle2:
-    "Economic Balance Day",
+lifePhaseText1:
+  "You work, save and build your wealth. Your investments contribute to its growth, while your savings create new opportunities. The more you save, the sooner financial freedom may become possible.",
 
-  lifePhaseTitle3:
-    "Using Wealth",
+lifePhaseText2:
+  "The first day your total wealth can finance your desired consumption for the rest of your life, while preserving the Legacy you wish to leave behind. You now have the financial freedom to decide whether to continue working.",
 
-  lifePhaseTitle4:
-    "Legacy",
+lifePhaseText3:
+  "Your savings, investments and pensions can now support your lifestyle. Your wealth continues to evolve as you draw on it to finance your life. You decide how to make use of your financial freedom.",
 
-  lifePhaseText1:
-    "Savings and returns grow your total economic resources.",
+lifePhaseText4:
+  "At the end of your life, your remaining wealth becomes your Legacy. It can pass to the next generation, creating new opportunities for those who follow. Your Legacy is part of your financial plan throughout life.",
 
-  lifePhaseText2:
-    "The earliest date your desired consumption and Legacy can be financed.",
-
-  lifePhaseText3:
-    "Your resources finance consumption throughout the rest of your life.",
-
-  lifePhaseText4:
-    "Your remaining wealth is measured against your desired Legacy.",
-
-  lifePhasesPrinciple:
-    "You choose your consumption and Legacy. Neptoon calculates the earliest feasible Economic Balance age under your economic assumptions.",
+lifePhasesPrinciple:
+  "You choose, among other things, your consumption and Legacy. Neptoon minimizes the time to Economic Balance.",
 
 lifeCyclePerspective:
   "MINIMIZE WORKING YEARS - MAXIMIZE LEGACY & WEALTH",
@@ -27262,8 +27563,7 @@ scenarioDecisionsTitle:
    EN · PRINCIPLE AND FREEDOM DAY
 ========================================== */
 
-lifePhasesPrinciple:
-  "You choose, among other things, your consumption and Legacy. Neptoon minimizes the time to Economic Balance.",
+
 
 lcAccountBenefitsTitle:"YOUR ACCOUNT BENEFITS",
 
@@ -27714,40 +28014,17 @@ lcStorageSaveButton: "Gem nuværende Plan",
     "Fra formueopbygning til økonomisk frihed, forbrug og arv. Neptoon forbinder hele dit økonomiske liv i én model.",
 
   lifePhaseStep1:
-    "01 · FØR n*",
+    "01 · FØR N*",
 
   lifePhaseStep2:
-    "02 · VED n*",
+    "02 · VED N*",
 
   lifePhaseStep3:
-    "03 · EFTER n*",
+    "03 · EFTER N*",
 
   lifePhaseStep4:
     "04 · VED LIVETS AFSLUTNING",
 
-  lifePhaseTitle1:
-    "Formueopbygning",
-
-  lifePhaseTitle2:
-    "Økonomisk frihed",
-
-  lifePhaseTitle3:
-    "Formueforbrug",
-
-  lifePhaseTitle4:
-    "arv",
-
-  lifePhaseText1:
-    "Opsparing og afkast øger dine samlede økonomiske ressourcer.",
-
-  lifePhaseText2:
-    "Det tidligste tidspunkt, hvor dit ønskede forbrug og din arv kan finansieres.",
-
-  lifePhaseText3:
-    "Dine økonomiske ressourcer finansierer forbruget gennem resten af livet.",
-
-  lifePhaseText4:
-    "Din resterende formue sammenholdes med din ønskede arv.",
 
   lifePhasesPrinciple:
     "Du vælger dit forbrug og din arv. Neptoon beregner den tidligst mulige alder for økonomisk frihed under dine økonomiske forudsætninger.",
@@ -28357,29 +28634,51 @@ includePensionTax:"Medtag udskudt skat",
    LIFE CYCLE INTRO
 ===================================================== */
 
-/* DANSK */
 
-// DA
+/* =====================================================
+   LIFE CYCLE · FOUR ECONOMIC PHASES
+   DANSK
+===================================================== */
 
-lifePhaseStep1: "A · ALDER I DAG TIL N*",
-lifePhaseTitle1: "Arbejdslivet",
+lifePhaseStep1:
+  "A · ALDER I DAG TIL N*",
+
+lifePhaseTitle1:
+  "Arbejdslivet",
+
 lifePhaseText1:
-  "Løbende opsparing fra lønindkomst og finansielle formueafkast øger dine samlede økonomiske livsressourcer. Din opsparing fra løn tilføres månedligt i en fri portefølje og er beløbet efter du har indbetalt til pension og betalt lån. Afdrag tilføres formue.",
+  "Din løbende opsparing fra lønindkomst og afkastet på dine investeringer øger dine samlede økonomiske ressourcer. Den månedlige opsparing placeres i en fri investeringsportefølje og er det beløb, du har tilbage efter indbetalinger til pension og betaling af lån. Afdrag på gæld bidrager samtidig til at øge din nettoformue.",
 
-lifePhaseStep2: "B · VED N*",
-lifePhaseTitle2: "Økonomisk balancedag (frihed)",
+
+lifePhaseStep2:
+  "B · VED N*",
+
+lifePhaseTitle2:
+  "Økonomisk balancedag (frihed)",
+
 lifePhaseText2:
-  "Det tidligste tidspunkt, hvor forbrug og ønsket arv kan finansieres fra den akkumulerede nettoformue samt fremtidige aktivværdier efter gæld. Stopper du den løbende indbetaling før dette tidspunkt efterlader du lavere arv end den du har antaget. Fortsætter du med at arbejde opbygger du større arv.",
+  "Det tidligste tidspunkt, hvor din samlede nettoformue og dine fremtidige økonomiske ressourcer kan finansiere dit ønskede forbrug resten af livet og samtidig sikre den arv, du har valgt. Stopper du med at spare op tidligere, vil den forventede arv blive lavere end dit mål. Fortsætter du med at arbejde og spare op efter dette tidspunkt, kan du opbygge en større arv.",
 
-lifePhaseStep3: "C · EFTER N* tidspunkt",
-lifePhaseTitle3: "Det arbejdsfrie liv",
+
+lifePhaseStep3:
+  "C · EFTER N*",
+
+lifePhaseTitle3:
+  "Det arbejdsfrie liv",
+
 lifePhaseText3:
-  "Din finansielle nettoformue samt Folkepension, ATP og modtaget arv mm., finansierer dit forbrug gennem resten af livet. Modellen har en irrelevansmetode som gør at timingen for afhændelse af dine ubelånte formueaktiver i denne phase ikke påvirker N* tidspunktet.",
+  "Din opsparede formue, dine investeringer og fremtidige indtægter fra blandt andet Folkepension, ATP og eventuel arv finansierer dit forbrug resten af livet. Modellen behandler dine formueaktiver samlet, så tidspunktet for salg af ubelånte aktiver efter din økonomiske balancedag ikke ændrer tidspunktet for din økonomiske frihed.",
 
-lifePhaseStep4: "D · AFSLUTNING OG DØD",
-lifePhaseTitle4: "Arv efterladt",
+
+lifePhaseStep4:
+  "D · VED LIVETS AFSLUTNING",
+
+lifePhaseTitle4:
+  "Arv efterladt",
+
 lifePhaseText4:
-  "Den tilbageværende formue sammenholdes med dit ønskede arveniveau. Arven er i modellen dit livs samlede egenkapital som er forskellen mellem livets økonomiske indtægter og udgifter. Arven kan både være positiv, nul og negativ.",
+  "Ved livets afslutning opgøres din tilbageværende nettoformue og sammenholdes med dit ønskede arveniveau. I modellen er arven resultatet af hele livets økonomiske indtægter, afkast og udgifter. Den kan være positiv, nul eller negativ, afhængigt af dine økonomiske valg og forudsætninger.",
+
 
 // DA
 modeButtonFire: "PASSIV INDKOMST",
@@ -28950,6 +29249,10 @@ lcAccountPrivacy:
 lcAccountBackendNotice:
   "Registrering med e-mail og adgang til Excel aktiveres snart. Cloud-lagring og betaling er foreløbig deaktiveret.",
 
+freedomMinLabel: "GUNSTIGT",
+freedomExpectedLabel: "FORVENTET",
+freedomMaxLabel: "UGUNSTIGT",
+
 
 
 
@@ -29173,7 +29476,7 @@ financialTaxIntro:
       "Risiko 5 · forventet nominelt afkast",
 
 
-lifeHeroTitle: "Hele dit økonomiske liv - Fra i dag til næste generation..",
+lifeHeroTitle: "Hele dit økonomiske liv - Fra i dag til næste generation...",
 lifeHeroTitleSub: "",
 
 lifeHeroLead:
@@ -31333,17 +31636,27 @@ function initializeNeptoonAppShell(){
   /*
     LANGUAGE BUTTONS
   */
+/*
+  LANGUAGE BUTTONS
+*/
 
-  document.querySelectorAll("[data-ui-lang]")
-    .forEach(button => {
+document.querySelectorAll("[data-ui-lang]")
+  .forEach(button => {
 
-      button.addEventListener("click", () => {
+    button.addEventListener("click", () => {
 
-        setLanguage(button.dataset.uiLang);
+      const lang = button.dataset.uiLang;
 
-      });
+      INIT.lang = lang;
+
+      setLanguage(lang);
+
+      renderLifeStageNarrative();
+render();
 
     });
+
+  });
 
 
   /*
@@ -42175,7 +42488,7 @@ function renderLifeCycleAssessment(scenario){
         "Din livscyklus hænger økonomisk sammen",
 
       feasibleText:
-        "Med dine valgte forudsætninger kan dine økonomiske ressourcer finansiere dit planlagte forbrug og din arv gennem livet fra det økonomiske balancepunkt. Prøv eventuelt at skifte investeringsporteføljer for at se ny situation. Højere risiko giver højere forventet afkast og umiddelbart bedre nøgletal, men  'prisen' for det er i modellen dog større usikkerked omkring balancepunktets tidspunkt og nettoformue ",
+        "Med dine valgte forudsætninger kan dine økonomiske ressourcer finansiere dit planlagte forbrug og din arv gennem livet fra det økonomiske balancepunkt. Prøv eventuelt at skifte investeringsporteføljer for at se ny situation. Højere risiko giver højere forventet afkast og umiddelbart bedre nøgletal, men  'prisen' for det er i modellen dog større usikkerked omkring balancepunktets tidspunkt og nettoformue.",
 
       infeasibleTitle:
         "Din livscyklus kræver en økonomisk tilpasning",
