@@ -15420,6 +15420,274 @@ margin-bottom:-35px !important;
   cursor:crosshair;
   touch-action:pan-y;
 }
+
+/* ==========================================
+   WELCOME · PERSONAL LIFE CYCLE START
+========================================== */
+
+/* Restore thick red left border */
+
+.lifeWelcomeStart{
+  border-left:5px solid #D62828;
+  padding-left:24px;
+}
+
+/* Blue borders on the two age inputs */
+
+#lifeWelcomeStartFields #currentAge,
+#lifeWelcomeStartFields #deathAge{
+  border:2px solid #4E79BD;
+  border-radius:0;
+  background:#FFFFFF;
+  box-sizing:border-box;
+}
+
+/* Stronger blue when selected */
+
+#lifeWelcomeStartFields #currentAge:focus,
+#lifeWelcomeStartFields #deathAge:focus{
+  border-color:#365F9D;
+  outline:none;
+  box-shadow:0 0 0 2px rgba(78,121,189,.12);
+}
+
+/* ==========================================
+   WELCOME · LIFE STAGE TIMELINE
+========================================== */
+
+.lifeStageTimeline{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  width:100%;
+  height:28px;
+  margin:24px 0;
+}
+
+/* Red horizontal line */
+
+.lifeStageTimelineLine{
+  position:absolute;
+  top:50%;
+  left:0;
+  right:0;
+  height:3px;
+  background:#D62828;
+  transform:translateY(-50%);
+}
+
+/* Four stage markers */
+
+.lifeStageTimelineDot{
+  position:relative;
+  z-index:1;
+
+  width:14px;
+  height:14px;
+
+  background:#FFFFFF;
+  border:3px solid #D62828;
+  border-radius:50%;
+
+  flex:0 0 auto;
+}
+
+/* Active stage */
+
+.lifeStageTimelineDot.active{
+  width:18px;
+  height:18px;
+
+  background:#D62828;
+  border:3px solid #FFFFFF;
+
+  box-shadow:0 0 0 2px #D62828;
+}
+
+/* ================================================
+   NW-111 · SIX VARIABLE KEYS
+================================================ */
+
+.nl111VariableKeys{
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:5px;
+  margin-top:12px;
+}
+
+.nl111VariableKeys button{
+  width:100%;
+  min-width:0;
+  min-height:39px;
+
+  padding:8px 2px;
+
+  background:linear-gradient(
+    180deg,
+    #F5F0E5,
+    #DDD5C5
+  );
+
+  color:#243B5B;
+
+  border:1px solid #B7AE9D;
+  border-bottom:3px solid #A79C89;
+  border-radius:0;
+
+  font-family:Arial,sans-serif;
+  font-size:12px;
+  font-weight:800;
+
+  cursor:pointer;
+  transition:background .15s,border-color .15s;
+}
+
+.nl111VariableKeys button:hover{
+  background:#E5DFD2;
+}
+
+.nl111VariableKeys button.active{
+  background:linear-gradient(
+    180deg,
+    #628AC8,
+    #4E79BD
+  );
+
+  color:#FFFFFF;
+  border-color:#7297CE;
+  border-bottom-color:#2D4E80;
+}
+
+
+/* ================================================
+   NW-111 · ASSET CLASS KEYS
+================================================ */
+
+.nl111AssetKeys{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:7px;
+  margin-top:8px;
+}
+
+.nl111AssetKeys button{
+  width:100%;
+  min-width:0;
+  min-height:43px;
+
+  padding:9px 5px;
+
+  background:linear-gradient(
+    180deg,
+    #F5F0E5,
+    #DDD5C5
+  );
+
+  color:#243B5B;
+
+  border:1px solid #B7AE9D;
+  border-bottom:3px solid #A79C89;
+  border-radius:0;
+
+  font-family:Arial,sans-serif;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.2px;
+
+  cursor:pointer;
+  transition:background .15s,border-color .15s;
+}
+
+.nl111AssetKeys button:hover{
+  background:#E5DFD2;
+}
+
+.nl111AssetKeys button.active,
+.nl111AssetKeys button[aria-pressed="true"]{
+  background:linear-gradient(
+    180deg,
+    #628AC8,
+    #4E79BD
+  );
+
+  color:#FFFFFF;
+  border-color:#7297CE;
+  border-bottom-color:#2D4E80;
+}
+
+
+/* ================================================
+   NW-111 · LCD SIX INPUTS
+================================================ */
+
+.nl111ScreenInputs{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  column-gap:12px;
+  row-gap:3px;
+}
+
+.nl111ScreenInputs > div{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:5px;
+  min-width:0;
+}
+
+.nl111ScreenInputs span{
+  flex:0 0 auto;
+  font-family:"Courier New",monospace;
+  font-size:10px;
+  font-weight:700;
+}
+
+.nl111ScreenInputs output{
+  min-width:0;
+  font-family:"Courier New",monospace;
+  font-size:11px;
+  font-weight:700;
+  text-align:right;
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+
+
+/* SIX VARIABLE KEYS */
+
+.nl111VariableKeys{
+  margin-top:-10px;
+  gap:5px;
+}
+
+/* ASSET CLASS KEYS */
+
+.nl111AssetKeys{
+  margin-top:-10px;
+  margin-bottom:14px;
+}
+  
+.nl111InfoDisplay{
+  width:calc(100% + 5px);
+  margin-left:-2px;
+  margin-right:-5px;
+}
+  
+  .nl111Screen{
+  width:calc(100% + 2px);
+  margin-left:-1px;
+  box-sizing:border-box;
+}
+  
+  
+.nl111Screen{
+  border:0.5px solid #6F756D;
+}
+  
+  .nl111InfoDisplay{
+  margin-top:2px;
+}
 </style>
 
 </head>
@@ -15606,17 +15874,23 @@ margin-bottom:-35px !important;
       </div>
 
       <h1 class="lifeHeroTitle">
-        Hele dit økonomiske liv.
-        <span>Fra i dag til næste generation.</span>
+        <span data-lang="lifeHeroTitle">
+          Hele dit økonomiske liv.
+        </span>
+        <span data-lang="lifeHeroTitleSub">
+          Fra i dag til næste generation.
+        </span>
       </h1>
 
-      <p class="lifeHeroLead">
+      <p class="lifeHeroLead"
+         data-lang="lifeHeroLead">
         Én sammenhængende økonomisk model, der forbinder
         din formue, dine investeringer, pensioner,
         dit forbrug og din arv gennem hele livet.
       </p>
 
-      <p class="lifeHeroDescription">
+      <p class="lifeHeroDescription"
+         data-lang="lifeHeroDescription">
         Udforsk din økonomiske frihed, din fremtidige
         balance og dine investeringsmuligheder.
         Se, hvordan dine beslutninger påvirker
@@ -15638,11 +15912,11 @@ margin-bottom:-35px !important;
           </i>
 
           <div>
-            <strong>
+            <strong data-lang="lifeHeroTraditionalTitle">
               En traditionel beregner
             </strong>
 
-            <span>
+            <span data-lang="lifeHeroTraditionalText">
               Et spørgsmål. Et resultat.
             </span>
           </div>
@@ -15662,7 +15936,7 @@ margin-bottom:-35px !important;
               Neptoon Life Cycle
             </strong>
 
-            <span>
+            <span data-lang="lifeHeroNeptoonText">
               Ét sammenhængende økonomisk system.
               Hele livet.
             </span>
@@ -15681,12 +15955,15 @@ margin-bottom:-35px !important;
 
         <div class="lifeHeroStartText">
 
-          <strong>
+          <strong data-lang="lifeHeroStartTitle">
             Klar til at udforske dit økonomiske liv?
           </strong>
 
-          <span>
-            Start med din alder længere nede på siden.
+          <span data-lang="lifeHeroStartDescription">
+            Start med din alder længere nede på siden,
+            eller prøv vores lommeregner.
+            Udforsk derefter Forbrug og Opsparing
+            eller tilpas modellen under Mine Indstillinger.
           </span>
 
         </div>
@@ -15696,7 +15973,9 @@ margin-bottom:-35px !important;
           class="lifeHeroStartButton"
           id="lifeHeroStart">
 
-          KOM GODT I GANG
+          <span data-lang="lifeHeroStartButton">
+            KOM GODT I GANG
+          </span>
 
           <i
             data-lucide="arrow-down"
@@ -15787,6 +16066,20 @@ margin-bottom:-35px !important;
               </output>
             </div>
 
+            <div>
+              <span>AGE</span>
+              <output id="nl111Age">
+                50
+              </output>
+            </div>
+
+            <div>
+              <span>DEATH</span>
+              <output id="nl111Death">
+                90
+              </output>
+            </div>
+
           </div>
 
 
@@ -15837,7 +16130,7 @@ margin-bottom:-35px !important;
 
 
         <!-- ==========================================
-             VARIABLE KEYS
+             SIX VARIABLE KEYS
         =========================================== -->
 
         <div class="nl111VariableKeys">
@@ -15864,6 +16157,51 @@ margin-bottom:-35px !important;
             type="button"
             data-nl111-variable="legacy">
             L
+          </button>
+
+          <button
+            type="button"
+            data-nl111-variable="age">
+            Age
+          </button>
+
+          <button
+            type="button"
+            data-nl111-variable="death">
+            Death
+          </button>
+
+        </div>
+
+
+        <!-- ==========================================
+             ASSET CLASS SELECTION
+        =========================================== -->
+
+        <div
+          class="nl111AssetKeys"
+          role="group"
+          aria-label="Investment asset class">
+
+          <button
+            type="button"
+            data-nl111-asset="equity"
+            aria-pressed="false">
+            Equity
+          </button>
+
+          <button
+            type="button"
+            data-nl111-asset="bonds"
+            aria-pressed="false">
+            Bonds
+          </button>
+
+          <button
+            type="button"
+            data-nl111-asset="cash"
+            aria-pressed="false">
+            Cash
           </button>
 
         </div>
@@ -16314,7 +16652,7 @@ margin-bottom:-35px !important;
 
     <div class="lifeStagePersonIdentity">
 
-      <span class="lifeStagePersonLabel"
+	      <span class="lifeStagePersonLabel"
             data-lang="lifeStagePersonLabel">
         A LIFE CYCLE PERSPECTIVE
       </span>
@@ -16384,20 +16722,6 @@ margin-bottom:-35px !important;
   </div>
 
 
-  <!-- FOOTER / NAVIGATION -->
-
-  <div class="lifeStageNarrativeFooter">
-
-    <span id="lifeStageKeywords">
-      SAVINGS · INVESTMENTS · TIME HORIZON
-    </span>
-
-    <button type="button"
-            id="lifeStageNextButton">
-      Next life stage →
-    </button>
-
-  </div>
 
 </div>
 
@@ -16406,16 +16730,6 @@ margin-bottom:-35px !important;
      NARRATIVE BRIDGE
      Unchanged · Transition to personal Life Cycle
 ================================================= -->
-
-<div class="lifeWelcomeJourneyBridge">
-
-  <span class="lifeWelcomeBridgeArrow">↓</span>
-
-  <span data-lang="welcomeJourneyBridge">
-    From life's possibilities to your own financial life
-  </span>
-
-</div>
 
 
 </div>
@@ -26380,6 +26694,35 @@ welcomeObjectiveSub:
 welcomeStartDescription:
   "Begin with your current age, expected lifetime and annual savings growth.",
 
+
+lifeHeroTitle: "Your entire financial life.",
+lifeHeroTitleSub: "From today to the next generation.",
+
+lifeHeroLead:
+  "One integrated financial model connecting your wealth, investments, pensions, consumption and legacy throughout your lifetime.",
+
+lifeHeroDescription:
+  "Navigate with your working life, retirement, financial freedom, future balance sheet and investment opportunities. Discover how your decisions shape your financial life.",
+
+lifeHeroTraditionalTitle:
+  "A classic calculator",
+
+lifeHeroTraditionalText:
+  "One question. One result.",
+
+lifeHeroNeptoonText:
+  "One integrated financial system. Your entire lifetime.",
+
+lifeHeroStartTitle:
+  "Ready to receive messages about your financial life and future opportunities?",
+
+lifeHeroStartDescription:
+  "Start with your age further down the page, or try our calculator. Then explore 'Consumption and Savings' or personalize the model directly in 'My Settings' .",
+
+lifeHeroStartButton:
+  "GET STARTED",
+
+
 welcomeViewsKicker:
   "NAVIGATION AND DYNAMIC OVERVIEW",
     
@@ -28830,6 +29173,35 @@ financialTaxIntro:
       "Risiko 5 · forventet nominelt afkast",
 
 
+lifeHeroTitle: "Hele dit økonomiske liv.",
+lifeHeroTitleSub: "Fra i dag til næste generation.",
+
+lifeHeroLead:
+  "Én sammenhængende økonomisk model, der forbinder din formue, dine investeringer, pensioner, dit forbrug og din arv gennem hele livet.",
+
+lifeHeroDescription:
+  "Navigèr mellem arbejdstid, fritid, din fremtidige økonomiske balance og dine investeringsmuligheder. Se, hvordan dine beslutninger påvirker dit økonomiske liv.",
+
+lifeHeroTraditionalTitle:
+  "En klassisk beregner",
+
+lifeHeroTraditionalText:
+  "Et spørgsmål. Et resultat.",
+
+lifeHeroNeptoonText:
+  "Ét sammenhængende økonomisk system. Hele livet.",
+
+lifeHeroStartTitle:
+  "Klar til at få de økonomiske realiteter i dit liv?",
+
+lifeHeroStartDescription:
+  "Start med din alder længere nede på siden, eller prøv vores herlige lommeregner. Gå derefter til 'Forbrug og Opsparing' eller tilpas modellen direkte under 'Mine Indstillinger' hvis du ikke magter at læse videre på denne side.",
+
+lifeHeroStartButton:
+  "KOM GODT I GANG",
+
+
+
 
     /* =========================
        RISK ANCHOR VIEWER
@@ -29452,6 +29824,207 @@ function getLifeCyclePhaseMetrics(phase){
   };
 renderSelectedModelRiskDots(phase);
 }
+
+
+
+
+    function initializeDefaultModels(allModels){
+
+  for(const phase of ["phase1", "phase2"]){
+
+    const modelNo =
+      DEFAULT_MODELS[phase];
+
+    const model =
+      allModels.find(
+        m => String(m.modelNo) === String(modelNo)
+      );
+
+    if(!model) continue;
+
+    const prefix =
+      phase === "phase1" ? "build" : "use";
+
+    // Select issuer
+    byId(`${prefix}Issuer`).value =
+      model.issuerName;
+
+    // Select portfolio
+    byId(`${prefix}ModelNo`).value =
+      String(model.modelNo);
+
+    // Update state and paint risk dots
+    setSelectedModel(phase, model);
+
+  }
+
+}
+
+
+
+
+/* =====================================================
+   NW-111 · APPLY ASSET CLASS
+===================================================== */
+
+async function nl111ApplyAssetClass(assetClass){
+
+  const phases = [
+    "phase1",
+    "phase2"
+  ];
+
+  /*
+    =========================================
+    CASH
+    =========================================
+  */
+
+  if(assetClass === "cash"){
+
+    phases.forEach(phase => {
+      cashPosition[phase] = true;
+    });
+
+  }else{
+
+    /*
+      =========================================
+      EQUITY / BONDS
+      =========================================
+    */
+
+    const modelNo =
+      assetClass === "equity"
+        ? 7
+        : assetClass === "bonds"
+          ? 3
+          : null;
+
+    if(modelNo === null){
+      return;
+    }
+
+    /*
+      Use the existing portfolio source.
+      No changes to main initialization.
+    */
+
+    const portfolios =
+      await fetchLifeCyclePortfolios();
+
+    const model =
+      portfolios.find(
+        m => String(m.modelNo) === String(modelNo)
+      );
+
+    if(!model){
+
+      console.warn(
+        "NW-111 MODEL NOT FOUND",
+        modelNo
+      );
+
+      return;
+    }
+
+    /*
+      Apply the selected model to
+      BOTH Life Cycle phases.
+    */
+
+    phases.forEach(phase => {
+
+      cashPosition[phase] = false;
+
+      setSelectedModel(
+        phase,
+        model
+      );
+
+      /*
+        Synchronize account selectors.
+      */
+
+      const prefix =
+        phase === "phase1"
+          ? "build"
+          : "use";
+
+      const issuer =
+        document.getElementById(
+          `${prefix}Issuer`
+        );
+
+      const selector =
+        document.getElementById(
+          `${prefix}ModelNo`
+        );
+
+      if(issuer){
+        issuer.value = model.issuerName;
+      }
+
+      if(selector){
+        selector.value = String(model.modelNo);
+      }
+
+    });
+
+  }
+
+  /*
+    =========================================
+    SYNCHRONIZE CASH CHECKBOXES
+    =========================================
+  */
+
+  const cashBuild =
+    document.getElementById(
+      "cashPositionBuild"
+    );
+
+  const cashUse =
+    document.getElementById(
+      "cashPositionUse"
+    );
+
+  if(cashBuild){
+    cashBuild.checked = cashPosition.phase1;
+  }
+
+  if(cashUse){
+    cashUse.checked = cashPosition.phase2;
+  }
+
+  /*
+    =========================================
+    UPDATE NW-111
+    =========================================
+  */
+
+  nl111State.assetClass = assetClass;
+
+  nl111RenderAssetClass();
+
+  /*
+    =========================================
+    UPDATE GLOBAL METRICS AND RENDER
+    =========================================
+  */
+
+  renderPortfolioRiskDisplays();
+
+  renderRiskModel();
+
+  render();
+
+  nl111UpdateOutput();
+
+}
+
+
+
   
 console.log("BOOT 2");
 /* =====================================================
@@ -31043,6 +31616,7 @@ function clamp(value,min,max){
    STAGE 1 · KEYPAD + LCD INPUTS
 ===================================================== */
 
+
 const nl111State = {
 
   values:{
@@ -31050,10 +31624,15 @@ const nl111State = {
     savings:10000,
     consumption:25000,
     legacy:2000000,
-outputMode:"freedom",
+    age:50,
+    death:90
   },
 
   selected:"wealth",
+
+  assetClass:"equity",
+
+  outputMode:"freedom",
 
   editing:false,
 
@@ -31064,38 +31643,54 @@ outputMode:"freedom",
 };
 
 
+
 /* =====================================================
    VARIABLE DEFINITIONS
 ===================================================== */
+
 
 const NL111_VARIABLES = {
 
   wealth:{
     symbol:"W₀",
-    labelDa:"FORMUE I DAG",
-    labelEn:"WEALTH TODAY",
+    labelDa:"FRI INVESTERING I DAG",
+    labelEn:"INVESTMENT TODAY",
     outputId:"nl111Wealth"
   },
 
   savings:{
     symbol:"S",
-    labelDa:"MÅNEDLIG OPSPARING",
+    labelDa:"MÅNEDLIG OPSPARING - INDSKUD",
     labelEn:"MONTHLY SAVINGS",
     outputId:"nl111Savings"
   },
 
   consumption:{
     symbol:"C",
-    labelDa:"MÅNEDLIGT FORBRUG",
-    labelEn:"MONTHLY CONSUMPTION",
+    labelDa:"MÅNEDLIGT FORBRUG - FASE 2",
+    labelEn:"MONTHLY CONSUMPTION - PHASE 2",
     outputId:"nl111Consumption"
   },
 
   legacy:{
     symbol:"L",
-    labelDa:"MÅL FOR ARV",
+    labelDa:"ARV EFTERLADT",
     labelEn:"TARGET LEGACY",
     outputId:"nl111Legacy"
+  },
+
+  age:{
+    symbol:"Age",
+    labelDa:"NUVÆRENDE ALDER",
+    labelEn:"CURRENT AGE",
+    outputId:"nl111Age"
+  },
+
+  death:{
+    symbol:"Death",
+    labelDa:"FORVENTET DØDSALDER",
+    labelEn:"DEATH AGE EXPECTANCY",
+    outputId:"nl111Death"
   }
 
 };
@@ -31135,7 +31730,7 @@ function nl111UpdateOutput(){
 
   if(nl111State.outputMode === "wealth"){
 
-    label = "Max Wealth";
+    label = "Real Wealth";
 
     /*
       Read the existing Life Cycle metric.
@@ -31151,7 +31746,7 @@ function nl111UpdateOutput(){
 
   }else{
 
-    label = "Freedom n*";
+    label = "Freedom Age n*";
 
     const source =
       document.getElementById("freedomAge");
@@ -31230,6 +31825,8 @@ function renderNL111(){
   if(!root){
     return;
   }
+
+nl111RenderAssetClass();
 
   const lang =
     nl111Language();
@@ -31526,6 +32123,25 @@ function initNL111(){
   });
 
 
+/* -----------------------------------------------
+   ASSET CLASS KEYS
+----------------------------------------------- */
+
+root.querySelectorAll(
+  "[data-nl111-asset]"
+).forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    nl111ApplyAssetClass(
+      button.dataset.nl111Asset
+    );
+
+  });
+
+});
+
+
   /* -----------------------------------------------
      NUMERIC KEYPAD
   ----------------------------------------------- */
@@ -31563,6 +32179,7 @@ function initNL111(){
   ----------------------------------------------- */
 
 nl111ReadLifeCycleInputs();
+initNL111Trace();
 
   console.log(
     "NW-111 CALCULATOR INITIALIZED",
@@ -31585,6 +32202,8 @@ nl111ReadLifeCycleInputs();
 
 
 
+
+
 function nl111UpdateLifeCycleInput(){
 
   const key =
@@ -31592,6 +32211,14 @@ function nl111UpdateLifeCycleInput(){
 
   const id =
     NL111_INPUT_MAP[key];
+
+  if(!id){
+    console.warn(
+      "NW-111 UNKNOWN INPUT",
+      key
+    );
+    return;
+  }
 
   const input =
     document.getElementById(id);
@@ -31605,29 +32232,113 @@ function nl111UpdateLifeCycleInput(){
   }
 
   const value =
-    nl111State.values[key];
+    Number(nl111State.values[key]);
+
+  if(!Number.isFinite(value)){
+    return;
+  }
 
   /*
-    Life Cycle money fields use
-    formatted monetary strings.
+    =========================================
+    AGE AND DEATH VALIDATION
+    =========================================
   */
 
-  input.value =
-    nl111FormatNumber(value);
+  if(key === "age" || key === "death"){
+
+    const age =
+      key === "age"
+        ? value
+        : Number(
+            document.getElementById("currentAge")?.value
+          );
+
+    const death =
+      key === "death"
+        ? value
+        : Number(
+            document.getElementById("deathAge")?.value
+          );
+
+    const valid =
+      Number.isInteger(value) &&
+      age >= 18 &&
+      age <= 120 &&
+      death >= 40 &&
+      death <= 120 &&
+      death > age;
+
+    if(!valid){
+
+      console.warn(
+        "NW-111 INVALID AGE INPUT",
+        {key,value,age,death}
+      );
+
+      return;
+    }
+
+    /*
+      Age fields use integers,
+      not monetary formatting.
+    */
+
+    input.value =
+      String(value);
+
+  }else{
+
+    /*
+      =========================================
+      MONETARY INPUTS
+      =========================================
+    */
+
+    input.value =
+      nl111FormatNumber(value);
+
+  }
 
   /*
-    Existing model calculation.
-    render() reads the updated DOM.
+    =========================================
+    RECALCULATE LIFE CYCLE
+    =========================================
   */
 
   render();
-nl111UpdateOutput();
 
   /*
-    Read the new solver result.
+    =========================================
+    REFRESH NW-111 OUTPUT
+    =========================================
   */
 
-nl111UpdateOutput();
+  nl111UpdateOutput();
+
+}
+
+
+
+function nl111ValidAge(key,value){
+
+  const age =
+    key === "age"
+      ? value
+      : Number(document.getElementById("currentAge")?.value);
+
+  const death =
+    key === "death"
+      ? value
+      : Number(document.getElementById("deathAge")?.value);
+
+  return (
+    Number.isInteger(value) &&
+    age >= 18 &&
+    age <= 120 &&
+    death >= 40 &&
+    death <= 120 &&
+    death > age
+  );
 
 }
 
@@ -31685,13 +32396,18 @@ nl111UpdateOutput();
    NW-111 → LIFE CYCLE INPUT BRIDGE
 ===================================================== */
 
+
 const NL111_INPUT_MAP = {
+
   wealth:"wealthToday",
   savings:"monthlySavings",
   consumption:"monthlyConsumption",
-  legacy:"legacy"
-};
+  legacy:"legacy",
 
+  age:"currentAge",
+  death:"deathAge"
+
+};
 
 function nl111SyncToLifeCycle(){
 
@@ -32046,12 +32762,11 @@ function bindLiabilitiesPanel(){
 
 function renderLifeStageNarrative(){
 
-const lang =
-  document.documentElement.lang
-    .toLowerCase()
-    .startsWith("da")
+  const lang =
+    INIT.lang === "da"
       ? "da"
       : "en";
+
 
   const personas =
     LIFE_STAGE_PERSONAS[lang];
@@ -37065,6 +37780,27 @@ Your explanation is an independent AI interpretation, not official Neptoon docum
 }
 
 
+function nl111RenderAssetClass(){
+
+  document
+    .querySelectorAll("[data-nl111-asset]")
+    .forEach(button => {
+
+      const active =
+        button.dataset.nl111Asset ===
+        nl111State.assetClass;
+
+      button.classList.toggle("active",active);
+
+      button.setAttribute(
+        "aria-pressed",
+        String(active)
+      );
+
+    });
+
+}
+
 
 function buildFAQAIPrompt(group,lang=INIT.lang){
 
@@ -39640,7 +40376,7 @@ function nl111EndTrace(){
 
 function initNL111Trace(){
 
-initNL111Trace();
+
 
   const canvas =
     document.getElementById("nl111Chart");
@@ -51092,38 +51828,6 @@ compareUpdateButton();
 }
 
 
-    function initializeDefaultModels(allModels){
-
-  for(const phase of ["phase1", "phase2"]){
-
-    const modelNo =
-      DEFAULT_MODELS[phase];
-
-    const model =
-      allModels.find(
-        m => String(m.modelNo) === String(modelNo)
-      );
-
-    if(!model) continue;
-
-    const prefix =
-      phase === "phase1" ? "build" : "use";
-
-    // Select issuer
-    byId(`${prefix}Issuer`).value =
-      model.issuerName;
-
-    // Select portfolio
-    byId(`${prefix}ModelNo`).value =
-      String(model.modelNo);
-
-    // Update state and paint risk dots
-    setSelectedModel(phase, model);
-
-  }
-
-}
-
 
 function renderSelectedModelHoldings(phase){
 
@@ -53110,6 +53814,7 @@ console.log("BOOT 20");
 //////////////////////
 render();
 drawNL111Chart();
+nl111RenderAssetClass();
 
 console.log("BOOT 21");
 bindFooterInfo();
