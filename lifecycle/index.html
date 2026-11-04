@@ -7433,8 +7433,8 @@ font-weight:500
 }
 
 #tabHistory .portfolioHeaderRisk .dots .dot{
-  width:9px;
-  height:9px;
+  width:8px;
+  height:8px;
   border-radius:50%;
 }
 
@@ -9732,12 +9732,20 @@ font-weight:500
     font-size:22px;
     line-height:1.25;
     margin:7px 0 10px;
-  }
+  
+margin-bottom:3px;
+}
 
   .lifecyclePanel .freedomSubtext{
     font-size:12px;
     line-height:1.65;
   }
+
+
+.lifecyclePanel .resultTitle{
+margin-bottom:3px;
+}
+
 
 
   /* Economic Balance RESULT */
@@ -15860,10 +15868,340 @@ margin-bottom:-35px !important;
 
 
 
+/* ================================================
+   HOUSEHOLD A/S — VALUATION COMPARISON
+================================================ */
+
+.householdValuation{
+  border:1px solid #d7dfeb;
+  background:#fff;
+  padding:15px 18px;
+  margin:12px 0 18px;
+}
+
+.householdValuationHeader{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:13px;
+}
+
+.householdValuationHeader > svg{
+  width:27px;
+  height:27px;
+  color:#4e79bd;
+  flex:0 0 auto;
+}
+
+.householdValuationTitle{
+  font-size:14px;
+  font-weight:600;
+  color:#203451;
+}
+
+.householdValuationSubtitle{
+  font-size:11px;
+  color:#718096;
+  margin-top:3px;
+}
+
+.householdValuationGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.householdValuationItem{
+  padding:12px 14px;
+  border:1px solid #d7dfeb;
+  min-width:0;
+}
+
+.householdValuationItem.economic{
+  background:#f2f6fc;
+  border-color:#a9bfdf;
+}
+
+.householdValuationItemTitle{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  font-weight:600;
+  color:#203451;
+}
+
+.householdValuationItemTitle svg{
+  width:16px;
+  height:16px;
+  color:#4e79bd;
+  flex:0 0 auto;
+}
+
+.householdValuationText{
+  font-size:11px;
+  line-height:1.55;
+  color:#60718a;
+  margin-top:8px;
+}
+
+.householdValuationResult{
+  margin-top:10px;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.045em;
+  color:#4e79bd;
+}
+
+.householdValuationFootnote{
+  margin-top:12px;
+  padding-top:10px;
+  border-top:1px solid #e5eaf2;
+  font-size:11px;
+  line-height:1.55;
+  color:#60718a;
+}
+
+@media(max-width:600px){
+
+  .householdValuation{
+    padding:12px;
+  }
+
+  .householdValuationGrid{
+    grid-template-columns:1fr;
+  }
+
+}
 
 
 
+#nl111InfoSymbol{
+  display:none !important;
+}
 
+#nl111InfoText{
+  flex:1;
+  min-width:0;
+  text-align:left;
+  margin-left:0;
+  padding-left:0;
+}
+
+
+/* =========================================
+   ASK NEPTOON · FLOATING LAUNCHER
+========================================= */
+
+#askNeptoonLauncher{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  z-index:9998;
+
+  display:flex;
+  align-items:center;
+  gap:9px;
+
+  padding:12px 16px;
+
+  background:#4E79BD;
+  color:#fff;
+
+  border:1px solid #4E79BD;
+  border-radius:0;
+
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.03em;
+
+  cursor:pointer;
+  box-shadow:0 5px 20px rgba(20,40,70,.18);
+}
+
+#askNeptoonLauncher svg{
+  width:17px;
+  height:17px;
+}
+
+
+/* =========================================
+   ASK NEPTOON · FLOATING MODAL
+========================================= */
+
+#askNeptoonModal{
+  position:fixed;
+  right:24px;
+  bottom:82px;
+
+  width:390px;
+  max-width:calc(100vw - 32px);
+  max-height:min(600px, calc(100dvh - 110px));
+
+  display:flex;
+  flex-direction:column;
+
+  background:#fff;
+  border:1px solid #dce4ee;
+  border-radius:0;
+
+  box-shadow:0 12px 45px rgba(20,40,70,.22);
+
+  z-index:9999;
+  overflow:hidden;
+}
+
+#askNeptoonModal[hidden]{
+  display:none !important;
+}
+
+
+/* HEADER */
+
+.askNeptoonHeader{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:15px 17px;
+  background:#243B5A;
+  color:#fff;
+}
+
+.askNeptoonBrand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+}
+
+.askNeptoonBrand > svg{
+  width:20px;
+  height:20px;
+}
+
+.askNeptoonTitle{
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.08em;
+}
+
+.askNeptoonSubtitle{
+  margin-top:3px;
+  font-size:9px;
+  letter-spacing:.06em;
+  color:#cbd8ea;
+}
+
+.askNeptoonClose{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  width:30px;
+  height:30px;
+
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:#fff;
+  cursor:pointer;
+}
+
+.askNeptoonClose svg{
+  width:17px;
+  height:17px;
+}
+
+
+/* BODY */
+
+.askNeptoonBody{
+  padding:20px 18px;
+  overflow-y:auto;
+}
+
+.askNeptoonIntro{
+  font-size:12px;
+  line-height:1.7;
+  color:#475569;
+  margin-bottom:24px;
+}
+
+.askNeptoonSectionLabel{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.08em;
+  color:#64748b;
+  margin-bottom:12px;
+}
+
+.askNeptoonSubjects{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.askNeptoonSubject{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+
+  width:100%;
+  padding:13px 12px;
+
+  background:#fff;
+  border:1px solid #dce4ee;
+  border-radius:0;
+
+  color:#243B5A;
+  font-size:12px;
+  text-align:left;
+  cursor:pointer;
+}
+
+.askNeptoonSubject:hover{
+  background:#f2f6fc;
+  border-color:#4E79BD;
+}
+
+.askNeptoonSubject svg{
+  width:15px;
+  height:15px;
+  color:#4E79BD;
+  flex-shrink:0;
+}
+
+.askNeptoonFooterNote{
+  margin-top:25px;
+  padding-top:14px;
+
+  border-top:1px solid #edf1f5;
+
+  font-size:10px;
+  line-height:1.6;
+  color:#94a3b8;
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  #askNeptoonLauncher{
+    right:12px;
+    bottom:12px;
+  }
+
+  #askNeptoonModal{
+    right:12px;
+    bottom:68px;
+
+    width:calc(100vw - 24px);
+    max-height:calc(100dvh - 88px);
+  }
+
+}
 
 
 </style>
@@ -15940,9 +16278,9 @@ margin-bottom:-35px !important;
   id="appAccountStatus"
   aria-label="Account login and registration">
 
-  <span id="appAccountStatusText">
-    Log ind / Opret konto
-  </span>
+<span id="appAccountStatusText" data-lang="appAccountStatusText">
+  Log ind / Opret konto
+</span>
 
   <span
     id="appAccountEmail"
@@ -18096,10 +18434,7 @@ margin-bottom:-35px !important;
 
 <div class="freedomBox">
 
-  <div class="freedomLabel"
-       data-lang="financialFreedom">
-    Expected financial freedom
-  </div>
+
 
   <div class="freedomEstimates">
 
@@ -18204,22 +18539,10 @@ margin-bottom:-35px !important;
       </div>
     </div>
 
-    <div class="chartWrap">
-      <canvas id="lifeChart"></canvas>
-      <div class="chartMessage" id="chartMessage">
-      </div>
-    </div>
-
-    <!-- =========================================
-         END OF MOUNTAIN CHART
-    ========================================= -->
-
-</div> <!-- Existing Mountain chart container -->
-
 
 <!-- =========================================
      MOUNTAIN — FINANCIAL METRICS
-     Directly below the chart
+     BELOW SLIDER · ABOVE CANVAS
 ========================================= -->
 
 <div class="metricsMountain">
@@ -18241,7 +18564,6 @@ margin-bottom:-35px !important;
 
   </div>
 
-
   <div class="metric">
 
     <div class="metricLabel"
@@ -18259,7 +18581,6 @@ margin-bottom:-35px !important;
 
   </div>
 
-
   <div class="metric">
 
     <div class="metricLabel"
@@ -18276,7 +18597,6 @@ margin-bottom:-35px !important;
     </div>
 
   </div>
-
 
   <div class="metric">
 
@@ -18299,19 +18619,141 @@ margin-bottom:-35px !important;
 
 
 <!-- =========================================
-     LIFE CYCLE — METHODOLOGICAL NOTE
-     Below the financial metrics
+     LIFE CYCLE — MOUNTAIN CANVAS
 ========================================= -->
 
-<div class="modelNote"
-     data-lang="lifeCycleModelNote">
+<div class="chartWrap">
 
-  The mountain represents synthetic household wealth.
-  Asset realization and pension payments are treated as
-  substitutions between wealth components and do not
-  themselves create or destroy household wealth.
+  <canvas id="lifeChart"></canvas>
+
+  <div class="chartMessage"
+       id="chartMessage">
+  </div>
 
 </div>
+
+
+<!-- =========================================
+     END OF MOUNTAIN CHART SECTION
+========================================= -->
+
+</div> <!-- chartSection -->
+
+
+<!-- =========================================
+     LIFE CYCLE — METHODOLOGICAL NOTE
+========================================= -->
+
+
+<!-- =========================================
+     HOUSEHOLD A/S — VALUATION PRINCIPLES
+========================================= -->
+
+<div class="householdValuation">
+
+  <div class="householdValuationHeader">
+
+    <i data-lucide="building-2"></i>
+
+    <div>
+
+      <div class="householdValuationTitle"
+           data-lang="householdValuationTitle">
+        Hvis din husholdning var et børsnoteret selskab
+        – Husholdning A/S
+      </div>
+
+      <div class="householdValuationSubtitle"
+           data-lang="householdValuationSubtitle">
+        Hvorfor er økonomisk formue ikke det samme
+        som bogført formue?
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="householdValuationGrid">
+
+    <!-- ACCOUNTING VALUATION -->
+
+    <div class="householdValuationItem">
+
+      <div class="householdValuationItemTitle">
+
+        <i data-lucide="book-open"></i>
+
+        <span data-lang="householdBookTitle">
+          Regnskabets værdi
+        </span>
+
+      </div>
+
+      <div class="householdValuationText"
+           data-lang="householdBookText">
+        Nuværende aktiver minus gæld,
+        opgjort efter regnskabsmæssige principper.
+        Det er den formue, du typisk genkender
+        fra en traditionel formueopgørelse.
+      </div>
+
+      <div class="householdValuationResult"
+           data-lang="householdBookResult">
+        BOGFØRT NETTOFORMUE
+      </div>
+
+    </div>
+
+
+    <!-- ECONOMIC VALUATION -->
+
+    <div class="householdValuationItem economic">
+
+      <div class="householdValuationItemTitle">
+
+        <i data-lucide="chart-no-axes-combined"></i>
+
+        <span data-lang="householdEconomicTitle">
+          Markedets økonomiske værdi
+        </span>
+
+      </div>
+
+      <div class="householdValuationText"
+           data-lang="householdEconomicText">
+        Værdien af nuværende aktiver og forpligtelser
+        samt nutidsværdien af fremtidige økonomiske
+        pengestrømme, herunder Folkepension og ATP.
+      </div>
+
+      <div class="householdValuationResult"
+           data-lang="householdEconomicResult">
+        NEPTOONS ØKONOMISKE NETTOFORMUE
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="householdValuationFootnote"
+       data-lang="householdValuationFootnote">
+    Vigtigt: Fremtidige pensionsudbetalinger indgår
+    allerede med deres beregnede nutidsværdi.
+    De er ikke kontanter, du kan disponere over i dag.
+    Når pensionerne udbetales, flyttes værdi mellem
+    formuekomponenter – der skabes ikke ny formue
+    alene ved udbetalingen.
+  </div>
+
+</div>
+
+
+
+<!-- =========================================
+     LIFE CYCLE — EXCEL EXPORT
+========================================= -->
 
 
 <!-- =========================================
@@ -18492,7 +18934,7 @@ margin-bottom:-35px !important;
           Low
         </span>
 
-        <div class="riskDots" id="riskBuild"></div>
+        <div class="dots" id="riskBuild"></div>
 
         <span class="riskWord" data-lang="riskHigh">
           High
@@ -18594,7 +19036,7 @@ margin-bottom:-35px !important;
           Low
         </span>
 
-        <div class="riskDots" id="riskUse"></div>
+        <div class="dots" id="riskUse"></div>
 
         <span class="riskWord" data-lang="riskHigh">
           High
@@ -23295,7 +23737,101 @@ margin-bottom:-35px !important;
 
 
 
+<!-- =========================================
+     ASK NEPTOON · GLOBAL KNOWLEDGE ASSISTANT
+========================================= -->
 
+<button
+  id="askNeptoonLauncher"
+  type="button"
+  aria-label="Open Ask Neptoon"
+  aria-controls="askNeptoonModal"
+  aria-expanded="false">
+
+  <i data-lucide="message-circle-question"></i>
+  <span>Ask Neptoon</span>
+
+</button>
+
+
+<section
+  id="askNeptoonModal"
+  role="dialog"
+  aria-label="Ask Neptoon"
+  aria-modal="false"
+  hidden>
+
+  <div class="askNeptoonHeader">
+
+    <div class="askNeptoonBrand">
+      <i data-lucide="book-open"></i>
+
+      <div>
+        <div class="askNeptoonTitle">
+          ASK NEPTOON
+        </div>
+
+        <div class="askNeptoonSubtitle">
+          LIFE CYCLE · KNOWLEDGE ASSISTANT
+        </div>
+      </div>
+    </div>
+
+    <button
+      id="askNeptoonClose"
+      class="askNeptoonClose"
+      type="button"
+      aria-label="Close Ask Neptoon">
+      <i data-lucide="x"></i>
+    </button>
+
+  </div>
+
+
+  <div class="askNeptoonBody">
+
+    <div class="askNeptoonIntro">
+      Welcome to Ask Neptoon.
+      Select a subject to find answers from
+      the Life Cycle knowledge library.
+    </div>
+
+    <div class="askNeptoonSectionLabel">
+      SELECT A SUBJECT
+    </div>
+
+    <div class="askNeptoonSubjects">
+
+      <button type="button" class="askNeptoonSubject">
+        <span>Economic Balance Sheet</span>
+        <i data-lucide="chevron-right"></i>
+      </button>
+
+      <button type="button" class="askNeptoonSubject">
+        <span>Financial Freedom</span>
+        <i data-lucide="chevron-right"></i>
+      </button>
+
+      <button type="button" class="askNeptoonSubject">
+        <span>Portfolio & Risk</span>
+        <i data-lucide="chevron-right"></i>
+      </button>
+
+      <button type="button" class="askNeptoonSubject">
+        <span>Assumptions & Methodology</span>
+        <i data-lucide="chevron-right"></i>
+      </button>
+
+    </div>
+
+    <div class="askNeptoonFooterNote">
+      Answers are drawn directly from
+      Neptoon's approved FAQ library.
+    </div>
+
+  </div>
+
+</section>
 
 
 
@@ -23881,6 +24417,37 @@ const LIFE_CYCLE_FAQ = {
   q: "Does Neptoon automatically choose my investments?",
   a: "No. You choose the investment portfolio used during the wealth-building phase and the portfolio used during the consumption phase. Neptoon applies the selected portfolios' expected after-tax returns in the Life Cycle calculation. The model does not automatically optimize your portfolio, trade securities or change your investments on your behalf."
 },
+
+
+{
+  q: "Why is my net wealth in Neptoon higher than the wealth I normally calculate?",
+  a: "Neptoon Life Cycle measures your economic net wealth rather than only your current assets minus liabilities. The model also includes the present value of future economic resources, such as public and supplementary pension payments. Your economic net wealth may therefore be substantially higher than the wealth shown in a conventional personal balance sheet. This does not mean that the entire amount is available as cash today."
+},
+{
+  q: "What does Neptoon's wealth calculation have in common with stock valuation?",
+  a: "Imagine your household were a publicly listed company – Household Inc. An equity analyst would not value the company solely by looking at its book equity. The analyst would also consider the present value of expected future cash flows. This is a fundamental principle of equity valuation, including Discounted Cash Flow (DCF) analysis. Neptoon applies the same broad economic reasoning to a household's lifetime resources and obligations. The result is a model-based economic valuation, not an observable stock-market price for your household."
+},
+
+
+{
+  q: "What does net equity represent in Neptoon's economic Balance Sheet?",
+  a: "Neptoon Life Cycle recognizes the household's current assets and liabilities together with the present value of relevant future economic resources, such as public and supplementary pensions. Two future items are deliberately excluded from recognized liabilities: planned future consumption and the target Legacy. Consequently, net equity – assets minus liabilities – represents, at any point in time, the economic reserve available to finance remaining consumption and Legacy during the second phase of life (Phase 2). The principle is comparable to the valuation of a publicly listed company: its economic value reflects assets, obligations and future cash flows, while shareholders' intended future use of that value is not itself recorded as a liability. Neptoon's Life Cycle model determines when this economic reserve becomes sufficient to finance both the desired consumption and the selected Legacy."
+},
+
+{
+  q: "What is the difference between book wealth and economic wealth?",
+  a: "A conventional balance sheet reports assets and liabilities recognized and measured at a particular point in time. Economic wealth also considers the estimated present value of relevant future cash flows. The distinction is comparable to the difference between a company's accounting equity and an equity analyst's economic valuation. These figures need not be equal because they are based on different valuation principles."
+},
+{
+  q: "Why are my future public and supplementary pensions included in my wealth today?",
+  a: "Future pension payments represent economic resources that can help finance consumption later in life. Neptoon estimates their present value and includes it in the economic balance sheet. This is conceptually similar to an equity analyst assigning value today to expected future company cash flows. However, the pension's present value is not a cash balance that you can freely withdraw or invest."
+},
+{
+  q: "Do I become wealthier when my pension payments begin?",
+  a: "Not simply because payments begin. In Neptoon's economic Life Cycle model, the estimated value of future pension payments is already included in your economic wealth. When a pension payment is received, part of that future economic resource is converted into liquid funds. This changes the composition of wealth but does not, by itself, create additional economic wealth. Similarly, a company does not create new value merely by converting an existing asset into cash."
+},
+
+
 {
   q: "Why can I choose different investments before and after Financial Freedom Day?",
   a: "Because building wealth and financing consumption are two different economic situations. While accumulating wealth, your investment horizon and willingness to take risk may differ from when your assets are needed to finance ongoing consumption. Neptoon therefore allows you to select an independent investment portfolio for each phase. You determine the investment risk, while the model calculates the consequences for your financial life cycle."
@@ -24876,6 +25443,35 @@ const LIFE_CYCLE_FAQ = {
 
 
 {
+  q: "Hvorfor er min nettoformue i Neptoon større end den formue, jeg normalt opgør?",
+  a: "Neptoon Life Cycle opgør din økonomiske nettoformue og ikke kun dine nuværende aktiver minus gæld. Modellen medregner også nutidsværdien af fremtidige økonomiske ressourcer, eksempelvis Folkepension og ATP. Derfor kan din økonomiske nettoformue være væsentligt større end den formue, du normalt ser i en traditionel formueopgørelse. Det betyder ikke, at hele beløbet er til rådighed som kontanter i dag."
+},
+
+
+{
+  q: "Hvad repræsenterer nettoformuen i Neptoons økonomiske balance?",
+  a: "Neptoon Life Cycle opgør værdien af husholdningens nuværende aktiver og forpligtelser samt nutidsværdien af relevante fremtidige økonomiske ressourcer, eksempelvis Folkepension og ATP. To fremtidige størrelser indregnes bevidst ikke som forpligtelser: det planlagte fremtidige forbrug og den ønskede Legacy. Nettoformuen – aktiver minus forpligtelser – repræsenterer derfor på ethvert tidspunkt den økonomiske reserve, der skal finansiere det resterende forbrug og Legacy i livets anden fase (Phase 2). Princippet kan sammenlignes med værdiansættelsen af et børsnoteret selskab: Selskabets økonomiske værdi bestemmes ud fra dets aktiver, forpligtelser og fremtidige pengestrømme, mens aktionærernes fremtidige anvendelse af værdien ikke i sig selv bogføres som en gældsforpligtelse. Neptoon Life Cycle-model undersøger, hvornår denne økonomiske reserve er tilstrækkelig til at finansiere både det ønskede forbrug og den valgte Legacy."
+},
+{
+  q: "Hvad har Neptoons formueberegning til fælles med værdiansættelsen af aktier?",
+  a: "Forestil dig, at din husholdning var et børsnoteret selskab – Husholdning A/S. En aktieanalytiker ville ikke alene se på selskabets bogførte egenkapital, men også vurdere værdien af dets forventede fremtidige pengestrømme. Det er et grundlæggende princip i aktieanalyse, eksempelvis ved Discounted Cash Flow (DCF). Neptoon anvender den samme overordnede økonomiske tankegang på en husholdnings ressourcer og forpligtelser gennem livet. Det er ikke en børspris på din husholdning, men en modelberegnet økonomisk værdi."
+},
+{
+  q: "Hvad er forskellen mellem bogført formue og økonomisk formue?",
+  a: "En traditionel formueopgørelse viser værdien af de aktiver og forpligtelser, der indgår i opgørelsen på et bestemt tidspunkt. Økonomisk formue omfatter desuden den beregnede nutidsværdi af relevante fremtidige pengestrømme. Forskellen kan sammenlignes med et selskabs regnskabsmæssige egenkapital og en aktieanalytikers økonomiske værdiansættelse. De to værdier behøver ikke være ens, fordi de bygger på forskellige opgørelsesprincipper."
+},
+{
+  q: "Hvorfor tæller min fremtidige Folkepension og ATP med i min formue allerede i dag?",
+  a: "Fordi fremtidige pensionsudbetalinger repræsenterer økonomiske ressourcer, som kan finansiere dit forbrug senere i livet. Neptoon beregner deres nutidsværdi og medregner den i den økonomiske balance. Det svarer til, at en aktieanalytiker tillægger forventede fremtidige indtægter økonomisk værdi allerede i dag. Pensionsværdien er dog ikke en kontantbeholdning, du frit kan hæve eller investere."
+},
+{
+  q: "Bliver jeg rigere, når min pension begynder at blive udbetalt?",
+  a: "Ikke alene fordi udbetalingen begynder. I Neptoons økonomiske livscyklusmodel indgår den beregnede værdi af fremtidige pensionsbetalinger allerede i din formue. Når en pensionsbetaling modtages, omsættes en del af denne fremtidige ressource til likvide midler. Det ændrer formuens sammensætning, men skaber ikke i sig selv ny økonomisk formue. Tilsvarende skaber et selskab ikke ny værdi alene ved at omdanne et eksisterende aktiv til kontanter."
+},
+
+
+
+{
   q: "Er NW-111 en rigtig, levende lommeregner?",
   a: "Ja. Bag det nostalgiske design gemmer sig en fuldt fungerende finansiel lommeregner, som er direkte forbundet med Neptoon Life Cycle. Beregningerne udføres af den samme økonomiske model som i hovedværktøjet."
 },
@@ -25841,6 +26437,34 @@ balanceChartsNetWealth:"Net Wealth",
 balanceChartsAttributionTitle:"Assets & Liabilities",
 balanceChartsAttributionHint:"Individual Balance Sheet components at the selected age.",
 
+householdValuationTitle:
+  "If your household were a listed company – Household Inc.",
+
+householdValuationSubtitle:
+  "Why is economic wealth different from book value?",
+
+householdBookTitle:
+  "Accounting valuation",
+
+householdBookText:
+  "Current assets minus liabilities, measured according to accounting principles. This is the wealth figure you typically recognize from a conventional balance sheet.",
+
+householdBookResult:
+  "BOOK VALUE OF NET ASSETS",
+
+householdEconomicTitle:
+  "Economic market valuation",
+
+householdEconomicText:
+  "The value of current assets and liabilities together with the present value of future economic cash flows, including public and supplementary pensions.",
+
+householdEconomicResult:
+  "NEPTOON ECONOMIC NET WEALTH",
+
+householdValuationFootnote:
+  "Important: Future pension payments are already included at their estimated present value. They are not cash available to spend today. When pensions are paid, value is transferred between wealth components – the payment itself does not create additional wealth.",
+
+
 
 
 
@@ -26049,7 +26673,7 @@ accountBackendNotice:
 
 
     monthlyConsumption:
-      "Passive Income*",
+      "Monthly Passive Income",
 
     currentAge:
       "Current age (integers)",
@@ -26621,6 +27245,7 @@ lifeIntroTitle:
 
 lifeIntroText:
   "A Life Cycle model connects the financial decisions you make today with possible resources and consumption many years into the future. The purpose is not to predict your life, but to make better savings and consumption decisions today.",
+appAccountStatusText: "Log in / Create account",
 
 
 /* VISUAL */
@@ -26742,7 +27367,7 @@ consumptionPhase:
   "Dissavings phase",
 
 expectedNominalReturn:
-  "Expected return (Gross)",
+  "Annual expected return (Gross)",
 
 
 /* EN */
@@ -26760,10 +27385,10 @@ lifeCycleTargetsNote:
   "Note: Monthly consumption after Economic Balance age, free investment today, monthly savings and desired legacy can be adjusted dynamically in the Life Cycle View. Your current income is not required in the model, however the monthly savings growth can be interpreted as the expected growth in your salary before any pension contribution. ",
 
 investmentCosts:
-  "Investment costs",
+  "Annual investment costs",
 
 expectedRealReturn:
-  "Expected real return",
+  "Annual expected real return",
 
 introInsight: "MAXIMUM INSIGHT",
 introNavigation: "MINIMUM INPUTS & NAVIGATION",
@@ -27313,7 +27938,7 @@ scenarioDecisionsKicker:
 scenarioDecisionsTitle:
   "Core financial decisions",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "Bridging Household Economics And Finance  ",
+appName: "Bridging Private Life And Finance  ",
 
 welcomeStartKicker:"Biological Settings",
 welcomeStartTitle: "Start with what we know — and what we don't: your lifetime",
@@ -28039,7 +28664,7 @@ lcStorageSaveButton: "Gem nuværende Plan",
 portfolioConfigKicker:
   "GLOBALE DIVERSIFICEREDE PORTEFØLJER ",
 appKicker: "NEPTOON WEALTH LIFECYCLE",
-appName: "Min privatøkonomi og formue 2400",
+appName: "Privatøkonomi og Finansmarked ",
 welcomeStartKicker:"Den biologiske indstilling - modellens ramme",
 welcomeStartTitle:"Begynd med det mest sikre og usikre - din restlevetid",
 
@@ -28090,6 +28715,7 @@ balanceChartsConsumption:"Forbrugsportefølje",
 balanceChartsPhaseNote:"Forbrugsporteføljen indgår som en forpligtelse fra måneden efter Økonomisk Balancedag.",
 balanceChartsReal:"Reale",
 balanceChartsNominal:"Nominelle",
+appAccountStatusText: "Log in / Opret konto",
 
 
 balanceChartsTitle:"Din formue gennem livet",
@@ -28537,7 +29163,7 @@ scenarioExplanationDefaultText:
   "Vælg et inputfelt for mere information.",
 
 lcInvestmentDescription:
-  "Husk du kan altid vælge andre 100% diversificerede porteføljer for den frie beskattede formue med højere eller lavere risiko i 'Min Konto'. Højere risiko øger forventet afkast men øger også usikkerheden omkring din målsætning",
+  "Husk du kan altid vælge andre 100% diversificerede porteføljer for den frie beskattede formue med højere eller lavere risiko i 'Mine indstillinger'. Højere risiko øger forventet afkast men øger også usikkerheden omkring din målsætning",
 
 
 accountBackendNotice: "Kontoregistrering, lagring i skyen og betaling er endnu ikke tilsluttet.",
@@ -28585,7 +29211,7 @@ freedomDayTitle:"Finansielt overblik på de væsentlige tidspunkter i modellen",
 economicOutlookNote:"Afkastændringer på ±1.5% som følge af strukturelle økonomisk-cykliske forhold for realrenten i samfundet. Uændret risiko på finansielle aktiver",
 
     monthlyConsumption:
-      "Passiv indkomst",
+      "Passiv månedsindkomst",
 
 generalAssumptions:"Generelle økonomiske forhold",
 
@@ -28619,7 +29245,7 @@ includePensionTax:"Medtag udskudt skat",
       "Forventet dødsalder",
 
     wealthToday:
-      "'Frie Midler' formue i dag",
+      "Økonomisk formue i dag",
 
     monthlySavings:
       "Månedsopsparing - indskud",
@@ -28628,7 +29254,7 @@ includePensionTax:"Medtag udskudt skat",
       "Årlig ændring i indskud (%)",
 
     desiredLegacy:
-      "Arv til efterkommere (*)",
+      "Arv til efterkommere",
     
     /* =====================================================
    LIFE CYCLE INTRO
@@ -28689,10 +29315,10 @@ lifeCyclePerspective:
   "MINIMÈR ARBEJDSTID - MAKSIMÈR ARV - MAKSIMÈR FORMUE ",
 
 modeTitleFire:
-  "Navigation med passiv indkomst og fremtidigt forbrug",
+  "Passiv indkomst og fremtidigt forbrug",
 
 modeDescriptionFire:
-  "Anvend disse kerneinput for dine direkte eller indirekte beslutninger idag og se konsekvens på 'livsbjerget' nedenfor med nettoformue over tid og det økonomiske balancepunkt. Husk at ændre netop dine personlige formueforhold i 'Mine forpligtelser' herunder også Folkepension og ATP som er indsat some bedste bud allerede. ",
+  "Anvend disse kerneinput for dine direkte eller indirekte beslutninger i dag og se konsekvens på 'livsbjerget' nedenfor med nettoformue over tid og det økonomiske balancepunkt. Husk at ændre netop dine personlige formueforhold i 'Mine forpligtelser' herunder også Folkepension og ATP som er indsat some bedste bud allerede. ",
 
 scenarioDecisionsKicker:
   "DYNAMISK NAVIGATION",
@@ -28872,7 +29498,7 @@ compareScenarios:
   "Udforsker fremtidige hvad-nu-hvis-scenarier",
 
 freedomSubtext:
-  "Estimeret alder for økonomisk frihed under gunstige, forventede og ugunstige afkastscenarier for den frie opsparingsporteføljen gennem resten af din levetid.",
+  "Estimeret alder for økonomisk frihed under gunstige, forventede og ugunstige afkastscenarier for de 2 frie opsparingsporteføljer gennem resten af din levetid. Højere risiko øger usikkerheden. Husk du kan ændre på strukturelle forhold for global økonomi i 'Mine Indstillinger'",
 
 
 /* CORE DECISION */
@@ -29050,8 +29676,37 @@ welcomeKnowledgeTitle:
 welcomeKnowledgeDescription:
   "Sammenhæng mellem forbrug, opsparing og formue over livet - de fire faser i livscyklusmodellen.",
 
+
+householdValuationTitle:
+  "Hvis din husholdning var et børsnoteret selskab – Husholdning A/S (eller andre selskabsformer)",
+
+householdValuationSubtitle:
+  "Hvorfor er økonomisk formue og værdi ikke det samme som bogført formueog værdi?",
+
+householdBookTitle:
+  "Regnskabets værdi",
+
+householdBookText:
+  "Nuværende aktiver minus gæld, opgjort efter regnskabsmæssige principper. Det er den formue, du typisk genkender fra en traditionel selskabsårsopgørelse .",
+
+householdBookResult:
+  "BOGFØRT NETTOFORMUE",
+
+householdEconomicTitle:
+  "Markedets økonomiske værdi",
+
+householdEconomicText:
+  "Værdien af nuværende aktiver og forpligtelser samt nutidsværdien af fremtidige forventede økonomiske pengestrømme, herunder Folkepension og ATP.",
+
+householdEconomicResult:
+  "ØKONOMISK NETTOFORMUE (NEPTOON WEALTH LIFECYCLE METODE)",
+
+householdValuationFootnote:
+  "Vigtigt: Fremtidige pensionsudbetalinger indgår allerede med deres beregnede nutidsværdi. De er ikke kontanter, du kan disponere over i dag. Når pensionerne udbetales, flyttes værdi mellem formuekomponenter – der skabes ikke ny formue alene ved udbetalingen.",
+
+
 welcomePhilosophyTitle:
-  "Filosofi, optimering og afvejelser ",
+  "Filosofi, optimering og afvejelser",
 
 welcomePhilosophySub:
   "Et økonomisk liv er mere end en balance.",
@@ -29177,19 +29832,19 @@ consumptionPhase:
   "Nedsparingsfase",
 
 expectedNominalReturn:
-  "Forventet afkast (brutto)",
+  "Årligt forventet bruttoafkast",
 
 investmentCosts:
-  "Investeringsomkostninger",
+  "Årlige investeringsomkostninger",
 
 expectedRealReturn:
-  "Forventet realafkast",
+  "Årligt forventet afkast efter skat og inflation (realafkast)",
 
 commonAssumptions:
   "Note: Fælles forudsætninger",
 
 realReturnExplanation:
-  "Realafkast efter omkostninger, skat og inflation",
+  "Realafkast efter omkostninger, skat og inflation. I den rækkefølge",
     
 /* MIN KONTO — NYT LAYOUT */
 
@@ -29335,7 +29990,7 @@ headerAccountTitle: "KONTO",
     ========================== */
 
     lifeCycleKicker:
-      "LIVSCYKLUSSENS OVERGANG N* - FRA OPSPARING TIL NEDSPARING",
+      "LIVSCYKLUSSENS FASEOVERGANG N* - FRA OPSPARING TIL NEDSPARING",
 
     lifeCycleTitle:
       "Forventet år for overgang samt usikkerhed",
@@ -29429,7 +30084,7 @@ lifeCycleTargetsNote:
     /* MODEL NOTE */
 
     lifeCycleModelNote:
-      "Note: Profilen repræsenterer den reale formueudvikling. Altså din forventede formueudvikling målt i dagens priser. Realisering af aktiver og passiver samt pensionsudbetalinger behandles som forskydninger mellem formuekomponenter og skaber eller reducerer derfor ikke i sig selv husstandens formue. Toppen af bjerget er præcis hvor din nettoforme inklusive evt. Folkepension kan finansiere din ønskede indkomst efter skat og betalinger på forpligtelser. Læs mere om metode i PDF.",
+      "Note: Profilen repræsenterer den reale formueudvikling. Altså din forventede formueudvikling målt i dagens priser. Vær venligst opmærksom på du kigger på en Økonomisk Livscyklusmodel. Det betyder, at der ikke er et regnskab og en finansiel balance som du kender fra eksempelvis en virksomheds officielle årsregnskab. En virksomhed opgør BOGFØRT VÆRDI og ikke ØKONOMISK VÆRDI. Derfor ser du også at din nettoformue i dag ovenfor er væsentligt større, end du nok lige havde forventet. Var din husholdning sat på aktier og en analytiker skulle prisfastsætte en værdi af din Husholdning A/S ville de økonomiske aktiver og passiver indgå. Det er grundlæggende forskellen mellem bogført værdi (Book Value) og markedsværdi (Market Value). Realisering af aktiver og passiver samt pensionsudbetalinger behandles som forskydninger mellem formuekomponenter og skaber eller reducerer derfor ikke i sig selv husstandens formue. Toppen af bjerget er præcis hvor din nettoforme inklusive evt. Folkepension kan finansiere din ønskede indkomst efter skat og betalinger på forpligtelser. Læs mere om metode i PDF.",
 
 otherAssetTaxNote:
   "Det implicitte årlige forventede afkast er nominelt, efter effektiv (lager) skat, men før inflation. Eksempel: 8 % bruttoafkast på aktier med 17 % effektiv lagerskat svarer til 6,64 % årligt. Modsat realisationsskat på Privat Pension som fungerer som udskudt akkumuleret skat, trækkes skatten her direkte og løbende i investeringsdepotet eller af investeringstypen. Der registreres, modsat Privat Pension, altså ikke en fremtidig ventende gæld på den økonomiske balance da Staten altså løbende opkræver via lagerskat", 
@@ -30494,6 +31149,70 @@ compareUpdateButton();
    2. FIRE / LEGACY PERSPECTIVE
 ===================================================== */
 
+/* =========================================
+   ASK NEPTOON · MODAL BINDING
+========================================= */
+function bindAskNeptoon(){
+
+  const launcher =
+    document.getElementById("askNeptoonLauncher");
+
+  const modal =
+    document.getElementById("askNeptoonModal");
+
+  const close =
+    document.getElementById("askNeptoonClose");
+
+  if(!launcher || !modal || !close){
+    return;
+  }
+
+  /*
+    Move launcher and modal directly under BODY
+    so fixed positioning uses the viewport.
+  */
+
+  document.body.append(launcher, modal);
+
+
+  function setOpen(open){
+
+    modal.hidden = !open;
+
+    launcher.setAttribute(
+      "aria-expanded",
+      String(open)
+    );
+
+    if(open){
+      close.focus();
+    }else{
+      launcher.focus();
+    }
+
+  }
+
+
+  launcher.addEventListener("click", () => {
+    setOpen(modal.hidden);
+  });
+
+
+  close.addEventListener("click", () => {
+    setOpen(false);
+  });
+
+
+  document.addEventListener("keydown", event => {
+
+    if(event.key === "Escape" && !modal.hidden){
+      setOpen(false);
+    }
+
+  });
+
+}	
+
 function setPerspective(mode){
 
   if(!["fire","legacy"].includes(mode)){
@@ -30505,8 +31224,11 @@ function setPerspective(mode){
 
   if(!root) return;
 
-  root.dataset.perspective =
-    mode;
+  root.dataset.perspective = mode;
+
+  /*
+    PERSPECTIVE BUTTONS
+  */
 
   document.querySelectorAll("[data-mode]")
     .forEach(button => {
@@ -30514,7 +31236,10 @@ function setPerspective(mode){
       const active =
         button.dataset.mode === mode;
 
-      button.classList.toggle("active",active);
+      button.classList.toggle(
+        "active",
+        active
+      );
 
       button.setAttribute(
         "aria-pressed",
@@ -30523,27 +31248,47 @@ function setPerspective(mode){
 
     });
 
+  /*
+    LANGUAGE
+    Use global application language state.
+  */
+
   const da =
-    document.documentElement.lang === "da";
+    INIT.lang === "da";
+
+  /*
+    TITLES
+  */
 
   const title =
     document.getElementById("modeTitle");
 
-
-const descDa="Anvend disse kerneinput for dine direkte eller indirekte beslutninger i dag og se konsekvens på 'livsbjerget' nedenfor med nettoformue over tid og det økonomiske balancepunkt. Husk at ændre netop dine personlige formueforhold i 'Mine forpligtelser' herunder også Folkepension og ATP som er indsat some bedste bud allerede.";
-const descEn="Use these core inputs to view consequences of your financial decisions today. See how they shape your lifetime net wealth and the Economic Balance tipping point on the Life Cycle Mountain below. Remember to customize your personal assets and liabilities under 'My Settings' to reflect your individual financial circumstances.";
-
-
-
   if(title){
 
-
-  title.textContent =
-    mode === "fire"
-      ? (da ? "Navigation med passiv indkomst og fremtidigt forbrug" : "Navigation with passive income and future consumption")
-      : (da ? "Navigation med arv til efterkommere og formuer" : "Navigation with legacy, wealth and future consumption");
+    title.textContent =
+      mode === "fire"
+        ? (
+            da
+              ? "Passiv indkomst og fremtidigt forbrug"
+              : "Passive income and future consumption"
+          )
+        : (
+            da
+              ? "Arv til efterkommere og formuer"
+              : "Legacy, wealth and future consumption"
+          );
 
   }
+
+  /*
+    DESCRIPTIONS
+  */
+
+  const descDa =
+    "Anvend disse kerneinput til at se, hvordan dine økonomiske beslutninger i dag påvirker din nettoformue gennem livet og tidspunktet for økonomisk balance. Husk at tilpasse dine personlige aktiver og forpligtelser under 'Mine Indstillinger', herunder Folkepension og ATP, som allerede er indsat med vejledende værdier.";
+
+  const descEn =
+    "Use these core inputs to see how your financial decisions today affect your lifetime net wealth and the timing of Economic Balance Day. Remember to customize your personal assets and liabilities under 'My Settings', including pensions and other financial resources.";
 
   const description =
     document.getElementById("modeDescription");
@@ -30551,19 +31296,15 @@ const descEn="Use these core inputs to view consequences of your financial decis
   if(description){
 
     description.textContent =
-      mode === "fire"
-        ? (
-            da
-              ? descDa
-              : descEn
-          )
-        : (
-            da
-              ?  descDa
-              : descEn
-          );
+      da
+        ? descDa
+        : descEn;
 
   }
+
+  /*
+    SYNCHRONIZE PERSPECTIVE
+  */
 
   syncPerspective();
 
@@ -32170,35 +32911,38 @@ nl111RenderAssetClass();
      SELECTED VARIABLE INFORMATION
   ----------------------------------------------- */
 
-  const selected =
-    NL111_VARIABLES[nl111State.selected];
+const selected =
+  NL111_VARIABLES[nl111State.selected];
 
-  const infoSymbol =
-    document.getElementById("nl111InfoSymbol");
+const infoSymbol =
+  document.getElementById("nl111InfoSymbol");
 
-  const infoText =
-    document.getElementById("nl111InfoText");
+const infoText =
+  document.getElementById("nl111InfoText");
 
-  if(infoSymbol){
-    infoSymbol.textContent =
-      selected.symbol;
-  }
+/* Hide variable symbol */
 
-  if(infoText){
+if(infoSymbol){
+  infoSymbol.style.display = "none";
+}
 
-    const label =
-      lang === "da"
-        ? selected.labelDa
-        : selected.labelEn;
+/* Display description and value */
 
-    infoText.textContent =
-      label +
-      "  ·  " +
-      nl111FormatNumber(
-        nl111State.values[nl111State.selected]
-      );
+if(infoText){
 
-  }
+  const label =
+    lang === "da"
+      ? selected.labelDa
+      : selected.labelEn;
+
+  infoText.textContent =
+    label +
+    "  ·  " +
+    nl111FormatNumber(
+      nl111State.values[nl111State.selected]
+    );
+
+}
 
 
   /* -----------------------------------------------
@@ -49160,6 +49904,7 @@ function renderFreedomDayInformation(freedomDay){
      Currency is shown in the header pill.
   ================================================ */
 
+
 const amountOnly = value => {
 
   if(value === null || value === undefined){
@@ -49171,6 +49916,8 @@ const amountOnly = value => {
     .replace(/€/g, "")
     .replace(/\bkr\.?\b/gi, "")
     .replace(/\s+/g, " ")
+    .trim()
+    .replace(/\s+\.$/, "")
     .trim() || "—";
 
 };
@@ -54132,6 +54879,7 @@ nl111RenderAssetClass();
 console.log("BOOT 21");
 bindFooterInfo();
 initNL111();
+ bindAskNeptoon();
 
 console.log("BOOT 22");
 applyLang("da");
