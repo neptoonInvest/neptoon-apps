@@ -24817,7 +24817,7 @@ const INPUT_BOUNDS = {
 /* =====================================================
    LIFE CYCLE — DYNAMIC INPUT EXPLANATIONS
 ===================================================== */
-
+let nl111RenderTimer = null;
 
 const SCENARIO_EXPLANATIONS = {
 
@@ -31679,6 +31679,23 @@ console.log("BOOT 2 — APP SHELL START");
    1. TAB NAVIGATION
 ===================================================== */
 
+
+
+function nl111ScheduleEngineRender(){
+
+  clearTimeout(nl111RenderTimer);
+
+  nl111RenderTimer = setTimeout(() => {
+
+    nl111RenderTimer = null;
+
+    render();
+    nl111UpdateOutput();
+
+  }, 350);
+
+}
+
 function openTab(name){
 
 
@@ -34658,15 +34675,7 @@ function nl111UpdateLifeCycleInput(){
     =========================================
   */
 
-  render();
-
-  /*
-    =========================================
-    REFRESH NW-111 OUTPUT
-    =========================================
-  */
-
-  nl111UpdateOutput();
+nl111ScheduleEngineRender();
 
 }
 
