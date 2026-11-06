@@ -32696,18 +32696,21 @@ if(nl111Currency){
 }
 
 
+/*
+  ACCOUNT STATUS LABEL
+*/
+
 const accountStatusText =
   document.getElementById("appAccountStatusText");
 
-if(accountStatusText){
+if(accountStatusText && !ACCOUNT.user){
 
   accountStatusText.textContent =
     lang === "da"
       ? "Log ind / Opret konto"
-      : "Log in / Create account";
+      : "Log in / Sign up";
 
 }
-
   /*
     APPLY TRANSLATIONS
   */
