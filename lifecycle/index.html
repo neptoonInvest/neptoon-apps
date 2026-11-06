@@ -24102,7 +24102,7 @@ accountMainHeader{
         <div class="lcAccountBenefit">
           <span class="lcAccountBenefitIcon">☁</span>
           <span data-lang="lcAccountBenefitPremium">
-            Premium: Cloud settings across devices · €5 once
+            Premium: Cloud settings across devices · EUR 5 once
           </span>
         </div>
 
@@ -24171,7 +24171,7 @@ accountMainHeader{
 
         <div class="lcAccountPremiumHeading">
           <strong>Premium</strong>
-          <strong id="lcAccountPremiumPrice">€5</strong>
+          <strong id="lcAccountPremiumPrice">EUR 5</strong>
         </div>
 
         <p data-lang="lcAccountPremiumDescription">
@@ -27356,6 +27356,8 @@ accountIntro:
 accountIdentityTitle: "Full Life Cycle Excel Export",
 accountExcelKicker: "FREE ACCOUNT BENEFIT",
 accountExcelTitle: "Take Your Life Cycle Further in Excel",
+lcAccountRecoveryBack:"Back to Log-in",
+lcAccountRecoverySend:"Send Re-set Link",
 
 accountIdentityIntro:
   "Unlock the complete monthly cash flows and projected Balance Sheet behind your financial future. Extend the analysis with your own assumptions, financial items and discrete future cash flows.",
@@ -27475,11 +27477,14 @@ accountCloudFeatureBalance:
 accountCloudFeaturePortfolios:
   "Remember your selected investment portfolios",
 
+lcAccountRecoveryBack:"Tilbage til Log-in",
+lcAccountRecoverySend:"Send Gendan Link",
+
 accountCloudFeatureRestore:
   "Restore your financial plan across devices",
 
 accountLastCloudSave: "Last cloud save",
-accountSavePlan: "Unlock Cloud Save — €5",
+accountSavePlan: "Unlock Cloud Save — EUR 5",
 
 accountCloudNote:
   "Optional future feature. Payments and cloud storage are not yet enabled.",
@@ -27560,7 +27565,7 @@ generalAssumptions:"General Economic Assumptions",
     addPublicPension:
       "+ Public pension",
 
-lcAccountBenefitPremium:"Premium: Cloud settings across devices · €5 once",
+lcAccountBenefitPremium:"Premium: Cloud settings across devices · EUR 5 once",
 
 
     /* REAL ESTATE */
@@ -28554,6 +28559,9 @@ welcomeKnowledgeTitle:
 welcomeKnowledgeDescription:
   "The relationship between consumption, savings and wealth throughout life — the four phases of the Life Cycle model.",
 
+lcAccountPremiumDescription: `One-time payment. Save and restore your Life Cycle
+  settings across devices.`,
+
 welcomePhilosophyTitle:
   "Philosophy, Optimization and Trade-offs",
 
@@ -28662,6 +28670,8 @@ lcInvestmentTitle:
 
 lcInvestmentDescription:
   "Free portfolios — one already taxed for building wealth and one for the 'retirement' life after Financial balance inflection N*.",
+
+lcAccountRecoveryDescription:"Enter your email address to receive a password reset link.",
 
 
 accountModelLabel:
@@ -28827,6 +28837,8 @@ welcomePrincipleText:
   compareFinancialLife:
     "What could my financial life look like?",
 
+lcAccountRecoveryTitle:"Re-set password",
+
   compareRecords:
     "Records assets and liabilities",
 
@@ -28895,6 +28907,12 @@ headerCompare:"Compare",
 
   lifeObjectiveQuestionsLabel:
     "THE DECISIONS I FACE TODAY",
+
+lcAccountNewPasswordTitle: "Enter new password",
+lcAccountNewPasswordLabel: "New password",
+lcAccountConfirmPasswordLabel: "Confirm new password",
+lcAccountNewPasswordSave: "Update password",
+lcAccountUpgrade: "Upgrade to Premium account",	
 
   lifeObjectiveAQ1:
     "How much should I save each month to build a larger Legacy?",
@@ -29203,7 +29221,7 @@ lcAccountSubtitle:"Opret konto eller login - Premium vælges i tillæg.",
 lcAccountCurrentPlan:"Din nuværende kontoplan",
 
 
-lcAccountBenefitPremium:"Premium: Cloud adgang på tværs af enheder · €5 engangsbetaling",
+lcAccountBenefitPremium:"Premium: Cloud adgang på tværs af enheder · EUR 5 engangsbetaling",
 
   lifeIntroTitle:
     "Et kort over dit økonomiske liv — ikke et regnskab.",
@@ -29282,6 +29300,8 @@ accountCalculatorDescription:
 
   compareRecords:
     "Registrerer aktiver og passiver",
+
+lcAccountRecoveryTitle:"Gendan password",
 
   compareConnects:
     "Forbinder økonomiske ressourcer over tid",
@@ -29652,6 +29672,9 @@ accountCoreAllocation:
   "Aktivfordeling",
 
 
+lcAccountRecoveryDescription:"Indtast venligst din e-mail så sender vi et password 'Gendan' link.",
+
+
 
 
 welcomeObjectiveSub:
@@ -29865,7 +29888,7 @@ accountCloudFeatureRestore:
   "Gendan din finansielle plan på tværs af enheder",
 
 accountLastCloudSave: "Seneste lagring i skyen",
-accountSavePlan: "Få adgang til Cloud-lagring — €5",
+accountSavePlan: "Få adgang til Cloud-lagring — EUR 5",
 
 accountCloudNote:
   "Valgfri fremtidig funktion. Betaling og cloud-lagring er endnu ikke aktiveret.",
@@ -30698,6 +30721,8 @@ commonAssumptions:
 
 realReturnExplanation:
   "Realafkast efter omkostninger, skat og inflation. I den rækkefølge",
+
+lcAccountPremiumDescription: "Engangsbetaling. Gem og gendan dine Life Cycle-indstillinger på tværs af dine enheder.",
     
 /* MIN KONTO — NYT LAYOUT */
 
@@ -30969,6 +30994,12 @@ fireLegacyDescription: "Justér målet for arv, mens øvrige økonomiske input f
 
     expectedInflation:
       "Realiseret inflation (ingen påvirkning på forv. bruttoafkast)",
+
+lcAccountNewPasswordTitle: "Indtast ny adgangskode",
+lcAccountNewPasswordLabel: "Ny adgangskode",
+lcAccountConfirmPasswordLabel: "Bekræft ny adgangskode",
+lcAccountNewPasswordSave: "Opdatér adgangskode",
+lcAccountUpgrade: "Opgradér til Premium-konto",
 
     risk1ExpectedReturn:
       "Risiko 1 · forventet nominelt afkast",
@@ -53442,8 +53473,8 @@ async function submitLifeCycleAccount(event){
       if(!data.session){
 
         message.textContent = da
-          ? "Hvis registreringen er mulig, modtager du en bekræftelsesmail. Har du allerede en konto, skal du vælge Log ind."
-          : "If registration is available, you will receive a confirmation email. Already have an account? Select Log in.";
+          ? "Hvis registreringen er mulig, modtager du en bekræftelsesmail. Husk at også eventuelt kigge i dit 'spamfilter', hvis den ikke er modtaget inden for 10 sekunder. Har du allerede en konto, skal du vælge Log ind."
+          : "If registration is available, you will receive a confirmation email. If not received within 10 seconds try also look in your 'spam filter'. Already have an account? Select Log in.";
 
         return;
 
