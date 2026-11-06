@@ -28854,6 +28854,8 @@ welcomePrincipleText:
   lifeObjectivesTitle:
     "One model. Many financial objectives.",
 
+lcAccountCurrentPlan:"Your Current Plan",
+
   lifeObjectivesText:
     "Different personal priorities lead to different financial decisions. Here are just two examples of how Life Cycle connects your future ambitions with the choices you face today.",
 
@@ -29196,6 +29198,9 @@ lifePhasesIntro:
 
 
 lcAccountSubtitle:"Opret konto eller login - Premium vælges i tillæg.",
+
+
+lcAccountCurrentPlan:"Din nuværende kontoplan",
 
 
 lcAccountBenefitPremium:"Premium: Cloud adgang på tværs af enheder · €5 engangsbetaling",
@@ -53476,18 +53481,96 @@ async function submitLifeCycleAccount(event){
 
     openLifeCycleLogin();
 
-  }catch(error){
+}catch(error){
 
-    console.error("ACCOUNT AUTH ERROR",error);
+  console.error("ACCOUNT AUTH ERROR", error);
 
-    message.textContent =
-      error.message || (
-        da
-          ? "Login mislykkedes. Prøv igen."
-          : "Authentication failed. Please try again."
-      );
+  const da = INIT.lang === "da";
 
-  }finally{
+  const code =
+    String(error?.code || "").toLowerCase();
+
+  const msg =
+    String(error?.message || "").toLowerCase();
+
+  let friendlyMessage;
+
+  /*
+    INVALID EMAIL OR PASSWORD
+  */
+
+  if(
+    code === "invalid_credentials" ||
+    msg.includes("invalid login credentials")
+  ){
+
+    friendlyMessage = da
+      ? "Vi kunne ikke logge dig ind. Kontrollér din e-mail og adgangskode, og prøv igen."
+      : "We couldn't log you in. Please check your email and password and try again.";
+
+  }
+
+  /*
+    EMAIL NOT CONFIRMED
+  */
+
+  else if(
+    code === "email_not_confirmed" ||
+    msg.includes("email not confirmed")
+  ){
+
+    friendlyMessage = da
+      ? "Du skal bekræfte din e-mail, før du kan logge ind. Tjek din indbakke."
+      : "Please confirm your email address before logging in. Check your inbox.";
+
+  }
+
+  /*
+    PASSWORD REQUIREMENTS
+  */
+
+  else if(
+    code === "weak_password" ||
+    msg.includes("password should be") ||
+    msg.includes("password is too short")
+  ){
+
+    friendlyMessage = da
+      ? "Adgangskoden opfylder ikke sikkerhedskravene. Vælg en længere og mere sikker adgangskode."
+      : "Your password doesn't meet the security requirements. Please choose a longer, stronger password.";
+
+  }
+
+  /*
+    TOO MANY ATTEMPTS
+  */
+
+  else if(
+    code === "over_request_rate_limit" ||
+    msg.includes("rate limit")
+  ){
+
+    friendlyMessage = da
+      ? "Der har været for mange forsøg. Vent lidt, og prøv igen."
+      : "Too many attempts. Please wait a moment before trying again.";
+
+  }
+
+  /*
+    GENERAL AUTHENTICATION ERROR
+  */
+
+  else{
+
+    friendlyMessage = da
+      ? "Noget gik galt. Prøv igen om et øjeblik."
+      : "Something went wrong. Please try again in a moment.";
+
+  }
+
+  message.textContent = friendlyMessage;
+
+}finally{
 
     button.disabled = false;
 
