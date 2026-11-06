@@ -16636,6 +16636,125 @@ accountMainHeader{
   border-bottom:none !important;
 }
 
+/* ==========================================
+   NW-111 · LCD STARTUP CURTAIN
+=========================================== */
+
+.nl111Screen{
+  position:relative;
+}
+
+.nl111BootScreen{
+  position:absolute;
+  inset:0;
+  z-index:20;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#b9caa5;
+
+  color:#293e2b;
+
+  text-align:center;
+
+  overflow:hidden;
+}
+
+.nl111BootIdentity{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+}
+
+.nl111BootLogo{
+  font-size:25px;
+  font-weight:800;
+  letter-spacing:3px;
+  line-height:1.1;
+}
+
+.nl111BootSubtitle{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1.4px;
+}
+
+.nl111BootModel{
+  margin-top:14px;
+  font-size:9px;
+  letter-spacing:1px;
+  opacity:.75;
+}
+
+/* ==========================================
+   NW-111 · BOOT ANIMATION
+=========================================== */
+
+.nl111BootLoading{
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+}
+
+.nl111BootLoadingTitle{
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1.5px;
+}
+
+.nl111BootLoadingText{
+  display:flex;
+  align-items:center;
+  gap:5px;
+
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+.nl111BootCursor{
+  display:inline-block;
+  width:9px;
+  height:15px;
+  background:#293e2b;
+
+  animation:nl111CursorBlink .7s steps(1) infinite;
+}
+
+@keyframes nl111CursorBlink{
+  50%{
+    opacity:0;
+  }
+}
+
+/* LOADING STATE */
+
+.nl111BootScreen.is-loading .nl111BootIdentity{
+  display:none;
+}
+
+.nl111BootScreen.is-loading .nl111BootLoading{
+  display:flex;
+}
+
+/* LIVE STATE */
+
+.nl111BootScreen.is-live{
+  display:none;
+}
+
+/* NW-111 · Hide secondary LCD until startup completes */
+
+#nl111Calculator:not(.nl111-awake)
+.nl111InfoDisplay span{
+  visibility:hidden !important;
+}
 
 </style>
 
@@ -16992,6 +17111,48 @@ accountMainHeader{
         =========================================== -->
 
         <div class="nl111Screen">
+
+
+<!-- ==========================================
+     NW-111 · STARTUP LCD CURTAIN
+=========================================== -->
+
+<div
+  class="nl111BootScreen"
+  id="nl111BootScreen"
+  aria-hidden="true">
+
+  <div class="nl111BootIdentity">
+
+    <div class="nl111BootLogo">
+      NEPTOON
+    </div>
+
+    <div class="nl111BootSubtitle">
+      LIFE CYCLE COMPUTER
+    </div>
+
+    <div class="nl111BootModel">
+      NW-111 · © 2026
+    </div>
+
+  </div>
+
+<div class="nl111BootLoading">
+
+  <div class="nl111BootLoadingTitle">
+    NEPTOON SYSTEM
+  </div>
+
+  <div class="nl111BootLoadingText">
+    LOADING...<span class="nl111BootCursor"></span>
+  </div>
+
+</div>
+
+
+</div>
+
 
           <div class="nl111ScreenInputs">
 
@@ -33718,7 +33879,65 @@ function clamp(value,min,max){
    LIFE CYCLE — CALCULATOR PAD
 ========================================= */
 
+/* ==========================================
+   NW-111 · THEATRICAL STARTUP
+=========================================== */
 
+function initNL111Boot(){
+
+  const calculator =
+    document.getElementById("nl111Calculator");
+
+  const bootScreen =
+    document.getElementById("nl111BootScreen");
+
+  if(!calculator || !bootScreen) return;
+
+  let bootState = "idle";
+
+  function interceptFirstClick(event){
+
+    if(bootState === "live") return;
+
+    // Prevent existing calculator buttons
+    // from responding during startup.
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    if(bootState !== "idle") return;
+
+    bootState = "loading";
+
+    bootScreen.classList.add("is-loading");
+
+    setTimeout(() => {
+
+      bootState = "live";
+
+      bootScreen.classList.remove("is-loading");
+      bootScreen.classList.add("is-live");
+calculator.classList.add("nl111-awake");
+
+      calculator.removeEventListener(
+        "click",
+        interceptFirstClick,
+        true
+      );
+
+    }, 2400);
+
+  }
+
+  // Capture clicks before existing keypad handlers.
+
+  calculator.addEventListener(
+    "click",
+    interceptFirstClick,
+    true
+  );
+
+}
 
 /* =====================================================
    NEPTOON NW-111
@@ -56380,7 +56599,7 @@ initExcelAccessSection();
 initFinancialTaxAssumptions();
 bindScenarioExplanations();
 bindPortfolioSettingsLink();
-
+initNL111Boot();
 console.log("BOOT 19");
 bindScenarioExplanations();
 bindLifeCycleAccountModal();
