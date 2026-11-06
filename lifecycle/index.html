@@ -32695,6 +32695,19 @@ if(nl111Currency){
 
 }
 
+
+const accountStatusText =
+  document.getElementById("appAccountStatusText");
+
+if(accountStatusText){
+
+  accountStatusText.textContent =
+    lang === "da"
+      ? "Log ind / Opret konto"
+      : "Log in / Create account";
+
+}
+
   /*
     APPLY TRANSLATIONS
   */
