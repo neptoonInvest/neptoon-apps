@@ -35929,6 +35929,9 @@ function readInputs(){
     );
 
 
+enforceFutureAssetAges(currentAge);
+
+
   /*
     INFLATION
   */
@@ -36510,10 +36513,13 @@ capitalGainsTax:
 */
 
 
+
 futureResources:[
 
   /*
-    HERITAGE — UNCHANGED
+    HERITAGE
+    Minimum realization age:
+    currentAge + 1
   */
 
   {
@@ -36525,7 +36531,7 @@ futureResources:[
     realizationAge:
       clamp(
         numberValue("heritageAge"),
-        currentAge,
+        currentAge + 1,
         deathAge
       ),
 
@@ -36534,7 +36540,7 @@ futureResources:[
       "heritageAmount",
       clamp(
         numberValue("heritageAge"),
-        currentAge,
+        currentAge + 1,
         deathAge
       ),
       componentEnabled("heritage")
@@ -36542,81 +36548,81 @@ futureResources:[
   },
 
 
+  /*
+    OTHER REALIZABLE ASSETS
+    Four independent rows.
 
-/*
-  OTHER REALIZABLE ASSETS
-  Four independent rows.
+    Danish annual taxation:
+      Other 1: ASK              17.0%
+      Other 2: Aldersopsparing  15.3%
+      Other 3:                   0.0%
+      Other 4:                   0.0%
 
-  Danish annual taxation:
-    Other 1: ASK             17.0%
-    Other 2: Aldersopsparing 15.3%
-    Other 3:                 0.0%
-    Other 4:                 0.0%
-*/
+    Minimum realization age:
+      currentAge + 1
+  */
 
-...[
-  {
-    key:"other",
-    nameId:"otherName",
-    todayId:"otherValueToday",
-    futureId:"otherAmount",
-    ageId:"otherAge",
-    annualTaxRate:INIT.lang === "da" ? 0.17 : 0
-  },
-  {
-    key:"other2",
-    nameId:"otherName2",
-    todayId:"otherValueToday2",
-    futureId:"otherAmount2",
-    ageId:"otherAge2",
-    annualTaxRate:INIT.lang === "da" ? 0.153 : 0
-  },
-  {
-    key:"other3",
-    nameId:"otherName3",
-    todayId:"otherValueToday3",
-    futureId:"otherAmount3",
-    ageId:"otherAge3",
-    annualTaxRate:0
-  },
-  {
-    key:"other4",
-    nameId:"otherName4",
-    todayId:"otherValueToday4",
-    futureId:"otherAmount4",
-    ageId:"otherAge4",
-    annualTaxRate:0
-  }
-].map(item => {
+  ...[
+    {
+      key:"other",
+      nameId:"otherName",
+      todayId:"otherValueToday",
+      futureId:"otherAmount",
+      ageId:"otherAge",
+      annualTaxRate:INIT.lang === "da" ? 0.17 : 0
+    },
+    {
+      key:"other2",
+      nameId:"otherName2",
+      todayId:"otherValueToday2",
+      futureId:"otherAmount2",
+      ageId:"otherAge2",
+      annualTaxRate:INIT.lang === "da" ? 0.153 : 0
+    },
+    {
+      key:"other3",
+      nameId:"otherName3",
+      todayId:"otherValueToday3",
+      futureId:"otherAmount3",
+      ageId:"otherAge3",
+      annualTaxRate:0
+    },
+    {
+      key:"other4",
+      nameId:"otherName4",
+      todayId:"otherValueToday4",
+      futureId:"otherAmount4",
+      ageId:"otherAge4",
+      annualTaxRate:0
+    }
+  ].map(item => {
 
-  const enabled =
-    componentEnabled("other");
+    const enabled =
+      componentEnabled("other");
 
-  const realizationAge =
-    clamp(
-      numberValue(item.ageId),
-      currentAge,
-      deathAge
-    );
+    const realizationAge =
+      clamp(
+        numberValue(item.ageId),
+        currentAge + 1,
+        deathAge
+      );
 
-  return {
-    key:item.key,
-    name:byId(item.nameId)?.value || "",
-    enabled,
-    realizationAge,
-
-    ...impliedFutureResource(
-      item.todayId,
-      item.futureId,
-      realizationAge,
+    return {
+      key:item.key,
+      name:byId(item.nameId)?.value || "",
       enabled,
-      item.annualTaxRate
-    )
-  };
+      realizationAge,
 
-}),
+      ...impliedFutureResource(
+        item.todayId,
+        item.futureId,
+        realizationAge,
+        enabled,
+        item.annualTaxRate
+      )
+    };
 
-
+  })
 
 ],
 
@@ -44836,7 +44842,7 @@ function bindComponentButtons(){
               );
 
 
-            render();
+            renderImmediately();
 
           }
         );
@@ -45104,33 +45110,44 @@ function bindInputs(){
     INPUT EVENTS
   */
 
-  document.addEventListener("input", event => {
+document.addEventListener("input", event => {
 
-    const input = event.target;
+  const input = event.target;
 
-    if(!input.matches("input, select")){
-      return;
-    }
+  if(!input.matches("input, select")){
+    return;
+  }
 
-    /*
-      SLIDERS: IMMEDIATE
-    */
+if(input.matches(".otherAssetName")){
+  return;
+}
 
-    if(input.matches('input[type="range"]')){
+  /*
+    ACCOUNT MODAL — NO ENGINE
+  */
 
-      renderImmediately();
-      return;
+  if(input.closest("#lcAccountOverlay")){
+    return;
+  }
 
-    }
+  /*
+    SLIDERS: IMMEDIATE
+  */
 
-    /*
-      OTHER INPUTS: DEBOUNCED
-    */
+  if(input.matches('input[type="range"]')){
 
-    scheduleRender();
+    renderImmediately();
+    return;
 
-  });
+  }
 
+  /*
+    OTHER INPUTS: DEBOUNCED
+  */
+
+  scheduleRender();
+
+});
   /*
     CHANGE EVENTS
   */
@@ -45147,6 +45164,18 @@ document.addEventListener("change", event => {
     return;
   }
 
+if(input.matches(".otherAssetName")){
+  return;
+}
+
+  /*
+    ACCOUNT MODAL — NO ENGINE
+  */
+
+  if(input.closest("#lcAccountOverlay")){
+    return;
+  }
+
   /*
     PAINT INPUT EXPLANATION
   */
@@ -45154,6 +45183,10 @@ document.addEventListener("change", event => {
   if(input.id){
     paintScenarioExplanation(input.id);
   }
+
+  /*
+    MONEY FORMATTING
+  */
 
   if(input.classList.contains("money")){
     formatMoneyInput(input);
@@ -45168,6 +45201,10 @@ document.addEventListener("change", event => {
     return;
   }
 
+  /*
+    FINANCIAL ENGINE — DEBOUNCED
+  */
+
   scheduleRender();
 
 });
@@ -45179,6 +45216,19 @@ document.addEventListener("change", event => {
   document
     .querySelectorAll(".money")
     .forEach(formatMoneyInput);
+
+}
+
+function isAccountInput(input){
+
+  return !!input.closest(
+    [
+      "#lcAccountModal",
+      "#lcLoginModal",
+      "#lcSignupModal",
+      "#lcPasswordModal"
+    ].join(",")
+  );
 
 }
 /* =====================================================
@@ -47488,10 +47538,27 @@ function paintMortgageUI(){
     MORTGAGE MODEL EXPLANATION
   */
 
-  const explanation =
-    DA
-      ? "Gælden beregnes nominelt og omregnes hver måned til nutidens købekraft."
-      : "Debt is modeled nominally and converted to today's purchasing power each month.";
+/*
+  MORTGAGE MODEL EXPLANATION
+
+  Mortgage is conditional on real estate.
+*/
+
+const hasRealEstate =
+  componentEnabled("realEstate");
+
+const explanation =
+  enabled && !hasRealEstate
+    ? (
+        DA
+          ? "OBS: Tilføj først Privat ejendom under Aktiver og passiver. Realkreditlånet indgår først i Life Cycle-modellen, når ejendommen er tilføjet."
+          : "ATTENTION: Add Real estate under Assets & Liabilities. The mortgage will only affect the Life Cycle model once the property has been added."
+      )
+    : (
+        DA
+          ? "Gælden beregnes nominelt og omregnes hver måned til nutidens købekraft."
+          : "Debt is modeled nominally and converted to today's purchasing power each month."
+      );
 
 
   /*
@@ -47504,6 +47571,15 @@ function paintMortgageUI(){
       `${status} · ${explanation}`;
 
   }
+
+if(byId("mortgageStatus")){
+
+  byId("mortgageStatus").style.color =
+    enabled && !hasRealEstate
+      ? "#dc2626"
+      : "";
+
+}
 
 
 
@@ -55225,6 +55301,45 @@ if(
   renderFolkepension();
 
 }
+
+function enforceFutureAssetAges(currentAge){
+
+  const minAge = currentAge + 1;
+
+  [
+    "heritageAge",
+    "otherAge",
+    "otherAge2",
+    "otherAge3",
+    "otherAge4"
+  ].forEach(id => {
+
+    const input = document.getElementById(id);
+
+    if(!input){
+      return;
+    }
+
+    input.min = String(minAge);
+
+    const age = Number(input.value);
+
+    if(
+      input.value.trim() === "" ||
+      !Number.isFinite(age) ||
+      age < minAge
+    ){
+      input.value = String(minAge);
+    }
+
+  });
+
+}
+
+
+
+
+
 
 function renderFolkepension(){
 
