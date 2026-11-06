@@ -35540,6 +35540,7 @@ function bindPensionAgeHint(){
 
 }
 
+
 function updatePensionAgeHint(){
 
   const hint =
@@ -35553,10 +35554,30 @@ function updatePensionAgeHint(){
   }
 
   const currentAge =
-    Number(document.getElementById("currentAge")?.value);
+    Number(byId("currentAge")?.value);
 
   const pensionAge =
-    Number(document.getElementById("publicPensionAge")?.value);
+    Number(byId("publicPensionAge")?.value);
+
+  /*
+    PENSION AMOUNTS
+
+    Folkepension: monthly
+    ATP: annual
+  */
+
+  const publicPension =
+    moneyValue("publicPension");
+
+  const atpAnnual =
+    moneyValue("supplementaryPensionAnnual");
+
+  const atpMonthly =
+    atpAnnual / 12;
+
+  /*
+    VALIDATION
+  */
 
   if(
     !Number.isFinite(currentAge) ||
@@ -35566,13 +35587,23 @@ function updatePensionAgeHint(){
     return;
   }
 
+  /*
+    DANISH NUMBER FORMAT
+  */
+
+  const formatDKK = value =>
+    Math.round(value).toLocaleString("da-DK");
+
+  /*
+    PAINT PENSION INFORMATION
+  */
+
   hint.textContent =
-    `Folkepension fra ${pensionAge} år · ATP: 20.000 kr./år`;
+    `Folkepension fra ${pensionAge} år: ${formatDKK(publicPension)} kr./md. · ATP: ${formatDKK(atpMonthly)} kr./md.`;
 
   hint.style.display = "block";
 
 }
-
 
 function bindLifeStageNarrative(){
 
@@ -46791,12 +46822,18 @@ function guardLifeAges(){
   }
 
 
-  currentEl.value =
-    String(currentAge);
+/*
+  Do not overwrite an age field
+  while the user is editing it.
+*/
 
-  deathEl.value =
-    String(deathAge);
+if(document.activeElement !== currentEl){
+  currentEl.value = String(currentAge);
+}
 
+if(document.activeElement !== deathEl){
+  deathEl.value = String(deathAge);
+}
 
   guardDependentAges(
     currentAge,
@@ -56787,10 +56824,26 @@ document
   ?.addEventListener("change", initFolkepension);
   
   
-  
-  
-  
-  
+["currentAge", "deathAge"].forEach(id => {
+
+  byId(id)?.addEventListener("blur", () => {
+
+    guardLifeAges();
+
+    if(id === "currentAge"){
+      updatePensionAgeHint();
+    }
+
+    console.log(
+      "AGE BLUR",
+      id,
+      "next focus:",
+      document.activeElement?.id
+    );
+
+  });
+
+});
   
   
   
