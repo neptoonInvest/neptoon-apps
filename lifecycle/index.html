@@ -31889,9 +31889,27 @@ function nl111ScheduleEngineRender(){
 
   clearTimeout(nl111RenderTimer);
 
+  if(!nl111GuardAgePair()){
+    console.warn(
+      "NW-111 AGE CONTRADICTION — ENGINE BLOCKED",
+      nl111State.values.age,
+      nl111State.values.death
+    );
+    return;
+  }
+
   nl111RenderTimer = setTimeout(() => {
 
     nl111RenderTimer = null;
+
+    /*
+      Revalidate immediately before
+      running the engine.
+    */
+
+    if(!nl111GuardAgePair()){
+      return;
+    }
 
     render();
     nl111UpdateOutput();
@@ -34204,7 +34222,25 @@ function nl111FormatNumber(value){
 /* =====================================================
    RENDER CALCULATOR
 ===================================================== */
+function nl111GuardAgePair(){
 
+  const age =
+    Number(nl111State.values.age);
+
+  const death =
+    Number(nl111State.values.death);
+
+  return (
+    Number.isInteger(age) &&
+    Number.isInteger(death) &&
+    age >= 18 &&
+    age <= 120 &&
+    death >= 40 &&
+    death <= 120 &&
+    death > age
+  );
+
+}
 function renderNL111(){
 
   const root =
@@ -34249,9 +34285,7 @@ const isPendingAge =
   nl111State.entry !== "";
 
 const displayValue =
-  isPendingAge
-    ? Number(nl111State.entry)
-    : nl111State.values[key];
+  nl111State.values[key];
 
 output.textContent =
   nl111FormatNumber(displayValue);
@@ -34296,10 +34330,9 @@ if(infoText){
      selectedKey === "death") &&
     nl111State.entry !== "";
 
-  const displayValue =
-    isPendingAge
-      ? Number(nl111State.entry)
-      : nl111State.values[selectedKey];
+const displayValue =
+  nl111State.values[selectedKey];
+
 
   infoText.textContent =
     label +
@@ -34503,7 +34536,12 @@ function nl111EnterDigit(digit){
       Always paint LCD first.
     */
 
-    renderNL111();
+   
+if(!valid){
+  return;
+}
+
+renderNL111();
 
     /*
       Synchronize valid ages
