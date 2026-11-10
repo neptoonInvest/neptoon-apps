@@ -34456,54 +34456,89 @@ function nl111EnterDigit(digit){
     true;
 
   /*
+    =========================================
     AGE / DEATH
-    Keep entry local until committed.
+    =========================================
   */
-if(
-  selected === "age" ||
-  selected === "death"
-){
 
-  const age =
-    selected === "age"
-      ? value
-      : Number(nl111State.values.age);
-
-  const death =
+  if(
+    selected === "age" ||
     selected === "death"
-      ? value
-      : Number(nl111State.values.death);
+  ){
 
-  const valid =
-    Number.isInteger(value) &&
-    age >= 18 &&
-    age <= 120 &&
-    death >= 40 &&
-    death <= 120 &&
-    death > age;
+    const age =
+      selected === "age"
+        ? value
+        : Number(nl111State.values.age);
 
-  /*
-    Commit immediately when valid.
-    Keep partial entries buffered.
-  */
+    const death =
+      selected === "death"
+        ? value
+        : Number(nl111State.values.death);
 
-  if(valid){
+    const valid =
+      Number.isInteger(value) &&
+      age >= 18 &&
+      age <= 120 &&
+      death >= 40 &&
+      death <= 120 &&
+      death > age;
 
-    nl111State.values[selected] = value;
-    nl111State.dirty = true;
+    /*
+      Commit only valid ages.
+      Keep incomplete entries on LCD.
+    */
 
-    nl111UpdateLifeCycleInput();
+    if(valid){
+
+      nl111State.values[selected] =
+        value;
+
+      nl111State.dirty =
+        true;
+
+    }
+
+    /*
+      Always paint LCD first.
+    */
+
+    renderNL111();
+
+    /*
+      Synchronize valid ages
+      with Life Cycle.
+    */
+
+    if(valid){
+
+      nl111UpdateLifeCycleInput();
+
+      /*
+        Reset entry buffer.
+
+        The variable remains selected,
+        but the next digit starts
+        a completely new entry.
+      */
+
+      nl111State.editing =
+        false;
+
+      nl111State.entry =
+        "";
+
+    }
+
+    return;
 
   }
 
-  renderNL111();
-  return;
-
-}
-
   /*
+    =========================================
     OTHER VARIABLES
     Preserve live synchronization.
+    =========================================
   */
 
   nl111State.values[selected] =
@@ -34513,10 +34548,10 @@ if(
     true;
 
   renderNL111();
+
   nl111UpdateLifeCycleInput();
 
 }
-
 
 /* =====================================================
    BACKSPACE
@@ -46771,37 +46806,30 @@ function guardAllMoneyInputs(){
 
 function guardLifeAges(){
 
-  const currentEl =
-    byId("currentAge");
+  const currentEl = byId("currentAge");
+  const deathEl   = byId("deathAge");
 
-  const deathEl =
-    byId("deathAge");
+  if(!currentEl || !deathEl){
+    return;
+  }
 
+  /*
+    Do not validate ages while the user
+    is actively editing either field.
+  */
 
   if(
-    !currentEl ||
-    !deathEl
+    document.activeElement === currentEl ||
+    document.activeElement === deathEl
   ){
     return;
   }
 
-
-  let currentAge =
-    Number(
-      currentEl.value
-    );
-
-  let deathAge =
-    Number(
-      deathEl.value
-    );
-
+  let currentAge = Number(currentEl.value);
+  let deathAge   = Number(deathEl.value);
 
   /*
     FALLBACKS
-
-    Do NOT use numberValue() here because
-    blank input is converted to zero.
   */
 
   if(
@@ -46811,7 +46839,6 @@ function guardLifeAges(){
     currentAge = 50;
   }
 
-
   if(
     deathEl.value.trim() === "" ||
     !Number.isFinite(deathAge)
@@ -46819,57 +46846,45 @@ function guardLifeAges(){
     deathAge = 90;
   }
 
-
   /*
     HARD DOMAIN LIMITS
   */
 
-  currentAge =
-    clamp(
-      currentAge,
-      INPUT_BOUNDS.currentAge.min,
-      INPUT_BOUNDS.currentAge.max
-    );
+  currentAge = clamp(
+    currentAge,
+    INPUT_BOUNDS.currentAge.min,
+    INPUT_BOUNDS.currentAge.max
+  );
 
-
-  deathAge =
-    clamp(
-      deathAge,
-      INPUT_BOUNDS.deathAge.min,
-      INPUT_BOUNDS.deathAge.max
-    );
-
+  deathAge = clamp(
+    deathAge,
+    INPUT_BOUNDS.deathAge.min,
+    INPUT_BOUNDS.deathAge.max
+  );
 
   /*
-    EXPECTED LIFETIME MUST BE
-    GREATER THAN CURRENT AGE
+    DEATH AGE MUST EXCEED CURRENT AGE
   */
 
-  if(
-    deathAge <= currentAge
-  ){
+  if(deathAge <= currentAge){
 
-    deathAge =
-      Math.min(
-        INPUT_BOUNDS.deathAge.max,
-        currentAge + 1
-      );
+    deathAge = Math.min(
+      INPUT_BOUNDS.deathAge.max,
+      currentAge + 1
+    );
 
   }
 
+  /*
+    WRITE VALIDATED VALUES
+  */
 
-/*
-  Do not overwrite an age field
-  while the user is editing it.
-*/
-
-if(document.activeElement !== currentEl){
   currentEl.value = String(currentAge);
-}
+  deathEl.value   = String(deathAge);
 
-if(document.activeElement !== deathEl){
-  deathEl.value = String(deathAge);
-}
+  /*
+    VALIDATE DEPENDENT AGES
+  */
 
   guardDependentAges(
     currentAge,
@@ -46877,7 +46892,6 @@ if(document.activeElement !== deathEl){
   );
 
 }
-
 
 function guardDependentAges(
   currentAge,
@@ -52649,7 +52663,6 @@ function bindBankLoanToggle(){
    TAX PAINTER DYNAMIC
 ===================================================== */
 
-
 function guardWelcomeAges(){
 
   const currentEl = byId("currentAge");
@@ -52659,11 +52672,22 @@ function guardWelcomeAges(){
 
   const normalize = (el, fallback, min, max) => {
 
+    /*
+      Never normalize the field
+      while the user is editing it.
+    */
+
+    if(document.activeElement === el){
+      return null;
+    }
+
     const raw = Number(el.value);
 
-    const value = Number.isFinite(raw) && el.value !== ""
-      ? raw
-      : fallback;
+    const value =
+      Number.isFinite(raw) &&
+      el.value.trim() !== ""
+        ? raw
+        : fallback;
 
     const integer = Math.round(value);
 
@@ -52677,9 +52701,28 @@ function guardWelcomeAges(){
     return guarded;
   };
 
+  /*
+    CURRENT AGE
+  */
+
   const currentAge = normalize(
-    currentEl, 50, 18, 99
+    currentEl,
+    50,
+    18,
+    99
   );
+
+  /*
+    DEATH AGE
+
+    When currentAge is being edited,
+    use its existing valid value only
+    for the dependent age boundary.
+  */
+
+  if(currentAge === null){
+    return;
+  }
 
   normalize(
     deathEl,
@@ -52689,9 +52732,6 @@ function guardWelcomeAges(){
   );
 
 }
-
-
-
 function collectDirectAssetAssumptions(){
 
   const isDA = INIT.lang === "da";
