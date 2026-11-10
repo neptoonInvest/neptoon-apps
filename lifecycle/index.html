@@ -31896,7 +31896,7 @@ function nl111ScheduleEngineRender(){
     render();
     nl111UpdateOutput();
 
-  }, 350);
+  }, 750);
 
 }
 
@@ -34347,15 +34347,15 @@ if(infoText){
 
       status.textContent =
         lang === "da"
-          ? "INPUT"
-          : "INPUT";
+          ? "N* OUTPUT: "
+          : "N* OUTPUT: ";
 
     }else if(nl111State.dirty){
 
       status.textContent =
         lang === "da"
-          ? "UPDATED		"
-          : "UPDATED";
+          ? "N* OUTPUT: "
+          : "N* OUTPUT: ";
 
     }else{
 
