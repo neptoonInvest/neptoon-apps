@@ -34517,6 +34517,21 @@ function nl111EnterDigit(digit){
       death <= 120 &&
       death > age;
 
+/*
+  Reject contradictory ages.
+  Reset keypad entry.
+*/
+
+if(!valid && entry.length >= 2){
+
+  nl111State.entry = "";
+  nl111State.editing = false;
+
+  renderNL111();
+
+  return;
+}
+
     /*
       Commit only valid ages.
       Keep incomplete entries on LCD.
