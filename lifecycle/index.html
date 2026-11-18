@@ -17893,8 +17893,40 @@ accountMainHeader{
   }
 
 }
+/* INACTIVE NAVIGATION BUTTONS */
 
+.app-nav button:not(.active):not([aria-selected="true"]){
+  background:#F3EFE5 !important;
+  color:#14243B !important;
+}
 
+/* ACTIVE NAVIGATION BUTTON */
+
+.app-nav button.active,
+.app-nav button[aria-selected="true"]{
+  background:#4E79BD !important;
+  color:#FFFFFF !important;
+}
+/* LIFE CYCLE · MOBILE NAVIGATION COLORS */
+
+@media screen and (max-width:600px){
+
+  /* Inactive buttons · warm ivory */
+  .app-nav button:not(.active):not([aria-selected="true"]){
+    background:#FAF9F6 !important;
+    color:#14243B !important;
+    -webkit-text-fill-color:#14243B !important;
+  }
+
+  /* Active button · Neptoon blue */
+  .app-nav button.active,
+  .app-nav button[aria-selected="true"]{
+    background:#4E79BD !important;
+    color:#FFFFFF !important;
+    -webkit-text-fill-color:#FFFFFF !important;
+  }
+
+}
 
 	
 </style>
