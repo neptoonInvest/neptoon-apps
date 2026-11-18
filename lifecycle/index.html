@@ -58203,7 +58203,7 @@ document
   
   
   
-  console.log("BOOT 24");
+console.log("BOOT 24");
 
 (async function(){
 
@@ -58212,8 +58212,14 @@ document
   console.log("BOOT 25 — AUTH INITIALIZED");
 
 })();
-  
-  <script>
+
+</script>
+
+<!-- ==========================================
+     LIFE CYCLE · PWA SERVICE WORKER
+========================================== -->
+
+<script>
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("./sw.js", {
@@ -58228,7 +58234,6 @@ if ("serviceWorker" in navigator) {
   });
 }
 </script>
-  
-  
-  
-</script></body></html>
+
+</body>
+</html>
