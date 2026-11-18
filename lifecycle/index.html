@@ -17325,6 +17325,41 @@ accountMainHeader{
   }
 
 }
+
+	/* ==========================================
+   LIFE CYCLE · BALANCE SHEET MOBILE HEADER
+========================================== */
+
+@media screen and (max-width:600px){
+
+  #lifeBalancePanel > .panelHead{
+    display:block !important;
+  }
+
+  /* Full-width title and description */
+  #lifeBalancePanel > .panelHead > div:first-child{
+    position:static !important;
+    width:calc(100vw - 36px) !important;
+    min-width:0 !important;
+    max-width:none !important;
+    flex:none !important;
+  }
+
+  /* Selected age below description */
+  #lifeBalancePanel .balanceAgeControl{
+    position:static !important;
+    width:calc(100vw - 36px) !important;
+    min-width:0 !important;
+    max-width:none !important;
+    margin-top:16px !important;
+  }
+
+  #lifeBalanceAgeSelect{
+    width:100% !important;
+    box-sizing:border-box;
+  }
+
+}
 </style>
 
 </head>
