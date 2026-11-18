@@ -17936,6 +17936,45 @@ accountMainHeader{
   }
 
 }
+
+/* ==========================================
+   LIFE CYCLE · MOBILE NAVIGATION DIMENSIONS
+========================================== */
+
+@media screen and (max-width:600px){
+
+  /* Five navigation buttons */
+
+  #appNavigation{
+    grid-template-columns:repeat(5,75px) !important;
+  }
+
+  #appNavigation button[data-go-tab],
+  #nlMobileMore{
+    width:75px !important;
+    max-width:75px !important;
+    min-width:0 !important;
+  }
+
+  /* More popup */
+
+  #nlMobileMorePanel{
+    width:170px !important;
+    right:150px !important;
+    left:auto !important;
+  }
+
+  /* More popup buttons */
+
+  #nlMobileMorePanel button{
+    padding:10px 12px !important;
+    font-size:11px !important;
+    min-height:38px !important;
+  }
+
+}
+
+
 	
 </style>
 
