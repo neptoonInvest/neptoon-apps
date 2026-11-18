@@ -17189,6 +17189,107 @@ accountMainHeader{
 
 
 
+/* ==========================================
+   LIFE CYCLE · COMPACT MOBILE NAVIGATION
+========================================== */
+
+@media screen and (max-width:600px){
+
+  #appNavigation{
+    grid-template-columns:repeat(6,minmax(0,1fr)) !important;
+    gap:0 !important;
+
+    padding:6px 22px
+      max(6px,env(safe-area-inset-bottom)) 3px !important;
+  }
+
+  #appNavigation > button[data-go-tab]{
+    width:100% !important;
+    min-width:0 !important;
+
+    padding:6px 1px !important;
+
+    font-size:10px !important;
+    line-height:1.2 !important;
+
+    white-space:nowrap !important;
+    overflow:hidden !important;
+    text-overflow:clip !important;
+  }
+
+}
+
+	
+/* ==========================================
+   LIFE CYCLE · MOBILE SHORT LABELS
+   Desktop and tablet text remains unchanged
+========================================== */
+
+@media screen and (max-width:600px){
+
+  #appNavigation > button[data-go-tab]{
+    font-size:0 !important;
+  }
+
+  #appNavigation > button[data-go-tab]::after{
+    font-size:10px !important;
+    line-height:1.2 !important;
+    white-space:nowrap !important;
+  }
+
+  /* DANISH */
+
+  html[lang="da"] #appNavigation [data-go-tab="Welcome"]::after{
+    content:"Start";
+  }
+
+  html[lang="da"] #appNavigation [data-go-tab="LifeCycle"]::after{
+    content:"Livscyklus";
+  }
+
+  html[lang="da"] #appNavigation [data-go-tab="BalanceSheet"]::after{
+    content:"Formue";
+  }
+
+  html[lang="da"] #appNavigation [data-go-tab="History"]::after{
+    content:"Porteføljer";
+  }
+
+  html[lang="da"] #appNavigation [data-go-tab="FAQ"]::after{
+    content:"Metode";
+  }
+
+  html[lang="da"] #appNavigation [data-go-tab="Account"]::after{
+    content:"Konto";
+  }
+
+  /* ENGLISH */
+
+  html[lang="en"] #appNavigation [data-go-tab="Welcome"]::after{
+    content:"Start";
+  }
+
+  html[lang="en"] #appNavigation [data-go-tab="LifeCycle"]::after{
+    content:"Life Cycle";
+  }
+
+  html[lang="en"] #appNavigation [data-go-tab="BalanceSheet"]::after{
+    content:"Wealth";
+  }
+
+  html[lang="en"] #appNavigation [data-go-tab="History"]::after{
+    content:"Portfolios";
+  }
+
+  html[lang="en"] #appNavigation [data-go-tab="FAQ"]::after{
+    content:"Method";
+  }
+
+  html[lang="en"] #appNavigation [data-go-tab="Account"]::after{
+    content:"Account";
+  }
+
+}
 
 
 </style>
