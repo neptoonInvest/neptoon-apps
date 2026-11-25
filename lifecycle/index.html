@@ -17975,7 +17975,182 @@ accountMainHeader{
 }
 
 
+/* =====================================================
+   LIFE CYCLE · MOBILE BOTTOM NAVIGATION
+===================================================== */
+
+@media (max-width:600px){
+
+  #appNavigation{
+    position:fixed !important;
+    bottom:0 !important;
+    left:0 !important;
+    right:0 !important;
+
+    width:100% !important;
+    min-width:0 !important;
+    max-width:100% !important;
+
+    display:grid !important;
+    grid-template-columns:repeat(6,minmax(0,1fr)) !important;
+    grid-auto-columns:0 !important;
+
+    gap:0 !important;
+    column-gap:0 !important;
+
+    margin:0 !important;
+    padding:0 132px env(safe-area-inset-bottom, 0px) 0 !important;
+
+    background:#f1f3f5 !important;
+    border-top:1px solid #d5dfeb;
+
+    box-sizing:border-box !important;
+    overflow:hidden !important;
+    z-index:1000;
+  }
+
+
+  /* NAVIGATION BUTTONS */
+
+  #appNavigation button[data-go-tab]{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+
+    width:100% !important;
+    min-width:0 !important;
+    max-width:100% !important;
+    height:52px !important;
+
+    flex:none !important;
+
+    margin:0 !important;
+    padding:0 !important;
+    gap:0 !important;
+
+    font-size:0 !important;
+
+    background:#f1f3f5 !important;
+    color:#142b49 !important;
+
+    border-radius:0 !important;
+    box-sizing:border-box !important;
+  }
+
+
+  /* ACTIVE BUTTON */
+
+  #appNavigation button[data-go-tab].active{
+    background:#4E79BD !important;
+    color:#ffffff !important;
+  }
+
+
+  /* REMOVE MOBILE TEXT LABELS */
+
+  #appNavigation button[data-go-tab]::after{
+    content:none !important;
+    display:none !important;
+  }
+
+
+  /* MOBILE ICONS */
+
+  #appNavigation button[data-go-tab]::before{
+    display:block !important;
+    font-size:24px !important;
+    font-weight:400 !important;
+    line-height:1 !important;
+  }
+
+  #appNavigation [data-go-tab="Welcome"]::before{
+    content:"⌂";
+  }
+
+  #appNavigation [data-go-tab="LifeCycle"]::before{
+    content:"◷";
+  }
+
+  #appNavigation [data-go-tab="BalanceSheet"]::before{
+    content:"▤";
+  }
+
+  #appNavigation [data-go-tab="History"]::before{
+    content:"▥";
+  }
+
+  #appNavigation [data-go-tab="FAQ"]::before{
+    content:"ⓘ";
+  }
+
+  #appNavigation [data-go-tab="Account"]::before{
+    content:"⚙";
+  }
+
+
+  /* PREVENT CONTENT BEHIND FIXED NAVIGATION */
+
+  body{
+    padding-bottom:calc(
+      66px + env(safe-area-inset-bottom, 0px)
+    ) !important;
+  }
+
+}
+@media (max-width:600px){
+
+  #lifeBalanceAgeSelect{
+    width:calc(100% - 24px) !important;
+    margin-right:24px !important;
+    box-sizing:border-box;
+  }
+
+}
 	
+
+/* =====================================================
+   LIFE CYCLE · MOBILE ASK NEPTOON LAUNCHER
+===================================================== */
+
+@media (max-width:600px){
+
+  #askNeptoonLauncher{
+    position:fixed !important;
+
+    right:35px !important;
+
+    bottom:calc(
+      64px + env(safe-area-inset-bottom, 0px)
+    ) !important;
+
+    left:auto !important;
+    top:auto !important;
+
+    margin:0 !important;
+    transform:none !important;
+  }
+
+}
+
+/* =====================================================
+   LIFE CYCLE · MOBILE KNOWLEDGE ROOM SPACING
+===================================================== */
+
+@media (max-width:600px){
+
+  #tabFAQ{
+    margin-top:-85px !important;
+    padding-top:8px !important;
+  }
+
+  #tabFAQ .panelHead.accountMainHeader{
+    margin-top:0 !important;
+  }
+
+}
+
+
 </style>
 
 <link rel="manifest" href="./manifest.webmanifest">
