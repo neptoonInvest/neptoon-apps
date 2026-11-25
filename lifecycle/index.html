@@ -18150,6 +18150,37 @@ accountMainHeader{
 
 }
 
+.nl111ScreenFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#nl111ScreenStatus,
+#nl111FreedomDisplay {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  letter-spacing: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#nl111ScreenStatus {
+  flex-shrink: 0;
+}
+
+#nl111FreedomDisplay {
+  flex: 1;
+  text-align: right;
+}
+
+
 
 </style>
 
@@ -35551,7 +35582,7 @@ function nl111UpdateOutput(){
 
   }else{
 
-    label = "Freedom Age N*";
+    label = "FreedomAgeN*";
 
     const source =
       document.getElementById("freedomAge");
