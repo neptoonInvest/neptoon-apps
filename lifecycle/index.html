@@ -31514,7 +31514,7 @@ includePensionTax:"Medtag udskudt skat",
 
 
     currentAge:
-      "Nuværende alder (hele år)",
+      "Nuværende alder",
 
     expectedLifetime:
       "Forventet dødsalder",
@@ -45865,6 +45865,7 @@ console.log("render maria");
   guardAllMoneyInputs();
 
 paintAssetAssumptionStatus();
+ nl111SyncAges();
 
   let inputs =
     readInputs();
@@ -49285,6 +49286,17 @@ if(copied){
   }
 
 return copied;
+
+}
+
+
+function nl111SyncAges(){
+
+  document.getElementById("nl111Age").textContent =
+    document.getElementById("currentAge").value;
+
+  document.getElementById("nl111Death").textContent =
+    document.getElementById("deathAge").value;
 
 }
 
