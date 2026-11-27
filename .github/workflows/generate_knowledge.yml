@@ -4,13 +4,14 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   generate-knowledge:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -21,3 +22,17 @@ jobs:
 
       - name: Run SEO publication engine
         run: node scripts/generate_knowledge.mjs
+
+      - name: Commit generated SEO pages
+        run: |
+          git config user.name "Neptoon SEO Bot"
+          git config user.email "seo@neptoonwealth.com"
+
+          git add lifecycle/knowledge/
+
+          if git diff --cached --quiet; then
+            echo "No SEO changes detected"
+          else
+            git commit -m "Publish Neptoon knowledge pages"
+            git push
+          fi
