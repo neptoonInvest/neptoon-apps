@@ -18680,46 +18680,45 @@ html{
       </div>
 
 
-      <!-- ============================================
-           GET STARTED
-      ============================================= -->
+<!-- ============================================
+     INSTALL LIFE CYCLE APP
+============================================= -->
 
-      <div class="lifeHeroStartFlow">
+<div class="lifeHeroStartFlow">
 
-        <div class="lifeHeroStartText">
+  <div class="lifeHeroStartText">
 
-          <strong data-lang="lifeHeroStartTitle">
-            Klar til at udforske dit økonomiske liv?
-          </strong>
+    <strong data-lang="lifeHeroInstallTitle">
+      Din livsøkonomi. Altid ved hånden.
+    </strong>
 
-          <span data-lang="lifeHeroStartDescription">
-            Start med din alder længere nede på siden,
-            eller prøv vores lommeregner.
-            Udforsk derefter Forbrug og Opsparing
-            eller tilpas modellen under Mine Indstillinger.
-          </span>
+    <span data-lang="lifeHeroInstallDescription">
+      Installér Neptoon Life Cycle som app på din
+      mobil, tablet eller computer.
+      Gratis, uden registrering og uden appbutik.
+    </span>
 
-        </div>
+  </div>
 
-        <button
-          type="button"
-          class="lifeHeroStartButton"
-          id="lifeHeroStart">
+  <button
+    type="button"
+    class="lifeHeroStartButton"
+    id="lifeHeroInstall">
 
-          <span data-lang="lifeHeroStartButton">
-            KOM GODT I GANG
-          </span>
+    <span data-lang="lifeHeroInstallButton">
+      INSTALLÉR APP
+    </span>
 
-          <i
-            data-lucide="arrow-down"
-            aria-hidden="true">
-          </i>
+    <i
+      data-lucide="download"
+      aria-hidden="true">
+    </i>
 
-        </button>
+  </button>
 
-      </div>
+</div>
 
-    </div>
+</div>
 
 
     <!-- ================================================
@@ -26560,7 +26559,29 @@ da:[
 ===================================================== */
 
 let activeLifeStage = 0;
+/* ============================================
+   PWA INSTALLATION
+============================================ */
 
+let deferredInstallPrompt = null;
+
+window.addEventListener("beforeinstallprompt", event => {
+
+  event.preventDefault();
+
+  deferredInstallPrompt = event;
+
+  console.log("PWA INSTALL AVAILABLE");
+
+});
+
+window.addEventListener("appinstalled", () => {
+
+  deferredInstallPrompt = null;
+
+  console.log("PWA INSTALL SUCCESSFUL");
+
+});
   
   
   
@@ -30003,6 +30024,15 @@ assetCategory:
 assetGrossReturn:
   "Exp. return gross",
 
+lifeHeroInstallTitle:
+  "Your financial life. Always at hand.",
+
+lifeHeroInstallDescription:
+  "Install Neptoon Life Cycle on your phone, tablet or computer. Free, with no registration or app store required.",
+
+lifeHeroInstallButton:
+  "INSTALL APP",
+
 assetCapitalTax:
   "Capital tax",
 
@@ -32216,6 +32246,14 @@ householdValuationTitle:
 
 householdValuationSubtitle:
   "Hvorfor er økonomisk formue og værdi ikke det samme som bogført formueog værdi?",
+lifeHeroInstallTitle:
+  "Din livsøkonomi. Altid ved hånden.",
+
+lifeHeroInstallDescription:
+  "Installér Neptoon Life Cycle som app på din mobil, tablet eller computer. Gratis, uden registrering og uden appbutik.",
+
+lifeHeroInstallButton:
+  "INSTALLÉR APP",
 
 householdBookTitle:
   "Regnskabets værdi",
@@ -58765,7 +58803,26 @@ document
 
 });
   
-  
+  document.getElementById("lifeHeroInstall")
+  ?.addEventListener("click", async () => {
+
+    if (!deferredInstallPrompt) {
+
+      console.warn("PWA INSTALL NOT AVAILABLE");
+
+      return;
+
+    }
+
+    await deferredInstallPrompt.prompt();
+
+    const result = await deferredInstallPrompt.userChoice;
+
+    console.log("PWA INSTALL RESULT", result.outcome);
+
+    deferredInstallPrompt = null;
+
+  });
   
   
   
