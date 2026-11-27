@@ -18196,7 +18196,13 @@ body{
 html{
   -webkit-text-size-adjust:100%;
 }
+    @media (max-width:600px){
 
+      #neptoonApp{
+        margin-left:14px !important;
+      }
+
+    }
 </style>
 
 <link rel="manifest" href="./manifest.webmanifest">
@@ -34272,6 +34278,8 @@ if(publicPension && supplementaryPension){
 renderFooterInfo(lang);
 renderLifeCycleFAQ(lang);
 renderLifeStageNarrative();
+renderMenuLabels(lang);
+
 }
 
 console.log("BOOT 2c — Language functions defined");
@@ -42343,6 +42351,43 @@ function solveAllScenarios(inputs, testMode = false){
       Risk class selected by user.
     =====================================
   */
+
+	function renderMenuLabels(lang){
+
+  const labels = {
+
+    en:{
+      Welcome:      "Home",
+      LifeCycle:    "LifeCycle",
+      BalanceSheet: "Balances",
+      History:      "Portfolios",
+      FAQ:          "Method",
+      Account:      "MySettings"
+    },
+
+    da:{
+      Welcome:      "Hjem",
+      LifeCycle:    "Livscyklus",
+      BalanceSheet: "Balancer",
+      History:      "Porteføljer",
+      FAQ:          "Metode",
+      Account:      "Indstillinger"
+    }
+
+  };
+
+  const dictionary = labels[lang] || labels.en;
+
+  document.querySelectorAll(
+    "#appNavigation button[data-go-tab]"
+  ).forEach(btn => {
+
+    btn.dataset.navLabel =
+      dictionary[btn.dataset.goTab] || "";
+
+  });
+
+}
 
   function resolvePortfolio(phase){
 
@@ -58228,6 +58273,8 @@ async function initStandaloneLifeCycle(){
     INIT.lang ="da"; //detectLifeCycleLanguage();
 
     applyLang(INIT.lang);
+
+renderMenuLabels(INIT.lang);
 
 
     /*
