@@ -58823,6 +58823,7 @@ document
 });
   
 
+
 document.getElementById("lifeHeroInstall")
   ?.addEventListener("click", async () => {
 
@@ -58835,6 +58836,7 @@ document.getElementById("lifeHeroInstall")
 
     const isDA =
       document.documentElement.lang === "da";
+
 
     // NATIVE INSTALLATION
 
@@ -58853,7 +58855,8 @@ document.getElementById("lifeHeroInstall")
 
     }
 
-    // APPLE FALLBACK
+
+    // APPLE INSTALLATION
 
     if (isIOS) {
 
@@ -58864,20 +58867,24 @@ document.getElementById("lifeHeroInstall")
       if (description) {
 
         description.textContent = isDA
-          ? "Tryk på Del-ikonet i Safari. Vælg Føj til hjemmeskærm, aktivér Åbn som webapp, hvis vist, og tryk Tilføj."
-          : "Tap Share in Safari. Select Add to Home Screen, enable Open as Web App if shown, and tap Add.";
+          ? "Tillad hentning af installationsprofilen. Åbn derefter Indstillinger → Profil hentet → Installer. Neptoon Life Cycle vises nu på din hjemmeskærm."
+          : "Allow the installation profile to download. Then open Settings → Profile Downloaded → Install. Neptoon Life Cycle will appear on your Home Screen.";
 
       }
+
+      window.location.href =
+        "./neptoon-lifecycle_ios.mobileconfig";
 
       return;
 
     }
 
+
+    // INSTALLATION NOT AVAILABLE
+
     console.warn("PWA INSTALL NOT AVAILABLE");
 
   });
-  
-  
   
   
   
