@@ -42352,42 +42352,6 @@ function solveAllScenarios(inputs, testMode = false){
     =====================================
   */
 
-	function renderMenuLabels(lang){
-
-  const labels = {
-
-    en:{
-      Welcome:      "Home",
-      LifeCycle:    "LifeCycle",
-      BalanceSheet: "Balances",
-      History:      "Portfolios",
-      FAQ:          "Method",
-      Account:      "MySettings"
-    },
-
-    da:{
-      Welcome:      "Hjem",
-      LifeCycle:    "Livscyklus",
-      BalanceSheet: "Balancer",
-      History:      "Porteføljer",
-      FAQ:          "Metode",
-      Account:      "Indstillinger"
-    }
-
-  };
-
-  const dictionary = labels[lang] || labels.en;
-
-  document.querySelectorAll(
-    "#appNavigation button[data-go-tab]"
-  ).forEach(btn => {
-
-    btn.dataset.navLabel =
-      dictionary[btn.dataset.goTab] || "";
-
-  });
-
-}
 
   function resolvePortfolio(phase){
 
@@ -42760,6 +42724,44 @@ function buildExpectedPathFromLedger(
    Portfolio selection comes from My Account.
    No interactive risk selectors.
 ===================================================== */
+
+
+	function renderMenuLabels(lang){
+
+  const labels = {
+
+    en:{
+      Welcome:      "Home",
+      LifeCycle:    "LifeCycle",
+      BalanceSheet: "Balances",
+      History:      "Portfolios",
+      FAQ:          "Method",
+      Account:      "MySettings"
+    },
+
+    da:{
+      Welcome:      "Hjem",
+      LifeCycle:    "Livscyklus",
+      BalanceSheet: "Balancer",
+      History:      "Porteføljer",
+      FAQ:          "Metode",
+      Account:      "Indstillinger"
+    }
+
+  };
+
+  const dictionary = labels[lang] || labels.en;
+
+  document.querySelectorAll(
+    "#appNavigation button[data-go-tab]"
+  ).forEach(btn => {
+
+    btn.dataset.navLabel =
+      dictionary[btn.dataset.goTab] || "";
+
+  });
+
+}
 
 function paintPortfolioAssumptions(){
 
