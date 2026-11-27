@@ -18405,7 +18405,26 @@ html{
 }
 
 
+/* =====================================================
+   LIFE CYCLE · MOBILE ASK NEPTOON LAUNCHER
+===================================================== */
 
+@media (max-width:600px){
+
+  #askNeptoonLauncher{
+    position:fixed !important;
+
+    right:20px !important;
+    bottom:64px !important;
+
+    left:auto !important;
+    top:auto !important;
+
+    margin:0 !important;
+    transform:none !important;
+  }
+
+}
 
 
 
@@ -58803,24 +58822,58 @@ document
 
 });
   
-  document.getElementById("lifeHeroInstall")
+
+document.getElementById("lifeHeroInstall")
   ?.addEventListener("click", async () => {
 
-    if (!deferredInstallPrompt) {
+    const isIOS =
+      /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (
+        navigator.platform === "MacIntel" &&
+        navigator.maxTouchPoints > 1
+      );
 
-      console.warn("PWA INSTALL NOT AVAILABLE");
+    const isDA =
+      document.documentElement.lang === "da";
+
+    // NATIVE INSTALLATION
+
+    if (deferredInstallPrompt) {
+
+      await deferredInstallPrompt.prompt();
+
+      const result =
+        await deferredInstallPrompt.userChoice;
+
+      console.log("PWA INSTALL RESULT", result.outcome);
+
+      deferredInstallPrompt = null;
 
       return;
 
     }
 
-    await deferredInstallPrompt.prompt();
+    // APPLE FALLBACK
 
-    const result = await deferredInstallPrompt.userChoice;
+    if (isIOS) {
 
-    console.log("PWA INSTALL RESULT", result.outcome);
+      const description = document.querySelector(
+        '[data-lang="lifeHeroInstallDescription"]'
+      );
 
-    deferredInstallPrompt = null;
+      if (description) {
+
+        description.textContent = isDA
+          ? "Tryk på Del-ikonet i Safari. Vælg Føj til hjemmeskærm, aktivér Åbn som webapp, hvis vist, og tryk Tilføj."
+          : "Tap Share in Safari. Select Add to Home Screen, enable Open as Web App if shown, and tap Add.";
+
+      }
+
+      return;
+
+    }
+
+    console.warn("PWA INSTALL NOT AVAILABLE");
 
   });
   
