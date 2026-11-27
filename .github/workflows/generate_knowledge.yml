@@ -29,10 +29,11 @@ jobs:
           git config user.email "seo@neptoonwealth.com"
 
           git add lifecycle/knowledge/
+          git add sitemap.xml
 
           if git diff --cached --quiet; then
             echo "No SEO changes detected"
           else
-            git commit -m "Publish Neptoon knowledge pages"
+            git commit -m "Publish Neptoon knowledge platform"
             git push
           fi
