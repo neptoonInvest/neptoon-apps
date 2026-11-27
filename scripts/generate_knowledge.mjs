@@ -1,308 +1,44 @@
-import fs from "node:fs";
-import vm from "node:vm";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-
-/* =========================================
-   NEPTOON LIFE CYCLE
-   SEO PUBLICATION ENGINE
-========================================= */
-
-const ROOT = fileURLToPath(
-  new URL("../", import.meta.url)
-);
-
-const SOURCE = path.join(
-  ROOT,
-  "lifecycle",
-  "index.html"
-);
-
-/* =========================================
-   READ APPLICATION SOURCE
-========================================= */
-
-const html = fs.readFileSync(SOURCE, "utf8");
-
-console.log("SOURCE LOADED", {
-  file: SOURCE,
-  characters: html.length
-});
-
-/* =========================================
-   EXTRACT FAQ OBJECT
-========================================= */
-
-const match = html.match(
-  /const\s+LIFE_CYCLE_FAQ\s*=\s*(\{[\s\S]*?\n\s*\});/
-);
-
-if (!match) {
-  throw new Error("LIFE_CYCLE_FAQ not found");
-}
-
-const FAQ = vm.runInNewContext(
-  `(${match[1]})`,
-  Object.create(null),
-  { timeout: 1000 }
-);
-
-/* =========================================
-   VALIDATE CONTENT
-========================================= */
-
-for (const lang of ["da", "en"]) {
-
-  const faq = FAQ[lang];
-
-  if (!faq || !Array.isArray(faq.groups)) {
-    throw new Error(`Invalid FAQ: ${lang}`);
-  }
-
-  const questions = faq.groups.flatMap(
-    group => group.items
-  );
-
-  console.log("FAQ VALIDATED", {
-    language: lang,
-    categories: faq.groups.length,
-    questions: questions.length
-  });
-
-  console.table(
-    faq.groups.map(group => ({
-      id: group.id,
-      title: group.title,
-      questions: group.items.length
-    }))
-  );
-
-}
-
-console.log("SEO EXTRACTION SUCCESSFUL");
-
-/* =========================================
-   SEO PUBLICATION TEST
-   DANISH · SAVINGS
-========================================= */
-
-const group = FAQ.da.groups.find(
-  g => g.id === "savings"
-);
-
-if (!group) {
-  throw new Error("Savings category not found");
-}
-
-const escapeHTML = value =>
-  String(value ?? "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-
-const BASE =
-  "https://webapps.neptoonwealth.com";
-
-const canonical =
-  `${BASE}/lifecycle/knowledge/da/opsparing/`;
-
-const articles = group.items.map(item => `
-  <article>
-    <h2>${escapeHTML(item.q)}</h2>
-    <p>${escapeHTML(item.a)}</p>
-  </article>
-`).join("\n");
-
-const page = `<!DOCTYPE html>
-<html lang="da">
-<head>
-
-<meta charset="utf-8">
-<meta name="viewport"
-      content="width=device-width,initial-scale=1">
-
-<title>Opsparing og formueopbygning | Neptoon Wealth</title>
-
-<meta name="description"
-      content="Få svar på spørgsmål om månedlig opsparing, investering, afdrag og formueopbygning. Se, hvordan din opsparing påvirker din økonomiske fremtid.">
-
-<meta name="robots" content="index, follow">
-
-<link rel="canonical" href="${canonical}">
-
-<style>
-
-*{
-  box-sizing:border-box;
-}
-
-body{
-  margin:0;
-  background:#fff;
-  color:#243247;
-  font-family:Arial,sans-serif;
-  line-height:1.7;
-}
-
-header{
-  background:#4E79BD;
-  color:white;
-  padding:24px;
-}
-
-header a{
-  color:white;
-  text-decoration:none;
-  font-weight:600;
-}
-
-main{
-  max-width:850px;
-  margin:auto;
-  padding:32px 20px;
-}
-
-.kicker{
-  color:#4E79BD;
-  font-size:12px;
-  letter-spacing:2px;
-  font-weight:600;
-}
-
-h1{
-  font-size:clamp(28px,5vw,40px);
-  line-height:1.2;
-  font-weight:500;
-}
-
-h2{
-  font-size:21px;
-  line-height:1.4;
-  font-weight:600;
-}
-
-article{
-  padding:18px 0;
-  border-bottom:1px solid #e0e5eb;
-}
-
-article p{
-  white-space:pre-line;
-}
-
-.cta{
-  background:#f2f5f9;
-  padding:24px;
-  margin:32px 0;
-}
-
-.button{
-  display:inline-block;
-  background:#4E79BD;
-  color:white;
-  padding:14px 24px;
-  text-decoration:none;
-}
-
-footer{
-  border-top:1px solid #ddd;
-  padding:24px;
-  text-align:center;
-  font-size:13px;
-}
-
-footer a{
-  color:#4E79BD;
-}
-
-</style>
-</head>
-
-<body>
-
-<header>
-  <a href="${BASE}/lifecycle/">
-    NEPTOON WEALTH
-  </a>
-</header>
-
-<main>
-
-  <div class="kicker">
-    NEPTOON VIDEN · PRIVATØKONOMI
-  </div>
-
-  <h1>Opsparing og formueopbygning</h1>
-
-  <p>
-    Hvordan påvirker din månedlige opsparing
-    dine økonomiske muligheder gennem livet?
-    Få svar på spørgsmål om opsparing,
-    investering og opbygning af formue.
-  </p>
-
-  <div class="cta">
-    <h2>Hvad betyder din opsparing for din fremtid?</h2>
-
-    <p>
-      Se dine egne økonomiske muligheder
-      med Neptoon Life Cycle.
-    </p>
-
-    <a class="button" href="${BASE}/lifecycle/">
-      Åbn Neptoon Life Cycle →
-    </a>
-
-    <p>Gratis · Ingen registrering</p>
-  </div>
-
-  ${articles}
-
-  <div class="cta">
-    <h2>Fra økonomisk viden til dine egne muligheder</h2>
-
-    <a class="button" href="${BASE}/lifecycle/">
-      Åbn Neptoon Life Cycle →
-    </a>
-  </div>
-
-</main>
-
-<footer>
-  © Neptoon Wealth ·
-  <a href="https://www.neptoonwealth.com/">
-    Om Neptoon
-  </a>
-  <p>
-    Økonomisk information og modelbaseret analyse.
-    Ikke personlig investeringsrådgivning.
-  </p>
-</footer>
-
-</body>
-</html>`;
-
-const output = path.join(
-  ROOT,
-  "lifecycle",
-  "knowledge",
-  "da",
-  "opsparing"
-);
-
-fs.mkdirSync(output, { recursive: true });
-
-fs.writeFileSync(
-  path.join(output, "index.html"),
-  page,
-  "utf8"
-);
-
-console.log("SEO PAGE GENERATED", {
-  category: group.id,
-  questions: group.items.length,
-  characters: page.length,
-  canonical
-});
+import fs from 'node:fs';
+import path from 'node:path';
+import vm from 'node:vm';
+import { fileURLToPath } from 'node:url';
+const ROOT = fileURLToPath(new URL('../', import.meta.url));
+const BASE = 'https://webapps.neptoonwealth.com';
+const APP = `${BASE}/lifecycle/`;
+const K = `${APP}knowledge/`;
+const html = fs.readFileSync(path.join(ROOT,'lifecycle/index.html'),'utf8');
+const match = html.match(/const\s+LIFE_CYCLE_FAQ\s*=\s*(\{[\s\S]*?\n\s*\});/);
+if (!match) throw Error('FAQ not found');
+const FAQ = vm.runInNewContext(`(${match[1]})`,Object.create(null),{timeout:1000});
+// Stable IDs: [Danish slug, heading, description, English slug, heading, description]
+const META = {
+ general:['privatoekonomi','Privatøkonomi og økonomisk frihed','Forstå din samlede formue, økonomisk frihed, pension og arv gennem livet.','personal-finance','Personal finance and financial freedom','Understand your total wealth, financial freedom, pensions and Legacy throughout life.'],
+ income:['indkomst','Indkomst og din økonomiske fremtid','Læs om løn, ændringer i indkomst og betydningen af din månedlige opsparing.','income','Income and your financial future','Understand salary changes, future income and monthly savings.'],
+ consumption:['forbrug','Forbrug og økonomisk frihed','Forstå hvordan dit fremtidige forbrug, inflation og formue hænger sammen.','consumption','Spending and financial freedom','Understand how future spending, inflation and wealth interact.'],
+ savings:['opsparing','Opsparing og formueopbygning','Få svar på spørgsmål om månedlig opsparing, investering, afdrag og formueopbygning.','savings','Savings and building wealth','Understand monthly savings, investing, debt repayments and building wealth.'],
+ investmentPortfolios:['investering','Investering, porteføljer, risiko og omkostninger','Forstå investeringsporteføljer, risikospredning, forventet afkast og omkostninger.','investments','Investment portfolios, risk and costs','Understand investment portfolios, diversification, expected returns and costs.'],
+ taxes:['skat','Skat på investeringer og formue','Forstå lagerbeskatning, realisationsbeskatning og udskudt skat i din økonomi.','taxes','Taxes on investments and wealth','Understand mark-to-market taxation, realization-based taxation and deferred tax.'],
+ realEstate:['boligformue','Boligformue, friværdi og pension','Forstå hvordan boligværdi, friværdi, boliglån og salg påvirker din økonomi.','real-estate','Home equity, property and retirement','Understand property values, home equity, mortgages and future sale proceeds.'],
+ enterprise:['virksomhedsformue','Virksomhedsformue og din privatøkonomi','Forstå hvordan værdien og et eventuelt salg af din virksomhed påvirker din formue.','business-wealth','Business ownership and personal wealth','Understand how business ownership and future sale proceeds affect personal wealth.'],
+ privatePension:['privat-pension','Privat pension og pensionsopsparing','Forstå pensionsopsparing, pensionsindbetalinger, afkast og skat i din økonomi.','private-pension','Private pensions and retirement savings','Understand pension savings, contributions, investment returns and taxes.'],
+ publicPension:['folkepension','Folkepension og ATP','Forstå betydningen af fremtidige pensionsbetalinger for din økonomiske formue.','public-pension','Public pensions and retirement income','Understand the economic value of future public pension payments.'],
+ futureValues:['fremtidig-formue','Arv og andre fremtidige værdier','Forstå hvordan forventet arv og andre fremtidige økonomiske ressourcer indgår i din formue.','future-wealth','Inheritance and future wealth','Understand how expected inheritance and other future resources contribute to wealth.'],
+ liabilities:['gaeld','Gæld, lån, renter og afdrag','Forstå hvordan gæld, renter og afdrag påvirker din formue gennem livet.','debt','Debt, loans, interest and repayments','Understand how debt, interest and repayments affect lifetime wealth.'],
+ modelUncertainty:['metode','Økonomisk planlægning og usikkerhed','Forstå modelberegninger, økonomiske antagelser og usikkerheden om din fremtidige formue.','methodology','Financial planning and uncertainty','Understand model assumptions and uncertainty about your future wealth.']
+};
+// Support the existing Monte Carlo entry's alternate field names.
+for(const lang of ['da','en']) for(const g of FAQ[lang].groups) for(const i of g.items){if(i.q===undefined && typeof i.faqMonteCarloQ==='string' && typeof i.faqMonteCarloA==='string'){i.q=i.faqMonteCarloQ;i.a=i.faqMonteCarloA;console.warn('Normalized Monte Carlo fields',lang,g.id);}}
+const langs=['da','en'];
+const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+const meta=(lang,id)=>{const m=META[id]; if(!m)throw Error(`Unknown category ${id}`);return m.slice(lang==='da'?0:3,lang==='da'?3:6)};
+const url=(lang,id)=>`${K}${lang}/${id?meta(lang,id)[0]+'/':''}`;
+const homeTitle=lang=>lang==='da'?'Privatøkonomi gennem hele livet':'Personal finance throughout life';
+const homeDesc=lang=>lang==='da'?'Viden om opsparing, investering, bolig, pension, gæld og økonomisk frihed.':'Knowledge about savings, investments, property, pensions, debt and financial freedom.';
+for(const lang of langs){const groups=FAQ[lang]?.groups;if(!Array.isArray(groups)||groups.length!==Object.keys(META).length||new Set(groups.map(g=>g.id)).size!==groups.length)throw Error(`Invalid groups ${lang}`);for(const g of groups){meta(lang,g.id);if(!g.items?.length||g.items.some(i=>typeof i.q!=='string'||typeof i.a!=='string'))throw Error(`Invalid items ${g.id}`)}}
+const css=`*{box-sizing:border-box}body{margin:0;color:#243247;background:#fff;font:17px/1.7 Arial,sans-serif}header{background:#4E79BD;color:white;padding:18px 24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}header a{color:white;text-decoration:none}a{color:#365f9e}a:focus-visible{outline:2px solid #243247;outline-offset:4px}.layout{max-width:1180px;margin:auto;display:grid;grid-template-columns:245px minmax(0,1fr);gap:40px;padding:30px 24px}nav a{display:block;padding:8px 0;font-size:15px;text-decoration:none;border-bottom:1px solid #e0e5eb}nav a[aria-current]{font-weight:bold;color:#243247}main{min-width:0;max-width:850px}.kicker{font-size:12px;letter-spacing:1.5px;color:#365f9e;font-weight:bold}h1{font-size:clamp(28px,4vw,40px);line-height:1.2;font-weight:500}h2{font-size:22px;line-height:1.4}article{padding:14px 0;border-bottom:1px solid #e0e5eb}article p{white-space:pre-line}.cta{background:#f2f5f9;padding:24px;margin:24px 0}.button{display:inline-block;background:#4E79BD;color:white;padding:12px 20px;text-decoration:none}footer{border-top:1px solid #ddd;padding:24px;text-align:center;font-size:14px} @media(max-width:700px){.layout{display:flex;flex-direction:column;padding:20px;gap:24px}nav{order:2}main{order:1}body{font-size:16px}}`;
+function render(lang,group){const da=lang==='da',id=group?.id,other=da?'en':'da';const [,title,desc]=id?meta(lang,id):['',homeTitle(lang),homeDesc(lang)];const canonical=url(lang,id);const cta=`<section class="cta"><h2>${da?'Hvad betyder det for din økonomi?':'What does this mean for your finances?'}</h2><a class="button" href="${APP}">${da?'Åbn Neptoon Life Cycle':'Open Neptoon Life Cycle'} →</a><p>${da?'Gratis · Ingen registrering':'Free · No registration'}</p></section>`;const nav=FAQ[lang].groups.map(g=>`<a href="${url(lang,g.id)}"${g.id===id?' aria-current="page"':''}>${esc(meta(lang,g.id)[1])}</a>`).join('\n');const content=group?group.items.map(i=>`<article><h2>${esc(i.q)}</h2><p>${esc(i.a)}</p></article>`).join('\n'):FAQ[lang].groups.map(g=>`<article><h2><a href="${url(lang,g.id)}">${esc(meta(lang,g.id)[1])}</a></h2><p>${esc(meta(lang,g.id)[2])}</p></article>`).join('\n');return `<!DOCTYPE html>
+<html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)} | Neptoon Wealth</title><meta name="description" content="${esc(desc)}"><meta name="robots" content="index, follow"><link rel="canonical" href="${canonical}"><link rel="alternate" hreflang="da" href="${url('da',id)}"><link rel="alternate" hreflang="en" href="${url('en',id)}"><style>${css}</style></head><body><header><a href="${APP}"><strong>NEPTOON WEALTH</strong></a><a href="${url(other,id)}" lang="${other}">${da?'English':'Dansk'}</a></header><div class="layout"><nav aria-label="${da?'Emner':'Topics'}"><a href="${url(lang)}"><strong>${da?'Neptoon Viden':'Neptoon Knowledge'}</strong></a>${nav}</nav><main><div class="kicker">${da?'NEPTOON VIDEN · PRIVATØKONOMI':'NEPTOON KNOWLEDGE · PERSONAL FINANCE'}</div><h1>${esc(title)}</h1><p>${esc(desc)}</p>${cta}${content}${group?cta:''}</main></div><footer>© Neptoon Wealth · <a href="https://www.neptoonwealth.com/">${da?'Om Neptoon':'About Neptoon'}</a><p>${da?'Økonomisk information og modelbaseret analyse. Ikke personlig investeringsrådgivning.':'Financial information and model-based analysis. Not personalized investment advice.'}</p></footer></body></html>`;}
+const pages=[];for(const lang of langs){for(const group of [null,...FAQ[lang].groups]){const address=url(lang,group?.id);const dir=path.join(ROOT,new URL(address).pathname.replace(/^\//,''));pages.push({address,dir,body:render(lang,group)});}}
+for(const p of pages){fs.mkdirSync(p.dir,{recursive:true});fs.writeFileSync(path.join(p.dir,'index.html'),p.body,'utf8');}
+// Preserve existing sitemap entries outside the generated knowledge section.
+const sitemapPath=path.join(ROOT,'sitemap.xml');const old=fs.readFileSync(sitemapPath,'utf8');if(!/<urlset\b/.test(old)||!/<\/urlset>/.test(old))throw Error('Expected existing XML urlset');const retained=[...old.matchAll(/<url(?:\s[^>]*)?>[\s\S]*?<\/url>/g)].map(m=>m[0]).filter(s=>!s.includes(`<loc>${K}`));if(!retained.some(s=>s.includes(`<loc>${APP}</loc>`)))retained.push(`<url><loc>${APP}</loc></url>`);const entries=pages.map(p=>`<url><loc>${esc(p.address)}</loc></url>`);const sitemap=old.replace(/<urlset\b[^>]*>[\s\S]*?<\/urlset>/,m=>m.match(/^<urlset\b[^>]*>/)[0]+'\n'+[...retained,...entries].join('\n')+'\n</urlset>');fs.writeFileSync(sitemapPath,sitemap,'utf8');console.log('SEO PUBLICATION GENERATED', {pages:pages.length,questions:langs.reduce((n,l)=>n+FAQ[l].groups.reduce((s,g)=>s+g.items.length,0),0)});
