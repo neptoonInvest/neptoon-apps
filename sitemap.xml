@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <url>
+<url>
     <loc>https://webapps.neptoonwealth.com/lifecycle/</loc>
   </url>
-
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/da/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/da/privatoekonomi/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/da/indkomst/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/da/forbrug/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/da/opsparing/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/da/investering/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/da/skat/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/da/boligformue/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/da/virksomhedsformue/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/da/privat-pension/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/da/folkepension/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/da/fremtidig-formue/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/da/gaeld/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/da/metode/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/en/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/en/personal-finance/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/en/income/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/en/consumption/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/en/savings/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/en/investments/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/en/taxes/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/en/real-estate/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/en/business-wealth/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/en/private-pension/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/en/public-pension/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/en/future-wealth/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/en/debt/</loc></url>
+<url><loc>https://webapps.neptoonwealth.com/lifecycle/knowledge/en/methodology/</loc></url>
 </urlset>
