@@ -18180,7 +18180,22 @@ accountMainHeader{
   text-align: right;
 }
 
+/* =====================================================
+   LIFE CYCLE · VIEWPORT LOCK
+===================================================== */
 
+html,
+body{
+  width:100% !important;
+  max-width:100% !important;
+  overflow-x:hidden !important;
+  overscroll-behavior-x:none !important;
+  touch-action:pan-y !important;
+}
+
+html{
+  -webkit-text-size-adjust:100%;
+}
 
 </style>
 
