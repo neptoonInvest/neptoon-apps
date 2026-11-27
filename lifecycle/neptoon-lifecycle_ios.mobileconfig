@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>FullScreen</key>
+			<true/>
+			<key>IsRemovable</key>
+			<true/>
+			<key>Label</key>
+			<string>Life Cycle</string>
+			<key>PayloadDisplayName</key>
+			<string>Neptoon Life Cycle</string>
+			<key>PayloadIdentifier</key>
+			<string>com.neptoonwealth.lifecycle.webclip.test.clip</string>
+			<key>PayloadType</key>
+			<string>com.apple.webClip.managed</string>
+			<key>PayloadUUID</key>
+			<string>4A64C29F-38BB-4A93-B47F-6F5D9A8E0386</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+			<key>URL</key>
+			<string>https://webapps.neptoonwealth.com/lifecycle/</string>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>Adds a removable full-screen shortcut to Neptoon Life Cycle. No other payloads.</string>
+	<key>PayloadDisplayName</key>
+	<string>Neptoon Life Cycle — Web Clip Test</string>
+	<key>PayloadIdentifier</key>
+	<string>com.neptoonwealth.lifecycle.webclip.test</string>
+	<key>PayloadOrganization</key>
+	<string>Neptoon Wealth</string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>3E347471-FAE6-444F-B6D0-F7B9B227AB81</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>
